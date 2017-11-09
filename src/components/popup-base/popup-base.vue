@@ -138,11 +138,11 @@
           this.vm_slot.$nextTick(()=>{
             //设置slot的初始化样式
             this._animation('in')
-            
+
             this.vm_slot.event && 
             this.vm_slot.event.beforeEnter instanceof Function && 
               this.vm_slot.event.beforeEnter();
-            
+
             //设置事件
             this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
             

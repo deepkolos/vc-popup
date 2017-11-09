@@ -30,12 +30,10 @@
             vm_tile = this.$refs.tile,
             $content = vm_tile.$refs.content,
             deg = vm_tile.maxDeg * 1.2;
-          
+
           this._controller.vm_popUp.setAnimateDom($content)
-          
-          $el.classList.add('inital');
+
           requestAnimationFrame(function(){
-            $el.classList.remove('inital');
             $el.classList.add('inAnimation');
           })
         },
@@ -45,11 +43,11 @@
             vm_tile = this.$refs.tile,
             $content = vm_tile.$refs.content,
             deg = vm_tile.maxDeg * 1.15;
-          
+
           this._controller.vm_popUp.setAnimateDom($content)
           vm_tile.orientationY = vm_tile.orientationY === undefined ? 1 : vm_tile.orientationY;
           vm_tile.orientationX = vm_tile.orientationX === undefined ? 0 : vm_tile.orientationX;
-          
+
           // $el.classList.add('outAnimation')
           requestAnimationFrame(function(){
             // $el.classList.remove('inAnimation')
@@ -83,16 +81,16 @@
     width: calc(100vw - 36px*2 - 4px*2);
     border-radius: 3.5px;
     overflow: hidden;
-    transition: all 250ms ease 0s;
-
-    &.inital {
-      opacity: 0;
-      transform: rotateX(15deg) translateZ(-80px);
-    }
+    transition: all 0ms ease 0s;
+    opacity: 0;
+    transform: rotateX(15deg) translateZ(-80px);
+    margin: 0;
+    padding: 0;
 
     &.inAnimation {
       opacity: 1;
       transform: rotateX(0deg) translateZ(0px);
+      transition-duration: 250ms;
     }
 
     &.outAnimation {
