@@ -2,9 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import PopUp from '../src'
 import router from './router'
 
 Vue.config.productionTip = false
+
+Vue.use(PopUp)
 
 /* eslint-disable no-new */
 new Vue({
