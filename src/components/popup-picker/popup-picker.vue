@@ -5,7 +5,7 @@
       <a class="weui-picker__action"></a>
       <a class="weui-picker__action noExpand" @click="_confirm" v-text="confirmText"></a>
     </div>
-    <wv-picker-view 
+    <vc-picker-view 
       :slots="slots" 
       :onChange="onChange"
       :defaultValues="defaultValues"
@@ -13,7 +13,7 @@
       :showItemNum="showItemNum"
       :showItemHeight="showItemHeight"
       ref="picker"
-    ></wv-picker-view>
+    ></vc-picker-view>
   </div>
 </template>
 
@@ -25,7 +25,7 @@
   }
 
   export default {
-    name: 'wv-picker',
+    name: 'vc-picker',
 
     props: {
       slots: Array,

@@ -1,12 +1,12 @@
 <template>
-  <div class="wv-popup-conatiner" ref="container">
+  <div class="vc-popup-conatiner" ref="container">
     
   </div>
 </template>
 
 <script>
   export default {
-    name: 'wv-popup-conatiner',
+    name: 'vc-popup-conatiner',
 
     methods: {
       addPopUp ($dom) {
@@ -29,7 +29,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-conatiner {
+  .vc-popup-conatiner {
     position: absolute;
     width: 100%;
     height: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div class="weui-picker__bd" ref="body">
-    <wv-picker-slot 
+    <vc-picker-slot 
       v-for="(slot, key, index) in slots" 
       :key="key" 
       :values="slot.values || []" 
@@ -10,18 +10,18 @@
       :showItemHeight="showItemHeight" 
       :content="slot.content" 
       v-model="values[slot.valueIndex]"
-    ></wv-picker-slot>
+    ></vc-picker-slot>
   </div>
 </template>
 
 <script>
-  import WvPickerSlot from './picker-slot.vue'
+  import VcPickerSlot from './picker-slot.vue'
 
   export default {
-    name: 'wv-picker-view',
+    name: 'vc-picker-view',
 
     components: {
-      WvPickerSlot
+      VcPickerSlot
     },
 
     props: {
@@ -98,7 +98,7 @@
         let target
 
         let children = this.$children
-        children = children.filter(child => child.$options.name === 'wv-picker-slot')
+        children = children.filter(child => child.$options.name === 'vc-picker-slot')
 
         slots.forEach(function (slot, index) {
           if (!slot.divider) {

@@ -6,7 +6,7 @@
       <div class="weui-picker__item" :class="{ 'weui-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
     </div>
   </div>
-  <div class="wv-picker-slot-divider" v-else v-html="content"></div>
+  <div class="vc-picker-slot-divider" v-else v-html="content"></div>
 </template>
 
 <script>
@@ -15,7 +15,7 @@
   import emitter from '../../mixins/emitter'
 
   export default {
-    name: 'wv-picker-slot',
+    name: 'vc-picker-slot',
 
     mixins: [emitter],
 
@@ -237,7 +237,7 @@
       currentValue (val) {
         this.doOnValueChange()
         this.$emit('input', val)
-        this.dispatch('wv-picker-view', 'slotValueChange', this)
+        this.dispatch('vc-picker-view', 'slotValueChange', this)
       }
     }
   }
@@ -259,7 +259,7 @@
     z-index: 1;
   }
 
-  .wv-picker-slot-divider {
+  .vc-picker-slot-divider {
     transform:translateY(106px);
   }
 </style>

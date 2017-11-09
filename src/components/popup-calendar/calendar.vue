@@ -10,7 +10,7 @@
       <div class="week-indicator-item grey">六</div>
     </div>
     <div class="months-warpper">
-      <wv-pull-down-refresh 
+      <vc-pull-down-refresh 
         @onLoad="_loadMorePrev" 
         @onScrollLoad="_loadMoreNext"
         :showMsgIcon="false" 
@@ -21,15 +21,15 @@
         ref="pullDownRefresh"
       >
         <div class="wrapper" ref="wrapper">
-          <wv-month 
+          <vc-month 
             v-for="(month, $index) in months"
             :key="$index"
             :year="month.Y" 
             :month="month.M"
             :dayRules="month.R"
-          ></wv-month>
+          ></vc-month>
         </div>
-      </wv-pull-down-refresh>
+      </vc-pull-down-refresh>
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@
   import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
 
   export default {
-    name: 'wv-calendar',
+    name: 'vc-calendar',
     
     components: {
       WvMonth

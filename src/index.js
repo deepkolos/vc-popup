@@ -10,6 +10,7 @@ import PopupPicker from './components/popup-picker/index'
 import PickerView from './components/picker-view/index'
 import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
+import GestureTilePress from './components/gesture-tile-press/index'
 import './style/animate.min.css'
 import './style/animated-preset.css'
 
@@ -17,6 +18,7 @@ const version = '1.0.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.component(PickerView.name, PickerView)
+  Vue.component(GestureTilePress.name, GestureTilePress)
   Vue.prototype.$popup = PopupBase
   Vue.prototype.$bottomMenu = PopupBottomMenu
   Vue.prototype.$centerMenu = PopupCenterMenu
@@ -49,5 +51,6 @@ export default {
   PopupPicker,
   PickerView,
   PopupCalendar,
-  PopupDatetimePicker
+  PopupDatetimePicker,
+  GestureTilePress
 }

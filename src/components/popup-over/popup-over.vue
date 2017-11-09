@@ -1,7 +1,7 @@
 <template>
-  <ul class="wv-popup-over" ref="menu">
+  <ul class="vc-popup-over" ref="menu">
     <span class="triangle" ref="triangle"></span>
-    <li class="wv-popup-over-li" v-for="(item, key) in items" @click="item.click" :key="key">
+    <li class="vc-popup-over-li" v-for="(item, key) in items" @click="item.click" :key="key">
       <span class="li-icon-container">
         <img class="li-icon" :src="item.src" alt="">
       </span>
@@ -15,7 +15,7 @@
 <script>
 
   export default {
-    name: 'wv-popup-over',
+    name: 'vc-popup-over',
 
     props: {
       e: {
@@ -117,7 +117,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-over {
+  .vc-popup-over {
     will-change: opacity, transform;
     border-radius: 3.5px;
     transition: all 250ms ease 0s;
@@ -150,7 +150,7 @@
     transform: translate(-3.5px, -3.5px) rotate(45deg) ;
   }
 
-  .wv-popup-over-li {
+  .vc-popup-over-li {
     display: block;
     padding: 9px 8px;
     font-size: 15px;
@@ -160,7 +160,7 @@
     display: flex;
   }
 
-  .wv-popup-over-li:last-child{
+  .vc-popup-over-li:last-child{
     border-bottom: none;
   }
 

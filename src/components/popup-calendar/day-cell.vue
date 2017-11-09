@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'wv-day-cell',
+    name: 'vc-day-cell',
 
     props: {
       status: String,

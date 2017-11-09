@@ -1,19 +1,19 @@
 <template>
-  <div class="wv-popup-calendar">
+  <div class="vc-popup-calendar">
     <div class="header">
       <span class="btn btn-close" @click="_close"></span>
       <span class="title">日期选择</span>
       <span class="btn btn-clear" @click="_clearSelection" v-show="selectedStart || selectedEnd">清除</span>
     </div>
 
-    <wv-calendar-picker 
+    <vc-calendar-picker 
       @onSelectHasDisableDate="_disableDaySelected"
       ref="calendarPicker"
       :type="type"
       @onSelect="_onSelect"
-      class="wv-calendar-picker"
+      class="vc-calendar-picker"
       :data-style="isLargeRowledge ? 'row-xl' : ''"
-    ></wv-calendar-picker>
+    ></vc-calendar-picker>
 
     <div class="shortcut-bar" v-show="enableShortcut && type === 'range'">
       <div @click="_select('today')">今天</div>
@@ -31,19 +31,19 @@
     <div class="time-select-bar" v-show="enableTimeSelect && (selectedStart || selectedEnd)">
       <div v-show="selectedStart && !selectedEnd">
         <div class="time-select-title">选择<span v-show="type === 'range'">开始</span>时间</div>
-        <wv-picker-view 
+        <vc-picker-view 
           :slots="timeSlots" 
           :onChange="_changeStartTime"
           :showItemNum="5"
-        ></wv-picker-view>
+        ></vc-picker-view>
       </div>
       <div v-show="selectedEnd">
         <div class="time-select-title">选择结束时间</div>
-        <wv-picker-view 
+        <vc-picker-view 
           :slots="timeSlots" 
           :onChange="_changeEndTime"
           :showItemNum="5"
-        ></wv-picker-view>
+        ></vc-picker-view>
       </div>
     </div>
 
@@ -80,7 +80,7 @@
   }
 
   export default {
-    name: 'wv-popup-calendar',
+    name: 'vc-popup-calendar',
 
     components: {
       WvCalendarPicker
@@ -311,7 +311,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-calendar {
+  .vc-popup-calendar {
     background-color: white;
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
@@ -469,7 +469,7 @@
 </style>
 
 <style>
-  .wv-calendar-picker[data-style='row-xl'] .day-row+.day-row{
+  .vc-calendar-picker[data-style='row-xl'] .day-row+.day-row{
     margin-top: 21px;
   }
 </style>

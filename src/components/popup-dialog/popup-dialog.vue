@@ -16,7 +16,7 @@
   const CANCEL_TEXT = '取消'
 
   export default {
-    name: 'wv-popup-dialog',
+    name: 'vc-popup-dialog',
 
     props: {
       e: {

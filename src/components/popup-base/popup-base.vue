@@ -1,12 +1,12 @@
 <template>
-  <div class="wv-popup-base" 
+  <div class="vc-popup-base" 
     :routerId="routerId" 
     ref="base"
     :style="{ position: positionType }"
     @touchmove="maskPreventScroll"
   >
-    <div class="wv-popup-mask" ref="mask" @click="turnOffMask" ></div>
-    <div class="wv-popup-slot" ref="slotContainer">
+    <div class="vc-popup-mask" ref="mask" @click="turnOffMask" ></div>
+    <div class="vc-popup-slot" ref="slotContainer">
       <div ref="slot" @touchmove="_stopPropagation"></div>
     </div>
   </div>
@@ -16,7 +16,7 @@
   import popUpController from '../popup-base/index.js'
 
   export default {
-    name: 'wv-popup-base',
+    name: 'vc-popup-base',
 
     props: {
       e: {
@@ -301,7 +301,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-base{
+  .vc-popup-base{
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -309,13 +309,13 @@
     top: 0;
   }
 
-  .wv-popup-slot{
+  .vc-popup-slot{
     position: relative;
     height: 0;
     width: 500vw;
   }
 
-  .wv-popup-mask {
+  .vc-popup-mask {
     position: fixed;
     width: 100vw;
     height: 100vh;

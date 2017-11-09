@@ -1,5 +1,5 @@
 <template>
-  <div class="wv-popUp-dialog">
+  <div class="vc-popUp-dialog">
     <div class="dialog-content">
       <p>保存本次编辑?</p>
     </div>
@@ -13,7 +13,7 @@
 <script>
 
   export default {
-    name: 'wv-popup-dialog',
+    name: 'vc-popup-dialog',
 
     props: {
       e: {
@@ -75,7 +75,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popUp-dialog {
+  .vc-popUp-dialog {
     will-change: opacity, transform;
     display: inline-block;
     width: 244.5px;
@@ -102,7 +102,7 @@
     }
   }
 
-  .wv-popup-bottom-menu-li {
+  .vc-popup-bottom-menu-li {
     background: white;
     padding: 0 21px;
     font-size: 16px;

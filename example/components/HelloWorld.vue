@@ -1,32 +1,67 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-      <h1>hello there</h1>
-    </ul>
+  <div class="hello" @click="click">
+    
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
+
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      daySlots: [
+        {
+          values: [
+            '星期一',
+            '星期二',
+            '星期三',
+            '星期四',
+            '星期五'
+          ],
+          defaultIndex: 0
+        },
+        {
+          values: [
+            '上午',
+            '下午'
+          ],
+          defaultIndex: 0
+        }
+      ]
+    }
+  },
+
+  mounted () {
+    this.centerMenu = new this.$centerMenu({
+      items: [
+        {
+          name: '分享二维码',
+          click: () => {
+            console.log('btn0 clicked')
+            this.centerMenu.close()
+          }
+        },
+        {
+          name: '换个样式',
+          click: () => { this.centerMenu.close() }
+        },
+        {
+          name: '保存到手机',
+          click: () => { this.centerMenu.close() }
+        },
+        {
+          name: '扫描二维码',
+          click: () => { this.centerMenu.close() }
+        }
+      ]
+    })
+  },
+
+  methods: {
+    click (e) {
+      this.centerMenu.open(e)
     }
   }
 }
@@ -50,5 +85,11 @@ li {
 
 a {
   color: #42b983;
+}
+
+.hello{
+  width: 50px;
+  height: 50px;
+  background: #42b983;
 }
 </style>

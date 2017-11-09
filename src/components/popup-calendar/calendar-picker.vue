@@ -1,6 +1,6 @@
 <template>
   <div class="calendar-picker" @click="_click">
-    <wv-calendar ref="calendar"></wv-calendar>
+    <vc-calendar ref="calendar"></vc-calendar>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
   import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
 
   export default {
-    name: 'wv-calendar-picker',
+    name: 'vc-calendar-picker',
 
     components: {
       WvCalendar

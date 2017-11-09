@@ -2,12 +2,12 @@
   <div class="month">
     <div class="month-title">{{year}}年{{month}}月</div>
     <div class="days-wrapper" @click="_click">
-      <wv-day-row 
+      <vc-day-row 
         v-for="(row, $index) in dayRows"
         :key="$index" 
         :days="row"
         ref="$rows"
-      ></wv-day-row>
+      ></vc-day-row>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@
   import { countDays } from '../../custom/utils'
 
   export default {
-    name: 'wv-month',
+    name: 'vc-month',
     
     components: {
       WvDayRow

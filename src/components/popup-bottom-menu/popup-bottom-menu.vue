@@ -1,13 +1,13 @@
 <template>
-  <ul class="wv-popup-bottom-menu">
-    <li class="wv-popup-bottom-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <ul class="vc-popup-bottom-menu">
+    <li class="vc-popup-bottom-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-bottom-menu',
+    name: 'vc-popup-bottom-menu',
 
     props: {
       e: {
@@ -57,7 +57,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-bottom-menu {
+  .vc-popup-bottom-menu {
     will-change: opacity, transform;
     position: fixed;
     bottom: 0;
@@ -83,7 +83,7 @@
     }
   }
 
-  .wv-popup-bottom-menu-li {
+  .vc-popup-bottom-menu-li {
     background: white;
     padding: 0 21px;
     font-size: 16px;

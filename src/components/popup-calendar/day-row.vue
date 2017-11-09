@@ -1,6 +1,6 @@
 <template>
   <div class="day-row">
-    <wv-day-cell v-for="(day, $index ) in days" 
+    <vc-day-cell v-for="(day, $index ) in days" 
     :key="$index"
     :day="day.day" 
     :status="day.status" 
@@ -9,7 +9,7 @@
     :isUnavailable="day.isUnavailable"
     :class="_checkGrey($index)"
     ref="$days"
-  ></wv-day-cell>
+  ></vc-day-cell>
   </div>
 </template>
 
@@ -17,7 +17,7 @@
   import WvDayCell from './day-cell.vue'
 
   export default {
-    name: 'wv-day-row',
+    name: 'vc-day-row',
 
     components: {
       WvDayCell

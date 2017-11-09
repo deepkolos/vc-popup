@@ -1,13 +1,13 @@
 <template>
-  <ul class="wv-popup-dom-relative">
-    <li class="wv-popup-dom-relative-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <ul class="vc-popup-dom-relative">
+    <li class="vc-popup-dom-relative-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-dom-relative',
+    name: 'vc-popup-dom-relative',
 
     props: {
       e: {
@@ -51,7 +51,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-dom-relative {
+  .vc-popup-dom-relative {
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 220ms ease 0s;
@@ -74,7 +74,7 @@
     }
   }
 
-  .wv-popup-dom-relative-li {
+  .vc-popup-dom-relative-li {
     height: 43px;
     line-height: 43px;
     padding: 0 30px 0 15px;
@@ -84,7 +84,7 @@
     min-width: calc(90px - 45px);
   }
 
-  .wv-popup-dom-relative-li:active {
+  .vc-popup-dom-relative-li:active {
     background: #E8E8E8;
     transition: all 80ms linear 0ms;
   }

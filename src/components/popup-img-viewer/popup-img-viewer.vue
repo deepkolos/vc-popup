@@ -1,15 +1,15 @@
 <template>
-  <wv-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
-      <wv-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
+  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
+      <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
         <img class="swipe-img" :src="img.src" alt="">
-      </wv-swipe-item>
-    </wv-swipeplus>
+      </vc-swipe-item>
+    </vc-swipeplus>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-img-viewer',
+    name: 'vc-popup-img-viewer',
 
     data (){
       return {
