@@ -2,6 +2,8 @@
 
 > popup components
 
+[![Build Status](https://travis-ci.org/deepkolos/vc-popup.svg?branch=master)](https://travis-ci.org/deepkolos/vc-popup)
+
 ## Build Setup
 
 ``` bash
