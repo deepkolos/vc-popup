@@ -1,15 +1,15 @@
 <template>
-  <wv-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
-    <ul class="wv-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
-      <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <vc-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
+    <ul class="vc-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
+      <li class="vc-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
     </ul>
-  </wv-gesture-tile-press>
+  </vc-gesture-tile-press>
 </template>
 
 <script>
 
   export default {
-    name: 'wv-popup-center-menu',
+    name: 'vc-popup-center-menu',
 
     props: {
       e: {
@@ -78,7 +78,7 @@
 </script>
 
 <style scoped lang="scss">
-  .wv-popup-center-menu {
+  .vc-popup-center-menu {
     will-change: opacity, transform;
     width: calc(100vw - 36px*2 - 4px*2);
     border-radius: 3.5px;
@@ -102,7 +102,7 @@
     }
   }
 
-  .wv-popup-center-menu-li {
+  .vc-popup-center-menu-li {
     display: block;
     background: white;
     padding: 13px 21px;
@@ -113,7 +113,7 @@
   }
 
 
-  .wv-popup-center-menu-li:last-child{
+  .vc-popup-center-menu-li:last-child{
     border-bottom: none;
   }
 

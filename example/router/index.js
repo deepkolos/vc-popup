@@ -12,7 +12,7 @@ function initNavs (navs) {
     routes.push({
       path: item.path,
       name: item.name,
-      component: resolve => require([`../components${item.path}.vue`], resolve),
+      component: resolve => require([`../pages${item.path}.vue`], resolve),
       meta: {
         title: item.title || item.name,
         description: item.description
@@ -27,7 +27,7 @@ const routes = initNavs(Navs)
 
 routes.push({
   path: '/',
-  component: resolve => require(['../components/index.vue'], resolve),
+  component: resolve => require(['../pages/index.vue'], resolve),
   name: 'index',
   meta: {
     title: 'vc-popup',

@@ -1,19 +1,19 @@
 <template>
   <div class="page" ref="page">
-    <wv-group title="选择器示例">
-      <wv-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click="ticketPickerClick"></wv-cell>
-      <wv-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click="dayPickerClick"></wv-cell>
-      <wv-cell title="联动选择" is-link :value="address | pickerValueFilter" @click="addressPickerClick"></wv-cell>
-    </wv-group>
-    <wv-group title="日期选择器示例">
-      <wv-cell title="时间" is-link :value="time | dateValueFilter" @click="timePickerClick"></wv-cell>
-      <wv-cell title="时间(24h)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick()"></wv-cell>
-      <wv-cell title="时间(24h, 显示区分符)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick(true)"></wv-cell>
-      <wv-cell title="日期" is-link :value="date | dateValueFilter" @click="datePickerClick"></wv-cell>
-      <wv-cell title="日期时间" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(false, true)"></wv-cell>
-      <wv-cell title="有区分符, 无单位" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(true, false)"></wv-cell>
-      <wv-cell title="指定范围" is-link :value="datetime | dateValueFilter" @click="datetimePickerLimitClick"></wv-cell>
-    </wv-group>
+    <vc-group title="选择器示例">
+      <vc-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click="ticketPickerClick"></vc-cell>
+      <vc-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click="dayPickerClick"></vc-cell>
+      <vc-cell title="联动选择" is-link :value="address | pickerValueFilter" @click="addressPickerClick"></vc-cell>
+    </vc-group>
+    <vc-group title="日期选择器示例">
+      <vc-cell title="时间" is-link :value="time | dateValueFilter" @click="timePickerClick"></vc-cell>
+      <vc-cell title="时间(24h)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick()"></vc-cell>
+      <vc-cell title="时间(24h, 显示区分符)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick(true)"></vc-cell>
+      <vc-cell title="日期" is-link :value="date | dateValueFilter" @click="datePickerClick"></vc-cell>
+      <vc-cell title="日期时间" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(false, true)"></vc-cell>
+      <vc-cell title="有区分符, 无单位" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(true, false)"></vc-cell>
+      <vc-cell title="指定范围" is-link :value="datetime | dateValueFilter" @click="datetimePickerLimitClick"></vc-cell>
+    </vc-group>
   </div>
 </template>
 

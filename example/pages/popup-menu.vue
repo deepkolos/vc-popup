@@ -1,34 +1,34 @@
 <template>
   <div class="page" ref="page">
     <br>
-    <wv-group title="底部弹出菜单示例">
-      <wv-cell title="背景模糊" is-link @click="click"></wv-cell>
-      <wv-cell title="支持animation.css动画库" is-link @click="click2"></wv-cell>
-      <wv-cell title="bounceInUp, bounceOutDown" is-link @click="click3"></wv-cell>
-      <wv-cell title="flipInX, flipOutX" is-link @click="click4"></wv-cell>
-      <wv-cell title="jackInTheBox hinge" is-link @click="click12"></wv-cell>
-    </wv-group>
+    <vc-group title="底部弹出菜单示例">
+      <vc-cell title="背景模糊" is-link @click="click"></vc-cell>
+      <vc-cell title="支持animation.css动画库" is-link @click="click2"></vc-cell>
+      <vc-cell title="bounceInUp, bounceOutDown" is-link @click="click3"></vc-cell>
+      <vc-cell title="flipInX, flipOutX" is-link @click="click4"></vc-cell>
+      <vc-cell title="jackInTheBox hinge" is-link @click="click12"></vc-cell>
+    </vc-group>
 
-    <wv-group title="通过自定义animation实现过度示例">
-      <wv-cell title="根据点击的位置定位" is-link @click="click6"></wv-cell>
-      <wv-cell title="支持通过animation实现更多小细节" is-link @click="click7"></wv-cell>
-    </wv-group>
+    <vc-group title="通过自定义animation实现过度示例">
+      <vc-cell title="根据点击的位置定位" is-link @click="click6"></vc-cell>
+      <vc-cell title="支持通过animation实现更多小细节" is-link @click="click7"></vc-cell>
+    </vc-group>
 
-    <wv-group title="上下居中的菜单示例">
-      <wv-cell title="磁贴按压效果" is-link @click="click5"></wv-cell>
-    </wv-group>
+    <vc-group title="上下居中的菜单示例">
+      <vc-cell title="磁贴按压效果" is-link @click="click5"></vc-cell>
+    </vc-group>
 
-    <wv-group title="popover">
+    <vc-group title="popover">
       <div class="btn" ref="btn16" @click="click16">按钮</div>
-    </wv-group>
+    </vc-group>
 
-    <wv-group title="支持相对于dom定位(25个位置)">
+    <vc-group title="支持相对于dom定位(25个位置)">
       <div class="btn" ref="btn8" @click="click8">左上角的下右</div>
       <div class="btn" ref="btn9" @click="click9">右上角的下右</div>
       <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
       <div class="btn" ref="btn11" @click="click11">下中间的下</div>
       <div style="height:20px;"></div>
-      <wv-cell title="位置定位示意图(25种)"></wv-cell>
+      <vc-cell title="位置定位示意图(25种)"></vc-cell>
 
       <div class="refDom" ref="demoRefDom">
         <div class="corner top_left">
@@ -76,20 +76,20 @@
         <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
       </div>
 
-      <wv-cell title="#定位说明"></wv-cell>
-      <wv-cell title="top,bottom,left,right,center 设置定位点"></wv-cell>
-      <wv-cell title="above,below,before,after 相对定位点偏移"></wv-cell>
-      <wv-cell title="红色-> above after"></wv-cell>
-      <wv-cell title="绿色-> above before"></wv-cell>
-      <wv-cell title="黄色-> below after"></wv-cell>
-      <wv-cell title="蓝色-> below before"></wv-cell>
-      <wv-cell title="边缘居中的时候,所居中的轴的对应的偏移设置将会失效"></wv-cell>
-      <wv-cell title="比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效"></wv-cell>
-    </wv-group>
+      <vc-cell title="#定位说明"></vc-cell>
+      <vc-cell title="top,bottom,left,right,center 设置定位点"></vc-cell>
+      <vc-cell title="above,below,before,after 相对定位点偏移"></vc-cell>
+      <vc-cell title="红色-> above after"></vc-cell>
+      <vc-cell title="绿色-> above before"></vc-cell>
+      <vc-cell title="黄色-> below after"></vc-cell>
+      <vc-cell title="蓝色-> below before"></vc-cell>
+      <vc-cell title="边缘居中的时候,所居中的轴的对应的偏移设置将会失效"></vc-cell>
+      <vc-cell title="比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效"></vc-cell>
+    </vc-group>
     
-    <wv-group title="absolute的定位模式">
-      <wv-cell title="不会锁定滚动" is-link @click="click15"></wv-cell>
-    </wv-group>
+    <vc-group title="absolute的定位模式">
+      <vc-cell title="不会锁定滚动" is-link @click="click15"></vc-cell>
+    </vc-group>
   </div>
 </template>
 

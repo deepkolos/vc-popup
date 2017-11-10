@@ -1,12 +1,12 @@
 <template>
   <div class="page">
-    <wv-group title="支持过度动画做裁切,显示更加自然">
+    <vc-group title="支持过度动画做裁切,显示更加自然">
       <div class="row">
         <div class="row-item"><img :src="sample" alt=""></div>
         <div class="row-item"><img :src="logo" alt=""></div>
         <div class="row-item" @click="triggerNotOnImgTag"><img :src="logo" alt="" ref="imgTarget"></div>
       </div>
-    </wv-group>
+    </vc-group>
   </div>
   
 </template>

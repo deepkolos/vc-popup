@@ -14,13 +14,13 @@
 </template>
 
 <script>
-  import WvDayCell from './day-cell.vue'
+  import VcDayCell from './day-cell.vue'
 
   export default {
     name: 'vc-day-row',
 
     components: {
-      WvDayCell
+      VcDayCell
     },
 
     props: {

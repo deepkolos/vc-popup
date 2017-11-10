@@ -1,24 +1,25 @@
 <template>
   <div class="page" ref="page">
-    <wv-group title="Canlendar">
-      <wv-cell title="选择日期" is-link @click="click0"></wv-cell>
-      <wv-cell title="选择日期(快捷)" is-link @click="click2"></wv-cell>
-      <wv-cell title="选择日期区间" is-link @click="click1"></wv-cell>
-      <wv-cell title="选择日期区间(快捷)" is-link @click="click3"></wv-cell>
-      <wv-cell title="选择日期时间" is-link @click="click4"></wv-cell>
-      <wv-cell title="选择日期时间(快捷)" is-link @click="click5"></wv-cell>
-      <wv-cell title="选择日期时间区间" is-link @click="click6"></wv-cell>
-      <wv-cell title="选择日期时间区间(快捷)" is-link @click="click7"></wv-cell>
-      <wv-cell title="默认选择范围" is-link @click="click8"></wv-cell>
-      <wv-cell title="大行距" is-link @click="click9"></wv-cell>
-      <wv-cell title="水平进入" is-link @click="click10"></wv-cell>
-      <wv-cell title="支持animation.css的所有动画~" is-link @click="click11"></wv-cell>
-    </wv-group>
+    <vc-group title="Canlendar">
+      <vc-cell title="选择日期" is-link @click="click0"></vc-cell>
+      <vc-cell title="选择日期(快捷)" is-link @click="click2"></vc-cell>
+      <vc-cell title="选择日期区间" is-link @click="click1"></vc-cell>
+      <vc-cell title="选择日期区间(快捷)" is-link @click="click3"></vc-cell>
+      <vc-cell title="选择日期时间" is-link @click="click4"></vc-cell>
+      <vc-cell title="选择日期时间(快捷)" is-link @click="click5"></vc-cell>
+      <vc-cell title="选择日期时间区间" is-link @click="click6"></vc-cell>
+      <vc-cell title="选择日期时间区间(快捷)" is-link @click="click7"></vc-cell>
+      <vc-cell title="默认选择范围" is-link @click="click8"></vc-cell>
+      <vc-cell title="大行距" is-link @click="click9"></vc-cell>
+      <vc-cell title="水平进入" is-link @click="click10"></vc-cell>
+      <vc-cell title="支持animation.css的所有动画~" is-link @click="click11"></vc-cell>
+    </vc-group>
   </div>
 </template>
 
 <script>
   export default {
+    
     mounted () {
       this.calendar = new this.$calendar({
 

@@ -22,10 +22,10 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$popUpDialog = PopupDialog
   Vue.prototype.$popUpDialogCustom = PopupDialogCustom
   Vue.prototype.$popupImgViewer = PopupImgViewer
-  // Vue.prototype.$picker = PopupPicker
-  // Vue.prototype.$calendar = PopupCalendar
+  Vue.prototype.$picker = PopupPicker
+  Vue.prototype.$calendar = PopupCalendar
   Vue.prototype.$popupOver = PopupOver
-  // Vue.prototype.$datetimePicker = PopupDatetimePicker
+  Vue.prototype.$datetimePicker = PopupDatetimePicker
 }
 
 // auto install

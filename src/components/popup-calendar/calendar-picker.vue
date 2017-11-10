@@ -5,14 +5,14 @@
 </template>
 
 <script>
-  import WvCalendar from './calendar.vue'
+  import VcCalendar from './calendar.vue'
   import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
 
   export default {
     name: 'vc-calendar-picker',
 
     components: {
-      WvCalendar
+      VcCalendar
     },
 
     /** {Event}

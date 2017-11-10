@@ -13,14 +13,14 @@
 </template>
 
 <script>
-  import WvDayRow from './day-row.vue'
+  import VcDayRow from './day-row.vue'
   import { countDays } from '../../custom/utils'
 
   export default {
     name: 'vc-month',
     
     components: {
-      WvDayRow
+      VcDayRow
     },
 
     props: {

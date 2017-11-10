@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import PopUp from '../src'
 import router from './router'
+import 'weui/dist/style/weui.min.css'
 
 Vue.config.productionTip = false
 

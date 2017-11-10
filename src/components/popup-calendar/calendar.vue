@@ -35,14 +35,14 @@
 </template>
 
 <script>
-  import WvMonth from './month.vue'
+  import VcMonth from './month.vue'
   import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
 
   export default {
     name: 'vc-calendar',
     
     components: {
-      WvMonth
+      VcMonth
     },
 
     props: {
