@@ -1,16 +1,16 @@
 import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-over.vue'
 
-let popUpConfig = {
+var popUpConfig = {
 }
 
-let defaultConfig = {
+var defaultConfig = {
   autoSetOrthocenter: true,
   position: 'domRelative'
 }
 
-let incrId = 0
-let instancesMap = {}
+var incrId = 0
+var instancesMap = {}
 
 function Popover (constructConfig) {
   this.constructor = Popover

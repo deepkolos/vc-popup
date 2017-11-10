@@ -1,15 +1,15 @@
 import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-center-menu.vue'
 
-let popUpConfig = {
+var popUpConfig = {
   position: 'center'
 }
 
-let defaultConfig = {
+var defaultConfig = {
 }
 
-let incrId = 0
-let instancesMap = {}
+var incrId = 0
+var instancesMap = {}
 
 function CenterMenu (constructConfig) {
   this.constructor = CenterMenu

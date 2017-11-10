@@ -1,17 +1,17 @@
 import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-dom-relative.vue'
 
-let popUpConfig = {
+var popUpConfig = {
 }
 
-let defaultConfig = {
+var defaultConfig = {
   autoSetOrthocenter: true,
   position: 'domRelative'
   // 手工指定节点,通过config导入, 属性名为referredDom
 }
 
-let incrId = 0
-let instancesMap = {}
+var incrId = 0
+var instancesMap = {}
 
 function PressMenu (constructConfig) {
   this.constructor = PressMenu

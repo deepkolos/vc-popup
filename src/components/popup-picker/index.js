@@ -1,14 +1,14 @@
 import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-picker.vue'
 
-let popUpConfig = {
+var popUpConfig = {
 }
 
-let defaultConfig = {
+var defaultConfig = {
 }
 
-let incrId = 0
-let instancesMap = {}
+var incrId = 0
+var instancesMap = {}
 
 function Picker (constructConfig) {
   this.constructor = Picker

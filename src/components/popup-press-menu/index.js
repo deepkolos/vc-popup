@@ -1,16 +1,16 @@
 import popUpBase from '../popup-base/popup-base.js'
 import template from './popup-press-menu.vue'
 
-let popUpConfig = {
+var popUpConfig = {
 }
 
-let defaultConfig = {
+var defaultConfig = {
   autoSetOrthocenter: true,
   position: 'clickRelative'
 }
 
-let incrId = 0
-let instancesMap = {}
+var incrId = 0
+var instancesMap = {}
 
 function PressMenu (constructConfig) {
   this.constructor = PressMenu
