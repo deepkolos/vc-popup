@@ -18,16 +18,15 @@
       <vc-cell title="磁贴按压效果" is-link @click="click5"></vc-cell>
     </vc-group>
 
+    <vc-group title="absolute的定位模式">
+      <vc-cell title="不会锁定滚动" is-link @click="click15"></vc-cell>
+    </vc-group>
+
     <vc-group title="popover">
       <div class="btn" ref="btn16" @click="click16">按钮</div>
     </vc-group>
 
     <vc-group title="支持相对于dom定位(25个位置)">
-      <div class="btn" ref="btn8" @click="click8">左上角的下右</div>
-      <div class="btn" ref="btn9" @click="click9">右上角的下右</div>
-      <div class="btn" ref="btn10" @click="click10">右下角的上右</div>
-      <div class="btn" ref="btn11" @click="click11">下中间的下</div>
-      <div style="height:20px;"></div>
       <vc-cell title="位置定位示意图(25种)"></vc-cell>
 
       <div class="refDom" ref="demoRefDom">
@@ -85,10 +84,6 @@
       <vc-cell title="蓝色-> below before"></vc-cell>
       <vc-cell title="边缘居中的时候,所居中的轴的对应的偏移设置将会失效"></vc-cell>
       <vc-cell title="比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效"></vc-cell>
-    </vc-group>
-    
-    <vc-group title="absolute的定位模式">
-      <vc-cell title="不会锁定滚动" is-link @click="click15"></vc-cell>
     </vc-group>
   </div>
 </template>

@@ -1,6 +1,3 @@
-import Button from './components/button/index'
-import Group from './components/group/index'
-import Cell from './components/cell/index'
 import Swipeplus from './components/swipeplus/index'
 import SwipeItem from './components/swipe-item/index'
 import PullDownRefresh from './components/pull-down-refresh/index'
@@ -23,9 +20,6 @@ import './style/animated-preset.css'
 const version = '1.0.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
-  Vue.component(Button.name, Button)
-  Vue.component(Group.name, Group)
-  Vue.component(Cell.name, Cell)
   Vue.component(Swipeplus.name, Swipeplus)
   Vue.component(SwipeItem.name, SwipeItem)
   Vue.component(PullDownRefresh.name, PullDownRefresh)
@@ -52,9 +46,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
-  Button,
-  Group,
-  Cell,
   Swipeplus,
   SwipeItem,
   PullDownRefresh,

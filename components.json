@@ -1,7 +1,4 @@
 {
-  "button": "./src/components/button/index.js",
-  "group": "./src/components/group/index.js",
-  "cell": "./src/components/cell/index.js",
   "swipeplus": "./src/components/swipeplus/index.js",
   "swipe-item": "./src/components/swipe-item/index.js",
   "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
