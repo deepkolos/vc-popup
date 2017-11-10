@@ -134,25 +134,23 @@
             this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
+          
+          //设置slot的初始化样式
+          this._animation('in')
 
-          this.vm_slot.$nextTick(()=>{
-            //设置slot的初始化样式
-            this._animation('in')
+          this.vm_slot.event && 
+          this.vm_slot.event.beforeEnter instanceof Function && 
+            this.vm_slot.event.beforeEnter();
 
-            this.vm_slot.event && 
-            this.vm_slot.event.beforeEnter instanceof Function && 
-              this.vm_slot.event.beforeEnter();
-
-            //设置事件
-            this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-            
-            requestAnimationFrame(()=>{
-              if(!this.vm_slot.$options.propsData.animationInEventOff){
-                if(!this._animationNoneReday)
-                  this.$refs.slot.style.transitionDuration = null;
-              }
-              this.maskOpacity(0.25);
-            })
+          //设置事件
+          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
+          
+          requestAnimationFrame(()=>{
+            if(!this.vm_slot.$options.propsData.animationInEventOff){
+              if(!this._animationNoneReday)
+                this.$refs.slot.style.transitionDuration = null;
+            }
+            this.maskOpacity(0.25);
           })
         })
       },

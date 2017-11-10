@@ -1,15 +1,15 @@
 <template>
-  <vc-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
-    <ul class="vc-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
-      <li class="vc-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <wv-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
+    <ul class="wv-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
+      <li class="wv-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
     </ul>
-  </vc-gesture-tile-press>
+  </wv-gesture-tile-press>
 </template>
 
 <script>
 
   export default {
-    name: 'vc-popup-center-menu',
+    name: 'wv-popup-center-menu',
 
     props: {
       e: {
@@ -30,10 +30,12 @@
             vm_tile = this.$refs.tile,
             $content = vm_tile.$refs.content,
             deg = vm_tile.maxDeg * 1.2;
-
+          
           this._controller.vm_popUp.setAnimateDom($content)
-
+          
+          $el.classList.add('inital');
           requestAnimationFrame(function(){
+            $el.classList.remove('inital');
             $el.classList.add('inAnimation');
           })
         },
@@ -43,11 +45,11 @@
             vm_tile = this.$refs.tile,
             $content = vm_tile.$refs.content,
             deg = vm_tile.maxDeg * 1.15;
-
+          
           this._controller.vm_popUp.setAnimateDom($content)
           vm_tile.orientationY = vm_tile.orientationY === undefined ? 1 : vm_tile.orientationY;
           vm_tile.orientationX = vm_tile.orientationX === undefined ? 0 : vm_tile.orientationX;
-
+          
           // $el.classList.add('outAnimation')
           requestAnimationFrame(function(){
             // $el.classList.remove('inAnimation')
@@ -76,21 +78,21 @@
 </script>
 
 <style scoped lang="scss">
-  .vc-popup-center-menu {
+  .wv-popup-center-menu {
     will-change: opacity, transform;
     width: calc(100vw - 36px*2 - 4px*2);
     border-radius: 3.5px;
     overflow: hidden;
-    transition: all 0ms ease 0s;
-    opacity: 0;
-    transform: rotateX(15deg) translateZ(-80px);
-    margin: 0;
-    padding: 0;
+    transition: all 250ms ease 0s;
+
+    &.inital {
+      opacity: 0;
+      transform: rotateX(15deg) translateZ(-80px);
+    }
 
     &.inAnimation {
       opacity: 1;
       transform: rotateX(0deg) translateZ(0px);
-      transition-duration: 250ms;
     }
 
     &.outAnimation {
@@ -100,7 +102,7 @@
     }
   }
 
-  .vc-popup-center-menu-li {
+  .wv-popup-center-menu-li {
     display: block;
     background: white;
     padding: 13px 21px;
@@ -111,7 +113,7 @@
   }
 
 
-  .vc-popup-center-menu-li:last-child{
+  .wv-popup-center-menu-li:last-child{
     border-bottom: none;
   }
 

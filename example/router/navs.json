@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/popup-menu",
+    "name": "popUpMenu",
+    "description": "popUpMenu"
+  },
+  {
+    "path": "/popup-img-viewer",
+    "name": "PopUpImgViewer",
+    "description": "PopUpImgViewer"
+  },
+  {
+    "path": "/popup-calendar",
+    "name": "PopUpCalendar",
+    "description": "PopUpCalendar"
+  },
+  {
+    "path": "/popup-dialog",
+    "name": "PopUpDialog",
+    "description": "PopUpDialogpUp"
+  },
+  {
+    "path": "/popup-picker",
+    "name": "popUpPicker",
+    "description": "popUp"
+  }
+]
