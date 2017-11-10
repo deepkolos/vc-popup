@@ -43,7 +43,7 @@
   }
 </style>
 <style>
-body, html{
+html{
   position: relative;
 }
 </style>

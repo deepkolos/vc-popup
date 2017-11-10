@@ -302,15 +302,11 @@
   .vc-popup-base{
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
     top: 0;
   }
 
   .vc-popup-slot{
     position: relative;
-    height: 0;
-    width: 500vw;
   }
 
   .vc-popup-mask {
