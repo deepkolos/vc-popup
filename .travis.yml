@@ -4,12 +4,14 @@ node_js:
 - '8'
 branches:
   only:
-    - master
-
+  - master
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GIT_TOKEN
+  github_token: "$GIT_TOKEN"
   local_dir: dist
   on:
     branch: master
+env:
+  global:
+    secure: Vi+lyZUgWrPhcrDcyD82nvm8vCcrLBYenxL2r/qx2TJDe+EtMxk6sSOSUWrBctstpJmqhHgM0WKF/snC9HkZLS0oAPp/CeY+wq72bfd58EmkWrjVyvLeB0j6u904n3d2SQb+Hc8bTNc1Zd2RIe739WksHpRul6p0+CyTBW9FG4lNbwtq2m+buJxPNUvynGq25QSqlUjIu9WMqOx5Y8IaoEuRuIR6iyfXrQRWT1KGOjBdhQM1C0WxntcdtfFyX5m9Q52prIs5eKjv0p9bxBArMShsH6/HSHNzXW6WQmRoZ3Mp55atNItTLOZZpLzQyzqRDezbBM8s8tAr9WnrBHWb2VZMlEpYAtT+KeucM66xl3uX8utPgAyY/wXUq+JrreLqfxo5C92tXEnNZ3W6Hu93P+HWQpHfY7tX3P4tREPKmpxqAvOd//r9cUnrHgkDNyZVk6BC2UCxfI+RDkw4JwvQCEon2KHq3NabQ3u56tw7JlezHVTcbeTodteBA3nLDZdxV+4s9ZGgux49OXK8Vr300v+1pE8qSb/PSD8IV4jFUw4ytgSjtoDrAkLO0fH0Qwq1BuerWsrWFGMkEYdkjkT5vmkvDcGX8s836YpA+o03NWXcclK28kTyzZZjdnrq490PivJ26o98Uf0zVEQpYcf2HJEyG2/S1k4UKrzYohwU5D0=
