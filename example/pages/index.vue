@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div class="cell" v-for="(nav, key) in navs" :key="key">
-      <a :href="'#' + nav.path">
-        <div class="title">{{ nav.name }}</div>
-      </a>
-    </div>
+    <vc-cell :title="nav.name" is-link :to="nav.path" v-for="(nav, key) in navs" :key="key"></vc-cell>
   </div>
 </template>
 
