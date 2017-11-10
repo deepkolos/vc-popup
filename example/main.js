@@ -8,6 +8,8 @@ import 'weui/dist/style/weui.min.css'
 import Button from './components/button/index'
 import Group from './components/group/index'
 import Cell from './components/cell/index'
+import './assets/animate.min.css'
+import './assets/animated-preset.css'
 
 Vue.config.productionTip = false
 

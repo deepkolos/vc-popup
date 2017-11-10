@@ -8,8 +8,6 @@ var OUTPUT_PATH = path.join(__dirname, '../src/index.js')
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
-import './style/animate.min.css'
-import './style/animated-preset.css'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {

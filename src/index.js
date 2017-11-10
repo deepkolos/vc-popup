@@ -14,8 +14,6 @@ import PickerView from './components/picker-view/index'
 import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import GestureTilePress from './components/gesture-tile-press/index'
-import './style/animate.min.css'
-import './style/animated-preset.css'
 
 const version = '1.0.0'
 const install = function (Vue, config = {}) {
