@@ -307,6 +307,7 @@
 
   .vc-popup-slot{
     position: relative;
+    height: 0;
   }
 
   .vc-popup-mask {
