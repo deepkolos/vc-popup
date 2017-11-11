@@ -14,11 +14,11 @@
 
 ## 预览
 
-<img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="图片名称" align=center />
-
-<img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="图片名称" align=center />
-
-<img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="图片名称" align=center />
+<div>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
+</div>
 
 ## 安装
 
