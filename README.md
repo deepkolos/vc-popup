@@ -22,10 +22,10 @@
 ## 预览
 
 <div>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "230" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "230" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "230" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "230" alt="图片名称" style="display:inline-block;"/>
 </div>
 
 ## 安装
