@@ -6,13 +6,17 @@
 
 # 特点
 
-> 0. 支持返回键, 可以按浏览器返回按钮关闭popup
-> 1. 可以支持写出小复杂的过度动画, 比如磁贴按压效果[在popUpMenu可看到~]
+> 0. 支持`返回键`, 可以按浏览器返回按钮关闭popup
+> 1. 可以写出小复杂的`过度动画`, 比如磁贴按压效果[在popUpMenu可看到~]
+> 2. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
 > 2. 提供了几个比较好的popup组件, calendar, picker, imgViewer
-> 3. 行为定义相对标准, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截所有的输入事件, popup属于不可交互状态
+> 3. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截所有的输入事件, popup属于`不可交互状态`
 > 4. 拓展也比较方便~
 
-> 注: 因为这是给一个组件库贡献的, 部分组件从那个组件库中拿来, 比如example用到的cell, group, buttom, picker-view是我优化过的, 其余都是自己写的~
+> `注:` 因为这是之前给一个组件库贡献的, 现在把`popup系列`提取出来, 部分组件从那个组件库中拿来, 比如example用到的`cell`, `group`, `buttom`, `picker-view`是我优化过的, 其余都是`自己写哒`~ 
+
+> `popup-calendar`耗时4天, 3天建造, 1天完善~
+ 
 
 ## 预览
 
@@ -25,8 +29,8 @@
 ## 安装
 
 ``` bash
-# install dependencies
-npm install || cnpm i
+# install dependencies 正常
+npm install || cnpm i --by=npm
 
 # serve with hot reload at localhost:8080, 正常
 npm run dev
@@ -34,13 +38,13 @@ npm run dev
 # build for production with minification, 正常
 npm run build
 
-# build for production and view the bundle analyzer report
+# build for production and view the bundle analyzer report 未测试
 npm run build --report
 
 # run unit tests, 有问题
 npm run unit
 
-# run all tests
+# run all tests 未测试
 npm test
 ```
 
