@@ -14,9 +14,11 @@
 
 ## 预览
 
-![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/show popup calendar.gif)
-![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/show popup picker.gif)
-![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/show popup.gif)
+![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif)
+
+![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif)
+
+![](https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif)
 
 ## 安装
 
