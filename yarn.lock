@@ -6490,10 +6490,6 @@ webpack@^3.6.0:
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
 
-weui@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/weui/-/weui-1.1.2.tgz#e33f771e2248edfe0fd07a2c6eadb3e7931a00cc"
-
 whatwg-fetch@>=0.10.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
