@@ -1,5 +1,5 @@
 <template>
-  <div class="vc-picker__bd" ref="body">
+  <div class="vc-picker-body" ref="body">
     <vc-picker-slot 
       v-for="(slot, key, index) in slots" 
       :key="key" 
@@ -178,7 +178,7 @@
 </script>
 
 <style scoped lang="scss">
-  .vc-picker__bd {
+  .vc-picker-body {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;

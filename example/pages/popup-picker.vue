@@ -1,19 +1,28 @@
 <template>
   <div class="page" ref="page">
-    <vc-group title="选择器示例">
-      <vc-cell title="单列选择" is-link :value="ticket | pickerValueFilter" @click="ticketPickerClick"></vc-cell>
-      <vc-cell title="多列选择" is-link :value="dayAndTime | pickerValueFilter" @click="dayPickerClick"></vc-cell>
-      <vc-cell title="联动选择" is-link :value="address | pickerValueFilter" @click="addressPickerClick"></vc-cell>
-    </vc-group>
-    <vc-group title="日期选择器示例">
-      <vc-cell title="时间" is-link :value="time | dateValueFilter" @click="timePickerClick"></vc-cell>
-      <vc-cell title="时间(24h)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick()"></vc-cell>
-      <vc-cell title="时间(24h, 显示区分符)" is-link :value="time24 | dateValueFilter" @click="time24PickerClick(true)"></vc-cell>
-      <vc-cell title="日期" is-link :value="date | dateValueFilter" @click="datePickerClick"></vc-cell>
-      <vc-cell title="日期时间" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(false, true)"></vc-cell>
-      <vc-cell title="有区分符, 无单位" is-link :value="datetime | dateValueFilter" @click="datetimePickerClick(true, false)"></vc-cell>
-      <vc-cell title="指定范围" is-link :value="datetime | dateValueFilter" @click="datetimePickerLimitClick"></vc-cell>
-    </vc-group>
+    <div class="title">选择器示例</div>
+    <div class="cell" @click="ticketPickerClick">
+      单列选择<span>{{ticket | pickerValueFilter}}</span></div>
+    <div class="cell" @click="dayPickerClick">
+      多列选择<span>{{dayAndTime | pickerValueFilter}}</span></div>
+    <div class="cell" @click="addressPickerClick">
+      联动选择<span>{{address | pickerValueFilter}}</span></div>
+
+    <div class="title">日期选择器示例</div>
+    <div class="cell" @click="timePickerClick">
+      时间<span>{{time | dateValueFilter}}</span></div>
+    <div class="cell" @click="time24PickerClick()">
+      时间(24h)<span>{{time24 | dateValueFilter}}</span></div>
+    <div class="cell" @click="time24PickerClick(true)">
+      时间(24h, 显示区分符)<span>{{time24 | dateValueFilter}}</span></div>
+    <div class="cell" @click="datePickerClick">
+      日期<span>{{date | dateValueFilter}}</span></div>
+    <div class="cell" @click="datetimePickerClick(false, true)">
+      日期时间<span>{{datetime | dateValueFilter}}</span></div>
+    <div class="cell" @click="datetimePickerClick(true, false)">
+      有区分符, 无单位<span>{{datetime | dateValueFilter}}</span></div>
+    <div class="cell" @click="datetimePickerLimitClick">
+      指定范围<span>{{datetime | dateValueFilter}}</span></div>
   </div>
 </template>
 
@@ -282,14 +291,6 @@
   img {
     position: fixed;
     z-index: 1000000000000000000000000000;
-  }
-
-  span{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
   }
 </style>
 

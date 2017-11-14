@@ -1,9 +1,9 @@
 <template>
-  <div class="weui-picker">
-    <div class="weui-picker__hd">
-      <a class="weui-picker__action noExpand" @click="_cancel" v-text="cancelText"></a>
-      <a class="weui-picker__action"></a>
-      <a class="weui-picker__action noExpand" @click="_confirm" v-text="confirmText"></a>
+  <div class="vc-picker">
+    <div class="vc-picker-head">
+      <a class="vc-picker-action noExpand" @click="_cancel" v-text="cancelText"></a>
+      <a class="vc-picker-action"></a>
+      <a class="vc-picker-action noExpand" @click="_confirm" v-text="confirmText"></a>
     </div>
     <vc-picker-view 
       :slots="slots" 
@@ -406,7 +406,7 @@
 </script>
 
 <style scoped lang="scss">
-  .weui-picker{
+  .vc-picker{
     will-change: opacity, transform;
     position: fixed;
     bottom: 0;
@@ -432,13 +432,52 @@
     }
   }
 
-  .weui-picker__action.noExpand{
-    flex: 0 0 auto;
-    padding: 0 5px;
-    transition: all 40ms linear 0ms;
+  .vc-picker-head {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 9px 15px;
+    background-color: #fff;
+    position: relative;
+    text-align: center;
+    font-size: 17px;
 
-    &:active {
-      background: #ececec;
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #e5e5e5;
+      color: #e5e5e5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(.5);
+      transform: scaleY(.5);
+    }
+  }
+
+  .vc-picker-action {
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    color: #1aad19;
+
+    &:first-child {
+      text-align: left;
+      color: #888;
+    }
+
+    &.noExpand{
+      flex: 0 0 auto;
+      padding: 0 5px;
+      transition: all 40ms linear 0ms;
+
+      &:active {
+        background: #ececec;
+      }
     }
   }
 </style>

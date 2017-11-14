@@ -1,9 +1,9 @@
 <template>
-  <div class="page page-with-padding buttons">
-    <vc-button type="primary" @click="showDialog('ios', '窗口标题')">iOS Dialog 有标题</vc-button>
-    <vc-button type="primary" @click="showDialog('ios')">iOS Dialog 无标题</vc-button>
-    <vc-button type="primary" @click="showDialog('android', '窗口标题')">Android Dialog 有标题</vc-button>
-    <vc-button type="primary" @click="showDialog('android')">Android Dialog 无标题</vc-button>
+  <div class="page page-with-padding">
+    <div class="cell" @click="showDialog('ios', '老了...')">iOS Dialog 有标题</div>
+    <div class="cell" @click="showDialog('ios')">iOS Dialog 无标题</div>
+    <div class="cell" @click="showDialog('android', '老了...')">Android Dialog 有标题</div>
+    <div class="cell" @click="showDialog('android')">Android Dialog 无标题</div>
   </div>
 </template>
 
@@ -13,13 +13,12 @@
 
     created (){
       this.dialog = new this.$dialog({
-        message: '欢迎使用 we-vue!',
+        message: '憔悴..',
         showCancelBtn: true
       })
     },
 
     methods: {
-
       showDialog (skin, title) {
         this.dialog.open(null, {
           skin: skin,
@@ -31,9 +30,5 @@
 </script>
 
 <style scoped lang="scss">
-  .buttons {
-    display: block;
-    width: 80%;
-    margin: 20px auto;
-  }
+
 </style>

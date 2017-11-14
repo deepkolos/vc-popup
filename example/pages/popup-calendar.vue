@@ -1,25 +1,22 @@
 <template>
   <div class="page" ref="page">
-    <vc-group title="Canlendar">
-      <vc-cell title="选择日期" is-link @click="click0"></vc-cell>
-      <vc-cell title="选择日期(快捷)" is-link @click="click2"></vc-cell>
-      <vc-cell title="选择日期区间" is-link @click="click1"></vc-cell>
-      <vc-cell title="选择日期区间(快捷)" is-link @click="click3"></vc-cell>
-      <vc-cell title="选择日期时间" is-link @click="click4"></vc-cell>
-      <vc-cell title="选择日期时间(快捷)" is-link @click="click5"></vc-cell>
-      <vc-cell title="选择日期时间区间" is-link @click="click6"></vc-cell>
-      <vc-cell title="选择日期时间区间(快捷)" is-link @click="click7"></vc-cell>
-      <vc-cell title="默认选择范围" is-link @click="click8"></vc-cell>
-      <vc-cell title="大行距" is-link @click="click9"></vc-cell>
-      <vc-cell title="水平进入" is-link @click="click10"></vc-cell>
-      <vc-cell title="支持animation.css的所有动画~" is-link @click="click11"></vc-cell>
-    </vc-group>
+    <div class="cell" @click="click0">选择日期</div>
+    <div class="cell" @click="click2">选择日期(快捷)</div>
+    <div class="cell" @click="click1">选择日期区间</div>
+    <div class="cell" @click="click3">选择日期区间(快捷)</div>
+    <div class="cell" @click="click4">选择日期时间</div>
+    <div class="cell" @click="click5">选择日期时间(快捷)</div>
+    <div class="cell" @click="click6">选择日期时间区间</div>
+    <div class="cell" @click="click7">选择日期时间区间(快捷)</div>
+    <div class="cell" @click="click8">默认选择范围</div>
+    <div class="cell" @click="click9">大行距</div>
+    <div class="cell" @click="click10">水平进入</div>
+    <div class="cell" @click="click11">支持animation.css的所有动画~</div>
   </div>
 </template>
 
 <script>
   export default {
-    
     mounted () {
       this.calendar = new this.$calendar({
 

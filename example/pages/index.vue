@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vc-cell :title="nav.name" is-link :to="nav.path" v-for="(nav, key) in navs" :key="key"></vc-cell>
+    <a class="cell" :href="'#'+nav.path" v-for="(nav, key) in navs" :key="key">{{ nav.name }}</a>
   </div>
 </template>
 
@@ -24,17 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.cell{
-  height: 47px;
-  display: flex;
-  align-items: center;
-}
-
-</style>

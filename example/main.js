@@ -4,19 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import PopUp from '../src'
 import router from './router'
-import Button from './components/button/index'
-import Group from './components/group/index'
-import Cell from './components/cell/index'
 import 'weui/dist/style/weui.min.css'
 import './assets/animate.min.css'
 import './assets/animated-preset.css'
+import './assets/demo.css'
 
 Vue.config.productionTip = false
 
 Vue.use(PopUp)
-Vue.component(Button.name, Button)
-Vue.component(Group.name, Group)
-Vue.component(Cell.name, Cell)
 
 /* eslint-disable no-new */
 new Vue({

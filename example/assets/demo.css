@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cell{
+  padding: 10px 10px;
+  color: black;
+  display: block;
+}
+.cell:not(:last-child){
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.cell span{
+  float: right;
+}
+
+.title{
+  padding: 10px 10px 0 10px;
+  font-size: 15px;
+  color: #919191;
+}

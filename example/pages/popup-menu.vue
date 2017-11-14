@@ -1,90 +1,84 @@
 <template>
   <div class="page" ref="page">
     <br>
-    <vc-group title="底部弹出菜单示例">
-      <vc-cell title="背景模糊" is-link @click="click"></vc-cell>
-      <vc-cell title="支持animation.css动画库" is-link @click="click2"></vc-cell>
-      <vc-cell title="bounceInUp, bounceOutDown" is-link @click="click3"></vc-cell>
-      <vc-cell title="flipInX, flipOutX" is-link @click="click4"></vc-cell>
-      <vc-cell title="jackInTheBox hinge" is-link @click="click12"></vc-cell>
-    </vc-group>
+    <div class="title">底部弹出菜单示例</div>
 
-    <vc-group title="通过自定义animation实现过度示例">
-      <vc-cell title="根据点击的位置定位" is-link @click="click6"></vc-cell>
-      <vc-cell title="支持通过animation实现更多小细节" is-link @click="click7"></vc-cell>
-    </vc-group>
+    <div class="cell" @click="click">背景模糊</div>
+    <div class="cell" @click="click2">支持animation.css动画库</div>
+    <div class="cell" @click="click3">bounceInUp, bounceOutDown</div>
+    <div class="cell" @click="click4">flipInX, flipOutX</div>
+    <div class="cell" @click="click12">jackInTheBox hinge</div>
 
-    <vc-group title="上下居中的菜单示例">
-      <vc-cell title="磁贴按压效果" is-link @click="click5"></vc-cell>
-    </vc-group>
+    <div class="title">通过自定义animation实现过度示例</div>
+    <div class="cell" @click="click6">根据点击的位置定位</div>
+    <div class="cell" @click="click7">支持通过animation实现更多小细节</div>
 
-    <vc-group title="absolute的定位模式">
-      <vc-cell title="不会锁定滚动" is-link @click="click15"></vc-cell>
-    </vc-group>
+    <div class="title">上下居中的菜单示例</div>
+    <div class="cell" @click="click5">磁贴按压效果</div>
 
-    <vc-group title="popover">
-      <div class="btn" ref="btn16" @click="click16">按钮</div>
-    </vc-group>
+    <div class="title">absolute的定位模式</div>
+    <div class="cell" @click="click15">不会锁定滚动</div>
 
-    <vc-group title="支持相对于dom定位(25个位置)">
-      <vc-cell title="位置定位示意图(25种)"></vc-cell>
+    <div class="title">popover</div>
+    <div class="btn" ref="btn16" @click="click16">按钮</div>
 
-      <div class="refDom" ref="demoRefDom">
-        <div class="corner top_left">
-          <div class="above_before" @click="clickDomRefDemo('top','left','above','before')"></div>
-          <div class="above_after" @click="clickDomRefDemo('top','left','above','after')"></div>
-          <div class="below_after" @click="clickDomRefDemo('top','left','below','after')"></div>
-          <div class="below_before" @click="clickDomRefDemo('top','left','below','before')"></div>
-        </div>
-        <div class="corner top_right">
-          <div class="above_before" @click="clickDomRefDemo('top','right','above','before')"></div>
-          <div class="above_after" @click="clickDomRefDemo('top','right','above','after')"></div>
-          <div class="below_after" @click="clickDomRefDemo('top','right','below','after')"></div>
-          <div class="below_before" @click="clickDomRefDemo('top','right','below','before')"></div>
-        </div>
-        <div class="corner bottom_right">
-          <div class="above_before" @click="clickDomRefDemo('bottom','right','above','before')"></div>
-          <div class="above_after" @click="clickDomRefDemo('bottom','right','above','after')"></div>
-          <div class="below_after" @click="clickDomRefDemo('bottom','right','below','after')"></div>
-          <div class="below_before" @click="clickDomRefDemo('bottom','right','below','before')"></div>
-        </div>
-        <div class="corner bottom_left">
-          <div class="above_before" @click="clickDomRefDemo('bottom','left','above','before')"></div>
-          <div class="above_after" @click="clickDomRefDemo('bottom','left','above','after')"></div>
-          <div class="below_after" @click="clickDomRefDemo('bottom','left','below','after')"></div>
-          <div class="below_before" @click="clickDomRefDemo('bottom','left','below','before')"></div>
-        </div>
-        
-        <div class="edge bottom_center">
-          <div class="above" @click="clickDomRefDemo('bottom','center','above','before')"></div>
-          <div class="below" @click="clickDomRefDemo('bottom','center','below','before')"></div>
-        </div>
-        <div class="edge top_center">
-          <div class="above" @click="clickDomRefDemo('top','center','above','before')"></div>
-          <div class="below" @click="clickDomRefDemo('top','center','below','before')"></div>
-        </div>
-        <div class="edge center_left">
-          <div class="before" @click="clickDomRefDemo('center','left','above','before')"></div>
-          <div class="after" @click="clickDomRefDemo('center','left','below','after')"></div>
-        </div>
-        <div class="edge center_right">
-          <div class="before" @click="clickDomRefDemo('center','right','above','before')"></div>
-          <div class="after" @click="clickDomRefDemo('center','right','below','after')"></div>
-        </div>
+    <div class="title">位置定位示意图(25种)</div>
 
-        <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
+    <div class="refDom" ref="demoRefDom">
+      <div class="corner top_left">
+        <div class="above_before" @click="clickDomRefDemo('top','left','above','before')"></div>
+        <div class="above_after" @click="clickDomRefDemo('top','left','above','after')"></div>
+        <div class="below_after" @click="clickDomRefDemo('top','left','below','after')"></div>
+        <div class="below_before" @click="clickDomRefDemo('top','left','below','before')"></div>
+      </div>
+      <div class="corner top_right">
+        <div class="above_before" @click="clickDomRefDemo('top','right','above','before')"></div>
+        <div class="above_after" @click="clickDomRefDemo('top','right','above','after')"></div>
+        <div class="below_after" @click="clickDomRefDemo('top','right','below','after')"></div>
+        <div class="below_before" @click="clickDomRefDemo('top','right','below','before')"></div>
+      </div>
+      <div class="corner bottom_right">
+        <div class="above_before" @click="clickDomRefDemo('bottom','right','above','before')"></div>
+        <div class="above_after" @click="clickDomRefDemo('bottom','right','above','after')"></div>
+        <div class="below_after" @click="clickDomRefDemo('bottom','right','below','after')"></div>
+        <div class="below_before" @click="clickDomRefDemo('bottom','right','below','before')"></div>
+      </div>
+      <div class="corner bottom_left">
+        <div class="above_before" @click="clickDomRefDemo('bottom','left','above','before')"></div>
+        <div class="above_after" @click="clickDomRefDemo('bottom','left','above','after')"></div>
+        <div class="below_after" @click="clickDomRefDemo('bottom','left','below','after')"></div>
+        <div class="below_before" @click="clickDomRefDemo('bottom','left','below','before')"></div>
+      </div>
+      
+      <div class="edge bottom_center">
+        <div class="above" @click="clickDomRefDemo('bottom','center','above','before')"></div>
+        <div class="below" @click="clickDomRefDemo('bottom','center','below','before')"></div>
+      </div>
+      <div class="edge top_center">
+        <div class="above" @click="clickDomRefDemo('top','center','above','before')"></div>
+        <div class="below" @click="clickDomRefDemo('top','center','below','before')"></div>
+      </div>
+      <div class="edge center_left">
+        <div class="before" @click="clickDomRefDemo('center','left','above','before')"></div>
+        <div class="after" @click="clickDomRefDemo('center','left','below','after')"></div>
+      </div>
+      <div class="edge center_right">
+        <div class="before" @click="clickDomRefDemo('center','right','above','before')"></div>
+        <div class="after" @click="clickDomRefDemo('center','right','below','after')"></div>
       </div>
 
-      <vc-cell title="#定位说明"></vc-cell>
-      <vc-cell title="top,bottom,left,right,center 设置定位点"></vc-cell>
-      <vc-cell title="above,below,before,after 相对定位点偏移"></vc-cell>
-      <vc-cell title="红色-> above after"></vc-cell>
-      <vc-cell title="绿色-> above before"></vc-cell>
-      <vc-cell title="黄色-> below after"></vc-cell>
-      <vc-cell title="蓝色-> below before"></vc-cell>
-      <vc-cell title="边缘居中的时候,所居中的轴的对应的偏移设置将会失效"></vc-cell>
-      <vc-cell title="比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效"></vc-cell>
-    </vc-group>
+      <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
+    </div>
+
+    <div class="cell">#定位说明</div>
+    <div class="cell">top,bottom,left,right,center 设置定位点</div>
+    <div class="cell">above,below,before,after 相对定位点偏移</div>
+    <div class="cell">红色-> above after</div>
+    <div class="cell">绿色-> above before</div>
+    <div class="cell">黄色-> below after</div>
+    <div class="cell">蓝色-> below before</div>
+    <div class="cell">边缘居中的时候,所居中的轴的对应的偏移设置将会失效</div>
+    <div class="cell">比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效</div>
   </div>
 </template>
 

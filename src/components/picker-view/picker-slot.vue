@@ -1,9 +1,9 @@
 <template>
-  <div class="vc-picker__group" v-if="!divider">
-    <div class="vc-picker__mask" ref="mask"></div>
-    <div class="vc-picker__indicator" ref="indicator"></div>
-    <div class="vc-picker__content" ref="listWrapper">
-      <div class="vc-picker__item" :class="{ 'vc-picker__item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
+  <div class="vc-picker-group" v-if="!divider">
+    <div class="vc-picker-mask" ref="mask"></div>
+    <div class="vc-picker-indicator" ref="indicator"></div>
+    <div class="vc-picker-content" ref="listWrapper">
+      <div class="vc-picker-item" :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
     </div>
   </div>
   <div class="vc-picker-slot-divider" v-else v-html="content"></div>
@@ -244,7 +244,7 @@
 </script>
 
 <style scoped lang="scss">
-  .vc-picker__group{
+  .vc-picker-group{
     z-index: 0;
     overflow: hidden;
     -webkit-box-flex: 1;
@@ -254,7 +254,7 @@
     height: 100%;
   }
   
-  .vc-picker__mask{
+  .vc-picker-mask{
     z-index: 2;
     width: 100%;
     height: 100%;
@@ -265,7 +265,7 @@
     background-size: 100% 102px;
     background-repeat: no-repeat;
   }
-  .vc-picker__indicator{
+  .vc-picker-indicator{
     z-index: 3;
     height: 34px;
 
@@ -298,11 +298,11 @@
     }
   }
 
-  .vc-picker__content{
+  .vc-picker-content{
     z-index: 1;
     top: 0;
   }
-  .vc-picker__item {
+  .vc-picker-item {
     padding: 0;
     height: 34px;
     line-height: 34px;
@@ -313,9 +313,9 @@
     overflow: hidden;
   }
 
-  .vc-picker__indicator,
-  .vc-picker__mask,
-  .vc-picker__content{
+  .vc-picker-indicator,
+  .vc-picker-mask,
+  .vc-picker-content{
     position: absolute;
     left: 0;
     width: 100%;

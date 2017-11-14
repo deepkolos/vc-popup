@@ -1,11 +1,11 @@
 <template>
   <div class="vc-dialog" :class="{ 'skin_android': skin === 'android' }">
-    <div class="vc-dialog__hd" v-if="title"><strong class="vc-dialog__title" v-html="title"></strong></div>
-    <div class="vc-dialog__bd" v-html="message"></div>
-    <div class="vc-dialog__ft">
-      <a class="vc-dialog__btn vc-dialog__btn_default" v-if="showCancelBtn"
+    <div class="vc-dialog-head" v-if="title"><strong class="vc-dialog-title" v-html="title"></strong></div>
+    <div class="vc-dialog-body" v-html="message"></div>
+    <div class="vc-dialog-footer">
+      <a class="vc-dialog-btn vc-dialog-btn_default" v-if="showCancelBtn"
           @click="cancelClick" v-text="cancelText"></a>
-      <a class="vc-dialog__btn vc-dialog__btn_primary" v-if="showConfirmBtn"
+      <a class="vc-dialog-btn vc-dialog-btn_primary" v-if="showConfirmBtn"
           @click="confirmClick" v-text="confirmText"></a>
     </div>
   </div>
@@ -122,7 +122,7 @@
     }
   }
 
-  .vc-dialog__bd{
+  .vc-dialog-body{
     padding: 0 1.6em .8em;
     min-height: 40px;
     font-size: 15px;
@@ -132,12 +132,12 @@
     color: #999;
   }
 
-  .vc-dialog__bd:first-child {
+  .vc-dialog-body:first-child {
     padding: 2.7em 20px 1.7em;
     color: #353535;
   }
   
-  .vc-dialog__ft {
+  .vc-dialog-footer {
     position: relative;
     line-height: 48px;
     font-size: 18px;
@@ -146,16 +146,16 @@
     display: flex;
   }
 
-  .vc-dialog__hd {
+  .vc-dialog-head {
     padding: 1.3em 1.6em .5em;
   }
 
-  .vc-dialog__title {
+  .vc-dialog-title {
     font-weight: 400;
     font-size: 18px;
   }
 
-  .vc-dialog__btn {
+  .vc-dialog-btn {
     display: block;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
@@ -166,19 +166,19 @@
     position: relative;
   }
 
-  .vc-dialog__btn:active{
+  .vc-dialog-btn:active{
     background-color: #EEEEEE;
   }
 
-  .vc-dialog__btn_default {
+  .vc-dialog-btn_default {
     color: #353535;
   }
 
-  .vc-dialog__btn_primary {
+  .vc-dialog-btn_primary {
     color: #0bb20c;
   }
 
-  .vc-dialog__btn:after {
+  .vc-dialog-btn:after {
     content: " ";
     position: absolute;
     left: 0;
@@ -193,7 +193,7 @@
     transform: scaleX(.5);
   }
 
-  .vc-dialog__ft:after {
+  .vc-dialog-footer:after {
     content: " ";
     position: absolute;
     left: 0;
@@ -209,15 +209,15 @@
   }
 
   .skin_android {
-    & .vc-dialog__ft:after{
+    & .vc-dialog-footer:after{
       content: none;
     }
 
-    & .vc-dialog__btn:after{
+    & .vc-dialog-btn:after{
       content: none;
     }
     
-    & .vc-dialog__btn {
+    & .vc-dialog-btn {
       display: inline-block;
       vertical-align: top;
       padding: 0 .8em;
@@ -227,11 +227,11 @@
       }
     }
 
-    & .vc-dialog__btn_default {
+    & .vc-dialog-btn_default {
       color: gray;
     }
 
-    & .vc-dialog__ft {
+    & .vc-dialog-footer {
       display: block;
       text-align: right;
       line-height: 42px;
@@ -239,7 +239,7 @@
       padding: 0 1.6em .7em;
     }
 
-    & .vc-dialog__bd {
+    & .vc-dialog-body {
       color: #999;
       padding: .25em 1.6em 2em;
       font-size: 17px;
@@ -251,7 +251,7 @@
       }
     }
 
-    & .vc-dialog__hd {
+    & .vc-dialog-head {
       text-align: left;
     }
   }
