@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-picker__bd" ref="body">
+  <div class="vc-picker__bd" ref="body">
     <vc-picker-slot 
       v-for="(slot, key, index) in slots" 
       :key="key" 
@@ -178,5 +178,13 @@
 </script>
 
 <style scoped lang="scss">
-  
+  .vc-picker__bd {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    height: 238px;
+    overflow: hidden;
+  }
 </style>
