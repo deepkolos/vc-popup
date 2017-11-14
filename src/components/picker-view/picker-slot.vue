@@ -91,8 +91,8 @@
       $indicator.style.top = 
         (this.showItemHeight * this.showItemNum - 34) / 2 + 'px'
       
-      $mask.style.top = 
-        (this.showItemHeight * this.showItemNum - 238) / 2 + 'px'
+      $mask.style.backgroundSize = 
+        '100% ' + (this.showItemHeight * (this.showItemNum - 1)) / 2 + 'px'
 
       this.doOnValueChange()
 

@@ -32,7 +32,10 @@
       defaultValues: Array,
       showItemNum: {
         type: Number,
-        default: 7
+        default: 7,
+        validator (val){
+          return val % 2 !== 0 && val > 1;
+        }
       },
       showItemHeight: {
         type: Number,
