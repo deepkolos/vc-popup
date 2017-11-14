@@ -7,6 +7,7 @@
   padding: 10px 10px;
   color: black;
   display: block;
+  text-decoration:none;
 }
 .cell:not(:last-child){
   border-bottom: 1px solid #e2e2e2;
