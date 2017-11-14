@@ -81,7 +81,7 @@ export const swipeDirective = {
           directionCheckDone = check
         )
 
-        if (check && directionCheckDone) {
+        if (directionCheckDone) {
           lock && e.preventDefault()
 
           processor.onSwipe instanceof Function && (

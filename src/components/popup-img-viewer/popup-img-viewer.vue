@@ -1,12 +1,13 @@
 <template>
   <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
       <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-        <img class="swipe-img" :src="img.src" alt="">
+        <img class="swipe-img" :src="img.src" alt="" v-swipe:down="swipeConfig">
       </vc-swipe-item>
     </vc-swipeplus>
 </template>
 
 <script>
+  import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
     name: 'vc-popup-img-viewer',
@@ -32,7 +33,7 @@
       }
     },
 
-    created () {
+    created() {
       this.event = {
         beforeEnter: () => {
           var $onSwipeImg = this._getSwipeImg(this.defaultIndex);
@@ -76,10 +77,15 @@
           })
         },
         afterLeave: () => {},
-      }
+      },
+
+      this.swipeConfig = {
+        onSwipe: this._onItemSwipe,
+        onSwipeDone: this._onItemSwipeDone
+      };
     },
 
-    mounted (){
+    mounted() {
       var e = this.e,
           defaultIndex;
 
@@ -172,11 +178,11 @@
         };
       },
 
-      _getSwipeImg(index){
+      _getSwipeImg(index) {
         return this.$refs.swiper.$refs.swipeItems.children[index].children[0];
       },
 
-      _initPosition (){
+      _initPosition() {
         var i, i_ratio, i_height, i_width, $img, fromTop,
             w_height = this.w_height,
             w_width = this.w_width,
@@ -201,9 +207,24 @@
           $img.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
         }
         $img = null;
-      }
-    }
+      },
 
+      _initLongPressEvent() {
+
+      },
+
+      _onItemSwipe(info){
+        console.log(info);
+      },
+
+      _onItemSwipeDone(info){
+        // console.log(info);
+      }
+    },
+
+    directives: {
+      swipe: swipeDirective
+    }
   }
 </script>
 
