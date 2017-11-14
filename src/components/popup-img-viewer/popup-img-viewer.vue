@@ -1,7 +1,9 @@
 <template>
   <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
       <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-        <img class="swipe-img" :src="img.src" alt="" v-swipe:down="swipeConfig">
+        <div class="swipe-wrapper" v-swipe:down="swipeConfig">
+          <img class="swipe-img" :src="img.src" alt="">
+        </div>
       </vc-swipe-item>
     </vc-swipeplus>
 </template>
@@ -86,11 +88,6 @@
         onSwipe: this._onItemSwipe,
         onSwipeDone: this._onItemSwipeDone
       };
-
-      this.screenHeight = screen.height;
-      this.status = {
-        initLock: false
-      };
     },
 
     mounted() {
@@ -101,6 +98,11 @@
       this.w_height = window.innerHeight
       this.w_width = window.innerWidth
       this.w_rotaio = this.w_width/this.w_height
+      this.status = {
+        initLock: false,
+        swipeStartX: null,
+        swipeStartY: null,
+      };
 
       if(e.targetChangeTo)
         defaultIndex = Array.prototype.indexOf.call(this.originalImgs, e.targetChangeTo)
@@ -187,7 +189,7 @@
       },
 
       _getSwipeImg(index) {
-        return this.$refs.swiper.$refs.swipeItems.children[index].children[0];
+        return this.$refs.swiper.$refs.swipeItems.children[index].children[0].children[0];
       },
 
       _initPosition() {
@@ -206,8 +208,10 @@
           if(i_ratio > w_rotaio){
             //设置垂直居中
             fromTop = (w_height - (w_width/i_width)*i_height)/2;
-          }else
+          }else{
             fromTop = 0;
+            $img.overHeight = true;
+          }
           //else 设置自然布局
           //设置的是swiper里面的图片
           $img = this._getSwipeImg(i)
@@ -222,19 +226,26 @@
       },
 
       _onItemSwipe(info){
-        // console.log(info);
+        var scale, transformOrgin, x, y,
+          $item = info.element,
+          $img = $item.children[0];
 
-        var scale, transformOrgin,
-          $img = info.element,
-          $item = $img.parentElement,
-          screenHeight = this.screenHeight,
-          y = info.movingY - info.startY,
-          x = info.movingX - info.startX;
+        if($item.scrollTop !== 0) {
+          this.swipeStartX = info.movingX
+          this.swipeStartY = info.movingY
+          return;
+        }
+
+        y = info.movingY - (this.swipeStartY || info.startY);
+        x = info.movingX - (this.swipeStartX || info.startX);
 
         if (info.directionFour == 'down')
-          scale = 1 - ((info.offset) / screenHeight);
+          scale = 1 - (y / this.w_width);
         else 
           scale = 1;
+
+        if($img.overHeight)
+          transformOrgin = 'center 15%';
 
         requestAnimationFrame(() => {
           if (!this.status.initLock) {
@@ -255,16 +266,16 @@
       },
 
       _onItemSwipeDone(info){
-        console.log(info);
-
         var scale, transformOrgin,
-          $img = info.element,
-          $item = $img.parentElement,
+          $item = info.element,
+          $img = $item.children[0],
           screenHeight = this.screenHeight,
-          y = info.movingY - info.startY,
-          x = info.movingX - info.startX;
+          y = info.movingY - (this.swipeStartY || info.startY),
+          x = info.movingX - (this.swipeStartX || info.startX);
 
         this.status.initLock = false;
+        this.swipeStartX = null
+        this.swipeStartY = null
         requestAnimationFrame(() => {
           $img.style.transitionDuration = null;
           this._controller.vm_popUp.trunOnMaskTransition();
@@ -273,7 +284,7 @@
           this._controller.vm_popUp.maskOpacity(1);
         });
 
-        if (info.directionFour == 'down' && info.offset >= 284 / 3 && $item.scrollTop == 0) {
+        if (info.directionFour == 'down' && info.offset >= 284 / 3 && $item.scrollTop === 0) {
           this._controller.close();
         } else {
           $item.style.overflow = null;
@@ -298,5 +309,12 @@
     position: absolute;
     transition: all 270ms ease;
     will-change: transform, opacity;
+  }
+
+  .swipe-wrapper{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    position: absolute;
   }
 </style>
