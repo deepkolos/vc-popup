@@ -1,7 +1,7 @@
 <template>
   <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
       <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-        <div class="swipe-wrapper" v-swipe:down="swipeConfig">
+        <div class="swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
           <img class="swipe-img" :src="img.src" alt="">
         </div>
       </vc-swipe-item>
@@ -193,13 +193,14 @@
       },
 
       _initPosition() {
-        var i, i_ratio, i_height, i_width, $img, fromTop,
+        var i, i_ratio, i_height, i_width, $img, $imgZoom, fromTop,
             w_height = this.w_height,
             w_width = this.w_width,
             w_rotaio = this.w_rotaio;
 
         for(i = 0; i < this.originalImgs.length; i++){
           $img = this.originalImgs[i];
+          $imgZoom = this._getSwipeImg(i);
           i_height = $img.naturalHeight;
           i_width = $img.naturalWidth;
           i_ratio = i_width/i_height;
@@ -209,14 +210,14 @@
             //设置垂直居中
             fromTop = (w_height - (w_width/i_width)*i_height)/2;
           }else{
+            // 设置自然布局
             fromTop = 0;
-            $img.overHeight = true;
+            $imgZoom.overHeight = true;
           }
-          //else 设置自然布局
+          
           //设置的是swiper里面的图片
-          $img = this._getSwipeImg(i)
-          $img.style.top = fromTop + 'px';
-          $img.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
+          $imgZoom.style.top = fromTop + 'px';
+          $imgZoom.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
         }
         $img = null;
       },
@@ -245,7 +246,7 @@
           scale = 1;
 
         if($img.overHeight)
-          transformOrgin = 'center 15%';
+          transformOrgin = 'center 17%';
 
         requestAnimationFrame(() => {
           if (!this.status.initLock) {
