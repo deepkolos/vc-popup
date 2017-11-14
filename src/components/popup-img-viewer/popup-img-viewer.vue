@@ -248,15 +248,15 @@
         if($img.overHeight)
           transformOrgin = 'center 17%';
 
-        requestAnimationFrame(() => {
-          if (!this.status.initLock) {
-            this.status.initLock = true;
-            $img.style.transitionDuration = '0ms';
-            this._controller.vm_popUp.trunOffMaskTransition();
-            $img.style['transform-origin'] = transformOrgin;
-            $item.style['overflow'] = 'hidden';
-          }
+        if (!this.status.initLock) {
+          this.status.initLock = true;
+          $img.style.transitionDuration = '0ms';
+          this._controller.vm_popUp.trunOffMaskTransition();
+          $img.style['transform-origin'] = transformOrgin;
+          $item.style['overflow'] = 'hidden';
+        }
 
+        requestAnimationFrame(() => {
           $img.style.setProperty(
             'transform',
             'translate3d(' + x + 'px,' + y + 'px,0) scale(' + scale + ')',
@@ -277,13 +277,12 @@
         this.status.initLock = false;
         this.swipeStartX = null
         this.swipeStartY = null
-        requestAnimationFrame(() => {
-          $img.style.transitionDuration = null;
-          this._controller.vm_popUp.trunOnMaskTransition();
-          $img.style['transform-origin'] = null;
-          $img.style.transform = null;
-          this._controller.vm_popUp.maskOpacity(1);
-        });
+        
+        $img.style.transitionDuration = null;
+        this._controller.vm_popUp.trunOnMaskTransition();
+        $img.style['transform-origin'] = null;
+        $img.style.transform = null;
+        this._controller.vm_popUp.maskOpacity(1);
 
         if (info.directionFour == 'down' && y >= 284 / 3 && $item.scrollTop === 0) {
           this._controller.close();
