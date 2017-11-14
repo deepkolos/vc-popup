@@ -14,7 +14,7 @@
 
 <script>
   import VcDayRow from './day-row.vue'
-  import { countDays } from '../../custom/utils'
+  import { countDays } from '../../mixins/utils'
 
   export default {
     name: 'vc-month',

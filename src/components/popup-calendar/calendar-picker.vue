@@ -6,7 +6,7 @@
 
 <script>
   import VcCalendar from './calendar.vue'
-  import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
+  import { countDays, offsetMonth, monthsBetween } from '../../mixins/utils'
 
   export default {
     name: 'vc-calendar-picker',

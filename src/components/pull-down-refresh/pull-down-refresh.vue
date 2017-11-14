@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import { swipeDirective } from '../../custom/event/swipe.js'
-  import { throttle } from '../../custom/utils'
+  import { swipeDirective } from '../../mixins/event/swipe.js'
+  import { throttle } from '../../mixins/utils'
 
   export default {
     name: 'vc-pull-down-refresh',

@@ -13,7 +13,7 @@
 
 <script>
   import { once, addClass, removeClass } from '../../utils/dom.js'
-  import { swipeDirective } from '../../custom/event/swipe.js'
+  import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
     name: 'vc-swipeplus',

@@ -36,7 +36,7 @@
 
 <script>
   import VcMonth from './month.vue'
-  import { countDays, offsetMonth, monthsBetween } from '../../custom/utils'
+  import { countDays, offsetMonth, monthsBetween } from '../../mixins/utils'
 
   export default {
     name: 'vc-calendar',

@@ -6,7 +6,6 @@ import PopupBottomMenu from './components/popup-bottom-menu/index'
 import PopupCenterMenu from './components/popup-center-menu/index'
 import PopupPressMenu from './components/popup-press-menu/index'
 import PopupDialog from './components/popup-dialog/index'
-import PopupDialogCustom from './components/popup-dialog-custom/index'
 import PopupImgViewer from './components/popup-img-viewer/index'
 import PopupOver from './components/popup-over/index'
 import PopupPicker from './components/popup-picker/index'
@@ -27,9 +26,8 @@ const install = function (Vue, config = {}) {
   Vue.prototype.$bottomMenu = PopupBottomMenu
   Vue.prototype.$centerMenu = PopupCenterMenu
   Vue.prototype.$pressMenu = PopupPressMenu
-  Vue.prototype.$popUpDialog = PopupDialog
-  Vue.prototype.$popUpDialogCustom = PopupDialogCustom
-  Vue.prototype.$popupImgViewer = PopupImgViewer
+  Vue.prototype.$dialog = PopupDialog
+  Vue.prototype.$imgViewer = PopupImgViewer
   Vue.prototype.$picker = PopupPicker
   Vue.prototype.$calendar = PopupCalendar
   Vue.prototype.$popupOver = PopupOver
@@ -52,7 +50,6 @@ export default {
   PopupCenterMenu,
   PopupPressMenu,
   PopupDialog,
-  PopupDialogCustom,
   PopupImgViewer,
   PopupOver,
   PopupPicker,

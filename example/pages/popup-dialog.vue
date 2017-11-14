@@ -12,7 +12,7 @@
   export default {
 
     created (){
-      this.dialog = new this.$popUpDialog({
+      this.dialog = new this.$dialog({
         message: '欢迎使用 we-vue!',
         showCancelBtn: true
       })

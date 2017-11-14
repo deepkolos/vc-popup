@@ -12,9 +12,6 @@
 </template>
 
 <script>
-  const CONFIRM_TEXT = '确定'
-  const CANCEL_TEXT = '取消'
-
   export default {
     name: 'vc-popup-dialog',
 
@@ -34,11 +31,11 @@
       message: String,
       confirmText: {
         type: String,
-        default: CONFIRM_TEXT
+        default: '确定'
       },
       cancelText: {
         type: String,
-        default: CANCEL_TEXT
+        default: '取消'
       },
       showConfirmBtn: {
         type: Boolean,

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { swipeDirective } from '../../custom/event/swipe.js'
+  import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
     name: 'vc-swipe-item',

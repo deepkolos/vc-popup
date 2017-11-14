@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import { countDays, fixZero } from '../../custom/utils'
+  import { countDays, fixZero } from '../../mixins/utils'
 
   const defaultTimeUnits = {
     Y: '年',
