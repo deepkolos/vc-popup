@@ -214,7 +214,7 @@
             fromTop = 0;
             $imgZoom.overHeight = true;
           }
-          
+
           //设置的是swiper里面的图片
           $imgZoom.style.top = fromTop + 'px';
           $imgZoom.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
@@ -285,7 +285,7 @@
           this._controller.vm_popUp.maskOpacity(1);
         });
 
-        if (info.directionFour == 'down' && info.offset >= 284 / 3 && $item.scrollTop === 0) {
+        if (info.directionFour == 'down' && y >= 284 / 3 && $item.scrollTop === 0) {
           this._controller.close();
         } else {
           $item.style.overflow = null;
