@@ -40,7 +40,7 @@
 
           var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex);
 
-          this._controller.vm_popUp.setAnimateDom($onSwipeImg)
+          this._controller.vm_popUp.setAnimateDom($onSwipeImg);
           this._initPosition();
 
           $onSwipeImg.style.transform = 
@@ -54,6 +54,9 @@
             $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`;
             if(hasClip)
             $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
+            setTimeout(()=>{
+              this._controller.vm_popUp.maskOpacity(1);
+            }, 0);
           })
         },
         afterEnter: () => {},
@@ -63,7 +66,7 @@
           
           var { clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(index);
 
-          this._controller.vm_popUp.setAnimateDom($onSwipeImg)
+          this._controller.vm_popUp.setAnimateDom($onSwipeImg);
 
           if(hasClip)
             $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`;
@@ -82,6 +85,11 @@
       this.swipeConfig = {
         onSwipe: this._onItemSwipe,
         onSwipeDone: this._onItemSwipeDone
+      };
+
+      this.screenHeight = screen.height;
+      this.status = {
+        initLock: false
       };
     },
 
@@ -214,11 +222,62 @@
       },
 
       _onItemSwipe(info){
-        console.log(info);
+        // console.log(info);
+
+        var scale, transformOrgin,
+          $img = info.element,
+          $item = $img.parentElement,
+          screenHeight = this.screenHeight,
+          y = info.movingY - info.startY,
+          x = info.movingX - info.startX;
+
+        if (info.directionFour == 'down')
+          scale = 1 - ((info.offset) / screenHeight);
+        else 
+          scale = 1;
+
+        requestAnimationFrame(() => {
+          if (!this.status.initLock) {
+            this.status.initLock = true;
+            $img.style.transitionDuration = '0ms';
+            this._controller.vm_popUp.trunOffMaskTransition();
+            $img.style['transform-origin'] = transformOrgin;
+            $item.style['overflow'] = 'hidden';
+          }
+
+          $img.style.setProperty(
+            'transform',
+            'translate3d(' + x + 'px,' + y + 'px,0) scale(' + scale + ')',
+            'important'
+          );
+          this._controller.vm_popUp.maskOpacity(scale);
+        });
       },
 
       _onItemSwipeDone(info){
-        // console.log(info);
+        console.log(info);
+
+        var scale, transformOrgin,
+          $img = info.element,
+          $item = $img.parentElement,
+          screenHeight = this.screenHeight,
+          y = info.movingY - info.startY,
+          x = info.movingX - info.startX;
+
+        this.status.initLock = false;
+        requestAnimationFrame(() => {
+          $img.style.transitionDuration = null;
+          this._controller.vm_popUp.trunOnMaskTransition();
+          $img.style['transform-origin'] = null;
+          $img.style.transform = null;
+          this._controller.vm_popUp.maskOpacity(1);
+        });
+
+        if (info.directionFour == 'down' && info.offset >= 284 / 3 && $item.scrollTop == 0) {
+          this._controller.close();
+        } else {
+          $item.style.overflow = null;
+        }
       }
     },
 
