@@ -97,6 +97,7 @@
     width: 100vw;
     height: auto;
     transition: all 250ms ease 0s;
+    border-top: 1px solid #e3e3e3;
 
     &.inital {
       opacity: 0.3;

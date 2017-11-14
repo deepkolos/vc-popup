@@ -140,7 +140,7 @@
   .vc-dialog-footer {
     position: relative;
     line-height: 48px;
-    font-size: 18px;
+    font-size: 17px;
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;

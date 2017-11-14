@@ -20,7 +20,7 @@
     <div class="cell" @click="datetimePickerClick(false, true)">
       日期时间<span>{{datetime | dateValueFilter}}</span></div>
     <div class="cell" @click="datetimePickerClick(true, false)">
-      有区分符, 无单位<span>{{datetime | dateValueFilter}}</span></div>
+      无单位<span>{{datetime | dateValueFilter}}</span></div>
     <div class="cell" @click="datetimePickerLimitClick">
       指定范围<span>{{datetime | dateValueFilter}}</span></div>
   </div>
