@@ -1,11 +1,20 @@
 <template>
   <div class="page">
-    <p class="cell">支持过度动画做裁切,显示更加自然</p>
+    <p class="cell">
+      微信查看图片, 支持过度动画做边缘裁切, 显示更加自然<br><br>
+      
+    </p>
     <div class="row">
       <div class="row-item"><img :src="sample" alt=""></div>
       <div class="row-item"><img :src="logo" alt=""></div>
       <div class="row-item" @click="triggerNotOnImgTag"><img :src="logo" alt="" ref="imgTarget"></div>
     </div>
+
+    <p class="cell"><br>
+      目前支持:<br>
+      左右滑动切换<br>
+      下滑关闭
+    </p>
   </div>
   
 </template>

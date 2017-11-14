@@ -19,8 +19,8 @@
     <div class="title">absolute的定位模式</div>
     <div class="cell" @click="click15">不会锁定滚动</div>
 
-    <div class="title">popover</div>
-    <div class="btn" ref="btn16" @click="click16">按钮</div>
+    <div class="btn" ref="btn16" @click="click16">popover</div>
+    <div style="height: 20px;"></div>
 
     <div class="title">位置定位示意图(25种)</div>
 
@@ -102,7 +102,7 @@
           },
           {
             name: '换个样式',
-            click: () => {alert('不换~')}
+            click: () => {alert('老了~')}
           },
           {
             name: '保存到手机',

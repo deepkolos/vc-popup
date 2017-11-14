@@ -393,6 +393,9 @@
       display: inline-block;
       text-align: center;
       width: 100%;
+      padding: 4px 0 5px;
+      font-weight: 600;
+      color: black;
     }
   }
 
