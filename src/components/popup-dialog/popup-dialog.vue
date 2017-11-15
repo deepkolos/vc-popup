@@ -1,5 +1,10 @@
 <template>
-  <div class="vc-dialog" :class="{ 'skin_android': skin === 'android' }">
+  <div class="vc-dialog" 
+    :class="{ 
+      'skin_android': skin === 'android',
+      'skin_ios_native': skin === 'iosNative'
+    }
+  ">
     <div class="vc-dialog-head" v-if="title"><strong class="vc-dialog-title" v-html="title"></strong></div>
     <div class="vc-dialog-body" v-html="message"></div>
     <div class="vc-dialog-footer">
@@ -53,9 +58,13 @@
           var $el = this.$el;
 
           $el.classList.add('inital');
-          requestAnimationFrame(function(){
+          requestAnimationFrame(() => {
             $el.classList.remove('inital');
             $el.classList.add('inAnimation');
+            setTimeout(()=>{
+              if(this.skin === 'iosNative')
+                this._controller.vm_popUp.maskOpacity(0.4);
+            }, 0)
           })
         },
         afterEnter: () => {},
@@ -125,7 +134,7 @@
   .vc-dialog-body{
     padding: 0 1.6em .8em;
     min-height: 40px;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.3;
     word-wrap: break-word;
     word-break: break-all;
@@ -253,6 +262,86 @@
 
     & .vc-dialog-head {
       text-align: left;
+    }
+  }
+
+  .skin_ios_native {
+    background: #e8e8e8;
+    border-radius: 7px;
+    color: #3d4145;
+    width: 75vw;
+
+    &.inital {
+      opacity: 0;
+      transform: scale(1.3) translateZ(0);
+    }
+
+    &.inAnimation {
+      opacity: 1;
+      transform: scale(1) translateZ(0);
+      transition-duration: 400ms;
+    }
+
+    &.outAnimation {
+      opacity: 0;
+      transform: scale(0.7) translateZ(0);
+      transition-duration: 400ms;
+    }
+
+    & .vc-dialog-footer {
+      display: flex;
+      text-align: right;
+      font-size: 16px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      
+      &:after{
+        border-color: #b5b5b5;
+      }
+    }
+
+    & .vc-dialog-head{
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding-top: 0.75rem;
+      margin-bottom: -10px;
+    }
+    
+    & .vc-dialog-btn {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+
+      & :last-child {
+        margin-right: -.8em;
+      }
+
+      &:active{
+        background-color: #d4d4d4;
+      }
+
+      &:after{
+        border-color: #b5b5b5;
+      }
+    }
+
+    & .vc-dialog-btn_default {
+      color: #0bb20c;
+    }
+
+    & .vc-dialog-body {
+      color: #999;
+      padding: 0.75rem;
+      min-height: 0px;
+
+      &:first-child {
+        padding: 0.75rem;
+        color: #353535;
+      }
     }
   }
 </style>
