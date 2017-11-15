@@ -139,11 +139,11 @@
     word-wrap: break-word;
     word-break: break-all;
     color: #999;
-  }
 
-  .vc-dialog-body:first-child {
-    padding: 2.7em 20px 1.7em;
-    color: #353535;
+    &:first-child {
+      padding: 2.7em 20px 1.7em;
+      color: #353535;
+    }
   }
   
   .vc-dialog-footer {
@@ -153,6 +153,21 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-top: 1px solid #d5d5d6;
+      color: #d5d5d6;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleY(.5);
+      transform: scaleY(.5);
+    }
   }
 
   .vc-dialog-head {
@@ -173,48 +188,33 @@
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     position: relative;
-  }
 
-  .vc-dialog-btn:active{
-    background-color: #EEEEEE;
-  }
+    &:active{
+      background-color: #EEEEEE;
+    }
 
-  .vc-dialog-btn_default {
-    color: #353535;
-  }
+    &.vc-dialog-btn_default {
+      color: #353535;
+    }
 
-  .vc-dialog-btn_primary {
-    color: #0bb20c;
-  }
+    &.vc-dialog-btn_primary {
+      color: #0bb20c;
+    }
 
-  .vc-dialog-btn:after {
-    content: " ";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    bottom: 0;
-    border-left: 1px solid #d5d5d6;
-    color: #d5d5d6;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scaleX(.5);
-    transform: scaleX(.5);
-  }
-
-  .vc-dialog-footer:after {
-    content: " ";
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 1px;
-    border-top: 1px solid #d5d5d6;
-    color: #d5d5d6;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -webkit-transform: scaleY(.5);
-    transform: scaleY(.5);
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      bottom: 0;
+      border-left: 1px solid #d5d5d6;
+      color: #d5d5d6;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: scaleX(.5);
+      transform: scaleX(.5);
+    }
   }
 
   .skin_android {
