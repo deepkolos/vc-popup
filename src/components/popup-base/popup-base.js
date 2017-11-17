@@ -299,6 +299,14 @@ let popUpBase = {
         fromLeft -= dWidth
       }
 
+      originY = refCorner[0] !== 'center'
+                ? relativeToCorner[0] === 'above' ? 'bottom' : 'top'
+                : 'center'
+
+      originX = refCorner[1] !== 'center'
+                ? relativeToCorner[1] === 'before' ? 'right' : 'left'
+                : 'center'
+
       $slot.style.position = 'absolute'
       $slot.style.left = fromLeft + 'px'
       $slot.style.top = fromTop + 'px'
