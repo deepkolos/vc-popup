@@ -130,8 +130,7 @@
 
       _beforeEnter () {
         requestAnimationFrame(()=>{
-          if(!this.vm_slot.$options.propsData.animationInEventOff)
-            this.$refs.slot.style.transitionDuration = '0ms';
+          this.$refs.slot.style.transitionDuration = '0ms';
           //设置mask的初始化样式
           this.maskOpacity(0);
           
@@ -146,10 +145,8 @@
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
           
           requestAnimationFrame(()=>{
-            if(!this.vm_slot.$options.propsData.animationInEventOff){
-              if(!this._animationNoneReday)
-                this.$refs.slot.style.transitionDuration = null;
-            }
+            if(!this._animationNoneReday)
+              this.$refs.slot.style.transitionDuration = null;
             this.maskOpacity(0.25);
           })
         })
@@ -212,7 +209,7 @@
       },
 
       _animation (progressName, unset=false){// in/out
-        var animation = this.vm_slot.$options.propsData.animation,
+        var animation = this.vm_slot._controller.config.animation,
           value, $dom = this.getAnimateDom();
 
         if(animation instanceof Object){

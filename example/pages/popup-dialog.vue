@@ -14,16 +14,20 @@
 
     created (){
       this.dialog = new this.$dialog({
-        message: '憔悴..'
+        propsData: {
+          message: '憔悴..'
+        }
       })
     },
 
     methods: {
       showDialog (skin, showCancelBtn, title) {
         this.dialog.open(null, {
-          skin: skin,
-          title: title,
-          showCancelBtn: showCancelBtn
+          propsData: {
+            skin: skin,
+            title: title,
+            showCancelBtn: showCancelBtn
+          }
         })
       }
     }

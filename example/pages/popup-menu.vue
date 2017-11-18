@@ -92,264 +92,290 @@
     mounted () {
       
       this.bottomMenu = new this.$bottomMenu({
-        items: [
-          {
-            name: '这里的popUp系列支持返回键',
-            click: () => {console.log('btn0 clicked');}
-          },{
-            name: '分享二维码',
-            click: () => {console.log('btn1 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: () => {alert('老了~')}
-          },
-          {
-            name: '保存到手机',
-            click: () => {this.bottomMenu2.open()}
-          },
-          {
-            name: '扫描二维码',
-            click: () => {this.bottomMenu2.open()}
-          }
-        ],
+        propsData: {
+          items: [
+            {
+              name: '这里的popUp系列支持返回键',
+              click: () => {console.log('btn0 clicked');}
+            },{
+              name: '分享二维码',
+              click: () => {console.log('btn1 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: () => {alert('老了~')}
+            },
+            {
+              name: '保存到手机',
+              click: () => {this.bottomMenu2.open()}
+            },
+            {
+              name: '扫描二维码',
+              click: () => {this.bottomMenu2.open()}
+            }
+          ],
 
-        onOpen: function(){
-          this.$refs.page.style.filter = 'blur(5px)';
-        }.bind(this),
+          onOpen: function(){
+            this.$refs.page.style.filter = 'blur(5px)';
+          }.bind(this),
 
-        onClose: function(){
-          this.$refs.page.style.filter = null;
-          once(this.$refs.page, 'transitionend', function(){
-          }.bind(this))
-        }.bind(this)
+          onClose: function(){
+            this.$refs.page.style.filter = null;
+            once(this.$refs.page, 'transitionend', function(){
+            }.bind(this))
+          }.bind(this)
+        }
       })
 
       this.bottomMenu2 = new this.$bottomMenu({
-        items: [
-          {
-            name: '样式一',
-            click: () => {
-              console.log('btn2 clicked');
-              this.bottomMenu2.close();
+        propsData: {
+          items: [
+            {
+              name: '样式一',
+              click: () => {
+                console.log('btn2 clicked');
+                this.bottomMenu2.close();
+              }
+            },
+            {
+              name: '样式二',
+              click: () => {
+                console.log('btn3 clicked');
+                this.bottomMenu2.close();
+              }
             }
-          },
-          {
-            name: '样式二',
-            click: () => {
-              console.log('btn3 clicked');
-              this.bottomMenu2.close();
-            }
-          }
-        ]
+          ]
+        }
       })
 
       this.centerMenu = new this.$centerMenu({
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {
-              console.log('btn0 clicked');
-              this.centerMenu.close()
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {
+                console.log('btn0 clicked');
+                this.centerMenu.close()
+              }
+            },
+            {
+              name: '换个样式',
+              click: () => {this.centerMenu2.open()}
+            },
+            {
+              name: '保存到手机',
+              click: () => {this.centerMenu2.open()}
+            },
+            {
+              name: '扫描二维码',
+              click: () => {this.centerMenu2.open()}
             }
-          },
-          {
-            name: '换个样式',
-            click: () => {this.centerMenu2.open()}
-          },
-          {
-            name: '保存到手机',
-            click: () => {this.centerMenu2.open()}
-          },
-          {
-            name: '扫描二维码',
-            click: () => {this.centerMenu2.open()}
-          }
-        ]
+          ]
+        }
       })
 
       this.centerMenu2 = new this.$centerMenu({
-        items: [
-          {
-            name: '样式一',
-            click: () => {
-              console.log('btn2 clicked');
-              this.centerMenu2.close();
+        propsData: {
+          items: [
+            {
+              name: '样式一',
+              click: () => {
+                console.log('btn2 clicked');
+                this.centerMenu2.close();
+              }
+            },
+            {
+              name: '样式二',
+              click: () => {
+                console.log('btn3 clicked');
+                this.centerMenu2.close();
+              }
             }
-          },
-          {
-            name: '样式二',
-            click: () => {
-              console.log('btn3 clicked');
-              this.centerMenu2.close();
-            }
-          }
-        ]
+          ]
+        }
       })
 
       this.pressMenu = new this.$pressMenu({
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.pressMenu2.open(e)}
-          },
-          {
-            name: '保存到手机',
-            click: (e) => {this.pressMenu2.open(e)}
-          },
-          {
-            name: '扫描二维码',
-            click: (e) => {this.pressMenu2.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.pressMenu2.open(e)}
+            },
+            {
+              name: '保存到手机',
+              click: (e) => {this.pressMenu2.open(e)}
+            },
+            {
+              name: '扫描二维码',
+              click: (e) => {this.pressMenu2.open(e)}
+            }
+          ]
+        }
       })
 
       this.pressMenu2 = new this.$pressMenu({
-        items: [
-          {
-            name: '样式一',
-            click: () => {
-              console.log('btn2 clicked');
-              this.pressMenu2.close();
+        propsData: {
+          items: [
+            {
+              name: '样式一',
+              click: () => {
+                console.log('btn2 clicked');
+                this.pressMenu2.close();
+              }
+            },
+            {
+              name: '样式二',
+              click: () => {
+                console.log('btn3 clicked');
+                this.pressMenu2.close();
+              }
             }
-          },
-          {
-            name: '样式二',
-            click: () => {
-              console.log('btn3 clicked');
-              this.pressMenu2.close();
-            }
-          }
-        ]
+          ]
+        }
       })
 
       this.byAnimation = new ByAnimation({
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.byAnimation2.open(e)}
-          },
-          {
-            name: '保存到手机',
-            click: (e) => {this.byAnimation2.open(e)}
-          },
-          {
-            name: '扫描二维码',
-            click: (e) => {this.byAnimation2.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.byAnimation2.open(e)}
+            },
+            {
+              name: '保存到手机',
+              click: (e) => {this.byAnimation2.open(e)}
+            },
+            {
+              name: '扫描二维码',
+              click: (e) => {this.byAnimation2.open(e)}
+            }
+          ]
+        }
       })
 
       this.byAnimation2 = new ByAnimation({
-        items: [
-          {
-            name: '样式一',
-            click: () => {
-              console.log('btn2 clicked');
-              this.byAnimation2.close();
+        propsData: {
+          items: [
+            {
+              name: '样式一',
+              click: () => {
+                console.log('btn2 clicked');
+                this.byAnimation2.close();
+              }
+            },
+            {
+              name: '样式二',
+              click: () => {
+                console.log('btn3 clicked');
+                this.byAnimation2.close();
+              }
             }
-          },
-          {
-            name: '样式二',
-            click: () => {
-              console.log('btn3 clicked');
-              this.byAnimation2.close();
-            }
-          }
-        ]
+          ]
+        }
       })
 
       this.pressMenu_topLeft_belowAfter = new DomRelative({
         refDom: this.$refs.btn8,
         refCorner: 'top left',
         relativeToCorner: 'below after',
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.pressMenu.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.pressMenu.open(e)}
+            }
+          ]
+        }
       })
 
       this.pressMenu_topRight_belowAfter = new DomRelative({
         refDom: this.$refs.btn9,
         refCorner: 'top right',
         relativeToCorner: 'below after',
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.pressMenu.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.pressMenu.open(e)}
+            }
+          ]
+        }
       })
 
       this.pressMenu_bottomRight_aboveAfter = new DomRelative({
         refDom: this.$refs.btn10,
         refCorner: 'bottom right',
         relativeToCorner: 'above after',
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.pressMenu.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.pressMenu.open(e)}
+            }
+          ]
+        }
       })
 
       this.pressMenu_centerRight_aboveAfter = new DomRelative({
         refDom: this.$refs.btn11,
         refCorner: 'bottom center',
         relativeToCorner: 'below before',
-        items: [
-          {
-            name: '分享二维码',
-            click: () => {console.log('btn0 clicked');}
-          },
-          {
-            name: '换个样式',
-            click: (e) => {this.pressMenu.open(e)}
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '分享二维码',
+              click: () => {console.log('btn0 clicked');}
+            },
+            {
+              name: '换个样式',
+              click: (e) => {this.pressMenu.open(e)}
+            }
+          ]
+        }
       })
 
       this.popupOver = new this.$popupOver({
         refDom: this.$refs.btn16,
         refCorner: 'bottom right',
         relativeToCorner: 'below before',
-        items: [
-          {
-            name: '扫描',
-            click: e => {console.log('btn0 clicked');},
-            src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
-          },{
-            name: '二维码',
-            click: e => {this.popupOver.close(e)},
-            src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
-          },{
-            name: '帮助',
-            click: e => {this.popupOver.close(e)},
-            src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
-          }
-        ]
+        propsData: {
+          items: [
+            {
+              name: '扫描',
+              click: e => {console.log('btn0 clicked');},
+              src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
+            },{
+              name: '二维码',
+              click: e => {this.popupOver.close(e)},
+              src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
+            },{
+              name: '帮助',
+              click: e => {this.popupOver.close(e)},
+              src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
+            }
+          ]
+        }
       })
     },
 
@@ -451,14 +477,16 @@
           refDom: this.$refs.demoRefDom,
           refCorner: `${top} ${left}`,
           relativeToCorner: `${above} ${after}`,
-          items:[
-            {
-              name: '',
-              click: () => {
-                this.pressMenu2.close();
+          propsData: {
+            items:[
+              {
+                name: '',
+                click: () => {
+                  this.pressMenu2.close();
+                }
               }
-            }
-          ]
+            ]
+          }
         })
       }
     }

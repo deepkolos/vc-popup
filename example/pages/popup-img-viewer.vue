@@ -35,7 +35,9 @@
       var imgs = this.$el.getElementsByTagName('img');
 
       this.imgViwer = new ImgViwer({
-        imgs: imgs
+        propsData: {
+          imgs: imgs
+        }
       });
 
       //添加事件

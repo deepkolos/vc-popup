@@ -146,10 +146,10 @@
         beforeEnter: () => {
           var $el = this.$el;
 
-          if(!this.$options.propsData.animation)
+          if(!this._controller.config.animation)
             $el.classList.add('inital');
           requestAnimationFrame(()=>{
-            if(!this.$options.propsData.animation){
+            if(!this._controller.config.animation){
               $el.classList.remove('inital');
               $el.classList.add('inAnimation');
             }
@@ -161,10 +161,10 @@
         beforeLeave: () => {
           var $el = this.$el;
 
-          if(!this.$options.propsData.animation)
+          if(!this._controller.config.animation)
             $el.classList.add('outAnimation');
           requestAnimationFrame(function(){
-            if(!this.$options.propsData.animation)
+            if(!this._controller.config.animation)
               $el.classList.remove('inAnimation');
 
             this.onClose instanceof Function && this.onClose();

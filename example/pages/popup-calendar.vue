@@ -26,63 +26,68 @@
     methods: {
       click0 (e) {
         this.calendar.open(e, {
-          type: 'point',
-          
-          onConfirm: (result) => {
-            console.log(result)
-          },
+          propsData: {
+            type: 'point',
+            onConfirm: (result) => {
+              console.log(result)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click1 (e) {
         this.calendar.open(e, {
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
+          propsData: {
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click2 (e) {
         this.calendar.open(e, {
-          enableShortcut: true,
-          type: 'point',
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
+          propsData: {
+            type: 'point',
+            enableShortcut: true,
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click3 (e) {
         this.calendar.open(e, {
-          enableShortcut: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          onDisableDaySelected: (days) => {
-            console.log(days)
-          },
-
           animation: {
             in: {
               effect: 'zoomFromDom'
             },
             out: {
               effect: 'zoomFromDom'
+            }
+          },
+          
+          propsData: {
+            enableShortcut: true,
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
+
+            onDisableDaySelected: (days) => {
+              console.log(days)
             }
           }
         })
@@ -90,61 +95,53 @@
 
       click4 (e) {
         this.calendar.open(e, {
-          type: 'point',
-          enableTimeSelect: true,
-          
-          onConfirm: (result) => {
-            console.log(result)
-          },
+          propsData: {
+            type: 'point',
+            enableTimeSelect: true,
+            onConfirm: (result) => {
+              console.log(result)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click5 (e) {
         this.calendar.open(e, {
-          type: 'point',
-          enableTimeSelect: true,
+          propsData: {
+            type: 'point',
+            enableTimeSelect: true,
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click6 (e) {
         this.calendar.open(e, {
-          enableTimeSelect: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
+          propsData: {
+            enableTimeSelect: true,
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click7 (e) {
         this.calendar.open(e, {
-          enableTimeSelect: true,
-          enableShortcut: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          onDisableDaySelected: (days) => {
-            console.log(days)
-          },
-
           animation: {
             in: {
               effect: 'zoomFromDom'
@@ -152,79 +149,99 @@
             out: {
               effect: 'zoomFromDom'
             }
+          },
+
+          propsData: {
+            enableTimeSelect: true,
+            enableShortcut: true,
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
+
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click8 (e) {
         this.calendar.open(e, {
-          defaultRange: {
-            startY: 2017,
-            startM: 10,
-            startD: 26,
-            endY: 2017,
-            endM: 11,
-            endD: 7
-          },
+          propsData: {
+            defaultRange: {
+              startY: 2017,
+              startM: 10,
+              startD: 26,
+              endY: 2017,
+              endM: 11,
+              endD: 7
+            },
 
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click9 (e) {
         this.calendar.open(e, {
-          isLargeRowledge: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
+          propsData: {
+            isLargeRowledge: true,
+            
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
 
-          onDisableDaySelected: (days) => {
-            console.log(days)
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click10 (e) {
         this.calendar.open(e, {
-          isLargeRowledge: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          onDisableDaySelected: (days) => {
-            console.log(days)
-          },
-
           animation: {
             in: ['animated-500', 'slideInRight'],
             out: ['animated-350', 'slideOutRight']
+          },
+
+          propsData: {
+            isLargeRowledge: true,
+            
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
+
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       },
 
       click11 (e) {
         this.calendar.open(e, {
-          isLargeRowledge: true,
-          
-          onConfirm: (start, end) => {
-            console.log(start, end)
-          },
-
-          onDisableDaySelected: (days) => {
-            console.log(days)
-          },
-
           animation: {
             in: ['animated', 'bounceIn'],
             out: ['animated', 'bounceOut']
+          },
+          
+          propsData: {
+            isLargeRowledge: true,
+            
+            onConfirm: (start, end) => {
+              console.log(start, end)
+            },
+
+            onDisableDaySelected: (days) => {
+              console.log(days)
+            }
           }
         })
       }

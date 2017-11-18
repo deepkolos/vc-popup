@@ -19,12 +19,13 @@ let popUpBase = {
     var routerId = this.getRouterId()
 
     this.config = Object.assign({}, this.constructConfig, runtimeConfig)
-    this.config.e = e
+    this.config.propsData = Object.assign({}, this.constructConfig.propsData, runtimeConfig ? runtimeConfig.propsData : {})
+    this.config.e = this.config.propsData.e = e
 
     this.vm_popUp = popUpController.createPopUp(this.popUpConfig, routerId, e, this.config)
     this.vm_slot = new this.Factory({
       el: this.vm_popUp.$refs.slot,
-      propsData: this.config
+      propsData: this.config.propsData
     })
     this.vm_popUp.$refs.slot = this.vm_slot.$el
     this.vm_popUp.vm_slot = this.vm_slot // 我觉得我的命名开始凌乱了...

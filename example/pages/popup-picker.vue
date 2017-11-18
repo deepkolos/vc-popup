@@ -128,86 +128,114 @@
 
     created () {
       this.ticketPicker = new this.$picker({
-        slots: this.ticketSlots,
-        onConfirm: this.confirmTicket,
+        propsData: {
+          slots: this.ticketSlots,
+          onConfirm: this.confirmTicket
+        }
       })
 
       this.dayPicker = new this.$picker({
-        slots: this.daySlots,
-        onConfirm: this.confirmDayTime,
+        propsData: {
+          slots: this.daySlots,
+          onConfirm: this.confirmDayTime
+        }
       })
 
       this.addressPicker = new this.$picker({
-        slots: this.addressSlots,
-        onConfirm: this.confirmAddress,
-        onChange: this.onAddressChange
+        propsData: {
+          slots: this.addressSlots,
+          onConfirm: this.confirmAddress,
+          onChange: this.onAddressChange
+        }
       })
 
       this.timePicker = new this.$datetimePicker({
-        mode: 'time',
-        use12Hours: true,
-        onConfirm: this.confirmTimePicker,
-        onChange: this.onTimePickerChange
+        propsData: {
+          mode: 'time',
+          use12Hours: true,
+          onConfirm: this.confirmTimePicker,
+          onChange: this.onTimePickerChange
+        }
       })
 
       this.datePicker = new this.$datetimePicker({
-        mode: 'date',
-        onConfirm: this.confirmDatePicker,
-        onChange: this.onDatePickerChange
+        propsData: {
+          mode: 'date',
+          onConfirm: this.confirmDatePicker,
+          onChange: this.onDatePickerChange
+        }
       })
 
       this.datetimePicker = new this.$datetimePicker({
-        mode: 'datetime',
-        onConfirm: this.confirmDatetimePicker,
-        onChange: this.onDatetimePickerChange
+        propsData: {
+          mode: 'datetime',
+          onConfirm: this.confirmDatetimePicker,
+          onChange: this.onDatetimePickerChange
+        }
       })
     },
 
     methods: {
       ticketPickerClick (e) {
         this.ticketPicker.open(e, {
-          defaultValues: this.ticket
+          propsData: {
+            defaultValues: this.ticket
+          }
         })
       },
       dayPickerClick (e) {
         this.dayPicker.open(e, {
-          defaultValues: this.dayAndTime
+          propsData: {
+            defaultValues: this.dayAndTime
+          }
         })
       },
       addressPickerClick (e) {
         this.addressPicker.open(e, {
-          defaultValues: this.address
+          propsData: {
+            defaultValues: this.address
+          }
         })
       },
       timePickerClick(e){
         this.timePicker.open(e, {
-          defaultValues: this.time
+          propsData: {
+            defaultValues: this.time
+          }
         })
       },
       datePickerClick (e){
         this.datePicker.open(e, {
-          defaultValues: this.date
+          propsData: {
+            defaultValues: this.date
+          }
         })
       },
       datetimePickerClick (showDivider, showUnit){
         this.datetimePicker.open(null, {
-          use12Hours: false,
-          showDivider: showDivider,
-          showUnit: showUnit
+          propsData: {
+            use12Hours: false,
+            showDivider: showDivider,
+            showUnit: showUnit
+          }
         })
       },
       time24PickerClick(showDivider){
         this.timePicker.open(null, {
-          use12Hours: false,
-          onConfirm: this.confirmTime24Picker,
-          showDivider: showDivider
+          propsData: {
+            use12Hours: false,
+            onConfirm: this.confirmTime24Picker,
+            showDivider: showDivider
+          }
         })
       },
       datetimePickerLimitClick(){
         this.datetimePicker.open(null, {
-          use12Hours: false,
-          minDate: new Date(2015,10,7,5,20),
-          maxDate: new Date(2018,10,7,5,20),
+          propsData: {
+            use12Hours: false,
+            minDate: new Date(2015,10,7,5,20),
+            maxDate: new Date(2018,10,7,5,20),
+          }
         })
       },
 
