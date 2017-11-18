@@ -278,11 +278,13 @@
         this.swipeStartX = null
         this.swipeStartY = null
         
-        $img.style.transitionDuration = null;
-        this._controller.vm_popUp.trunOnMaskTransition();
-        $img.style['transform-origin'] = null;
-        $img.style.transform = null;
-        this._controller.vm_popUp.maskOpacity(1);
+        requestAnimationFrame(()=>{
+          $img.style.transitionDuration = null;
+          this._controller.vm_popUp.trunOnMaskTransition();
+          $img.style['transform-origin'] = null;
+          $img.style.transform = null;
+          this._controller.vm_popUp.maskOpacity(1);
+        })
 
         if (info.directionFour == 'down' && y >= 284 / 3 && $item.scrollTop === 0) {
           this._controller.close();
