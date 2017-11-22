@@ -14,17 +14,17 @@
 > 7. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆栈的情况~
 > 8. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
 
-> `注:` 因为这是之前给一个组件库贡献的, 现在把`popup系列`提取出来, 部分组件从那个组件库中拿来, 比如example用到的`cell`, `group`, `buttom`, 其中`picker-view`是我优化过的, 其余都是`自己写哒`~ 
+> `注:` 因为这是之前给一个组件库贡献的, 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~ 
  
 
 ## 预览
 
 <div>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="图片名称" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 ## 安装
@@ -42,7 +42,7 @@ npm run build
 # build for production and view the bundle analyzer report 未测试
 npm run build --report
 
-# run unit tests, 有问题
+# run unit tests, 测试未编写
 npm run unit
 
 # run all tests 未测试
