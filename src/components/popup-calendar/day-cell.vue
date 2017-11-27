@@ -29,16 +29,6 @@
         default: false
       }
     },
-    
-    data (){
-      return {
-        
-      }
-    },
-
-    mounted (){
-      
-    },
 
     methods: {
       _check (val){
@@ -83,12 +73,6 @@
           e.carrier = {
             vm_day: this
           }
-      }
-    },
-
-    watch: {
-      status (val) {
-        
       }
     }
   }

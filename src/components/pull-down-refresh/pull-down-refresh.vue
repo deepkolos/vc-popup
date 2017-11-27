@@ -318,6 +318,7 @@
     z-index: 0;
     position: relative;
     height: 200vh;
+    will-change: transform;
   }
 
   .vc-pull-down-refresh-panel{
@@ -331,6 +332,7 @@
     visibility: hidden;
     z-index: 1;
     color:#e0e0e0;
+    will-change: transform;
 
     &[data-status='0'] {
       color: grey;

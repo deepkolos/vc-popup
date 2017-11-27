@@ -35,11 +35,7 @@
         isPlaceholder: true
       }
     },
-
-    mounted (){
-      
-    },
-
+    
     methods: {
       _checkGrey (i){
         if(i === 0 || i === 6)
