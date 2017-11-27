@@ -1,11 +1,11 @@
 <template>
-  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
-      <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-        <div class="swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
-          <img class="swipe-img" :src="img.src" alt="">
-        </div>
-      </vc-swipe-item>
-    </vc-swipeplus>
+  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper" @touchmove.native="function(e){e.stopPropagation();e.preventDefault();}">
+    <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
+      <div class="swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
+        <img class="swipe-img" :src="img.src" alt="">
+      </div>
+    </vc-swipe-item>
+  </vc-swipeplus>
 </template>
 
 <script>
