@@ -108,8 +108,8 @@
       [this.minYear, this.minMonth] = offsetMonth(this.year, this.month, -2);
       [this.maxYear, this.maxMonth] = offsetMonth(this.year, this.month, 12)
 
-      //默认显示5个月,从initMonth开始
-      for(i = 0; i < 5; i++){
+      //默认显示5个月,从initMonth开始,(11-28update)改为2个,加快移动端的渲染速度
+      for(i = 0; i < 2; i++){
         [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
         this.$set(this.months, tmpY*12 + tmpM ,{
           Y: tmpY,
