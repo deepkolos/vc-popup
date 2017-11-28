@@ -109,7 +109,7 @@
       [this.maxYear, this.maxMonth] = offsetMonth(this.year, this.month, 12)
 
       //默认显示5个月,从initMonth开始,(11-28update)改为2个,加快移动端的渲染速度
-      for(i = 0; i < 2; i++){
+      for(i = 0; i < 1; i++){
         [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
         this.$set(this.months, tmpY*12 + tmpM ,{
           Y: tmpY,
@@ -118,6 +118,7 @@
         this.currentMaxY = tmpY
         this.currentMaxM = tmpM
       }
+      //初始化的优化策略,首次紧加载1个月份,后续的放在动画结束之后
 
       this.currentMinY = this.year
       this.currentMinM = this.month
@@ -143,6 +144,19 @@
     },
 
     methods: {
+      init (){
+        for(let i = 0; i < 2; i++){
+          this.$nextTick(()=>{
+            var [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
+            this.$set(this.months, tmpY*12 + tmpM ,{
+              Y: tmpY,
+              M: tmpM
+            })
+            this.currentMaxY = tmpY
+            this.currentMaxM = tmpM
+          });
+        }
+      },
       clearSelection (){
         this.getVmMonths().forEach( vm_month => {
           vm_month.clearSelection()

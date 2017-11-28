@@ -157,7 +157,13 @@
             this.onOpen instanceof Function && this.onOpen();
           })
         },
-        afterEnter: () => {},
+        afterEnter: () => {
+          //完成剩余的初始化工作
+          if(this.defaultRange)
+            this.$refs.calendarPicker.select(this.defaultRange)
+          
+          this.$refs.calendarPicker.$refs.calendar.init();
+        },
         beforeLeave: () => {
           var $el = this.$el;
 
@@ -179,11 +185,6 @@
         this.timeSlots[0].values.push(fixZero(i))
       for(i = 0; i <= 59 ; i++)
         this.timeSlots[1].values.push(fixZero(i))
-    },
-
-    mounted (){
-      if(this.defaultRange)
-        this.$refs.calendarPicker.select(this.defaultRange)
     },
 
     methods: {
