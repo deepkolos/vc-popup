@@ -159,10 +159,12 @@
         },
         afterEnter: () => {
           //完成剩余的初始化工作
-          if(this.defaultRange)
-            this.$refs.calendarPicker.select(this.defaultRange)
-          
-          this.$refs.calendarPicker.$refs.calendar.init();
+          this.$refs.calendarPicker.$refs.calendar.init(()=>{
+            if(this.defaultRange)
+              this.$refs.calendarPicker.select(this.defaultRange)
+          });
+
+
         },
         beforeLeave: () => {
           var $el = this.$el;

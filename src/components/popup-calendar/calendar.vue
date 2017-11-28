@@ -144,16 +144,20 @@
     },
 
     methods: {
-      init (){
+      init (done){
         for(let i = 0; i < 2; i++){
           this.$nextTick(()=>{
-            var [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
-            this.$set(this.months, tmpY*12 + tmpM ,{
-              Y: tmpY,
-              M: tmpM
+            requestAnimationFrame(()=>{
+              var [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
+              this.$set(this.months, tmpY*12 + tmpM ,{
+                Y: tmpY,
+                M: tmpM
+              })
+              this.currentMaxY = tmpY
+              this.currentMaxM = tmpM
+
+              if(i == 1) done()
             })
-            this.currentMaxY = tmpY
-            this.currentMaxM = tmpM
           });
         }
       },

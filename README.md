@@ -49,4 +49,10 @@ npm run unit
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## update log
+
+11-28: 优化calendar组件模版编译策略, 组件打开速度提升3倍1.2s -> 0.4s
+
+![](https://user-gold-cdn.xitu.io/2017/11/28/1600074a1f937307?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+![](https://user-gold-cdn.xitu.io/2017/11/28/1600074f84f1e54e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
