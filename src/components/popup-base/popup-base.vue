@@ -4,6 +4,8 @@
     ref="base"
     :style="{ position: positionType }"
     @touchmove="maskPreventScroll"
+    @mousewheel="maskPreventScroll"
+    @DOMMouseScroll="maskPreventScroll"
   >
     <div class="vc-popup-mask" ref="mask" @click="turnOffMask" ></div>
     <div class="vc-popup-slot" ref="slotContainer">
