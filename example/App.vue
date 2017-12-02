@@ -17,6 +17,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   position: relative;
-  z-index: 0;
+  z-index: 0;/*目前先是这种实现方式,后面再通过js自动添加*/
 }
 </style>
