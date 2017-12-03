@@ -43,8 +43,9 @@
   }
 </style>
 <style>
-html{
+body *:first-child{
   position: relative;
+  z-index: 0;
 }
 </style>
 
