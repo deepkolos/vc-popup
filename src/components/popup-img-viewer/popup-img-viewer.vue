@@ -92,6 +92,7 @@
 
     mounted() {
       var e = this.e,
+          self = this,
           defaultIndex;
 
       this.originalImgs = this.imgs
@@ -114,6 +115,19 @@
         defaultIndex = 0
       }
       this.defaultIndex = defaultIndex
+
+      //关联源img的src,这个传参的问题,唉不方便啊
+      this._syncImgSrc = function(){
+        var $originImg = this;
+        var index = Array.prototype.indexOf.call(self.originalImgs, $originImg);
+        var $showImg = self._getSwipeImg(index);
+
+        $showImg.setAttribute('src', $originImg.getAttribute('src'));
+        self._initPosition(index);
+      };
+      Array.prototype.forEach.call(this.imgs, $img => {
+         $img.addEventListener('load', this._syncImgSrc);
+      });
     },
 
     methods: {
@@ -192,13 +206,13 @@
         return this.$refs.swiper.$refs.swipeItems.children[index].children[0].children[0];
       },
 
-      _initPosition() {
+      _initPosition(index) {
         var i, i_ratio, i_height, i_width, $img, $imgZoom, fromTop,
             w_height = this.w_height,
             w_width = this.w_width,
             w_rotaio = this.w_rotaio;
 
-        for(i = 0; i < this.originalImgs.length; i++){
+        var ajustOne = i =>{
           $img = this.originalImgs[i];
           $imgZoom = this._getSwipeImg(i);
           i_height = $img.naturalHeight;
@@ -219,6 +233,13 @@
           $imgZoom.style.top = fromTop + 'px';
           $imgZoom.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
         }
+
+        if(index !== undefined && typeof index === 'index')
+          ajustOne(index);
+        else
+          for(i = 0; i < this.originalImgs.length; i++)
+            ajustOne(i);
+        
         $img = null;
       },
 
@@ -292,6 +313,12 @@
           $item.style.overflow = null;
         }
       }
+    },
+
+    destory(){
+      this.imgs.forEach($img => {
+        $img.removeEventListener('load', this._syncImgSrc);
+      });
     },
 
     directives: {

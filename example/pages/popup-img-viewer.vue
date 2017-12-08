@@ -48,6 +48,14 @@
           this.imgViwer.open(e)
         })
       })
+
+      setTimeout(()=>{
+        this.$refs.imgTarget.addEventListener('load', (e)=>{
+          console.log(e);
+        });
+        this.$refs.imgTarget.setAttribute('src', sample);
+
+      }, 1000);
     },
 
     methods: {
