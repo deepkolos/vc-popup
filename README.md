@@ -23,7 +23,7 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer2.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
@@ -51,7 +51,10 @@ npm test
 
 ## update log
 
-11-28: 优化calendar组件模版编译策略, 组件打开速度提升3倍1.2s -> 0.4s
+##### 12-08: imgView支持懒加载图片,从加载状态的预设图片到加载完成的src同步变化~
+
+
+##### 11-28: 优化calendar组件模版编译策略, 组件打开速度提升3倍1.2s -> 0.4s
 
 ![](https://user-gold-cdn.xitu.io/2017/11/28/1600074a1f937307?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
