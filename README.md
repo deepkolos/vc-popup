@@ -27,7 +27,13 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-## 安装
+## 使用(未完善)
+
+[使用参考.md 还没写~]()
+[在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/doc/create-a-custom-popup.md)
+
+
+## 开发
 
 ``` bash
 # install dependencies 正常

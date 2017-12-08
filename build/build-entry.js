@@ -8,21 +8,26 @@ var OUTPUT_PATH = path.join(__dirname, '../src/index.js')
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
+import popupRegister from './components/popup-base/popup-register'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 {{install}}
-  Vue.prototype.$popup = PopupBase
-  Vue.prototype.$bottomMenu = PopupBottomMenu
-  Vue.prototype.$centerMenu = PopupCenterMenu
-  Vue.prototype.$pressMenu = PopupPressMenu
-  Vue.prototype.$dialog = PopupDialog
-  Vue.prototype.$imgViewer = PopupImgViewer
-  Vue.prototype.$picker = PopupPicker
-  Vue.prototype.$calendar = PopupCalendar
-  Vue.prototype.$popupOver = PopupOver
-  Vue.prototype.$datetimePicker = PopupDatetimePicker
+  Vue.prototype.popupRegister = popupRegister
+  Vue.prototype.popup = {
+    base: PopupBase,
+    bottomMenu: PopupBottomMenu,
+    centerMenu: PopupCenterMenu,
+    pressMenu: PopupPressMenu,
+    dialog: PopupDialog,
+    imgViewer: PopupImgViewer,
+    picker: PopupPicker,
+    calendar: PopupCalendar,
+    popupOver: PopupOver,
+    datetimePicker: PopupDatetimePicker
+  }
+  // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
 }
 
 // auto install

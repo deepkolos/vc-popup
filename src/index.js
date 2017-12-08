@@ -13,6 +13,7 @@ import PickerView from './components/picker-view/index'
 import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import GestureTilePress from './components/gesture-tile-press/index'
+import popupRegister from './components/popup-base/popup-register'
 
 const version = '1.0.0'
 const install = function (Vue, config = {}) {
@@ -22,16 +23,20 @@ const install = function (Vue, config = {}) {
   Vue.component(PullDownRefresh.name, PullDownRefresh)
   Vue.component(PickerView.name, PickerView)
   Vue.component(GestureTilePress.name, GestureTilePress)
-  Vue.prototype.$popup = PopupBase
-  Vue.prototype.$bottomMenu = PopupBottomMenu
-  Vue.prototype.$centerMenu = PopupCenterMenu
-  Vue.prototype.$pressMenu = PopupPressMenu
-  Vue.prototype.$dialog = PopupDialog
-  Vue.prototype.$imgViewer = PopupImgViewer
-  Vue.prototype.$picker = PopupPicker
-  Vue.prototype.$calendar = PopupCalendar
-  Vue.prototype.$popupOver = PopupOver
-  Vue.prototype.$datetimePicker = PopupDatetimePicker
+  Vue.prototype.popupRegister = popupRegister
+  Vue.prototype.popup = {
+    base: PopupBase,
+    bottomMenu: PopupBottomMenu,
+    centerMenu: PopupCenterMenu,
+    pressMenu: PopupPressMenu,
+    dialog: PopupDialog,
+    imgViewer: PopupImgViewer,
+    picker: PopupPicker,
+    calendar: PopupCalendar,
+    popupOver: PopupOver,
+    datetimePicker: PopupDatetimePicker
+  }
+  // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
 }
 
 // auto install

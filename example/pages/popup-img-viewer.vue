@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  import ImgViwer from '../../src/components/popup-img-viewer'
   import logo from '../assets/logo.png'
   import sample from '../assets/sample.jpg'
 
@@ -35,7 +34,7 @@
     mounted () {
       var imgs = this.$el.getElementsByTagName('img');
 
-      this.imgViwer = new ImgViwer({
+      this.imgViwer = new this.popup.imgViewer({
         propsData: {
           imgs: imgs
         }

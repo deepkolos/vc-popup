@@ -23,5 +23,10 @@
     "path": "/popup-picker",
     "name": "popUpPicker",
     "description": "popUp"
+  },
+  {
+    "path": "/popup-custom",
+    "name": "popUpCustom",
+    "description": "popUp"
   }
 ]
