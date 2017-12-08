@@ -234,7 +234,7 @@
           $imgZoom.style.clipPath = `inset(0px 0px 0px 0px 0px)`;
         }
 
-        if(index !== undefined && typeof index === 'index')
+        if(index !== undefined)
           ajustOne(index);
         else
           for(i = 0; i < this.originalImgs.length; i++)
