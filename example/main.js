@@ -10,7 +10,9 @@ import './assets/demo.css'
 
 Vue.config.productionTip = false
 
+console.log(PopUp)
 Vue.use(PopUp)
+console.log(Vue.prototype)
 
 /* eslint-disable no-new */
 new Vue({
