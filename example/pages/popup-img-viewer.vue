@@ -34,7 +34,7 @@
     mounted () {
       var imgs = this.$el.getElementsByTagName('img');
 
-      this.imgViwer = new this.popup.imgViewer({
+      this.imgViwer = new this.$popup.imgViewer({
         propsData: {
           imgs: imgs
         }

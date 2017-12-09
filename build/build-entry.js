@@ -15,7 +15,7 @@ const install = function (Vue, config = {}) {
   if (install.installed) return
 {{install}}
   Vue.prototype.popupRegister = popupRegister
-  Vue.prototype.popup = {
+  Vue.prototype.$popup = {
     base: PopupBase,
     bottomMenu: PopupBottomMenu,
     centerMenu: PopupCenterMenu,

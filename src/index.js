@@ -24,7 +24,7 @@ const install = function (Vue, config = {}) {
   Vue.component(PickerView.name, PickerView)
   Vue.component(GestureTilePress.name, GestureTilePress)
   Vue.prototype.popupRegister = popupRegister
-  Vue.prototype.popup = {
+  Vue.prototype.$popup = {
     base: PopupBase,
     bottomMenu: PopupBottomMenu,
     centerMenu: PopupCenterMenu,

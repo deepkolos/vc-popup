@@ -127,21 +127,21 @@
     },
 
     created () {
-      this.ticketPicker = new this.popup.picker({
+      this.ticketPicker = new this.$popup.picker({
         propsData: {
           slots: this.ticketSlots,
           onConfirm: this.confirmTicket
         }
       })
 
-      this.dayPicker = new this.popup.picker({
+      this.dayPicker = new this.$popup.picker({
         propsData: {
           slots: this.daySlots,
           onConfirm: this.confirmDayTime
         }
       })
 
-      this.addressPicker = new this.popup.picker({
+      this.addressPicker = new this.$popup.picker({
         propsData: {
           slots: this.addressSlots,
           onConfirm: this.confirmAddress,
@@ -149,7 +149,7 @@
         }
       })
 
-      this.timePicker = new this.popup.datetimePicker({
+      this.timePicker = new this.$popup.datetimePicker({
         propsData: {
           mode: 'time',
           use12Hours: true,
@@ -158,7 +158,7 @@
         }
       })
 
-      this.datePicker = new this.popup.datetimePicker({
+      this.datePicker = new this.$popup.datetimePicker({
         propsData: {
           mode: 'date',
           onConfirm: this.confirmDatePicker,
@@ -166,7 +166,7 @@
         }
       })
 
-      this.datetimePicker = new this.popup.datetimePicker({
+      this.datetimePicker = new this.$popup.datetimePicker({
         propsData: {
           mode: 'datetime',
           onConfirm: this.confirmDatetimePicker,

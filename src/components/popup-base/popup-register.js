@@ -15,7 +15,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   }
 
   popupTemplate.prototype = PopupBase
-  Vue.prototype.popup[name] = popupTemplate
+  Vue.prototype.$popup[name] = popupTemplate
 
   return popupTemplate
 }

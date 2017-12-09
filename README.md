@@ -30,7 +30,8 @@
 ## 使用(未完善)
 
 [使用参考.md 还没写~]()
-[在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/doc/create-a-custom-popup.md)
+
+[在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
 
 ## 开发

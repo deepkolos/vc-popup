@@ -1,6 +1,6 @@
 <template>
   <div class="page" ref="page">
-    <div class="btn" ref="btn16" @click="click16">custom popover</div>
+    <div class="btn" ref="btn16" @click="click">custom popover</div>
   </div>
 </template>
 
@@ -8,16 +8,9 @@
   import popupCustom from '../components/popup-custom'
   
   export default {
-
-    data () {
-      return {
-        
-      }
-    },
-
     mounted () {
-      //这里需要注意refs在mounted才能获得引用
-      this.popupCustom = new this.popup.custom({
+      // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
+      this.popupCustom = new this.$popup.custom({
         refDom: this.$refs.btn16,
         refCorner: 'top right',
         relativeToCorner: 'above before',
@@ -26,11 +19,11 @@
             {
               name: '自定义的popup',
               click: e => {console.log('btn0 clicked');},
-              src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
+              src: 'http://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
             },{
               name: '二维码',
-              click: e => {this.popupOver.close(e)},
-              src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
+              click: e => {this.popupCustom.close(e)},
+              src: 'http://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
             }
           ]
         }
@@ -38,13 +31,9 @@
     },
 
     methods: {
-      click16 (e){
+      click (e){
         this.popupCustom.open(e);
       }
-    },
-
-    filters: {
-      
     }
   }
 </script>
