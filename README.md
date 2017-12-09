@@ -21,6 +21,7 @@
 
 <div>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-position.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer2.gif" width = "250" alt="" style="display:inline-block;"/>
