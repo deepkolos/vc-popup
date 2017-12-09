@@ -1,12 +1,12 @@
 
 ## 在已有的项目里,自定义popup
 
-拿正在vc-popup例子项目举例, 其目录结构如下, 在`components`下来需要自定义的popup组件
+拿`vc-popup`的`example`举例, 其目录结构如下, 在`components`下来编写自定义的popup组件
 这里拿`popup-custom`作为样例
 
 
 ```shell
-.\EXAMPLE
+.\example
 ├───assets
 ├───components
 │   └───popup-custom
@@ -24,10 +24,11 @@ import template from './popup-custom.vue'
 // 根据情况修改template的路径
 
 var popUpConfig = {}
-var defaultConfig = {
+var defaultConfig = {          // 可以在运行是覆盖, 一般在运行时定义灵活度高
   name: String,
   autoSetOrthocenter: Boolean, // 根据定位设置相应的transform-origin
   position: String,            // 定位类型可以为'clickRelative', 'domRelative', 'center'
+  // 还有其他晚点完善
 }
 
 // 目前的是会覆盖默认提供的, 如果名字一样的话, 这里需要再考虑考虑
@@ -48,14 +49,14 @@ export default Vue.prototype.popupRegister(
 
 ```javascript
 <template>
-  <div>
+  <div></div>
 </template>
 
 <script>
   export default {
     props: {
       e: {
-        default: null // 从open()传进来的
+        default: null           // 从open()传进来的
       }
     },
 
@@ -111,6 +112,7 @@ export default Vue.prototype.popupRegister(
 
     methods: {
       click (e){
+        // 也可以@click="popupCustom.open", 就不用做这次的转发了
         this.popupCustom.open(e);
       }
     }

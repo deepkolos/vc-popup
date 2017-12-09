@@ -1,6 +1,6 @@
 <template>
   <div class="page" ref="page">
-    <div class="btn" ref="btn16" @click="click">custom popover</div>
+    <div class="btn" ref="btn16" @click="popupCustom.open">custom popover</div>
   </div>
 </template>
 
