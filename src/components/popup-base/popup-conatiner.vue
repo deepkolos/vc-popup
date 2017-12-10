@@ -47,5 +47,9 @@ body *:first-child{
   position: relative;
   z-index: 0;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>
 

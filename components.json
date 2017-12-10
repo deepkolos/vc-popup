@@ -1,4 +1,5 @@
 {
+  "gesture-tile-press": "./src/components/gesture-tile-press/index.js",
   "swipeplus": "./src/components/swipeplus/index.js",
   "swipe-item": "./src/components/swipe-item/index.js",
   "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
@@ -12,6 +13,5 @@
   "popup-picker": "./src/components/popup-picker/index.js",
   "picker-view": "./src/components/picker-view/index.js",
   "popup-calendar": "./src/components/popup-calendar/index.js",
-  "popup-datetime-picker": "./src/components/popup-datetime-picker/index.js",
-  "gesture-tile-press": "./src/components/gesture-tile-press/index.js"
+  "popup-datetime-picker": "./src/components/popup-datetime-picker/index.js"
 }
