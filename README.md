@@ -30,40 +30,54 @@
 
 ## 使用(未完善)
 
-[使用参考.md 还没写~]()
+```shell
+yarn add vc-popup
+```
+
+在入口`main.js`导入依赖
+
+```javascript
+...
+import Vue from 'vue'
+import PopUp from 'vc-popup'
+
+Vue.use(PopUp)
+...
+```
+
+在页面中使用:
+
+```javascript
+<template>
+  <div class="page">
+    <div class="btn" ref="btn" @click="click">custom popover</div>
+  </div>
+</template>
+
+<script>
+
+  export default {
+    mounted () {
+      // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
+      this.Popover = new this.$popup.Popover({
+        refDom: this.$refs.btn,
+        refCorner: 'top right',
+        relativeToCorner: 'above before',
+        propsData: {}
+      })
+    },
+
+    methods: {
+      click (e){
+        this.Popover.open(e);
+      }
+    }
+  }
+</script>
+```
+
+[详细使用参考.md](https://github.com/deepkolos/vc-popup/blob/master/doc/how-to-use-in-your-project.md)
 
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
-
-## 开发
-
-``` bash
-# install dependencies 正常
-npm install || cnpm i --by=npm
-
-# serve with hot reload at localhost:8080, 正常
-npm run dev
-
-# build for production with minification, 正常
-npm run build
-
-# build for production and view the bundle analyzer report 未测试
-npm run build --report
-
-# run unit tests, 测试未编写
-npm run unit
-
-# run all tests 未测试
-npm test
-```
-
-## update log
-
-##### 12-08: imgView支持懒加载图片,从加载状态的预设图片到加载完成的src同步变化~
-
-
-##### 11-28: 优化calendar组件模版编译策略, 组件打开速度提升3倍1.2s -> 0.4s
-
-![](https://user-gold-cdn.xitu.io/2017/11/28/1600074a1f937307?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-![](https://user-gold-cdn.xitu.io/2017/11/28/1600074f84f1e54e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+[贡献.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)

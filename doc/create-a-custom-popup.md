@@ -119,5 +119,5 @@ export default Vue.prototype.popupRegister(
 </script>
 ```
 
-[使用参考.md]()
+[详细使用参考.md](https://github.com/deepkolos/vc-popup/blob/master/doc/how-to-use-in-your-project.md)
 
