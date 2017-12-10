@@ -5,6 +5,7 @@
 # 特点
 
 > 0. 支持`返回键`, 可以按浏览器返回按钮关闭popup
+> 0. 支持popup的嵌套显示
 > 1. 可以写出小复杂的`过度动画`, 比如磁贴按压效果[在popUpMenu可看到~]
 > 2. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
 > 3. 提供了几个比较好的popup组件, calendar, picker, imgViewer
