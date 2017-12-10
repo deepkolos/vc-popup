@@ -77,7 +77,7 @@ Vue.use(PopUp)
 ```
 
 ### new Popup时传入配置参数解析
-```json
+```
 {
   name: String,
   autoSetOrthocenter: true,
