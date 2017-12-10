@@ -15,7 +15,7 @@
 > 8. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
 
 > `注:` 因为这是之前给一个组件库贡献的, 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~ 
- 
+
 
 ## 预览
 
@@ -76,7 +76,35 @@ Vue.use(PopUp)
 </script>
 ```
 
-[详细使用参考.md](https://github.com/deepkolos/vc-popup/blob/master/doc/how-to-use-in-your-project.md)
+### new Popup时传入配置参数解析
+```json
+{
+  name: String,
+  autoSetOrthocenter: true,
+  positionType: "absolute/fixed",
+  position: "clickRelative/domRelative/center",
+  position: {
+    top: Number,
+    buttom: Number,
+    left: Number,
+    right: Number
+  },
+  refDom: HTMLElement,
+  refCorner: "top left",
+  relativeToCorner: "below after",
+  animation: {
+    in: ["animated", "flipInX"],
+    out: ["animated", "flipOutX"]
+    in: {
+      effect: "zoomFromDom"
+    },
+    out: {
+      effect: "zoomFromDom"
+    }
+  }
+}
+```
+
 
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
