@@ -1,6 +1,6 @@
 <template>
   <div class="page" ref="page">
-    <div class="btn" ref="btn16" @click="popupCustom.open">custom popover</div>
+    <div class="btn" ref="btn16" @click="click">a custom popover under the example project</div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   export default {
     mounted () {
       // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
-      this.popupCustom = new this.$popup.custom({
+      this.popupCustom = new this.$popup.Custom({
         refDom: this.$refs.btn16,
         refCorner: 'top right',
         relativeToCorner: 'above before',
@@ -40,8 +40,7 @@
 
 <style scoped>
   .btn{
-    width: 160px;
-    height: 30px;
+    width: 200px;
     background: lightblue;
     margin: 40vh auto;
     border-radius: 3px;

@@ -5352,6 +5352,10 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
+readline-sync@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.7.tgz#001bfdd4c06110c3c084c63bf7c6a56022213f30"
+
 readline2@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/readline2/-/readline2-1.0.1.tgz#41059608ffc154757b715d9989d199ffbf372e35"
@@ -6349,6 +6353,14 @@ validate-npm-package-license@^3.0.1:
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+
+vc-popup@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/vc-popup/-/vc-popup-1.0.7.tgz#8afa41039591d3b2486c09c7da46225fcaa2946e"
+  dependencies:
+    css3transform "^1.1.8"
+    vue "^2.5.2"
+    vue-router "^3.0.1"
 
 vendors@^1.0.0:
   version "1.0.1"

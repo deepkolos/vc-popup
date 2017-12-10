@@ -91,7 +91,7 @@
 
     mounted () {
       
-      this.bottomMenu = new this.$popup.bottomMenu({
+      this.bottomMenu = new this.$popup.BottomMenu({
         propsData: {
           items: [
             {
@@ -127,7 +127,7 @@
         }
       })
 
-      this.bottomMenu2 = new this.$popup.bottomMenu({
+      this.bottomMenu2 = new this.$popup.BottomMenu({
         propsData: {
           items: [
             {
@@ -148,7 +148,7 @@
         }
       })
 
-      this.centerMenu = new this.$popup.centerMenu({
+      this.centerMenu = new this.$popup.CenterMenu({
         propsData: {
           items: [
             {
@@ -174,7 +174,7 @@
         }
       })
 
-      this.centerMenu2 = new this.$popup.centerMenu({
+      this.centerMenu2 = new this.$popup.CenterMenu({
         propsData: {
           items: [
             {
@@ -195,7 +195,7 @@
         }
       })
 
-      this.pressMenu = new this.$popup.pressMenu({
+      this.pressMenu = new this.$popup.PressMenu({
         propsData: {
           items: [
             {
@@ -218,7 +218,7 @@
         }
       })
 
-      this.pressMenu2 = new this.$popup.pressMenu({
+      this.pressMenu2 = new this.$popup.PressMenu({
         propsData: {
           items: [
             {
@@ -355,7 +355,7 @@
         }
       })
 
-      this.popupOver = new this.$popup.popupOver({
+      this.popupOver = new this.$popup.PopupOver({
         refDom: this.$refs.btn16,
         refCorner: 'bottom right',
         relativeToCorner: 'below before',

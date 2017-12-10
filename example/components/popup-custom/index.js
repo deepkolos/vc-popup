@@ -9,4 +9,4 @@ var defaultConfig = {
   position: 'domRelative'
 }
 
-export default Vue.prototype.popupRegister('custom', template, popUpConfig, defaultConfig)
+export default Vue.prototype.popupRegister('Custom', template, popUpConfig, defaultConfig)

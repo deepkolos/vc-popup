@@ -18,7 +18,7 @@
 <script>
   export default {
     mounted () {
-      this.calendar = new this.$popup.calendar({
+      this.calendar = new this.$popup.Calendar({
 
       })
     },

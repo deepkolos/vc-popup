@@ -13,7 +13,7 @@
   export default {
 
     created (){
-      this.dialog = new this.$popup.dialog({
+      this.dialog = new this.$popup.Dialog({
         propsData: {
           message: '憔悴..'
         }

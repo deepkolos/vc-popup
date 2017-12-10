@@ -34,7 +34,7 @@ var defaultConfig = {          // 可以在运行是覆盖, 一般在运行时�
 // 目前的是会覆盖默认提供的, 如果名字一样的话, 这里需要再考虑考虑
 // 优点在于, 如果内置组件有问题了, 需要及时修复, 就可以使用自定义组件替换之, 不过感觉大部分是兼容性问题, 非逻辑问题
 export default Vue.prototype.popupRegister(
-  'custom',     // 此名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
+  'Custom',     // 首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
   template, 
   popUpConfig, 
   defaultConfig
@@ -90,7 +90,7 @@ export default Vue.prototype.popupRegister(
   export default {
     mounted () {
       // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
-      this.popupCustom = new this.$popup.custom({
+      this.popupCustom = new this.$popup.Custom({
         refDom: this.$refs.btn,
         refCorner: 'top right',
         relativeToCorner: 'above before',
@@ -112,7 +112,6 @@ export default Vue.prototype.popupRegister(
 
     methods: {
       click (e){
-        // 也可以@click="popupCustom.open", 就不用做这次的转发了
         this.popupCustom.open(e);
       }
     }

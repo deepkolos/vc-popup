@@ -25,16 +25,16 @@ const install = function (Vue, config = {}) {
   Vue.component(PickerView.name, PickerView)
   Vue.prototype.popupRegister = popupRegister
   Vue.prototype.$popup = {
-    base: PopupBase,
-    bottomMenu: PopupBottomMenu,
-    centerMenu: PopupCenterMenu,
-    pressMenu: PopupPressMenu,
-    dialog: PopupDialog,
-    imgViewer: PopupImgViewer,
-    picker: PopupPicker,
-    calendar: PopupCalendar,
-    popupOver: PopupOver,
-    datetimePicker: PopupDatetimePicker
+    Base: PopupBase,
+    BottomMenu: PopupBottomMenu,
+    CenterMenu: PopupCenterMenu,
+    PressMenu: PopupPressMenu,
+    Dialog: PopupDialog,
+    ImgViewer: PopupImgViewer,
+    Picker: PopupPicker,
+    Calendar: PopupCalendar,
+    PopupOver: PopupOver,
+    DatetimePicker: PopupDatetimePicker
   }
   // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
 }
