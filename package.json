@@ -13,7 +13,8 @@
     "build:entry": "node build/build-entry.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "echo no ok...",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "release": "node build/release.js"
   },
   "dependencies": {
     "css3transform": "^1.1.8",
@@ -77,6 +78,7 @@
     "ora": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.14",
     "portfinder": "^1.0.13",
+    "readline-sync": "^1.4.7",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.6",
     "semver": "^5.3.0",

@@ -15,7 +15,7 @@ import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import popupRegister from './components/popup-base/popup-register'
 
-const version = '1.0.4'
+const version = '1.0.5'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.component(GestureTilePress.name, GestureTilePress)
