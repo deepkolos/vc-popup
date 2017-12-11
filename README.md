@@ -1,5 +1,7 @@
 # vc-popup [Demo](https://deepkolos.github.io/vc-popup/)
 
+一个行为标准的vue-popup组件集
+
 [![Build Status](https://travis-ci.org/deepkolos/vc-popup.svg?branch=master)](https://travis-ci.org/deepkolos/vc-popup)
 
 # 特点
@@ -81,7 +83,8 @@ Vue.use(PopUp)
 ### 配置参数
 ```
 {
-  //在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`, 自定义的时候则需要人工保证唯一
+  // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
+  // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来了
   name: String/Undefined, 
 
   // 定位的类型, 默认absolute, 将会全局的锁定
@@ -98,7 +101,7 @@ Vue.use(PopUp)
     right: Number/Undefined
   },
 
-  ////// clickRelative的相关
+  //// clickRelative的相关 \\\\
 
   // 弹出的popup在此区域之内
   frame: {
@@ -117,7 +120,7 @@ Vue.use(PopUp)
   margin: [Number, Number, Number, Number],  // 分别设置4边
 
 
-  //// domRelative的相关
+  //// domRelative的相关 \\\\
 
   // 设置参考Dom节点
   refDom: HTMLElement,
@@ -126,13 +129,14 @@ Vue.use(PopUp)
   // 设置相对于参考点的方位
   relativeToCorner: "above/below before/after",
 
-  //// 动画设置
+  //// 动画设置 \\\\
 
   // 根据position的位置设置transform-origin
   autoSetOrthocenter: true,
 
   // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过度动画冲突
   // 在自定义popup的时候需要注意一下
+  // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
   animation: {
     in: ["animated", "flipInX"],
     out: ["animated", "flipOutX"]
@@ -147,6 +151,7 @@ Vue.use(PopUp)
 }
 ```
 
+popup的具体使用, 可以先看看代码, 参数都比较简单, 晚点更新这部分文档
 
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
