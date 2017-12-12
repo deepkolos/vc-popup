@@ -1,5 +1,5 @@
 import template from './popup-custom.vue'
-import Vue from 'vue'
+import { popupRegister } from 'vc-popup-base'
 
 var popUpConfig = {
 }
@@ -9,4 +9,4 @@ var defaultConfig = {
   position: 'domRelative'
 }
 
-export default Vue.prototype.popupRegister('Custom', template, popUpConfig, defaultConfig)
+export default popupRegister('Custom', template, popUpConfig, defaultConfig)

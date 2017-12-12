@@ -547,12 +547,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_components_popup_base__ = __webpack_require__(7);
+
+
 
 const version = '0.0.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
-  __webpack_require__(7)
 }
 
 // auto install
@@ -562,7 +564,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   install,
-  version
+  version,
+  popupRegister: __WEBPACK_IMPORTED_MODULE_0__src_components_popup_base__["popupRegister"]
 });
 
 
@@ -1229,12 +1232,14 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popup_base__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
+
 
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
   var instancesMap = {}
-  var Vue = popupRegister.vue
 
   function popupTemplate (constructConfig) {
     this.constructor = popupTemplate
@@ -1246,10 +1251,10 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   }
 
   popupTemplate.prototype = __WEBPACK_IMPORTED_MODULE_0__popup_base__["a" /* default */]
-  if (Vue.prototype.$popup) {
-    Vue.prototype.$popup[name] = popupTemplate
+  if (__WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup) {
+    __WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup[name] = popupTemplate
   } else {
-    Vue.prototype.$popup = {
+    __WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup = {
       [name]: popupTemplate
     }
   }

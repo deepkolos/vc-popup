@@ -28,23 +28,45 @@ export default {
   version
 }
 `
+var BASE_MAIN_TEMPLATE = `
+import { popupRegister } from '{{self}}'
+
+const version = '{{version}}'
+const install = function (Vue, config = {}) {
+  if (install.installed) return
+{{includeDepend}}
+}
+
+// auto install
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
+export default {
+  install,
+  version,
+  popupRegister
+}
+`
 
 function build_install(popupName){
   var pkg = require(`${PACKAGE_PATH}/${popupName}/package.json`)
   var version = pkg.version
-  var dependanceList = [];
+  var dependanceList = []
+  var tpl = popupName === 'popup-base'? BASE_MAIN_TEMPLATE: MAIN_TEMPLATE
 
   Object.keys(pkg.dependencies).forEach(function(depName){
     dependanceList.push(render(DEPENDANCE_TEMPLATE, {
       name: depName
     }))
   });
-  
-  var template = render(MAIN_TEMPLATE, {
+
+  var template = render(tpl, {
     includeDepend: dependanceList.join('\n'),
     version: version,
     self: `../../src/components/${popupName}`
   })
+  
 
   fs.writeFileSync(p(`../packages/${popupName}/install.js`), template);
   // 后面估计需要使用一些走异步加快构建速度了

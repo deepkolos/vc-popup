@@ -1,9 +1,9 @@
 import PopupBase from './popup-base'
+import Vue from 'vue'
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
   var instancesMap = {}
-  var Vue = popupRegister.vue
 
   function popupTemplate (constructConfig) {
     this.constructor = popupTemplate
