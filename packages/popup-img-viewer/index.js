@@ -1441,4 +1441,4 @@ const swipeDirective = {
 
 /******/ })["default"];
 });
-//# sourceMappingURL=index.min.js.map
+//# sourceMappingURL=index.js.map

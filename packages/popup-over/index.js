@@ -743,4 +743,4 @@ module.exports = function listToStyles (parentId, list) {
 
 /******/ })["default"];
 });
-//# sourceMappingURL=index.min.js.map
+//# sourceMappingURL=index.js.map

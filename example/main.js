@@ -2,16 +2,18 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import PopUp from '../src'
+// import PopUp from '../src'
 // import PopUp from '../lib/vc-popup'
 import router from './router'
 import './assets/animate.min.css'
 import './assets/animated-preset.css'
 import './assets/demo.css'
+import test from '../packages/popup-bottom-menu'
 
 Vue.config.productionTip = false
 
-Vue.use(PopUp)
+// Vue.use(PopUp)
+Vue.use(test)
 
 /* eslint-disable no-new */
 new Vue({

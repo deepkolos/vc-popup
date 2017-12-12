@@ -896,4 +896,4 @@ exports.push([module.i, "\n.gesture-tile-press-wrapper[data-v-e14f8b64] {\n  -we
 
 /******/ })["default"];
 });
-//# sourceMappingURL=index.min.js.map
+//# sourceMappingURL=index.js.map
