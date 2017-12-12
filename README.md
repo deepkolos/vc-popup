@@ -37,7 +37,7 @@
 yarn add vc-popup
 ```
 
-在入口`main.js`导入依赖
+在入口`main.js`导入依赖, 除此之外[可以单独组件使用了~](https://www.npmjs.com/~deepkolos)
 
 ```javascript
 ...
