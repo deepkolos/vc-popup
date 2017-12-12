@@ -19,26 +19,24 @@
 #### /components/popup-custom/**index.js**
 
 ```javascript
-import Vue from 'vue'
-import template from './popup-custom.vue'
 // 根据情况修改template的路径
+import template from './popup-custom.vue'
+import { popupRegister } from 'vc-popup-base'
+// 需要手动安装一下npm i vc-popup-base依赖
 
-var popUpConfig = {}
-var defaultConfig = {          // 可以在运行是覆盖, 一般在运行时定义灵活度高
-  name: String,
-  autoSetOrthocenter: Boolean, // 根据定位设置相应的transform-origin
-  position: String,            // 定位类型可以为'clickRelative', 'domRelative', 'center'
-  // 还有其他晚点完善
+var popUpConfig = {
 }
 
-// 目前的是会覆盖默认提供的, 如果名字一样的话, 这里需要再考虑考虑
-// 优点在于, 如果内置组件有问题了, 需要及时修复, 就可以使用自定义组件替换之, 不过感觉大部分是兼容性问题, 非逻辑问题
-export default Vue.prototype.popupRegister(
-  'Custom',     // 首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
+var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵活度高
+  autoSetOrthocenter: true,
+  position: 'domRelative'
+}
+
+export default popupRegister(
+  'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
   template, 
   popUpConfig, 
-  defaultConfig
-)
+  defaultConfig)
 ```
 #### /components/popup-custom/**popup-custom.vue**
 
