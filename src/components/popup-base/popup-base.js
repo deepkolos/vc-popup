@@ -38,7 +38,7 @@ let popUpBase = {
 
   getRouterId: function () {
     if (this.config.name === undefined && !this.instancesMap.hasOwnProperty(name)) {
-      return this.constructor.name + '_' + this.config.id
+      return this.name + '_' + this.config.id
     } else if (typeof this.config.name === 'string' && this.config.name !== '') {
       return this.config.name
     } else {

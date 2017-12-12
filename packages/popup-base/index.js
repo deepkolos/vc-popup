@@ -527,7 +527,8 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 
 /***/ }),
 /* 6 */,
-/* 7 */
+/* 7 */,
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -541,13 +542,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 8 */,
 /* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_components_popup_base__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_components_popup_base__ = __webpack_require__(8);
 
 
 
@@ -1178,7 +1178,7 @@ exports.push([module.i, "\n.vc-popup-base[data-v-76ca6e5c] {\n  width: 100%;\n  
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,'__esModule',{value:!0});var _index=__webpack_require__(7),_index2=_interopRequireDefault(_index);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}exports.default={name:'vc-popup-base',props:{e:{default:null},routerId:{type:String,required:!0},maskDisable:{type:Boolean,default:!1},runtimeConfig:Object},data:function data(){return{status:null,afterEnterLocker:!1,afterLeaveLocker:!1,$animateDom:null,positionType:null}},methods:{enter:function enter(){this._beforeEnter(),this.status='on'},leave:function leave(a){this.status='off',this._beforeLeave(),this._afterLeaveCallback=a},afterDomLoad:function afterDomLoad(){this.vm_slot.event&&this.vm_slot.event.afterDomLoad&&this.vm_slot.event.afterDomLoad()},turnOffMask:function turnOffMask(){this.maskDisable||this.vm_slot._controller.close()},maskOpacity:function maskOpacity(a){this.$refs.mask.style.opacity=a},trunOffMaskTransition:function trunOffMaskTransition(){this.$refs.mask.style.transitionDuration='0ms'},trunOnMaskTransition:function trunOnMaskTransition(){this.$refs.mask.style.transitionDuration=null},maskClassAdd:function maskClassAdd(a){this.$refs.mask.classList.add(a)},maskClassRemove:function maskClassRemove(a){this.$refs.mask.classList.remove(a)},maskPreventScroll:function maskPreventScroll(a){this.runtimeConfig&&'absolute'===this.runtimeConfig.positionType||'on'===this.status&&a.preventDefault()},setAnimateDom:function setAnimateDom(a){this.$animateDom=a},getAnimateDom:function getAnimateDom(){return this.$animateDom||this.$refs.slot},_addAnimationEndListener:function _addAnimationEndListener(a,b){var c=this,d=this.$animateDom||this.$refs.slot;this[b]=!1;var e=function(f){if(f.target===d){if(c[b])return;c[b]=!0,d.removeEventListener('transitionend',e),d.removeEventListener('animationend',e),a instanceof Function&&a()}};d.addEventListener('transitionend',e),d.addEventListener('animationend',e)},_beforeEnter:function _beforeEnter(){var a=this;requestAnimationFrame(function(){a.$refs.slot.style.transitionDuration='0ms',a.maskOpacity(0),a._animation('in'),a.vm_slot.event&&a.vm_slot.event.beforeEnter instanceof Function&&a.vm_slot.event.beforeEnter(),a._addAnimationEndListener(a._afterEnter,'afterEnterLocker'),requestAnimationFrame(function(){a._animationNoneReday||(a.$refs.slot.style.transitionDuration=null),a.maskOpacity(0.25)})})},_afterEnter:function _afterEnter(){!0===this.animationendTriggered||(this._animation('in',!0),this.vm_slot.event&&this.vm_slot.event.afterEnter instanceof Function&&this.vm_slot.event.afterEnter(),!0===this.animationendTriggered)},_beforeLeave:function _beforeLeave(){var a=this;requestAnimationFrame(function(){a.maskOpacity(0),a._animation('out'),a.vm_slot.event&&a.vm_slot.event.beforeLeave instanceof Function&&a.vm_slot.event.beforeLeave(),a._freezeEvents(),setTimeout(function(){a._addAnimationEndListener(a._afterLeave,'afterLeaveLocker')},28)})},_afterLeave:function _afterLeave(){var a=this;this._animation('out',!0),this.vm_slot.event&&this.vm_slot.event.afterLeave instanceof Function&&this.vm_slot.event.afterLeave(),requestAnimationFrame(function(){a._afterLeaveCallback instanceof Function&&a._afterLeaveCallback()})},_freezeEvents:function _freezeEvents(){this.$refs.base.addEventListener('touchstart',this._stopPropagation,!0),this.$refs.base.addEventListener('touchmove',this._stopPropagation,!0),this.$refs.base.addEventListener('touchend',this._stopPropagation,!0)},_stopPropagation:function _stopPropagation(a){a.stopPropagation(),a.preventDefault()},_animation:function _animation(a){var b,c=1<arguments.length&&arguments[1]!==void 0&&arguments[1],d=this.vm_slot._controller.config.animation,e=this.getAnimateDom();d instanceof Object&&(b=d[a],b instanceof String?!1===c?e.classList.add(b):e.classList.remove(b):b instanceof Array?!1===c?b.forEach(function(a){return e.classList.add(a)}):b.forEach(function(a){return e.classList.remove(a)}):b instanceof Object&&'zoomFromDom'===b.effect&&this._triggerZoomFromDom(a,b,c)),d=null,e=null,b=null},_triggerZoomFromDom:function _triggerZoomFromDom(a,b,c){var d,e,f,g,h,i,j,k,l=this,m=b.fromDom||(this.e?this.e.target:null),n=this.vm_slot.$el,o=2/3;m&&!c&&(this._animationNoneReday=!0,n.style.opacity=0,requestAnimationFrame(function(){d=m.getBoundingClientRect(),e=n.getBoundingClientRect(),b.offset!==void 0&&(o=b.offset),j=e.left+e.width/2,k=e.left+e.width/2,h=d.left+d.width/2,i=d.top+d.height/2,f=h-j,g=i-k,'in'===a?(l.$refs.slot.style.transitionDuration='0ms',n.style.opacity=0,n.style.transform='translate3d('+f*o+'px, '+g*o+'px,0) scale('+o+')',requestAnimationFrame(function(){n.style.transform=null,n.style.transitionDuration=null,l._animationNoneReday=null,n.style.opacity=null})):'out'===a&&(n.style.transform='translate3d('+f*o+'px, '+g*o+'px,0) scale('+o+')',n.style.opacity=0)}))}},destroyed:function destroyed(){this.$animateDom=null}};
+Object.defineProperty(exports,'__esModule',{value:!0});var _index=__webpack_require__(8),_index2=_interopRequireDefault(_index);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}exports.default={name:'vc-popup-base',props:{e:{default:null},routerId:{type:String,required:!0},maskDisable:{type:Boolean,default:!1},runtimeConfig:Object},data:function data(){return{status:null,afterEnterLocker:!1,afterLeaveLocker:!1,$animateDom:null,positionType:null}},methods:{enter:function enter(){this._beforeEnter(),this.status='on'},leave:function leave(a){this.status='off',this._beforeLeave(),this._afterLeaveCallback=a},afterDomLoad:function afterDomLoad(){this.vm_slot.event&&this.vm_slot.event.afterDomLoad&&this.vm_slot.event.afterDomLoad()},turnOffMask:function turnOffMask(){this.maskDisable||this.vm_slot._controller.close()},maskOpacity:function maskOpacity(a){this.$refs.mask.style.opacity=a},trunOffMaskTransition:function trunOffMaskTransition(){this.$refs.mask.style.transitionDuration='0ms'},trunOnMaskTransition:function trunOnMaskTransition(){this.$refs.mask.style.transitionDuration=null},maskClassAdd:function maskClassAdd(a){this.$refs.mask.classList.add(a)},maskClassRemove:function maskClassRemove(a){this.$refs.mask.classList.remove(a)},maskPreventScroll:function maskPreventScroll(a){this.runtimeConfig&&'absolute'===this.runtimeConfig.positionType||'on'===this.status&&a.preventDefault()},setAnimateDom:function setAnimateDom(a){this.$animateDom=a},getAnimateDom:function getAnimateDom(){return this.$animateDom||this.$refs.slot},_addAnimationEndListener:function _addAnimationEndListener(a,b){var c=this,d=this.$animateDom||this.$refs.slot;this[b]=!1;var e=function(f){if(f.target===d){if(c[b])return;c[b]=!0,d.removeEventListener('transitionend',e),d.removeEventListener('animationend',e),a instanceof Function&&a()}};d.addEventListener('transitionend',e),d.addEventListener('animationend',e)},_beforeEnter:function _beforeEnter(){var a=this;requestAnimationFrame(function(){a.$refs.slot.style.transitionDuration='0ms',a.maskOpacity(0),a._animation('in'),a.vm_slot.event&&a.vm_slot.event.beforeEnter instanceof Function&&a.vm_slot.event.beforeEnter(),a._addAnimationEndListener(a._afterEnter,'afterEnterLocker'),requestAnimationFrame(function(){a._animationNoneReday||(a.$refs.slot.style.transitionDuration=null),a.maskOpacity(0.25)})})},_afterEnter:function _afterEnter(){!0===this.animationendTriggered||(this._animation('in',!0),this.vm_slot.event&&this.vm_slot.event.afterEnter instanceof Function&&this.vm_slot.event.afterEnter(),!0===this.animationendTriggered)},_beforeLeave:function _beforeLeave(){var a=this;requestAnimationFrame(function(){a.maskOpacity(0),a._animation('out'),a.vm_slot.event&&a.vm_slot.event.beforeLeave instanceof Function&&a.vm_slot.event.beforeLeave(),a._freezeEvents(),setTimeout(function(){a._addAnimationEndListener(a._afterLeave,'afterLeaveLocker')},28)})},_afterLeave:function _afterLeave(){var a=this;this._animation('out',!0),this.vm_slot.event&&this.vm_slot.event.afterLeave instanceof Function&&this.vm_slot.event.afterLeave(),requestAnimationFrame(function(){a._afterLeaveCallback instanceof Function&&a._afterLeaveCallback()})},_freezeEvents:function _freezeEvents(){this.$refs.base.addEventListener('touchstart',this._stopPropagation,!0),this.$refs.base.addEventListener('touchmove',this._stopPropagation,!0),this.$refs.base.addEventListener('touchend',this._stopPropagation,!0)},_stopPropagation:function _stopPropagation(a){a.stopPropagation(),a.preventDefault()},_animation:function _animation(a){var b,c=1<arguments.length&&arguments[1]!==void 0&&arguments[1],d=this.vm_slot._controller.config.animation,e=this.getAnimateDom();d instanceof Object&&(b=d[a],b instanceof String?!1===c?e.classList.add(b):e.classList.remove(b):b instanceof Array?!1===c?b.forEach(function(a){return e.classList.add(a)}):b.forEach(function(a){return e.classList.remove(a)}):b instanceof Object&&'zoomFromDom'===b.effect&&this._triggerZoomFromDom(a,b,c)),d=null,e=null,b=null},_triggerZoomFromDom:function _triggerZoomFromDom(a,b,c){var d,e,f,g,h,i,j,k,l=this,m=b.fromDom||(this.e?this.e.target:null),n=this.vm_slot.$el,o=2/3;m&&!c&&(this._animationNoneReday=!0,n.style.opacity=0,requestAnimationFrame(function(){d=m.getBoundingClientRect(),e=n.getBoundingClientRect(),b.offset!==void 0&&(o=b.offset),j=e.left+e.width/2,k=e.left+e.width/2,h=d.left+d.width/2,i=d.top+d.height/2,f=h-j,g=i-k,'in'===a?(l.$refs.slot.style.transitionDuration='0ms',n.style.opacity=0,n.style.transform='translate3d('+f*o+'px, '+g*o+'px,0) scale('+o+')',requestAnimationFrame(function(){n.style.transform=null,n.style.transitionDuration=null,l._animationNoneReday=null,n.style.opacity=null})):'out'===a&&(n.style.transform='translate3d('+f*o+'px, '+g*o+'px,0) scale('+o+')',n.style.opacity=0)}))}},destroyed:function destroyed(){this.$animateDom=null}};
 
 /***/ }),
 /* 23 */
@@ -1241,6 +1241,9 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
   var instancesMap = {}
 
+  // 首字母大写
+  name = name[0].toUpperCase() + name.slice(1)
+
   function popupTemplate (constructConfig) {
     this.constructor = popupTemplate
     this.init(
@@ -1248,6 +1251,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
       popUpConfig, instancesMap,
       template, incrId++
     )
+    this.name = name
   }
 
   popupTemplate.prototype = __WEBPACK_IMPORTED_MODULE_0__popup_base__["a" /* default */]
@@ -1272,7 +1276,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popup_base_index_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popup_base_index_js__ = __webpack_require__(8);
 
 
 
@@ -1313,7 +1317,7 @@ let popUpBase = {
 
   getRouterId: function () {
     if (this.config.name === undefined && !this.instancesMap.hasOwnProperty(name)) {
-      return this.constructor.name + '_' + this.config.id
+      return this.name + '_' + this.config.id
     } else if (typeof this.config.name === 'string' && this.config.name !== '') {
       return this.config.name
     } else {

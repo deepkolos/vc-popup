@@ -5,6 +5,9 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
   var instancesMap = {}
 
+  // 首字母大写
+  name = name[0].toUpperCase() + name.slice(1)
+
   function popupTemplate (constructConfig) {
     this.constructor = popupTemplate
     this.init(
@@ -12,6 +15,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
       popUpConfig, instancesMap,
       template, incrId++
     )
+    this.name = name
   }
 
   popupTemplate.prototype = PopupBase

@@ -7,4 +7,4 @@ var popUpConfig = {
 var defaultConfig = {
 }
 
-export default popupRegister('buttomMenu', template, popUpConfig, defaultConfig)
+export default popupRegister('bottomMenu', template, popUpConfig, defaultConfig)

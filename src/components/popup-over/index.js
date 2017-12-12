@@ -9,4 +9,4 @@ var defaultConfig = {
   position: 'domRelative'
 }
 
-export default popupRegister('over', template, popUpConfig, defaultConfig)
+export default popupRegister('popover', template, popUpConfig, defaultConfig)

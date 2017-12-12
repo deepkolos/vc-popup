@@ -84,13 +84,10 @@
 
 <script>
   import { once } from '../../src/utils/dom.js'
-  import ByAnimation from '../../src/components/popup-by-animation'
-  import DomRelative from '../../src/components/popup-dom-relative'
 
   export default {
 
     mounted () {
-      
       this.bottomMenu = new this.$popup.BottomMenu({
         propsData: {
           items: [
@@ -239,7 +236,7 @@
         }
       })
 
-      this.byAnimation = new ByAnimation({
+      this.byAnimation = new this.$popup.ByAnimation({
         propsData: {
           items: [
             {
@@ -262,7 +259,7 @@
         }
       })
 
-      this.byAnimation2 = new ByAnimation({
+      this.byAnimation2 = new this.$popup.ByAnimation({
         propsData: {
           items: [
             {
@@ -283,7 +280,7 @@
         }
       })
 
-      this.pressMenu_topLeft_belowAfter = new DomRelative({
+      this.pressMenu_topLeft_belowAfter = new this.$popup.DomRelative({
         refDom: this.$refs.btn8,
         refCorner: 'top left',
         relativeToCorner: 'below after',
@@ -301,7 +298,7 @@
         }
       })
 
-      this.pressMenu_topRight_belowAfter = new DomRelative({
+      this.pressMenu_topRight_belowAfter = new this.$popup.DomRelative({
         refDom: this.$refs.btn9,
         refCorner: 'top right',
         relativeToCorner: 'below after',
@@ -319,7 +316,7 @@
         }
       })
 
-      this.pressMenu_bottomRight_aboveAfter = new DomRelative({
+      this.pressMenu_bottomRight_aboveAfter = new this.$popup.DomRelative({
         refDom: this.$refs.btn10,
         refCorner: 'bottom right',
         relativeToCorner: 'above after',
@@ -337,7 +334,7 @@
         }
       })
 
-      this.pressMenu_centerRight_aboveAfter = new DomRelative({
+      this.pressMenu_centerRight_aboveAfter = new this.$popup.DomRelative({
         refDom: this.$refs.btn11,
         refCorner: 'bottom center',
         relativeToCorner: 'below before',
@@ -355,7 +352,7 @@
         }
       })
 
-      this.popupOver = new this.$popup.PopupOver({
+      this.Popover = new this.$popup.Popover({
         refDom: this.$refs.btn16,
         refCorner: 'bottom right',
         relativeToCorner: 'below before',
@@ -367,11 +364,11 @@
               src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
             },{
               name: '二维码',
-              click: e => {this.popupOver.close(e)},
+              click: e => {this.Popover.close(e)},
               src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
             },{
               name: '帮助',
-              click: e => {this.popupOver.close(e)},
+              click: e => {this.Popover.close(e)},
               src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
             }
           ]
@@ -458,13 +455,13 @@
       },
 
       click16 (e){
-        this.popupOver.open(e, {
+        this.Popover.open(e, {
 
         })
       },
 
       click17 (e){
-        this.popupOver.open(e, {
+        this.Popover.open(e, {
           refDom: this.$refs.btn17,
           positionType: 'absolute'
         })

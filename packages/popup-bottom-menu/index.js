@@ -588,7 +588,7 @@ var popUpConfig = {
 var defaultConfig = {
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_0_vc_popup_base__["popupRegister"])('buttomMenu', __WEBPACK_IMPORTED_MODULE_1__index_vue__["a" /* default */], popUpConfig, defaultConfig));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_0_vc_popup_base__["popupRegister"])('bottomMenu', __WEBPACK_IMPORTED_MODULE_1__index_vue__["a" /* default */], popUpConfig, defaultConfig));
 
 
 /***/ }),
