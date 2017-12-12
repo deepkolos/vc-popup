@@ -68,6 +68,8 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
           p('../node_modules/vc-popup-base/'+filename)
         )
       })
+
+      // 压缩就不做, 看到didi的后编译, 其实的确是重复了
     }
   })
 })

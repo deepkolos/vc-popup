@@ -4,7 +4,6 @@ var uppercamelcase = require('uppercamelcase')
 var path = require('path')
 var utils = require('./utils')
 
-
 var p = function (str){
   return path.resolve(__dirname, str);
 }
@@ -72,11 +71,7 @@ function build_install(popupName){
   // 后面估计需要使用一些走异步加快构建速度了
 }
 
-
 // 开始
 utils.mapPkgList(function(popupName){
   build_install(popupName)
 })
-
-
-
