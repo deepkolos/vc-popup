@@ -1,6 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var readlineSync = require('readline-sync');
+var deleteFolderRecursive = require('./utils').deleteFolderRecursive;
 require('shelljs/global');
 
 // 工具函数
@@ -30,23 +31,6 @@ function initpkg(dirname){
     fs.writeFileSync(path+'/package.json', _package(dirname));
   }
 }
-
-var deleteFolderRecursive = function (path) {
-  var files = [];
-  if (fs.existsSync(path)) {
-    files = fs.readdirSync(path);
-    files.forEach(function (file, index) {
-      var curPath = path + "/" + file;
-      if (fs.statSync(curPath).isDirectory()) {
-        deleteFolderRecursive(curPath);
-      } else {
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
-};
-
 
 // 开始
 

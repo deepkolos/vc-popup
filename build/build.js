@@ -7,7 +7,13 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
+const fs = require('fs')
+const deleteFolderRecursive = require('./utils').deleteFolderRecursive
 var webpackConfig
+
+function p(str){
+  return path.resolve(__dirname, str)
+}
 
 switch (process.env.NODE_ENV){
   case 'production':
@@ -47,5 +53,21 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'
     ))
+
+    //更新在node_modules的依赖vc-popup-base
+    if(process.env.NODE_ENV === 'pkg'){
+      deleteFolderRecursive(p('../node_modules/vc-popup-base'))
+
+      fs.mkdirSync(p('../node_modules/vc-popup-base'))
+
+      var files = fs.readdirSync(p('../packages/popup-base'))
+      
+      files.forEach(function(filename){
+        fs.copyFileSync(
+          p('../packages/popup-base/'+filename),
+          p('../node_modules/vc-popup-base/'+filename)
+        )
+      })
+    }
   })
 })

@@ -9,6 +9,8 @@ import PopupPressMenu from './components/popup-press-menu/index'
 import PopupDialog from './components/popup-dialog/index'
 import PopupImgViewer from './components/popup-img-viewer/index'
 import PopupOver from './components/popup-over/index'
+import PopupByAnimation from './components/popup-by-animation/index'
+import PopupDomRelative from './components/popup-dom-relative/index'
 import PopupPicker from './components/popup-picker/index'
 import PickerView from './components/picker-view/index'
 import PopupCalendar from './components/popup-calendar/index'
@@ -29,11 +31,13 @@ const install = function (Vue, config = {}) {
     BottomMenu: PopupBottomMenu,
     CenterMenu: PopupCenterMenu,
     PressMenu: PopupPressMenu,
+    ByAnimation: PopupByAnimation,
+    DomRelative: PopupDomRelative,
     Dialog: PopupDialog,
     ImgViewer: PopupImgViewer,
     Picker: PopupPicker,
     Calendar: PopupCalendar,
-    PopupOver: PopupOver,
+    Popover: PopupOver,
     DatetimePicker: PopupDatetimePicker
   }
   // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
@@ -58,6 +62,8 @@ export default {
   PopupDialog,
   PopupImgViewer,
   PopupOver,
+  PopupByAnimation,
+  PopupDomRelative,
   PopupPicker,
   PickerView,
   PopupCalendar,

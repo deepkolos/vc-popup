@@ -20,11 +20,13 @@ const install = function (Vue, config = {}) {
     BottomMenu: PopupBottomMenu,
     CenterMenu: PopupCenterMenu,
     PressMenu: PopupPressMenu,
+    ByAnimation: PopupByAnimation,
+    DomRelative: PopupDomRelative,
     Dialog: PopupDialog,
     ImgViewer: PopupImgViewer,
     Picker: PopupPicker,
     Calendar: PopupCalendar,
-    PopupOver: PopupOver,
+    Popover: PopupOver,
     DatetimePicker: PopupDatetimePicker
   }
   // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
@@ -67,6 +69,8 @@ ComponentNames.forEach(name => {
     'PopupImgViewer',
     'PopupPicker',
     'PopupCalendar',
+    'PopupDomRelative',
+    'PopupByAnimation',
     'PopupOver',
     'PopupDatetimePicker'
   ].indexOf(componentName) === -1) {
