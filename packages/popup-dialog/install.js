@@ -3,7 +3,7 @@ const version = '0.0.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(require('vc-popup-base'))
-  require('../src/components/popup-dialog')
+  require('../../src/components/popup-dialog')
 }
 
 // auto install

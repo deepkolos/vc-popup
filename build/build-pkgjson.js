@@ -43,7 +43,7 @@ function build_install(popupName){
   var template = render(MAIN_TEMPLATE, {
     includeDepend: dependanceList.join('\n'),
     version: version,
-    self: `../src/components/${popupName}`
+    self: `../../src/components/${popupName}`
   })
 
   fs.writeFileSync(p(`../packages/${popupName}/install.js`), template);

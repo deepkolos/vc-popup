@@ -3,7 +3,7 @@ const version = '0.0.0'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
-  require('../src/components/popup-base')
+  require('../../src/components/popup-base')
 }
 
 // auto install

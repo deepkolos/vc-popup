@@ -2,6 +2,7 @@
 const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const fs = require('fs')
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -72,6 +73,8 @@ exports.styleLoaders = function (options) {
 }
 
 var cachePkglist;
+var PACKAGE_PATH = path.resolve(__dirname, '../packages')
+
 exports.mapPkgList = function(callback){
   if(cachePkglist instanceof Array){
     cachePkglist.forEach(function(subDir){
@@ -83,7 +86,7 @@ exports.mapPkgList = function(callback){
     packageDir.forEach(function(subDir){
       if(fs.statSync(PACKAGE_PATH+'/'+subDir).isDirectory()){
         cachePkglist.push(subDir)
-        build_install(subDir)
+        callback(subDir)
       }
     });
   }
