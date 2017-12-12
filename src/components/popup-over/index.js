@@ -1,5 +1,5 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-over.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
@@ -9,18 +9,4 @@ var defaultConfig = {
   position: 'domRelative'
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function Popover (constructConfig) {
-  this.constructor = Popover
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-Popover.prototype = popUpBase
-
-export default Popover
+export default popupRegister('over', template, popUpConfig, defaultConfig)

@@ -1,1 +1,1 @@
-export { default } from './swipe-item.vue'
+export { default } from './index.vue'

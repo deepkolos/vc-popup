@@ -1,5 +1,5 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-datetime-picker.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
@@ -7,18 +7,4 @@ var popUpConfig = {
 var defaultConfig = {
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function DateTimePicker (constructConfig) {
-  this.constructor = DateTimePicker
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-DateTimePicker.prototype = popUpBase
-
-export default DateTimePicker
+export default popupRegister('datetimePicker', template, popUpConfig, defaultConfig)

@@ -1,1 +1,1 @@
-export { default } from './gesture-tile-press.vue'
+export { default } from './index.vue'

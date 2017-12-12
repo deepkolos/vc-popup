@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import VcGestureTilePress from '../gesture-tile-press'
 
   export default {
     name: 'vc-popup-center-menu',
@@ -21,6 +22,10 @@
       },
       onClose: Function,
       onOpen: Function
+    },
+
+    components: {
+      VcGestureTilePress
     },
 
     created () {

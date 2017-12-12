@@ -156,3 +156,7 @@ popup的具体使用, 可以先看看代码, 参数都比较简单, 晚点更新
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
 [贡献.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
+
+## License
+
+MIT 一起来扣细节~

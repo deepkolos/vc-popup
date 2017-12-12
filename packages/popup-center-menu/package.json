@@ -1,0 +1,14 @@
+{
+  "name": "vc-popup-center-menu",
+  "version": "0.0.0",
+  "description": "vc-popup-center-menu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hasn't write test~"
+  },
+  "author": "deepkolos",
+  "license": "MIT",
+  "dependencies": {
+    "vc-popup-base": "^0.0.0"
+  }
+}

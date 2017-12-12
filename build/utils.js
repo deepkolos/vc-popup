@@ -70,3 +70,21 @@ exports.styleLoaders = function (options) {
   }
   return output
 }
+
+var cachePkglist;
+exports.mapPkgList = function(callback){
+  if(cachePkglist instanceof Array){
+    cachePkglist.forEach(function(subDir){
+      callback(subDir)
+    })
+  }else{
+    var packageDir = fs.readdirSync(PACKAGE_PATH);
+    cachePkglist = [];
+    packageDir.forEach(function(subDir){
+      if(fs.statSync(PACKAGE_PATH+'/'+subDir).isDirectory()){
+        cachePkglist.push(subDir)
+        build_install(subDir)
+      }
+    });
+  }
+}

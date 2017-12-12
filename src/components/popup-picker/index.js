@@ -1,24 +1,12 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-picker.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
 
 var defaultConfig = {
+  autoSetOrthocenter: true,
+  position: 'domRelative'
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function Picker (constructConfig) {
-  this.constructor = Picker
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-Picker.prototype = popUpBase
-
-export default Picker
+export default popupRegister('picker', template, popUpConfig, defaultConfig)

@@ -1,1 +1,1 @@
-export { default } from './pull-down-refresh.vue'
+export { default } from './index.vue'

@@ -1,24 +1,11 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-dialog.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
+  position: 'center'
 }
 
 var defaultConfig = {
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function Dialog (constructConfig) {
-  this.constructor = Dialog
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-Dialog.prototype = popUpBase
-
-export default Dialog
+export default popupRegister('dialog', template, popUpConfig, defaultConfig)

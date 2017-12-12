@@ -1,9 +1,9 @@
-import Vue from 'vue'
 import PopupBase from './popup-base'
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
   var instancesMap = {}
+  var Vue = popupRegister.vue
 
   function popupTemplate (constructConfig) {
     this.constructor = popupTemplate
@@ -15,7 +15,13 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   }
 
   popupTemplate.prototype = PopupBase
-  Vue.prototype.$popup[name] = popupTemplate
+  if (Vue.prototype.$popup) {
+    Vue.prototype.$popup[name] = popupTemplate
+  } else {
+    Vue.prototype.$popup = {
+      [name]: popupTemplate
+    }
+  }
 
   return popupTemplate
 }

@@ -1,5 +1,5 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-by-animation.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
@@ -9,18 +9,4 @@ var defaultConfig = {
   position: 'clickRelative'
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function PressMenu (constructConfig) {
-  this.constructor = PressMenu
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-PressMenu.prototype = popUpBase
-
-export default PressMenu
+export default popupRegister('byAnimation', template, popUpConfig, defaultConfig)

@@ -1,5 +1,5 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-bottom-menu.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
@@ -7,18 +7,4 @@ var popUpConfig = {
 var defaultConfig = {
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function BottomMenu (constructConfig) {
-  this.constructor = BottomMenu
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-BottomMenu.prototype = popUpBase
-
-export default BottomMenu
+export default popupRegister('buttomMenu', template, popUpConfig, defaultConfig)

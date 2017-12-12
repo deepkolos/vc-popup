@@ -63,6 +63,7 @@
 
 <script>
   import VcCalendarPicker from './calendar-picker.vue'
+  import VcPickerView from '../picker-view'
 
   const weekToZh = [
     '星期日',
@@ -83,7 +84,8 @@
     name: 'vc-popup-calendar',
 
     components: {
-      VcCalendarPicker
+      VcCalendarPicker,
+      VcPickerView
     },
 
     props: {

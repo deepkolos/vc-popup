@@ -7,10 +7,19 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
-const webpackConfig = 
-  process.env.NODE_ENV === 'production'
-    ? require('./webpack.prod.conf')
-    : require('./webpack.module.conf')
+var webpackConfig
+
+switch (process.env.NODE_ENV){
+  case 'production':
+    webpackConfig = require('./webpack.prod.conf')
+  break;
+  case 'module':
+    webpackConfig = require('./webpack.module.conf')
+  break;
+  case 'pkg':
+    webpackConfig = require('./webpack.pkg.conf')
+  break;
+}
 
 const spinner = ora('building for '+ process.env.NODE_ENV +'...')
 spinner.start()

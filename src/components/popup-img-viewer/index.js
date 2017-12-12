@@ -1,24 +1,12 @@
-import popUpBase from '../popup-base/popup-base.js'
-import template from './popup-img-viewer.vue'
+import { popupRegister } from 'vc-popup-base'
+import template from './index.vue'
 
 var popUpConfig = {
 }
 
 var defaultConfig = {
+  autoSetOrthocenter: true,
+  position: 'domRelative'
 }
 
-var incrId = 0
-var instancesMap = {}
-
-function ImgViewer (constructConfig) {
-  this.constructor = ImgViewer
-  this.init(
-    defaultConfig, constructConfig,
-    popUpConfig, instancesMap,
-    template, incrId++
-  )
-}
-
-ImgViewer.prototype = popUpBase
-
-export default ImgViewer
+export default popupRegister('imgViewer', template, popUpConfig, defaultConfig)

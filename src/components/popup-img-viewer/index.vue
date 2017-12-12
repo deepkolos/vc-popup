@@ -10,6 +10,8 @@
 
 <script>
   import { swipeDirective } from '../../mixins/event/swipe.js'
+  import VcSwipeplus from '../swipeplus'
+  import VcSwipeItem from '../swipe-item'
 
   export default {
     name: 'vc-popup-img-viewer',
@@ -19,6 +21,11 @@
         defaultIndex: 0,
         originalImgs: []
       }
+    },
+
+    components: {
+      VcSwipeplus,
+      VcSwipeItem
     },
 
     props: {
