@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo hasn't write test~"
   },
+  "private": true,
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
