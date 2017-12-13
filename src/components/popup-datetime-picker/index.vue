@@ -19,6 +19,7 @@
 
 <script>
   import { countDays, fixZero } from '../../mixins/utils'
+  import VcPickerView from '../picker-view'
 
   const defaultTimeUnits = {
     Y: '年',
@@ -33,6 +34,10 @@
 
   export default {
     name: 'vc-picker',
+
+    components: {
+      VcPickerView
+    },
 
     props: {
       showItemNum: Number,

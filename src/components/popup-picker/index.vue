@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import VcPickerView from '../picker-view'
 
   const fixZero = function (val){
     if(val < 10) val = '0'+val
@@ -45,6 +46,10 @@
       },
       onConfirm: Function,
       onCancel: Function,
+    },
+
+    components: {
+      VcPickerView
     },
 
     created () {
