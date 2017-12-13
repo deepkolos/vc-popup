@@ -54,6 +54,7 @@ function build_install(popupName){
   var dependanceList = []
   var tpl = popupName === 'popup-base'? BASE_MAIN_TEMPLATE: MAIN_TEMPLATE
 
+  pkg.dependencies &&
   Object.keys(pkg.dependencies).forEach(function(depName){
     dependanceList.push(render(DEPENDANCE_TEMPLATE, {
       name: depName

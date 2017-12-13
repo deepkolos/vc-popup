@@ -551,7 +551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-const version = '0.0.0'
+const version = '0.0.1'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 

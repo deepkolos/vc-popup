@@ -1,8 +1,4 @@
 {
-  "gesture-tile-press": "./src/components/gesture-tile-press/index.js",
-  "swipeplus": "./src/components/swipeplus/index.js",
-  "swipe-item": "./src/components/swipe-item/index.js",
-  "pull-down-refresh": "./src/components/pull-down-refresh/index.js",
   "popup-base": "./src/components/popup-base/index.js",
   "popup-bottom-menu": "./src/components/popup-bottom-menu/index.js",
   "popup-center-menu": "./src/components/popup-center-menu/index.js",
@@ -10,10 +6,7 @@
   "popup-dialog": "./src/components/popup-dialog/index.js",
   "popup-img-viewer": "./src/components/popup-img-viewer/index.js",
   "popup-over": "./src/components/popup-over/index.js",
-  "popup-by-animation": "./src/components/popup-by-animation/index.js",
-  "popup-dom-relative": "./src/components/popup-dom-relative/index.js",  
   "popup-picker": "./src/components/popup-picker/index.js",
-  "picker-view": "./src/components/picker-view/index.js",
   "popup-calendar": "./src/components/popup-calendar/index.js",
   "popup-datetime-picker": "./src/components/popup-datetime-picker/index.js"
 }

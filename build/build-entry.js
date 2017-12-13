@@ -20,8 +20,6 @@ const install = function (Vue, config = {}) {
     BottomMenu: PopupBottomMenu,
     CenterMenu: PopupCenterMenu,
     PressMenu: PopupPressMenu,
-    ByAnimation: PopupByAnimation,
-    DomRelative: PopupDomRelative,
     Dialog: PopupDialog,
     ImgViewer: PopupImgViewer,
     Picker: PopupPicker,
