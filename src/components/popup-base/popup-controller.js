@@ -115,6 +115,7 @@ Router.listenParam('popUp', {
 
     if (prev(list) !== oldListTop) {
       PopUp.fromUpdateRouter = false
+      PopUp.fromHashChange = false
       PopUp.close(oldListTop)
     }
   },

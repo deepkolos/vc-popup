@@ -711,6 +711,7 @@ __WEBPACK_IMPORTED_MODULE_1__router_js__["a" /* default */].listenParam('popUp',
 
     if (prev(list) !== oldListTop) {
       PopUp.fromUpdateRouter = false
+      PopUp.fromHashChange = false
       PopUp.close(oldListTop)
     }
   },

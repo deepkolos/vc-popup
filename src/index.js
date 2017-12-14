@@ -10,7 +10,7 @@ import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import popupRegister from './components/popup-base/popup-register'
 
-const version = '1.0.12'
+const version = '1.0.13'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
@@ -27,7 +27,6 @@ const install = function (Vue, config = {}) {
     Popover: PopupOver,
     DatetimePicker: PopupDatetimePicker
   }
-  // 内建的先是这样注册,用户自定义的使用popupRegister,来注册,是否需要不同的命名空间?TBD
 }
 
 // auto install

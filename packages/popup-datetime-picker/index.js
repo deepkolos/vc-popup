@@ -413,7 +413,7 @@ if(false) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
-const version = '0.0.1'
+const version = '0.0.2'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(__webpack_require__(3))
