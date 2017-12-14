@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-base",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "vc-popup-base",
   "main": "index.js",
   "scripts": {
