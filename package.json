@@ -25,8 +25,8 @@
     "test": "echo no ok...",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "init:pkgjson": "node build/init-pkgjson.js",
-    "build:pkgjson": "node build/build-pkgjson.js",
-    "build:pkg": "node build/build-pkgjson.js && cross-env BABEL_ENV=production NODE_ENV=pkg node build/build.js",
+    "build:pkgentry": "node build/build-pkgentry.js",
+    "build:pkg": "node build/build-pkgentry.js && cross-env BABEL_ENV=production NODE_ENV=pkg node build/build.js",
     "release": "node build/release.js"
   },
   "license": "MIT",

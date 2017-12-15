@@ -10,7 +10,7 @@ import PopupCalendar from './components/popup-calendar/index'
 import PopupDatetimePicker from './components/popup-datetime-picker/index'
 import popupRegister from './components/popup-base/popup-register'
 
-const version = '1.0.13'
+const version = '1.0.14'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
