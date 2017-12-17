@@ -41,8 +41,6 @@ webpackConfig.output = {
 utils.mapPkgList(function(popupName){
   webpackConfig.entry[popupName] = 
     path.resolve(__dirname, `../packages/${popupName}/install.js`)
-
-  fs.unlinkSync(path.resolve(__dirname, `../packages/${popupName}/index.js`))
 })
 
 module.exports = webpackConfig

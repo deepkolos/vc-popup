@@ -56,11 +56,11 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
 
     //更新在node_modules的依赖vc-popup-base
     if(process.env.NODE_ENV === 'pkg'){
-      deleteFolderRecursive(p('../node_modules/vc-popup-base'))
+      let base = p('../node_modules/vc-popup-base')
+      
+      fs.existsSync(base) == false && fs.mkdirSync(base)
 
-      fs.mkdirSync(p('../node_modules/vc-popup-base'))
-
-      var files = fs.readdirSync(p('../packages/popup-base'))
+      let files = fs.readdirSync(p('../packages/popup-base'))
       
       files.forEach(function(filename){
         fs.copyFileSync(

@@ -28,12 +28,14 @@ export default {
 }
 `
 var BASE_MAIN_TEMPLATE = `
-import { popupRegister } from '{{self}}'
+import { popupRegister, importVue } from '{{self}}'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 {{includeDepend}}
+  importVue(Vue)
+  require('{{self}}').default.init(Vue)
 }
 
 // auto install

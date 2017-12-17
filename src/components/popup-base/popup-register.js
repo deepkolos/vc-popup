@@ -1,5 +1,5 @@
 import PopupBase from './popup-base'
-import Vue from 'vue'
+var Vue = null
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
@@ -13,7 +13,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
     this.init(
       defaultConfig, constructConfig,
       popUpConfig, instancesMap,
-      template, incrId++
+      template, incrId++, Vue
     )
     this.name = name
   }
@@ -30,4 +30,12 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   return popupTemplate
 }
 
+function importVue (vue) {
+  Vue = vue
+}
+
 export default popupRegister
+export {
+  importVue,
+  popupRegister
+}

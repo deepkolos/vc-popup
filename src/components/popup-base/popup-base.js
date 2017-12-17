@@ -1,9 +1,8 @@
-import Vue from 'vue'
 import popUpController from '../popup-base/index.js'
 
 let popUpBase = {
   init: function (
-    defaultConfig, constructConfig, popUpConfig, instancesMap, template, id
+    defaultConfig, constructConfig, popUpConfig, instancesMap, template, id, Vue
   ) {
     this.constructConfig = Object.assign({}, defaultConfig, constructConfig)
     this.popUpConfig = popUpConfig
