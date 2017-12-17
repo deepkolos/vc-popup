@@ -28,6 +28,7 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer2.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-img-viewer-slow.gif" width = "250" alt="" style="display:inline-block;"/>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
