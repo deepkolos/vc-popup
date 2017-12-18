@@ -10,14 +10,15 @@ function p(str){
 
 //readme tpl
 function _readme(moduleName){
+  moduleName = 'vc-'+moduleName
   var camelcased = uppercamelcase(moduleName)
-  var NonePrefix = uppercamelcase(moduleName.slice(3))
+  var NonePrefix = uppercamelcase(moduleName)
   var nonePrefix = NonePrefix.replace(/^\w{1}/, function(word){
     return word.toLowerCase()
   })
 
   return `
-### ${moduleName}
+## ${moduleName}
 
 -----
 
@@ -39,7 +40,6 @@ import ${camelcased} from '${moduleName}'
 Vue.use(${camelcased})
 \`\`\`
 
-
 ### 在具体页面中使用
 
 \`\`\`javascript
@@ -48,19 +48,41 @@ this.${nonePrefix} = new this.$popup.${NonePrefix}({
   propsData: {}
 })
 
-// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关, 可以不是Event
+// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
+
 this.${nonePrefix}.open(e, {
   ...config
   propsData: {}
 })
+
+this.${nonePrefix}.close()
 \`\`\`
+
+### propsData配置定义
+
+\`\`\`json
+{
+  e: Object // 从open(e, {})传进来的e
+  
+}
+\`\`\`
+
+### 效果预览
+
+<div>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/${moduleName}.gif" width = "250" alt="" style="display:inline-block;"/>
+</div>
+
+### License
+
+MIT 一起来扣细节~
 `
 }
 
-
-
+// 开始
 
 utils.mapPkgList(function(dirname){
-  fs.writeFile(p('../packages/vc-'+dirname+'/readme.md'), _readme(dirname))
+
+  fs.writeFileSync(p('../packages/'+dirname+'/readme.md'), _readme(dirname))
 })
