@@ -3,7 +3,7 @@
 
 -----
 
-描述
+一个基于popup-base的popover, 模仿于ant-design-mobile的popover
 
 ### 添加依赖
 

@@ -3,7 +3,8 @@
 
 -----
 
-描述
+一个基于popup-base的calendar, 高度模仿ant-design-mobile的calendar
+目前小许编译速度的问题, chrome 62 cpu throttle x6, 点击需要400+ms的模版编译时间, 而ant-design-mobile则需要340+ms
 
 ### 添加依赖
 

@@ -3,7 +3,7 @@
 
 -----
 
-描述
+一个基于popup-base的picker, 优化于we-vue/mint-ui的picker
 
 ### 添加依赖
 

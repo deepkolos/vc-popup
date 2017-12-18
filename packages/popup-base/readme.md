@@ -3,7 +3,7 @@
 
 -----
 
-描述
+作为popup的基础件, 提供各种popup层面相关的设置, 比如mask, 子popup的定位支持, clickRelative, domRelative, center,等
 
 ### 添加依赖
 
