@@ -12,7 +12,7 @@
 > 2. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
 > 3. 提供了几个比较好的popup组件, calendar, picker, imgViewer
 > 4. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截输入事件, popup属于`不可交互状态`
-> 5. 拓展比较方便~, 之后会补充popup编写的教程~
+> 5. 可方便进行拓展~
 > 6. 差点忘说了, 强大的**定位支持**, 有`居中`, `clickRelative`, `domRelative`, 其中`domRelative` 支持25个位置
 > 7. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆炸的情况~
 > 8. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
@@ -156,7 +156,10 @@ popup的具体使用, 可以先看看代码, 参数都比较简单, 晚点更新
 
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
-[贡献.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
+[更新日志.md](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
+
+[自定义改造.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
+
 
 ## License
 

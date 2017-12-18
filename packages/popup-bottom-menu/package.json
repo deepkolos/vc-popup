@@ -3,6 +3,12 @@
   "version": "0.0.4",
   "description": "vc-popup-bottom-menu",
   "main": "index.js",
+  "keywords": [
+    "vue",
+    "popup",
+    "botttom",
+    "menu"
+  ],
   "scripts": {
     "test": "echo hasn't write test~"
   },

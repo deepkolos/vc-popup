@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo hasn't write test~"
   },
+  "keywords": [
+    "vue",
+    "popup",
+    "imgview",
+    "preview",
+    "zoom",
+    "img"
+  ],
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {

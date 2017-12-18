@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo hasn't write test~"
   },
+  "keywords": [
+    "vue",
+    "popup",
+    "datetime",
+    "picker",
+    "datetime-picker"
+  ],
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {

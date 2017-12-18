@@ -1,6 +1,5 @@
 var fs = require('fs')
 var render = require('json-templater/string')
-var uppercamelcase = require('uppercamelcase')
 var path = require('path')
 var utils = require('./utils')
 

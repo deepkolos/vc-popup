@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo hasn't write test~"
   },
+  "keywords": [
+    "vue",
+    "popup"
+  ],
   "private": true,
   "author": "deepkolos",
   "license": "MIT",
