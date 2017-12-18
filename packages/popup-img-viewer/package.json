@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-img-viewer",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "vc-popup-img-viewer",
   "main": "index.js",
   "scripts": {
