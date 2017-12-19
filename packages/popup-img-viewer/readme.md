@@ -3,7 +3,7 @@
 
 -----
 
-一个基于popup-base的图片预览, 模仿安卓微信的点开图片预览, 支持src同步, 和外框溢出切割动画
+描述
 
 ### 添加依赖
 
@@ -24,7 +24,7 @@ Vue.use(VcPopupImgViewer)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupImgViewer = new this.$popup.VcPopupImgViewer({
+this.imgViewer = new this.$popup.ImgViewer({
   ...config
   propsData: {}
 })
@@ -32,12 +32,12 @@ this.vcPopupImgViewer = new this.$popup.VcPopupImgViewer({
 // e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
 
-this.vcPopupImgViewer.open(e, {
+this.imgViewer.open(e, {
   ...config
   propsData: {}
 })
 
-this.vcPopupImgViewer.close()
+this.imgViewer.close()
 ```
 
 ### propsData配置定义

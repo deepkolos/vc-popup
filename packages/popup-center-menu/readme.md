@@ -3,7 +3,7 @@
 
 -----
 
-一个基于popup-base的居中菜单, 模仿安卓微信
+描述
 
 ### 添加依赖
 
@@ -24,7 +24,7 @@ Vue.use(VcPopupCenterMenu)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupCenterMenu = new this.$popup.VcPopupCenterMenu({
+this.centerMenu = new this.$popup.CenterMenu({
   ...config
   propsData: {}
 })
@@ -32,12 +32,12 @@ this.vcPopupCenterMenu = new this.$popup.VcPopupCenterMenu({
 // e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
 
-this.vcPopupCenterMenu.open(e, {
+this.centerMenu.open(e, {
   ...config
   propsData: {}
 })
 
-this.vcPopupCenterMenu.close()
+this.centerMenu.close()
 ```
 
 ### propsData配置定义

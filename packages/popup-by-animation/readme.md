@@ -24,7 +24,7 @@ Vue.use(VcPopupByAnimation)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupByAnimation = new this.$popup.VcPopupByAnimation({
+this.byAnimation = new this.$popup.ByAnimation({
   ...config
   propsData: {}
 })
@@ -32,12 +32,12 @@ this.vcPopupByAnimation = new this.$popup.VcPopupByAnimation({
 // e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
 
-this.vcPopupByAnimation.open(e, {
+this.byAnimation.open(e, {
   ...config
   propsData: {}
 })
 
-this.vcPopupByAnimation.close()
+this.byAnimation.close()
 ```
 
 ### propsData配置定义

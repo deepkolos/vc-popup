@@ -12,7 +12,7 @@ function p(str){
 function _readme(moduleName){
   moduleName = 'vc-'+moduleName
   var camelcased = uppercamelcase(moduleName)
-  var NonePrefix = uppercamelcase(moduleName)
+  var NonePrefix = uppercamelcase(moduleName.slice(9))
   var nonePrefix = NonePrefix.replace(/^\w{1}/, function(word){
     return word.toLowerCase()
   })

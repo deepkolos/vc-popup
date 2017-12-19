@@ -3,7 +3,7 @@
 
 -----
 
-作为popup的基础件, 提供各种popup层面相关的设置, 比如mask, 子popup的定位支持, clickRelative, domRelative, center,等
+描述
 
 ### 添加依赖
 
@@ -24,20 +24,24 @@ Vue.use(VcPopupBase)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupBase = new this.$popup.VcPopupBase({
-  ...config
-  propsData: {}
-})
+// 根据情况修改template的路径
+import template from './popup-custom.vue'
+import { popupRegister } from 'vc-popup-base'
+// 需要手动安装一下npm i vc-popup-base依赖
 
-// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
-// config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
+var popUpConfig = {
+}
 
-this.vcPopupBase.open(e, {
-  ...config
-  propsData: {}
-})
+var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵活度高
+  autoSetOrthocenter: true,
+  position: 'domRelative'
+}
 
-this.vcPopupBase.close()
+export default popupRegister(
+  'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
+  template,
+  popUpConfig,
+  defaultConfig)
 ```
 
 ### propsData配置定义

@@ -3,7 +3,7 @@
 
 -----
 
-基于popup-base实现的butttom-menu, 模仿安卓微信的底部弹出菜单
+描述
 
 ### 添加依赖
 
@@ -24,7 +24,7 @@ Vue.use(VcPopupBottomMenu)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupBottomMenu = new this.$popup.VcPopupBottomMenu({
+this.bottomMenu = new this.$popup.BottomMenu({
   ...config
   propsData: {}
 })
@@ -32,12 +32,12 @@ this.vcPopupBottomMenu = new this.$popup.VcPopupBottomMenu({
 // e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
 
-this.vcPopupBottomMenu.open(e, {
+this.bottomMenu.open(e, {
   ...config
   propsData: {}
 })
 
-this.vcPopupBottomMenu.close()
+this.bottomMenu.close()
 ```
 
 ### propsData配置定义

@@ -3,7 +3,7 @@
 
 -----
 
-一个基于popup-base的picker, 优化于we-vue/mint-ui的picker
+描述
 
 ### 添加依赖
 
@@ -24,7 +24,7 @@ Vue.use(VcPopupPicker)
 ### 在具体页面中使用
 
 ```javascript
-this.vcPopupPicker = new this.$popup.VcPopupPicker({
+this.picker = new this.$popup.Picker({
   ...config
   propsData: {}
 })
@@ -32,12 +32,12 @@ this.vcPopupPicker = new this.$popup.VcPopupPicker({
 // e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
 // config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
 
-this.vcPopupPicker.open(e, {
+this.picker.open(e, {
   ...config
   propsData: {}
 })
 
-this.vcPopupPicker.close()
+this.picker.close()
 ```
 
 ### propsData配置定义
