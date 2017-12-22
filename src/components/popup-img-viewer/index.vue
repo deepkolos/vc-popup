@@ -254,7 +254,7 @@
 
       },
 
-      _onItemSwipe(info){
+      _onItemSwipe(info, preventDefault){
         var scale, transformOrgin, x, y,
           $item = info.element,
           $img = $item.children[0];
@@ -264,6 +264,8 @@
           this.swipeStartY = info.movingY
           return;
         }
+
+        preventDefault()
 
         y = info.movingY - (this.swipeStartY || info.startY);
         x = info.movingX - (this.swipeStartX || info.startX);
