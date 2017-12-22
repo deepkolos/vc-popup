@@ -1087,60 +1087,47 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "vc-swipeplus",
     {
-      on: {
-        touchmove: function(e) {
-          e.preventDefault()
-        }
+      ref: "swiper",
+      staticClass: "popup-swipe addWeight",
+      attrs: {
+        overflow: "backDrag",
+        gap: 16,
+        continuous: _vm.loop,
+        defaultIndex: _vm.defaultIndex
       }
     },
-    [
-      _c(
-        "vc-swipeplus",
-        {
-          ref: "swiper",
-          staticClass: "popup-swipe addWeight",
-          attrs: {
-            overflow: "backDrag",
-            gap: 16,
-            continuous: _vm.loop,
-            defaultIndex: _vm.defaultIndex
-          }
-        },
-        _vm._l(_vm.originalImgs, function(img, $index) {
-          return _c("vc-swipe-item", { key: $index }, [
-            _c(
-              "div",
+    _vm._l(_vm.originalImgs, function(img, $index) {
+      return _c("vc-swipe-item", { key: $index }, [
+        _c(
+          "div",
+          {
+            directives: [
               {
-                directives: [
-                  {
-                    name: "swipe",
-                    rawName: "v-swipe:down",
-                    value: _vm.swipeConfig,
-                    expression: "swipeConfig",
-                    arg: "down"
-                  }
-                ],
-                staticClass: "swipe-wrapper",
-                on: {
-                  click: function($event) {
-                    _vm._controller.close()
-                  }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "swipe-img",
-                  attrs: { src: img.src, alt: "" }
-                })
-              ]
-            )
-          ])
-        })
-      )
-    ],
-    1
+                name: "swipe",
+                rawName: "v-swipe:down",
+                value: _vm.swipeConfig,
+                expression: "swipeConfig",
+                arg: "down"
+              }
+            ],
+            staticClass: "swipe-wrapper",
+            on: {
+              click: function($event) {
+                _vm._controller.close()
+              }
+            }
+          },
+          [
+            _c("img", {
+              staticClass: "swipe-img",
+              attrs: { src: img.src, alt: "" }
+            })
+          ]
+        )
+      ])
+    })
   )
 }
 var staticRenderFns = []
