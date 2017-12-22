@@ -386,7 +386,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
-const version = '0.0.1'
+const version = '0.0.7'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(__webpack_require__(3))
@@ -1096,14 +1096,6 @@ var render = function() {
         gap: 16,
         continuous: _vm.loop,
         defaultIndex: _vm.defaultIndex
-      },
-      nativeOn: {
-        touchmove: function($event) {
-          ;(function(e) {
-            e.stopPropagation()
-            e.preventDefault()
-          })($event)
-        }
       }
     },
     _vm._l(_vm.originalImgs, function(img, $index) {
@@ -1122,6 +1114,9 @@ var render = function() {
             ],
             staticClass: "swipe-wrapper",
             on: {
+              touchmove: function(e) {
+                e.preventDefault()
+              },
               click: function($event) {
                 _vm._controller.close()
               }

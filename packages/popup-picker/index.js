@@ -536,7 +536,7 @@ exports.push([module.i, "\n.vc-picker-group[data-v-7f7de245] {\n  z-index: 0;\n 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
-const version = '0.0.3'
+const version = '0.0.6'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(__webpack_require__(3))

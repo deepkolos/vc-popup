@@ -8,13 +8,14 @@ var OUTPUT_PATH = path.join(__dirname, '../src/index.js')
 var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
 var MAIN_TEMPLATE = `{{include}}
-import popupRegister from './components/popup-base/popup-register'
+import { popupRegister, importVue } from './components/popup-base/popup-register'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 {{install}}
-  Vue.prototype.popupRegister = popupRegister
+  importVue(Vue)
+  require('./components/popup-base/popup-register').default.init(Vue)
   Vue.prototype.$popup = {
     Base: PopupBase,
     BottomMenu: PopupBottomMenu,
@@ -37,6 +38,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
+  popupRegister,
 {{list}}
 }
 `

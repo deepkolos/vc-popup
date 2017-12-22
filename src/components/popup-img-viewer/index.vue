@@ -1,7 +1,7 @@
 <template>
-  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper" @touchmove.native="function(e){e.stopPropagation();e.preventDefault();}">
+  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
     <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-      <div class="swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
+      <div class="swipe-wrapper" v-swipe:down="swipeConfig" @touchmove="function(e){e.preventDefault()}" @click="_controller.close()">
         <img class="swipe-img" :src="img.src" alt="">
       </div>
     </vc-swipe-item>
