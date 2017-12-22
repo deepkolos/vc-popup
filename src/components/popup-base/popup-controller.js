@@ -1,6 +1,7 @@
 import Router from './router.js'
 import popUpContainerComponent from './popup-conatiner.vue'
 import popUpBaseComponent from './popup-base.vue'
+import Vue from 'vue'
 
 function top (arr) {
   return arr[arr.length - 1]
@@ -10,26 +11,22 @@ function prev (arr) {
   return arr[arr.length - 2]
 }
 
-let PopUpContainerConstructor
-let PopUpBaseConstructor
-let vmPopUpContainer
+let PopUpContainerConstructor = Vue.extend(popUpContainerComponent)
+let PopUpBaseConstructor = Vue.extend(popUpBaseComponent)
+let vmPopUpContainer = new PopUpContainerConstructor({
+  el: document.createElement('div')
+})
+
 let RouterIdToPopUp = {}
 let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
+document.body.appendChild(vmPopUpContainer.$el)
+Router.initialParam('popUp')
+
 let PopUp = {
   fromUpdateRouter: false,
   fromHashChange: false,
-
-  init (Vue) {
-    PopUpContainerConstructor = Vue.extend(popUpContainerComponent)
-    PopUpBaseConstructor = Vue.extend(popUpBaseComponent)
-    vmPopUpContainer = new PopUpContainerConstructor({
-      el: document.createElement('div')
-    })
-    document.body.appendChild(vmPopUpContainer.$el)
-    Router.initialParam('popUp')
-  },
 
   open (vmBase, routerId, domLoadCallback) {
     vmPopUpContainer.turnOn()

@@ -5,29 +5,14 @@ var uppercamelcase = require('uppercamelcase')
 var path = require('path')
 
 var OUTPUT_PATH = path.join(__dirname, '../src/index.js')
-var IMPORT_TEMPLATE = 'import {{name}} from \'./components/{{package}}/index\''
-var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}})'
+var IMPORT_TEMPLATE = 'import {{name}} from \'../packages/{{package}}/install\''
+var ISNTALL_COMPONENT_TEMPLATE = '  Vue.use({{name}})'
 var MAIN_TEMPLATE = `{{include}}
-import { popupRegister, importVue } from './components/popup-base/popup-register'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 {{install}}
-  importVue(Vue)
-  require('./components/popup-base/popup-register').default.init(Vue)
-  Vue.prototype.$popup = {
-    Base: PopupBase,
-    BottomMenu: PopupBottomMenu,
-    CenterMenu: PopupCenterMenu,
-    PressMenu: PopupPressMenu,
-    Dialog: PopupDialog,
-    ImgViewer: PopupImgViewer,
-    Picker: PopupPicker,
-    Calendar: PopupCalendar,
-    Popover: PopupOver,
-    DatetimePicker: PopupDatetimePicker
-  }
 }
 
 // auto install
@@ -37,9 +22,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  version,
-  popupRegister,
-{{list}}
+  version
 }
 `
 
@@ -57,27 +40,10 @@ ComponentNames.forEach(name => {
     package: name
   }))
 
-  if ([
-    // services
-    'PopupBase',
-    'PopupBottomMenu',
-    'PopupCenterMenu',
-    'PopupPressMenu',
-    'PopupDialog',
-    'PopupDialogCustom',
-    'PopupImgViewer',
-    'PopupPicker',
-    'PopupCalendar',
-    'PopupDomRelative',
-    'PopupByAnimation',
-    'PopupOver',
-    'PopupDatetimePicker'
-  ].indexOf(componentName) === -1) {
-    installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
-      name: componentName,
-      component: name
-    }))
-  }
+  installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
+    name: componentName,
+    component: name
+  }))
 
   listTemplate.push(`  ${componentName}`)
 })

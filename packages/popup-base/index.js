@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("vue"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["vue"], factory);
 	else {
-		var a = factory();
+		var a = typeof exports === 'object' ? factory(require("vue")) : factory(root["vue"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function() {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_5__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -520,7 +520,12 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 5 */,
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ }),
 /* 6 */,
 /* 7 */,
 /* 8 */,
@@ -546,7 +551,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return __WEBPACK_IMPORTED_MODULE_0__popup_controller_js__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popup_register__ = __webpack_require__(38);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "popupRegister", function() { return __WEBPACK_IMPORTED_MODULE_1__popup_register__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "importVue", function() { return __WEBPACK_IMPORTED_MODULE_1__popup_register__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "importVue", function() { return __WEBPACK_IMPORTED_MODULE_1__popup_register__["importVue"]; });
 
 
 
@@ -565,8 +570,7 @@ const version = '0.0.6'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
-  Object(__WEBPACK_IMPORTED_MODULE_0__src_components_popup_base__["importVue"])(Vue)
-  __webpack_require__(22).default.init(Vue)
+  __webpack_require__(22)
 }
 
 // auto install
@@ -590,6 +594,9 @@ if (typeof window !== 'undefined' && window.Vue) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__router_js__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popup_conatiner_vue__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__popup_base_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue__);
+
 
 
 
@@ -602,26 +609,22 @@ function prev (arr) {
   return arr[arr.length - 2]
 }
 
-let PopUpContainerConstructor
-let PopUpBaseConstructor
-let vmPopUpContainer
+let PopUpContainerConstructor = __WEBPACK_IMPORTED_MODULE_3_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_1__popup_conatiner_vue__["a" /* default */])
+let PopUpBaseConstructor = __WEBPACK_IMPORTED_MODULE_3_vue___default.a.extend(__WEBPACK_IMPORTED_MODULE_2__popup_base_vue__["a" /* default */])
+let vmPopUpContainer = new PopUpContainerConstructor({
+  el: document.createElement('div')
+})
+
 let RouterIdToPopUp = {}
 let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
+document.body.appendChild(vmPopUpContainer.$el)
+__WEBPACK_IMPORTED_MODULE_0__router_js__["a" /* default */].initialParam('popUp')
+
 let PopUp = {
   fromUpdateRouter: false,
   fromHashChange: false,
-
-  init (Vue) {
-    PopUpContainerConstructor = Vue.extend(__WEBPACK_IMPORTED_MODULE_1__popup_conatiner_vue__["a" /* default */])
-    PopUpBaseConstructor = Vue.extend(__WEBPACK_IMPORTED_MODULE_2__popup_base_vue__["a" /* default */])
-    vmPopUpContainer = new PopUpContainerConstructor({
-      el: document.createElement('div')
-    })
-    document.body.appendChild(vmPopUpContainer.$el)
-    __WEBPACK_IMPORTED_MODULE_0__router_js__["a" /* default */].initialParam('popUp')
-  },
 
   open (vmBase, routerId, domLoadCallback) {
     vmPopUpContainer.turnOn()
@@ -1245,11 +1248,12 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return importVue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return popupRegister; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popup_base__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 
-var Vue = null
+
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0
@@ -1263,25 +1267,21 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
     this.init(
       defaultConfig, constructConfig,
       popUpConfig, instancesMap,
-      template, incrId++, Vue
+      template, incrId++, __WEBPACK_IMPORTED_MODULE_1_vue___default.a
     )
     this.name = name
   }
 
   popupTemplate.prototype = __WEBPACK_IMPORTED_MODULE_0__popup_base__["a" /* default */]
-  if (Vue.prototype.$popup) {
-    Vue.prototype.$popup[name] = popupTemplate
+  if (__WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup) {
+    __WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup[name] = popupTemplate
   } else {
-    Vue.prototype.$popup = {
+    __WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$popup = {
       [name]: popupTemplate
     }
   }
 
   return popupTemplate
-}
-
-function importVue (vue) {
-  Vue = vue
 }
 
 /* unused harmony default export */ var _unused_webpack_default_export = (popupRegister);
