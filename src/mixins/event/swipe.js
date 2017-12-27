@@ -61,6 +61,7 @@ export const swipeDirective = {
 
         var x = movingX - startX
         var y = movingY - startY
+        var lockCheck = false
         var check
 
         (directionTwo == null || binding.arg === 'any') && (
@@ -82,18 +83,21 @@ export const swipeDirective = {
         )
 
         if (directionCheckDone) {
-          lock && e.preventDefault()
+          lock && (lockCheck = true)
 
           processor.onSwipe instanceof Function && (
             continuePropagation = setDefault(
               processor.onSwipe(getInfo(), () => {
-                e.preventDefault()
+                lockCheck = true
               }, () => {
                 e.stopPropagation()
+              }, () => {
+                lockCheck = false
               }), false
             )
           )
           !continuePropagation && e.stopPropagation()
+          lockCheck && e.preventDefault()
         }
       })
 

@@ -386,7 +386,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
-const version = '0.0.7'
+const version = '0.0.8'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(__webpack_require__(3))
