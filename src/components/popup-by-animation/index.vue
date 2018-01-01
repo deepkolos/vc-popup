@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'vc-popup-by-animation',
 
@@ -24,30 +23,30 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.add('inital');
-          requestAnimationFrame(()=>{
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
-            
-            this.onOpen instanceof Function && this.onOpen();
+          $el.classList.add('inital')
+          requestAnimationFrame(() => {
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
+
+            this.onOpen instanceof Function && this.onOpen()
           })
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.remove('inAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.add('outAnimation');
+          $el.classList.remove('inAnimation')
+          requestAnimationFrame(function () {
+            $el.classList.add('outAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
-    },
+    }
   }
 </script>
 

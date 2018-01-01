@@ -200,7 +200,7 @@ let popUpBase = {
       fromFrameTop = clickY - frame.top
 
       //region 左右
-      //假设放在左右边的情况
+      // 假设放在左右边的情况
       placeLeftOffset = frame.width - fromFrameLeft - dWidth - margins[1]
       placeRightOffset = fromFrameLeft - dWidth - margins[3]
 
@@ -330,7 +330,7 @@ let popUpBase = {
       refCorner = ['top', 'right']
     } else if (typeof cRefCorner === 'string') {
       refCorner = cRefCorner.split(' ')
-      //检查参数是否合法
+      // 检查参数是否合法
       if (
         refCorner.length !== 2 ||
         !validVerticalRefCorner.includes(refCorner[0]) || !validHorizonalRefCorner.includes(refCorner[1])
@@ -350,13 +350,13 @@ let popUpBase = {
     var validVerticalRelativeToCorner = ['below', 'above']
     var validHorizonalRelativeToCorner = ['before', 'after']
 
-    //解析relativeToCorner
+    // 解析relativeToCorner
     if (cRelativeToCorner === undefined) {
       // 缺省默认
       relativeToCorner = ['below', 'after']
     } else if (typeof cRelativeToCorner === 'string') {
       relativeToCorner = cRelativeToCorner.split(' ')
-      //检查参数是否合法
+      // 检查参数是否合法
       if (
         relativeToCorner.length !== 2 ||
         !validVerticalRelativeToCorner.includes(relativeToCorner[0]) || !validHorizonalRelativeToCorner.includes(relativeToCorner[1])

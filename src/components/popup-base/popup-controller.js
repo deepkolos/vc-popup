@@ -22,10 +22,8 @@ let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
 var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
-if(containerInBody.length !== 0){
-  containerInBody.forEach((item)=>{
-    document.body.removeChild(item)
-  })
+if (containerInBody.length !== 0) {
+  document.body.removeChild(containerInBody[0])
 }
 document.body.appendChild(vmPopUpContainer.$el)
 Router.initialParam('popUp')
@@ -40,7 +38,7 @@ let PopUp = {
     popUpIdQueue.push(routerId)
     this.updateRouter(routerId)
     requestAnimationFrame(function () {
-      //和那边的enter和enter的执行位置同步
+      // 和那边的enter和enter的执行位置同步
       vmPopUpContainer.addPopUp(vmBase.$el)
       domLoadCallback && domLoadCallback()
       vmBase.afterDomLoad()

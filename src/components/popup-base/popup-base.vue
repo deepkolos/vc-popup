@@ -15,8 +15,6 @@
 </template>
 
 <script>
-  import popUpController from '../popup-base/index.js'
-
   export default {
     name: 'vc-popup-base',
 
@@ -57,27 +55,28 @@
         this._afterLeaveCallback = callback
       },
 
-      afterDomLoad (){
+      afterDomLoad () {
         this.vm_slot.event &&
-        this.vm_slot.event.afterDomLoad && 
+        this.vm_slot.event.afterDomLoad &&
           this.vm_slot.event.afterDomLoad()
       },
 
       turnOffMask () {
-        if(!this.maskDisable)
+        if (!this.maskDisable) {
           this.vm_slot._controller.close()
+        }
       },
 
       maskOpacity (val) {
-        this.$refs.mask.style.opacity = val;
+        this.$refs.mask.style.opacity = val
       },
 
       trunOffMaskTransition () {
-        this.$refs.mask.style.transitionDuration = '0ms';
+        this.$refs.mask.style.transitionDuration = '0ms'
       },
 
       trunOnMaskTransition () {
-        this.$refs.mask.style.transitionDuration = null;
+        this.$refs.mask.style.transitionDuration = null
       },
 
       maskClassAdd (name) {
@@ -88,96 +87,98 @@
         this.$refs.mask.classList.remove(name)
       },
 
-      maskPreventScroll(e){
-        if(this.runtimeConfig && this.runtimeConfig.positionType === 'absolute')
-          return 
-        if(this.status === 'on')
+      maskPreventScroll (e) {
+        if (this.runtimeConfig && this.runtimeConfig.positionType === 'absolute') {
+          return
+        }
+        if (this.status === 'on') {
           e.preventDefault()
+        }
       },
 
-      setAnimateDom ($dom){
+      setAnimateDom ($dom) {
         this.$animateDom = $dom
       },
 
-      getAnimateDom ($dom){
+      getAnimateDom ($dom) {
         return this.$animateDom || this.$refs.slot
       },
 
-
       //内部使用的
-      _addAnimationEndListener (callback, lock){
+      _addAnimationEndListener (callback, lock) {
         var $dom = this.$animateDom || this.$refs.slot
 
         this[lock] = false
 
         var onAnimationEnd = (e) => {
-          if(e.target === $dom){
-            if(this[lock]) return
+          if (e.target === $dom) {
+            if (this[lock]) return
             this[lock] = true
 
             $dom.removeEventListener(
-              'transitionend', onAnimationEnd);
+              'transitionend', onAnimationEnd)
             $dom.removeEventListener(
-              'animationend', onAnimationEnd);
-            
-            callback instanceof Function && callback();
+              'animationend', onAnimationEnd)
+
+            callback instanceof Function && callback()
           }
         }
 
         $dom.addEventListener(
-          'transitionend', onAnimationEnd);
+          'transitionend', onAnimationEnd)
         $dom.addEventListener(
-          'animationend', onAnimationEnd);
+          'animationend', onAnimationEnd)
       },
 
       _beforeEnter () {
-        requestAnimationFrame(()=>{
-          this.$refs.slot.style.transitionDuration = '0ms';
+        requestAnimationFrame(() => {
+          this.$refs.slot.style.transitionDuration = '0ms'
           //设置mask的初始化样式
-          this.maskOpacity(0);
-          
+          this.maskOpacity(0)
+
           //设置slot的初始化样式
           this._animation('in')
 
-          this.vm_slot.event && 
-          this.vm_slot.event.beforeEnter instanceof Function && 
-            this.vm_slot.event.beforeEnter();
+          this.vm_slot.event &&
+          this.vm_slot.event.beforeEnter instanceof Function &&
+            this.vm_slot.event.beforeEnter()
 
           //设置事件
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-          
-          requestAnimationFrame(()=>{
-            if(!this._animationNoneReday)
-              this.$refs.slot.style.transitionDuration = null;
-            this.maskOpacity(0.25);
+
+          requestAnimationFrame(() => {
+            if (!this._animationNoneReday) {
+              this.$refs.slot.style.transitionDuration = null
+            }
+            this.maskOpacity(0.25)
           })
         })
       },
 
       _afterEnter () {
-        if(this.animationendTriggered === true) return
+        if (this.animationendTriggered === true) return
 
         this._animation('in', true)
 
-        this.vm_slot.event && 
-        this.vm_slot.event.afterEnter instanceof Function && 
-          this.vm_slot.event.afterEnter();
-        
-        this.animationendTriggered === true
+        this.vm_slot.event &&
+        this.vm_slot.event.afterEnter instanceof Function &&
+          this.vm_slot.event.afterEnter()
+
+        this.animationendTriggered = true
       },
 
       _beforeLeave () {
-        requestAnimationFrame(()=>{
-          this.maskOpacity(0);
+        requestAnimationFrame(() => {
+          this.maskOpacity(0)
           this._animation('out')
 
-          this.vm_slot.event && 
-          this.vm_slot.event.beforeLeave instanceof Function && 
-            this.vm_slot.event.beforeLeave();
-          
+          this.vm_slot.event &&
+          this.vm_slot.event.beforeLeave instanceof Function &&
+            this.vm_slot.event.beforeLeave()
+
           //前一个animationend导致提前触发
           this._freezeEvents()
-          setTimeout(()=>{
+          setTimeout(() => {
             this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
           }, 28)
         })
@@ -186,10 +187,10 @@
       _afterLeave () {
         this._animation('out', true)
 
-        this.vm_slot.event && 
-          this.vm_slot.event.afterLeave instanceof Function && 
-            this.vm_slot.event.afterLeave();
-        
+        this.vm_slot.event &&
+          this.vm_slot.event.afterLeave instanceof Function &&
+            this.vm_slot.event.afterLeave()
+
         requestAnimationFrame(() => {
           this._afterLeaveCallback instanceof Function &&
             this._afterLeaveCallback()
@@ -205,31 +206,32 @@
           'touchend', this._stopPropagation, true)
       },
 
-      _stopPropagation (e){
+      _stopPropagation (e) {
         e.stopPropagation()
         e.preventDefault()
       },
 
-      _animation (progressName, unset=false){// in/out
-        var animation = this.vm_slot._controller.config.animation,
-          value, $dom = this.getAnimateDom();
+      _animation (progressName, unset = false) {
+        var animation = this.vm_slot._controller.config.animation
+        var $dom = this.getAnimateDom()
+        var value
 
-        if(animation instanceof Object){
+        if (animation instanceof Object) {
           value = animation[progressName]
 
           //string,array被classname设置占用了,只剩下object用于扩展了
-          if(value instanceof String){
-            if(unset === false)
+          if (value instanceof String) {
+            if (unset === false)
               $dom.classList.add(value)
             else
               $dom.classList.remove(value)
-          }else if(value instanceof Array){
-            if(unset === false)
-              value.forEach( val => $dom.classList.add(val))
+          } else if (value instanceof Array) {
+            if (unset === false)
+              value.forEach(val => $dom.classList.add(val))
             else
-              value.forEach( val => $dom.classList.remove(val))
-          }else if(value instanceof Object){
-            if(value.effect === 'zoomFromDom')
+              value.forEach(val => $dom.classList.remove(val))
+          } else if (value instanceof Object) {
+            if (value.effect === 'zoomFromDom')
               this._triggerZoomFromDom(progressName, value, unset)
           }
         }
@@ -239,51 +241,51 @@
         value = null
       },
 
-      _triggerZoomFromDom (progress, value, unset){
+      _triggerZoomFromDom (progress, value, unset) {
         var $fromDom = value.fromDom || (this.e ? this.e.target : null),
           $slot = this.vm_slot.$el,
-          fromDomRect , slotRect,
+          fromDomRect, slotRect,
 
-          scaleAdjusted = 2/3 ,
-          scale, translateX, translateY,
-          fromDomCenterX, fromDomCenterY, 
-          slotCenterX, slotCenterY;
+          scaleAdjusted = 2 / 3,
+          translateX, translateY,
+          fromDomCenterX, fromDomCenterY,
+          slotCenterX, slotCenterY
 
-        if($fromDom && !unset){
+        if ($fromDom && !unset) {
           this._animationNoneReday = true
           $slot.style.opacity = 0
-          requestAnimationFrame(()=>{
+          requestAnimationFrame(() => {
             fromDomRect = $fromDom.getBoundingClientRect()
             slotRect = $slot.getBoundingClientRect()
 
-            if(value.offset !== undefined)
+            if (value.offset !== undefined)
               scaleAdjusted = value.offset
 
-            slotCenterX = slotRect.left + slotRect.width/2;
-            slotCenterY = slotRect.left + slotRect.width/2;
-            fromDomCenterX = fromDomRect.left + fromDomRect.width/2;
-            fromDomCenterY = fromDomRect.top + fromDomRect.height/2;
+            slotCenterX = slotRect.left + slotRect.width / 2
+            slotCenterY = slotRect.left + slotRect.width / 2
+            fromDomCenterX = fromDomRect.left + fromDomRect.width / 2
+            fromDomCenterY = fromDomRect.top + fromDomRect.height / 2
 
             //然后做动画偏移, 需要区分布局偏移
-            translateX = fromDomCenterX - slotCenterX;
-            translateY = fromDomCenterY - slotCenterY;
+            translateX = fromDomCenterX - slotCenterX
+            translateY = fromDomCenterY - slotCenterY
 
-            if(progress === 'in'){
-              this.$refs.slot.style.transitionDuration = '0ms';
+            if (progress === 'in') {
+              this.$refs.slot.style.transitionDuration = '0ms'
               $slot.style.opacity = 0
               //无论in或者out都是一样的
-              $slot.style.transform = 
-                `translate3d(${translateX*scaleAdjusted}px, ${translateY*scaleAdjusted}px,0) scale(${scaleAdjusted})`;
+              $slot.style.transform =
+                `translate3d(${translateX * scaleAdjusted}px, ${translateY * scaleAdjusted}px,0) scale(${scaleAdjusted})`
 
-              requestAnimationFrame(()=>{
+              requestAnimationFrame(() => {
                 $slot.style.transform = null
-                $slot.style.transitionDuration = null;
+                $slot.style.transitionDuration = null
                 this._animationNoneReday = null
                 $slot.style.opacity = null
               })
-            }else if(progress === 'out'){
-              $slot.style.transform = 
-                `translate3d(${translateX*scaleAdjusted}px, ${translateY*scaleAdjusted}px,0) scale(${scaleAdjusted})`;
+            } else if (progress === 'out') {
+              $slot.style.transform =
+                `translate3d(${translateX * scaleAdjusted}px, ${translateY * scaleAdjusted}px,0) scale(${scaleAdjusted})`
               $slot.style.opacity = 0
             }
           })

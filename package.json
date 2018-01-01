@@ -99,7 +99,6 @@
     "sinon-chai": "^2.8.0",
     "uppercamelcase": "^3.0.0",
     "url-loader": "^0.5.8",
-    "vue-eslint-parser": "^2.0.1",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.2",

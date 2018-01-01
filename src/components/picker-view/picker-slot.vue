@@ -3,7 +3,7 @@
     <div class="vc-picker-mask" ref="mask"></div>
     <div class="vc-picker-indicator" ref="indicator"></div>
     <div class="vc-picker-content" ref="listWrapper">
-      <div class="vc-picker-item" :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key, index) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
+      <div class="vc-picker-item" :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
     </div>
   </div>
   <div class="vc-picker-slot-divider" v-else v-html="content"></div>
@@ -63,14 +63,14 @@
 
       valueIndex () {
         var labelKey = this.labelKey
-        if(this.currentValue instanceof Object){
+        if (this.currentValue instanceof Object) {
           //写个顺序查找好了
-          for(var i = 0, len = this.mutatingValues.length; i < len ; i++){
-            if(this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
+          for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
+            if (this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
               return i
           }
           return -1
-        }else
+        } else
           return this.mutatingValues.indexOf(this.currentValue)
       }
     },
@@ -88,10 +88,10 @@
       Transform(wrapper, true)
 
       //初始化indicator的位置
-      $indicator.style.top = 
+      $indicator.style.top =
         (this.showItemHeight * this.showItemNum - 34) / 2 + 'px'
-      
-      $mask.style.backgroundSize = 
+
+      $mask.style.backgroundSize =
         '100% ' + (this.showItemHeight * (this.showItemNum - 1)) / 2 + 'px'
 
       this.doOnValueChange()
@@ -113,7 +113,7 @@
           wrapper.translateY = dragState.startTranslateY + deltaY
           dragState.currentPosifionY = event.clientY
           dragState.currentTranslateY = wrapper.translateY
-          dragState.velocityTranslate = 
+          dragState.velocityTranslate =
             dragState.currentTranslateY - dragState.prevTranslateY
           dragState.prevTranslateY = dragState.currentTranslateY
         },
@@ -125,13 +125,13 @@
           let distance = Math.abs(dragState.startTranslateY - currentTranslate)
 
           let rect, offset
-          if(distance < 6){
+          if (distance < 6) {
             rect = $indicator.getBoundingClientRect()
-            offset = Math.floor((event.clientY - rect.top)/this.showItemHeight) * this.showItemHeight
-            
-            if(offset > this.maxTranslateY )
+            offset = Math.floor((event.clientY - rect.top) / this.showItemHeight) * this.showItemHeight
+
+            if (offset > this.maxTranslateY)
               offset = this.maxTranslateY
-            
+
             dragState.velocityTranslate = 0
             currentTranslate -= offset
           }
@@ -187,31 +187,31 @@
         wrapper.translateY = this.value2translate(value)
       },
 
-      nearby (val, values){
-        var minOffset,  minIndex, offset
+      nearby (val, values) {
+        var minOffset, minIndex, offset
 
-        if(Array.isArray(values) === false) 
+        if (Array.isArray(values) === false)
           return undefined
-        
+
         minIndex = 0
-        if(typeof val === 'number'){
+        if (typeof val === 'number') {
           minOffset = Math.abs(values[0] - val)
 
-          values.forEach((value, i)=>{
+          values.forEach((value, i) => {
             offset = Math.abs(value - val)
-            if(offset < minOffset){
+            if (offset < minOffset) {
               minIndex = i
               minOffset = offset
             }
           })
           return values[minIndex]
-        }else if(val instanceof Object){
-          if(typeof val.value === 'number'){
+        } else if (val instanceof Object) {
+          if (typeof val.value === 'number') {
             minOffset = Math.abs(values[0].value - val.value)
 
-            values.forEach((value, i)=>{
+            values.forEach((value, i) => {
               offset = Math.abs(value.value - val.value)
-              if(offset < minOffset){
+              if (offset < minOffset) {
                 minIndex = i
                 minOffset = offset
               }

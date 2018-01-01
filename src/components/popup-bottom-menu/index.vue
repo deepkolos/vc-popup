@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'vc-popup-bottom-menu',
 
@@ -24,35 +23,35 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          if(!this._controller.config.animation)
-            $el.classList.add('inital');
-          requestAnimationFrame(function(){
-            if(!this._controller.config.animation){
-              $el.classList.remove('inital');
-              $el.classList.add('inAnimation');
+          if (!this._controller.config.animation)
+            $el.classList.add('inital')
+          requestAnimationFrame(function () {
+            if (!this._controller.config.animation) {
+              $el.classList.remove('inital')
+              $el.classList.add('inAnimation')
             }
 
-            this.onOpen instanceof Function && this.onOpen();
+            this.onOpen instanceof Function && this.onOpen()
           }.bind(this))
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          if(!this._controller.config.animation)
-            $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            if(!this._controller.config.animation)
-              $el.classList.remove('inAnimation');
+          if (!this._controller.config.animation)
+            $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            if (!this._controller.config.animation)
+              $el.classList.remove('inAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
-    },
+    }
   }
 </script>
 

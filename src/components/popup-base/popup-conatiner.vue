@@ -18,15 +18,14 @@
       },
 
       turnOn () {
-        return
-        this.$el.classList.add('on');
+        this.$el.classList.add('on')
       },
 
       turnOff () {
-        this.$el.classList.remove('on');
+        this.$el.classList.remove('on')
       }
     }
-  };
+  }
 </script>
 
 <style scoped lang="scss">

@@ -69,27 +69,27 @@
           {
             text: '加载上个月',
             color: '#bbb'
-          },{
+          }, {
             text: '加载上个月',
             color: '#bbb'
-          },{
+          }, {
             text: '正在刷新',
             color: ''
-          },{
+          }, {
             text: '~OK~',
             color: '#88b786'
-          },{
+          }, {
             text: '加载失败',
             color: ''
-          },{
+          }, {
             text: '~不给~',
             color: '#bbb'
           }
-        ],
+        ]
       }
     },
 
-    created (){
+    created () {
       var months = {},
         date = new Date(),
         i, tmpY, tmpM, tmpD; 
