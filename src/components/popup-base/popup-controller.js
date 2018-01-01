@@ -21,6 +21,12 @@ let RouterIdToPopUp = {}
 let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
+var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
+if(containerInBody.length !== 0){
+  containerInBody.forEach((item)=>{
+    document.body.removeChild(item)
+  })
+}
 document.body.appendChild(vmPopUpContainer.$el)
 Router.initialParam('popUp')
 

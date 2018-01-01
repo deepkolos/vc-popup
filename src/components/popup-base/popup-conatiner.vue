@@ -18,6 +18,7 @@
       },
 
       turnOn () {
+        return
         this.$el.classList.add('on');
       },
 
@@ -25,7 +26,7 @@
         this.$el.classList.remove('on');
       }
     }
-  }
+  };
 </script>
 
 <style scoped lang="scss">
@@ -43,13 +44,8 @@
   }
 </style>
 <style>
-body *:first-child{
-  position: relative;
-  z-index: 0;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
+  body > *:first-child{
+    position: relative;
+    z-index: 0;
+  }
 </style>
-
