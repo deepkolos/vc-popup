@@ -1,7 +1,7 @@
 <template>
   <div class="vc-picker-body" ref="body">
     <vc-picker-slot 
-      v-for="(slot, key, index) in slots" 
+      v-for="(slot, key) in slots" 
       :key="key" 
       :values="slot.values || []" 
       :labelKey="slot.labelKey" 
@@ -33,8 +33,8 @@
       showItemNum: {
         type: Number,
         default: 7,
-        validator (val){
-          return val % 2 !== 0 && val > 1;
+        validator (val) {
+          return val % 2 !== 0 && val > 1
         }
       },
       showItemHeight: {
@@ -78,14 +78,14 @@
         }
       })
 
-      this.defaultValues instanceof Array && 
+      this.defaultValues instanceof Array &&
         this.setValues(this.defaultValues)
-      
-      if(this.showItemNum > 7)
+
+      if (this.showItemNum > 7)
         this.showItemNum = 7
     },
 
-    mounted(){
+    mounted () {
       this.$refs.body.style.height = this.showItemHeight * this.showItemNum + 'px'
     },
 
@@ -127,7 +127,7 @@
           let slot = this.getSlot(index)
           if (slot) {
             slot.currentValue = value
-            if(taskQueue.length > 0)
+            if (taskQueue.length > 0)
               slot.$nextTick(taskQueue.shift())
           }
         })
@@ -148,8 +148,8 @@
           if (slot) {
             oldVal = slot.currentValue
             slot.mutatingValues = values
-            slot.$nextTick(()=>{
-              if(oldVal !== undefined && oldVal !== null)
+            slot.$nextTick(() => {
+              if (oldVal !== undefined && oldVal !== null)
                 slot.doOnValueChange(oldVal)
               oldVal = null
             })
@@ -169,8 +169,8 @@
 
         var taskQueue = []
         values.forEach((value, index) => {
-          if(index !== 0)
-            taskQueue.push(()=>{
+          if (index !== 0)
+            taskQueue.push(() => {
               this.setSlotValue(index, value, taskQueue)
             })
         })

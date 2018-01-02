@@ -31,45 +31,45 @@
     },
 
     methods: {
-      _check (val){
-        if(this.isPlaceholder)
+      _check (val) {
+        if (this.isPlaceholder)
           return ''
 
-        if(this.isDisable)
+        if (this.isDisable)
           return 'disabled'
 
-        if(this.isUnavailable)
+        if (this.isUnavailable)
           return 'unavailable'
 
         return val
       },
 
-      _checkDescription(val){
-        if(this.isPlaceholder || this.isUnavailable)
+      _checkDescription (val) {
+        if (this.isPlaceholder || this.isUnavailable)
           return ''
-        
-        if(this.isDisable)
+
+        if (this.isDisable)
           return 'disable'
 
-        if(val === 'selected-end-left' || val === 'selected-end')
+        if (val === 'selected-end-left' || val === 'selected-end')
           return '止'
-        if(val === 'selected-start-right' || val === 'selected-start')
+        if (val === 'selected-start-right' || val === 'selected-start')
           return '起'
-        if(val === 'selected-start-end')
+        if (val === 'selected-start-end')
           return '起/止'
-        
+
         return ''
       },
 
-      _checkDay (val){
-        if(this.isPlaceholder)
+      _checkDay (val) {
+        if (this.isPlaceholder)
           return ''
 
         return val
       },
 
-      _click(e){
-        if(this.isPlaceholder === false && this.isDisable === false && this.isUnavailable === false)
+      _click (e) {
+        if (this.isPlaceholder === false && this.isDisable === false && this.isUnavailable === false)
           e.carrier = {
             vm_day: this
           }

@@ -63,7 +63,7 @@
       },
       minDate: {
         type: Date,
-        default(){
+        default () {
           var now = new Date()
           now.setFullYear(now.getFullYear() - 10)
           return now
@@ -71,7 +71,7 @@
       },
       maxDate: {
         type: Date,
-        default(){
+        default () {
           var now = new Date()
           now.setFullYear(now.getFullYear() + 10)
           return now
@@ -96,7 +96,7 @@
       customUnits: Object
     },
 
-    data (){
+    data  () {
       return {
         slots: [],
         timeUnits: null,
@@ -107,25 +107,25 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.add('inital');
-          requestAnimationFrame(function(){
-            setTimeout(()=>{//给50ms来处理dom的一些设置
-              $el.classList.remove('inital');
-              $el.classList.add('inAnimation');
+          $el.classList.add('inital')
+          requestAnimationFrame(function () {
+            setTimeout(() => { //给50ms来处理dom的一些设置
+              $el.classList.remove('inital')
+              $el.classList.add('inAnimation')
 
-              this.onOpen instanceof Function && this.onOpen();
+              this.onOpen instanceof Function && this.onOpen()
             }, 50)
           }.bind(this))
         },
         beforeLeave: () => {
-          var $el = this.$el;
-          $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+          var $el = this.$el
+          $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            $el.classList.remove('inAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         }
       }
@@ -134,10 +134,10 @@
 
       var i, minYear, maxYear, slots = [], tmp, end, start,
         now = new Date(), unit = this.timeUnits,
-        slotsMeaning = this.slotsMeaning;
+        slotsMeaning = this.slotsMeaning
 
       //这里就是根据mode,生成slots
-      if(this.mode.indexOf('date') !== -1){
+      if (this.mode.indexOf('date') !== -1) {
         minYear = this.minDate.getFullYear()
         maxYear = this.maxDate.getFullYear()
         //年
@@ -146,15 +146,15 @@
           labelKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
-        for(i = minYear; i <= maxYear; i++)
+        for (i = minYear; i <= maxYear; i++)
           tmp.values.push({
-            text: this.showUnit? i + unit.Y : i,
+            text: this.showUnit ? i + unit.Y : i,
             value: i
           })
         slots.push(tmp)
         slotsMeaning.push('Y')
         //区分符 -
-        if(this.showDivider){
+        if (this.showDivider) {
           tmp = {
             divider: true,
             content: '-'
@@ -167,15 +167,15 @@
           labelKey: 'text',
           defaultIndex: now.getMonth()
         }
-        for(i = 1; i <= 12 ; i++)
+        for (i = 1; i <= 12; i++)
           tmp.values.push({
-            text: this.showUnit? fixZero(i)+unit.M : fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit.M : fixZero(i),
             value: i
           })
         slots.push(tmp)
         slotsMeaning.push('M')
         //区分符 -
-        if(this.showDivider){
+        if (this.showDivider) {
           tmp = {
             divider: true,
             content: '-'
@@ -188,30 +188,30 @@
           labelKey: 'text',
           defaultIndex: now.getFullYear() - minYear
         }
-        tmp.values = this._getMonthDays(now.getFullYear(), now.getMonth()+1)
+        tmp.values = this._getMonthDays(now.getFullYear(), now.getMonth() + 1)
         slots.push(tmp)
         slotsMeaning.push('D')
       }
 
-      if(this.mode.indexOf('time') !== -1){
+      if (this.mode.indexOf('time') !== -1) {
         //小时
-        end = this.use12Hours === true ? 12: 23
-        start = this.use12Hours === true ? 1: 0
+        end = this.use12Hours === true ? 12 : 23
+        start = this.use12Hours === true ? 1 : 0
         tmp = {
           values: [],
           labelKey: 'text',
           defaultIndex: 7
         }
-        for(i = start; i <= end; i++)
+        for (i = start; i <= end; i++)
           tmp.values.push({
-            text: this.showUnit? fixZero(i)+unit.h : fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit.h : fixZero(i),
             value: i
           })
         slots.push(tmp)
         slotsMeaning.push('h')
 
         //区分符 :
-        if(this.showDivider){
+        if (this.showDivider) {
           tmp = {
             divider: true,
             content: ':'
@@ -224,15 +224,15 @@
           labelKey: 'text',
           defaultIndex: 0
         }
-        for(i = 0; i <= 59 ; i++)
+        for (i = 0; i <= 59; i++)
           tmp.values.push({
-            text: this.showUnit? fixZero(i)+unit.m : fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit.m : fixZero(i),
             value: i
           })
         slots.push(tmp)
         slotsMeaning.push('m')
 
-        if(this.use12Hours === true){
+        if (this.use12Hours === true) {
           slots.push({
             values: [
               {
@@ -255,39 +255,39 @@
     },
 
     methods: {
-      _cancel (e){
+      _cancel (e) {
         this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
         this._controller.close()
       },
 
-      _confirm (e){
+      _confirm (e) {
         this.onConfirm instanceof Function && this.onConfirm(this.$refs.picker)
         this._controller.close()
       },
 
-      _onChange (picker, val){
-        if(this.mode === 'date' || this.mode === 'datetime'){
-          picker.setSlotValues(1, 
+      _onChange (picker, val) {
+        if (this.mode === 'date' || this.mode === 'datetime') {
+          picker.setSlotValues(1,
             this._getMonths(val[0].value))
-          
+
           val[0] && val[1] &&
-          picker.setSlotValues(2, 
+          picker.setSlotValues(2,
             this._getMonthDays(val[0].value, val[1].value))
         }
         this.onChange(picker, val)
       },
 
-      _parseVal (rawVal){
+      _parseVal (rawVal) {
         var val = {}, endFunc, tmp
 
-        this.slotsMeaning.forEach( (type, i) =>{
-          if(type === 'apm'){
+        this.slotsMeaning.forEach((type, i) => {
+          if (type === 'apm') {
             tmp = i
-            endFunc = ()=>{
-              if(rawVal[tmp].value === 'pm')
+            endFunc = () => {
+              if (rawVal[tmp].value === 'pm')
                 val.h += 12
             }
-          }else{
+          } else {
             val[type] = rawVal[i].value
           }
         })
@@ -295,20 +295,20 @@
         return val
       },
 
-      _setValue (parsedVal){
-        var rawVal = [], 
-          unit = this.timeUnits, 
-          showUnit = this.showUnit;
+      _setValue (parsedVal) {
+        var rawVal = [],
+          unit = this.timeUnits,
+          showUnit = this.showUnit
 
-        this.slotsMeaning.forEach( (type, i) => {
-          if(type === 'apm'){
+        this.slotsMeaning.forEach((type, i) => {
+          if (type === 'apm') {
             rawVal.push({
               text: unit[type],
               value: parsedVal.apm
             })
-          }else{
+          } else {
             rawVal.push({
-              text: showUnit? fixZero(parsedVal[type]) + unit[type] : fixZero(parsedVal[type]),
+              text: showUnit ? fixZero(parsedVal[type]) + unit[type] : fixZero(parsedVal[type]),
               value: parsedVal[type]
             })
           }
@@ -317,90 +317,90 @@
         return rawVal
       },
 
-      _getMonthDays (year, month){
+      _getMonthDays (year, month) {
         year = parseInt(year, 10)
         month = parseInt(month, 10)
 
         var i = 1, total = countDays(year, month),
-          days = [], unit = this.timeUnits.D;
+          days = [], unit = this.timeUnits.D
 
-        if(this.minDate.getFullYear() === year && this.minDate.getMonth()+1 === month){
+        if (this.minDate.getFullYear() === year && this.minDate.getMonth() + 1 === month) {
           i = this.minDate.getDate()
-        }else if(this.maxDate.getFullYear() === year && this.maxDate.getMonth()+1 === month){
+        } else if (this.maxDate.getFullYear() === year && this.maxDate.getMonth() + 1 === month) {
           total = this.maxDate.getDate()
         }
 
-        for(i; i <= total; i++){
+        for (i; i <= total; i++) {
           days.push({
-            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit : fixZero(i),
             value: i
           })
         }
         return days
       },
 
-      _getMonths (year){
+      _getMonths (year) {
         year = parseInt(year, 10)
 
         var i = 1, total = 12,
-          months = [], unit = this.timeUnits.M;
+          months = [], unit = this.timeUnits.M
 
-        if(this.minDate.getFullYear() === year){
-          i = this.minDate.getMonth()+1
-        }else if(this.maxDate.getFullYear() === year ){
-          total = this.maxDate.getMonth()+1
+        if (this.minDate.getFullYear() === year) {
+          i = this.minDate.getMonth() + 1
+        } else if (this.maxDate.getFullYear() === year) {
+          total = this.maxDate.getMonth() + 1
         }
 
-        for(i; i <= total; i++){
+        for (i; i <= total; i++) {
           months.push({
-            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit : fixZero(i),
             value: i
           })
         }
         return months
       },
 
-      _getHours (year, month, day){
+      _getHours (year, month, day) {
         year = parseInt(year, 10)
         month = parseInt(month, 10)
         day = parseInt(day, 10)
 
         var i = 1, total = 12,
-          months = [], unit = this.timeUnits.M;
+          months = [], unit = this.timeUnits.M
 
-        if(this.minDate.getFullYear() === year){
-          i = this.minDate.getMonth()+1
-        }else if(this.maxDate.getFullYear() === year ){
-          total = this.maxDate.getMonth()+1
+        if (this.minDate.getFullYear() === year) {
+          i = this.minDate.getMonth() + 1
+        } else if (this.maxDate.getFullYear() === year) {
+          total = this.maxDate.getMonth() + 1
         }
 
-        for(i; i <= total; i++){
+        for (i; i <= total; i++) {
           months.push({
-            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit : fixZero(i),
             value: i
           })
         }
         return months
       },
 
-      _getMinutes (year, month, day, hour){
+      _getMinutes (year, month, day, hour) {
         year = parseInt(year, 10)
         month = parseInt(month, 10)
         day = parseInt(day, 10)
         hour = parseInt(hour, 10)
 
         var i = 1, total = 12,
-          months = [], unit = this.timeUnits.M;
+          months = [], unit = this.timeUnits.M
 
-        if(this.minDate.getFullYear() === year){
-          i = this.minDate.getMonth()+1
-        }else if(this.maxDate.getFullYear() === year ){
-          total = this.maxDate.getMonth()+1
+        if (this.minDate.getFullYear() === year) {
+          i = this.minDate.getMonth() + 1
+        } else if (this.maxDate.getFullYear() === year) {
+          total = this.maxDate.getMonth() + 1
         }
 
-        for(i; i <= total; i++){
+        for (i; i <= total; i++) {
           months.push({
-            text: this.showUnit? fixZero(i)+unit: fixZero(i),
+            text: this.showUnit ? fixZero(i) + unit : fixZero(i),
             value: i
           })
         }

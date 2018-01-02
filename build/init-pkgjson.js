@@ -26,7 +26,7 @@ function _package(name){
 
 function initpkg(dirname){
   var path = _path('../packages/'+dirname);
-  if( !fs.existsSync(path) ){
+  if ( !fs.existsSync(path) ){
     fs.mkdirSync(path);
     fs.writeFileSync(path+'/package.json', _package(dirname));
   }
@@ -47,6 +47,6 @@ componentsDir.map((dirname) => {
 })
 
 componentsDir.map(dirname => {
-  if(dirname.indexOf('popup-') === 0)
+  if (dirname.indexOf('popup-') === 0)
     initpkg(dirname)
 });

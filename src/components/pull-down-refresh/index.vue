@@ -22,7 +22,7 @@
   export default {
     name: 'vc-pull-down-refresh',
 
-    created (){
+    created () {
       this.swipeConfig = {
         onSwipe: this._onSwipe,
         onSwipeDone: this._onSwipeDone
@@ -41,7 +41,7 @@
      * onLoad 用户一定交互之后会触发加载更多
      */
 
-    data (){
+    data () {
       return {
         status: 0,
         startY: null,
@@ -105,197 +105,203 @@
     },
 
     mounted () {
-      if(this.$parent)
-        this.$parent.$nextTick(()=>{
-          requestAnimationFrame(()=>{
-            this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px';
+      if (this.$parent)
+        this.$parent.$nextTick(() => {
+          requestAnimationFrame(() => {
+            this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px'
           })
         })
       else
-        requestAnimationFrame(()=>{
-          this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px';
+        requestAnimationFrame(() => {
+          this.$refs.panel.style.marginTop = -this.$refs.panel.clientHeight + 'px'
         })
-      
+
       Object.assign(this.messages, this.customMsg)
       this.$refs.wrapper.onscroll = throttle(this._scroll, this.throttleDelay)
     },
 
     methods: {
-      _onSwipe (info, preventDefault){
-        var $wrapper = this.$refs.wrapper;
-        
-        if(
-          $wrapper.scrollTop !== 0 || 
+      _onSwipe (info, preventDefault) {
+        var $wrapper = this.$refs.wrapper
+
+        if (
+          $wrapper.scrollTop !== 0 ||
           info.directionFour !== 'down'
-        ){
-          this.status = 0;
-          return;
+        ) {
+          this.status = 0
+          return
         };
 
-        if(this.status === 3) return ;
+        if (this.status === 3) return
 
         var $panel = this.$refs.panel,
           $content = this.$refs.content,
-          offset;
+          offset
 
-        if(this.status === 0){
-          this.startY = info.movingY;
-          this.status = 1;
-        }else {
-          offset = parseInt((info.movingY - this.startY) / 2);
+        if (this.status === 0) {
+          this.startY = info.movingY
+          this.status = 1
+        } else {
+          offset = parseInt((info.movingY - this.startY) / 2)
 
-          if(typeof this.maxDragOffset === 'number')
+          if (typeof this.maxDragOffset === 'number')
             offset = offset > this.maxDragOffset ? this.maxDragOffset : offset
-             
-          $panel.style.transform = `translateY(${offset}px)`;
-          $content.style.transform = `translateY(${offset}px)`;
 
-          if(this.noMoreTry === true){
+          $panel.style.transform = `translateY(${offset}px)`
+          $content.style.transform = `translateY(${offset}px)`
+
+          if (this.noMoreTry === true) {
             this._noMore(false)
-          }else{
-            if(offset > this.triggerOffset && this.status === 1)
-              this.status = 2;
+          } else {
+            if (offset > this.triggerOffset && this.status === 1)
+              this.status = 2
 
-            if(offset < this.triggerOffset && this.status === 2)
-              this.status = 1;
+            if (offset < this.triggerOffset && this.status === 2)
+              this.status = 1
           }
         }
         preventDefault()
       },
 
-      _onSwipeDone (){
+      _onSwipeDone () {
         var $panel = this.$refs.panel,
-          $content = this.$refs.content;
+          $content = this.$refs.content
 
-        requestAnimationFrame(()=>{
-          $panel.style.transitionDuration = null;
-          $content.style.transitionDuration = null;
+        requestAnimationFrame(() => {
+          $panel.style.transitionDuration = null
+          $content.style.transitionDuration = null
 
-          if(this.status === 1 || this.noMoreTry === true)
-            this.status = 0;
-          else if(this.status === 2)
-            this.status = 3;
-        });
+          if (this.status === 1 || this.noMoreTry === true)
+            this.status = 0
+          else if (this.status === 2)
+            this.status = 3
+        })
       },
 
-      _success(){
-        this._message(3);
-        setTimeout(() => this.status = 0, 720);
+      _success () {
+        this._message(3)
+        setTimeout(() => {
+          this.status = 0
+        }, 720)
       },
 
-       _error(){
-        this._message(4);
-        setTimeout(() => this.status = 0, 720);
+      _error () {
+        this._message(4)
+        setTimeout(() => {
+          this.status = 0
+        }, 720)
       },
 
-      _noMore(backInital = true){
-        this._message(5, false);
+      _noMore (backInital = true) {
+        this._message(5, false)
 
-        if(backInital)
-          setTimeout(() => this.status = 0, 720);
+        if (backInital)
+          setTimeout(() => {
+            this.status = 0
+          }, 720)
       },
 
-      _noMoreTry(){
+      _noMoreTry () {
         this.noMoreTry = true
       },
 
-      _noMoreScrollTry(){
+      _noMoreScrollTry () {
         this.noMoreScrollTry = true
         this.$refs.wrapper.onscroll = null
       },
 
-      _message(which, withAnimation=true){
+      _message (which, withAnimation = true) {
         var $message = this.$refs.message,
           $panel = this.$refs.panel,
           $active = this.$refs.icons.getElementsByClassName('active')[0],
-          msg = this.messages[which];
+          msg = this.messages[which]
 
         $panel.setAttribute('data-status', which)
-        $active && $active.classList.remove('active');
+        $active && $active.classList.remove('active')
 
-        if(typeof msg === 'object'){
+        if (typeof msg === 'object') {
           $message.innerText = msg.text
           $message.style.color = msg.color
-        }else if(typeof msg === 'string'){
+        } else if (typeof msg === 'string') {
           $message.innerText = msg
           $message.style.color = ''
         }
 
-        if(which === 2)
-          this.$refs.circle.classList.add('active');
-        else if(which === 0 || which === 1){
-          this.$refs.arrow.classList.add('active');
+        if (which === 2)
+          this.$refs.circle.classList.add('active')
+        else if (which === 0 || which === 1) {
+          this.$refs.arrow.classList.add('active')
 
-          if(which === 1){
-            this.$refs.arrow.classList.add('reverse');
-          }else
-            this.$refs.arrow.classList.remove('reverse');
-        }else{
-          ( which === 3 || which === 5) && 
-            this.$refs.done.classList.add('active');
-          which === 4 && 
-            this.$refs.error.classList.add('active');
+          if (which === 1) {
+            this.$refs.arrow.classList.add('reverse')
+          } else
+            this.$refs.arrow.classList.remove('reverse')
+        } else {
+          (which === 3 || which === 5) &&
+            this.$refs.done.classList.add('active')
+          which === 4 &&
+            this.$refs.error.classList.add('active')
 
-          if(withAnimation)
-          requestAnimationFrame(()=>{
-            $panel.style.opacity = 0;
-            $panel.style.transitionDuration = '0s';
-            requestAnimationFrame(()=>{
-              $panel.style.opacity = 1;
-              $panel.style.transitionDuration = null;
+          if (withAnimation)
+            requestAnimationFrame(() => {
+              $panel.style.opacity = 0
+              $panel.style.transitionDuration = '0s'
+              requestAnimationFrame(() => {
+                $panel.style.opacity = 1
+                $panel.style.transitionDuration = null
+              })
             })
-          });
         }
       },
 
       //下滑到一定程度自动加载更多
-      _scroll (e){
+      _scroll (e) {
         var $wrapper = this.$refs.wrapper,
-          {scrollTop, scrollHeight, clientHeight} = $wrapper;
-        
-        if(this.triggerScrollLoadOffset > (scrollHeight - clientHeight - scrollTop)){
-          this.$emit('onScrollLoad', this._noMoreScrollTry);
+          {scrollTop, scrollHeight, clientHeight} = $wrapper
+
+        if (this.triggerScrollLoadOffset > (scrollHeight - clientHeight - scrollTop)) {
+          this.$emit('onScrollLoad', this._noMoreScrollTry)
         }
       },
 
-      getScrollContainer(){
+      getScrollContainer () {
         return this.$refs.wrapper
-      },
+      }
     },
 
     watch: {
       status (val) {
         var $panel = this.$refs.panel,
-          $content = this.$refs.content;
+          $content = this.$refs.content
 
-        switch(val){
+        switch (val) {
           case 0:
-            $panel.style.transform = null;
-            $content.style.transform = null;
-            $panel.style.visibility = null;
-            $panel.style.willChange = null;
-            $content.style.willChange = null;
-          break;
+            $panel.style.transform = null
+            $content.style.transform = null
+            $panel.style.visibility = null
+            $panel.style.willChange = null
+            $content.style.willChange = null
+            break
           case 1:
-            $panel.style.willChange = 'all';
-            $content.style.willChange = 'all';
-            $panel.style.transitionDuration = '0ms';
-            $content.style.transitionDuration = '0ms';
-            $panel.style.visibility = 'visible';
-            if(this.noMoreTry === false)
-              this._message(0);
-          break;
+            $panel.style.willChange = 'all'
+            $content.style.willChange = 'all'
+            $panel.style.transitionDuration = '0ms'
+            $content.style.transitionDuration = '0ms'
+            $panel.style.visibility = 'visible'
+            if (this.noMoreTry === false)
+              this._message(0)
+            break
           case 2:
-            this._message(1);
-          break;
+            this._message(1)
+            break
           case 3:
-            this._message(2);
+            this._message(2)
 
-            $panel.style.transform = `translateY(50.4px)`;
-            $content.style.transform = `translateY(50.4px)`;
+            $panel.style.transform = `translateY(50.4px)`
+            $content.style.transform = `translateY(50.4px)`
 
-            this.$emit('onLoad', this._success, this._error, this._noMore, this._noMoreTry);
-          break;
+            this.$emit('onLoad', this._success, this._error, this._noMore, this._noMoreTry)
+            break
         }
       }
     },

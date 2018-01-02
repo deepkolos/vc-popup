@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import { once, addClass, removeClass } from '../../utils/dom.js'
+  import { once } from '../../utils/dom.js'
   import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
@@ -37,11 +37,11 @@
         swipeStartOffset: null,
         activatedClass: 'is-active',
         swipeStartTime: null
-      };
+      }
       this.swipeConfig = {
         onSwipe: this.onSwipe,
         onSwipeDone: this.onSwipeDone
-      };
+      }
     },
 
     data () {
@@ -145,7 +145,7 @@
         this.reSize();
       },
 
-      reSize (){
+      reSize () {
         var $pageContainer = this.dom.$pageContainer,
             $swiper =  this.$el.children[0],
             $pages = this.dom.$pages,
@@ -171,7 +171,7 @@
             $page.style.marginRight = gap + 'px';
           });
 
-          if(continuous){
+          if (continuous){
             $swiper.classList.add('loop');
             Array.prototype.forEach.call($pages, function ($page ,i) {
               $page.currentPosition = i * itemWidth ;
@@ -190,22 +190,22 @@
           $pages = this.dom.$pages,
           self = this;
 
-        if(page === 'next')
+        if (page === 'next')
           page = this.index + 1;
-        else if(page === 'prev')
+        else if (page === 'prev')
           page = this.index - 1;
 
         if (!this.continuous) {
-          if(page > $pages.length-1 || page < 0 ) return;
+          if (page > $pages.length-1 || page < 0 ) return;
         } else {
-          if(page > $pages.length-1) page = 0;
-          if(page < 0) page = $pages.length-1;
+          if (page > $pages.length-1) page = 0;
+          if (page < 0) page = $pages.length-1;
         }
 
         this.index = page;
         this.status.swipeStartOffset = page * this.dom.actualSwipeValue;
 
-        if(immediately)
+        if (immediately)
           self.noAnimate(fromPage, page);
         else
           self.animate(fromPage, page);
@@ -224,7 +224,7 @@
         this.timer = null
       },
 
-      setTimer (){
+      setTimer () {
         if (this.auto > 0) {
           this.timer = setInterval(() => {
             if (!this.continuous && (this.index >= this.dom.$pages.length - 1)) {
@@ -345,18 +345,18 @@
         } else
           needPass = true;
         
-        if(continuous){
-          if(i_to < 0){
+        if (continuous){
+          if (i_to < 0){
             i_to = $pages.length-1;
             self.status.edgeLocker++;
-          }else if (i_to > $pages.length - 1){
+          } else if (i_to > $pages.length - 1){
             i_to = 0;
             self.status.edgeLocker++;
           }
-        }else if (i_to < 0 || i_to > $pages.length - 1)
+        } else if (i_to < 0 || i_to > $pages.length - 1)
           i_to = i_from;
 
-        if(i_to === i_from)
+        if (i_to === i_from)
           this.animate(i_from, i_to);
         else
           this.animate(i_from, i_to, info);
@@ -394,13 +394,13 @@
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
-          if(!continuous){
+          if (!continuous){
             $pageContainer.classList.remove('noneAnimation');
             $pageContainer.style['transform'] = 
               'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
             $pageContainer.style.webkitTransition = 
               `-webkit-transform ${speed}ms ease`;
-          }else{
+          } else {
             var _loop = function(reset){
               if (!reset) $pageContainer.classList.remove('subNoneAnimation');
 
@@ -413,17 +413,17 @@
                 $li.style.webkitTransition = 
                   `-webkit-transform ${speed}ms ease`;
 
-                if(i == i_to || i == i_from)
+                if (i == i_to || i == i_from)
                   $li.classList.remove('noneAnimation');
               });
 
               //如果是确认到达边缘修把另一头挪过来,这里重构一下
               function switchTo(where){
                 var i, currentPosition;
-                if(where === 'tial'){
+                if (where === 'tial'){
                   i = $pages.length - 1;
                   currentPosition = (-1 - self.index) * actualSwipeValue;
-                }else if(where === 'head'){
+                } else if (where === 'head'){
                   i = 0;
                   currentPosition = ($pages.length - self.index) * actualSwipeValue;
                 }
@@ -431,7 +431,7 @@
                 $pages[i].classList.add('noneAnimation');
                 $pages[i].currentPosition = currentPosition;
                 $pages[i].style.transform = 'translate3d(' + $pages[i].currentPosition + 'px,0,0)';
-                requestAnimationFrame(function(){
+                requestAnimationFrame(function () {
                   $pages[i].classList.remove('noneAnimation');
                 });
               }
@@ -505,12 +505,12 @@
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         
-        if(!continuous){
+        if (!continuous){
           $pageContainer.style['transform'] = 
             'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
           $pageContainer.style.webkitTransition = 
             `-webkit-transform 0ms ease`;
-        }else{
+        } else {
           Array.prototype.forEach.call($pages, function ($li,i) {
             $li.currentPosition = 
               ($li.index - self.index) * actualSwipeValue;
@@ -527,7 +527,7 @@
       handleOverflow (info){
         var type = this.overflow;
 
-        if(type === 'backDrag')
+        if (type === 'backDrag')
           this.overflowBackDrag(info);
 
         return true;
@@ -552,9 +552,9 @@
       updateIndex (val, oVal){
         var max = this.dom.$pages.length - 1;
 
-        if( val >= 0 && val <= max ){
-          if(oVal < 0) oVal = max;
-          if(oVal > max) oVal = 0;
+        if ( val >= 0 && val <= max ){
+          if (oVal < 0) oVal = max;
+          if (oVal > max) oVal = 0;
 
           this.dom.$pages[val].classList.add(this.status.activatedClass);
           this.dom.$pages[oVal].classList.remove(this.status.activatedClass);
@@ -592,7 +592,7 @@
           swipeTime = Date.now() - this.status.swipeStartTime,
           avgSwipeSpeed , offsetToAnimate , swipeOffset, speedOfAnimate, _speed;
 
-        if(info){
+        if (info){
           swipeOffset = Math.abs(info.offset);
           avgSwipeSpeed = swipeOffset / swipeTime;
           offsetToAnimate = this.dom.itemWidth - swipeOffset;
@@ -600,10 +600,10 @@
           
           _speed = offsetToAnimate / (swipeOffset / swipeTime) * 1.2;
 
-          if(_speed > 1.6 * speed)
+          if (_speed > 1.6 * speed)
             _speed = 1.6 * speed;
 
-          if(_speed < 0.5 * speed)
+          if (_speed < 0.5 * speed)
             _speed = 0.5 * speed;
           speed = _speed;
         }

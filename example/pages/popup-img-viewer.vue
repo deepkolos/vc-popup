@@ -26,36 +26,35 @@
 
   export default {
 
-    created (){
+    created () {
       this.logo = logo
       this.sample = sample
     },
 
     mounted () {
-      var imgs = this.$el.getElementsByTagName('img');
+      var imgs = this.$el.getElementsByTagName('img')
 
       this.imgViwer = new this.$popup.ImgViewer({
         propsData: {
           imgs: imgs
         }
-      });
+      })
 
       //添加事件
       Array.prototype.forEach.call(imgs, $img => {
-        $img.addEventListener('click', e =>{
+        $img.addEventListener('click', e => {
           e.stopPropagation()
           //没办法了,现在想到只能这样来处理重复点击,就是并非内置
           this.imgViwer.open(e)
         })
       })
 
-      setTimeout(()=>{
-        this.$refs.imgTarget.addEventListener('load', (e)=>{
-          console.log(e);
-        });
-        this.$refs.imgTarget.setAttribute('src', sample);
-
-      }, 1000);
+      setTimeout(() => {
+        this.$refs.imgTarget.addEventListener('load', (e) => {
+          console.log(e)
+        })
+        this.$refs.imgTarget.setAttribute('src', sample)
+      }, 1000)
     },
 
     methods: {

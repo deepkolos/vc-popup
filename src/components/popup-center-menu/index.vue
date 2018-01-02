@@ -32,50 +32,48 @@
       this.event = {
         beforeEnter: () => {
           var $el = this.$refs.menu,
-            vm_tile = this.$refs.tile,
-            $content = vm_tile.$refs.content,
-            deg = vm_tile.maxDeg * 1.2;
-          
+            vmTile = this.$refs.tile,
+            $content = vmTile.$refs.content
+
           this._controller.vm_popUp.setAnimateDom($content)
-          
-          $el.classList.add('inital');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
+
+          $el.classList.add('inital')
+          requestAnimationFrame(function () {
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
           })
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$refs.menu,
-            vm_tile = this.$refs.tile,
-            $content = vm_tile.$refs.content,
-            deg = vm_tile.maxDeg * 1.15;
-          
+          var vmTile = this.$refs.tile,
+            $content = vmTile.$refs.content,
+            deg = vmTile.maxDeg * 1.15
+
           this._controller.vm_popUp.setAnimateDom($content)
-          vm_tile.orientationY = vm_tile.orientationY === undefined ? 1 : vm_tile.orientationY;
-          vm_tile.orientationX = vm_tile.orientationX === undefined ? 0 : vm_tile.orientationX;
-          
+          vmTile.orientationY = vmTile.orientationY === undefined ? 1 : vmTile.orientationY
+          vmTile.orientationX = vmTile.orientationX === undefined ? 0 : vmTile.orientationX
+
           // $el.classList.add('outAnimation')
-          requestAnimationFrame(function(){
+          requestAnimationFrame(function () {
             // $el.classList.remove('inAnimation')
-            $content.style.transitionDuration = '280ms';
-            $content.style.transform = 
-              `rotateX(${vm_tile.orientationY * deg}deg) rotateY(${vm_tile.orientationX * deg}deg) translateZ(-100px)`
+            $content.style.transitionDuration = '280ms'
+            $content.style.transform =
+              `rotateX(${vmTile.orientationY * deg}deg) rotateY(${vmTile.orientationX * deg}deg) translateZ(-100px)`
             $content.style.opacity = 0
           })
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
     },
-    
-    methods: {
-      _checkCloseTrigger (){
-        setTimeout(()=>{
-          var status = this._controller.vm_popUp.status,
-            vm_tile = this.$refs.tile;
 
-          if(status === 'on')
-            vm_tile.unsetPressEffect()
+    methods: {
+      _checkCloseTrigger () {
+        setTimeout(() => {
+          var status = this._controller.vm_popUp.status,
+            vmTile = this.$refs.tile
+
+          if (status === 'on')
+            vmTile.unsetPressEffect()
         }, 30)
       }
     }

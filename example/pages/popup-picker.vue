@@ -27,7 +27,6 @@
 </template>
 
 <script>
-  import { once } from '../../src/utils/dom.js'
   import chinaAreaData from 'china-area-data'
 
   let provinces = Object.values(chinaAreaData[86])
@@ -197,21 +196,21 @@
           }
         })
       },
-      timePickerClick(e){
+      timePickerClick (e) {
         this.timePicker.open(e, {
           propsData: {
             defaultValues: this.time
           }
         })
       },
-      datePickerClick (e){
+      datePickerClick (e) {
         this.datePicker.open(e, {
           propsData: {
             defaultValues: this.date
           }
         })
       },
-      datetimePickerClick (showDivider, showUnit){
+      datetimePickerClick (showDivider, showUnit) {
         this.datetimePicker.open(null, {
           propsData: {
             use12Hours: false,
@@ -220,7 +219,7 @@
           }
         })
       },
-      time24PickerClick(showDivider){
+      time24PickerClick (showDivider) {
         this.timePicker.open(null, {
           propsData: {
             use12Hours: false,
@@ -229,12 +228,12 @@
           }
         })
       },
-      datetimePickerLimitClick(){
+      datetimePickerLimitClick () {
         this.datetimePicker.open(null, {
           propsData: {
             use12Hours: false,
-            minDate: new Date(2015,10,7,5,20),
-            maxDate: new Date(2018,10,7,5,20),
+            minDate: new Date(2015, 10, 7, 5, 20),
+            maxDate: new Date(2018, 10, 7, 5, 20)
           }
         })
       },
@@ -260,32 +259,32 @@
         picker.setSlotValues(2, getAreas(value[0], value[1]))
       },
 
-      confirmTimePicker (picker){
+      confirmTimePicker (picker) {
         this.time = picker.getValues()
       },
-      confirmTime24Picker (picker){
+      confirmTime24Picker (picker) {
         this.time24 = picker.getValues()
       },
 
-      onTimePickerChange (picker, value){
+      onTimePickerChange (picker, value) {
         console.log(value)
       },
 
-      confirmDatePicker (picker){
+      confirmDatePicker (picker) {
         this.date = picker.getValues()
       },
 
-      onDatePickerChange (picker, val){
+      onDatePickerChange (picker, val) {
         console.log(val)
       },
 
-      confirmDatetimePicker (picker){
+      confirmDatetimePicker (picker) {
         this.datetime = picker.getValues()
       },
 
-      onDatetimePickerChange (picker, val){
+      onDatetimePickerChange (picker, val) {
         console.log(val)
-      },
+      }
     },
 
     filters: {
@@ -297,11 +296,11 @@
         }
       },
 
-      dateValueFilter (val){
+      dateValueFilter (val) {
         var values = []
         if (Array.isArray(val)) {
-          val.forEach((obj)=>{
-            if(obj.text)
+          val.forEach((obj) => {
+            if (obj.text)
               values.push(obj.text)
             else
               values.push(obj)

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'vc-popup-press-menu',
 
@@ -24,29 +23,29 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.add('inital');
-          requestAnimationFrame(()=>{
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
+          $el.classList.add('inital')
+          requestAnimationFrame(() => {
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
 
-            this.onOpen instanceof Function && this.onOpen();
+            this.onOpen instanceof Function && this.onOpen()
           })
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$el;
-          $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+          var $el = this.$el
+          $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            $el.classList.remove('inAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
-    },
+    }
   }
 </script>
 

@@ -93,33 +93,33 @@
           items: [
             {
               name: '这里的popUp系列支持返回键',
-              click: () => {console.log('btn0 clicked');}
-            },{
+              click: () => { console.log('btn0 clicked') }
+            }, {
               name: '分享二维码',
-              click: () => {console.log('btn1 clicked');}
+              click: () => { console.log('btn1 clicked') }
             },
             {
               name: '换个样式',
-              click: () => {alert('老了~')}
+              click: () => { alert('老了~') }
             },
             {
               name: '保存到手机',
-              click: () => {this.bottomMenu2.open()}
+              click: () => { this.bottomMenu2.open() }
             },
             {
               name: '扫描二维码',
-              click: () => {this.bottomMenu2.open()}
+              click: () => { this.bottomMenu2.open() }
             }
           ],
 
-          onOpen: function(){
-            this.$refs.page.style.filter = 'blur(5px)';
+          onOpen: function () {
+            this.$refs.page.style.filter = 'blur(5px)'
           }.bind(this),
 
-          onClose: function(){
-            this.$refs.page.style.filter = null;
-            once(this.$refs.page, 'transitionend', function(){
-            }.bind(this))
+          onClose: function () {
+            this.$refs.page.style.filter = null
+            once(this.$refs.page, 'transitionend', function () {
+            })
           }.bind(this)
         }
       })
@@ -130,15 +130,15 @@
             {
               name: '样式一',
               click: () => {
-                console.log('btn2 clicked');
-                this.bottomMenu2.close();
+                console.log('btn2 clicked')
+                this.bottomMenu2.close()
               }
             },
             {
               name: '样式二',
               click: () => {
-                console.log('btn3 clicked');
-                this.bottomMenu2.close();
+                console.log('btn3 clicked')
+                this.bottomMenu2.close()
               }
             }
           ]
@@ -151,21 +151,21 @@
             {
               name: '分享二维码',
               click: () => {
-                console.log('btn0 clicked');
+                console.log('btn0 clicked')
                 this.centerMenu.close()
               }
             },
             {
               name: '换个样式',
-              click: () => {this.centerMenu2.open()}
+              click: () => { this.centerMenu2.open() }
             },
             {
               name: '保存到手机',
-              click: () => {this.centerMenu2.open()}
+              click: () => { this.centerMenu2.open() }
             },
             {
               name: '扫描二维码',
-              click: () => {this.centerMenu2.open()}
+              click: () => { this.centerMenu2.open() }
             }
           ]
         }
@@ -177,15 +177,15 @@
             {
               name: '样式一',
               click: () => {
-                console.log('btn2 clicked');
-                this.centerMenu2.close();
+                console.log('btn2 clicked')
+                this.centerMenu2.close()
               }
             },
             {
               name: '样式二',
               click: () => {
-                console.log('btn3 clicked');
-                this.centerMenu2.close();
+                console.log('btn3 clicked')
+                this.centerMenu2.close()
               }
             }
           ]
@@ -197,19 +197,19 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.pressMenu2.open(e)}
+              click: (e) => this.pressMenu2.open(e)
             },
             {
               name: '保存到手机',
-              click: (e) => {this.pressMenu2.open(e)}
+              click: (e) => this.pressMenu2.open(e)
             },
             {
               name: '扫描二维码',
-              click: (e) => {this.pressMenu2.open(e)}
+              click: (e) => this.pressMenu2.open(e)
             }
           ]
         }
@@ -221,15 +221,15 @@
             {
               name: '样式一',
               click: () => {
-                console.log('btn2 clicked');
-                this.pressMenu2.close();
+                console.log('btn2 clicked')
+                this.pressMenu2.close()
               }
             },
             {
               name: '样式二',
               click: () => {
-                console.log('btn3 clicked');
-                this.pressMenu2.close();
+                console.log('btn3 clicked')
+                this.pressMenu2.close()
               }
             }
           ]
@@ -241,19 +241,19 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.byAnimation2.open(e)}
+              click: (e) => this.byAnimation2.open(e)
             },
             {
               name: '保存到手机',
-              click: (e) => {this.byAnimation2.open(e)}
+              click: (e) => this.byAnimation2.open(e)
             },
             {
               name: '扫描二维码',
-              click: (e) => {this.byAnimation2.open(e)}
+              click: (e) => this.byAnimation2.open(e)
             }
           ]
         }
@@ -265,15 +265,15 @@
             {
               name: '样式一',
               click: () => {
-                console.log('btn2 clicked');
-                this.byAnimation2.close();
+                console.log('btn2 clicked')
+                this.byAnimation2.close()
               }
             },
             {
               name: '样式二',
               click: () => {
-                console.log('btn3 clicked');
-                this.byAnimation2.close();
+                console.log('btn3 clicked')
+                this.byAnimation2.close()
               }
             }
           ]
@@ -288,11 +288,11 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.pressMenu.open(e)}
+              click: (e) => this.pressMenu.open(e)
             }
           ]
         }
@@ -306,11 +306,11 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.pressMenu.open(e)}
+              click: (e) => this.pressMenu.open(e)
             }
           ]
         }
@@ -324,11 +324,11 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.pressMenu.open(e)}
+              click: (e) => this.pressMenu.open(e)
             }
           ]
         }
@@ -342,11 +342,11 @@
           items: [
             {
               name: '分享二维码',
-              click: () => {console.log('btn0 clicked');}
+              click: () => console.log('btn0 clicked')
             },
             {
               name: '换个样式',
-              click: (e) => {this.pressMenu.open(e)}
+              click: (e) => this.pressMenu.open(e)
             }
           ]
         }
@@ -360,15 +360,15 @@
           items: [
             {
               name: '扫描',
-              click: e => {console.log('btn0 clicked');},
+              click: e => console.log('btn0 clicked'),
               src: 'https://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
-            },{
+            }, {
               name: '二维码',
-              click: e => {this.Popover.close(e)},
+              click: e => this.Popover.close(e),
               src: 'https://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
-            },{
+            }, {
               name: '帮助',
-              click: e => {this.Popover.close(e)},
+              click: e => this.Popover.close(e),
               src: 'https://gw.alipayobjects.com/zos/rmsportal/uQIYTFeRrjPELImDRrPt.svg'
             }
           ]
@@ -413,7 +413,7 @@
       },
 
       click15 (e) {
-        this.centerMenu.open(e,{
+        this.centerMenu.open(e, {
           positionType: 'absolute',
           position: 'center'
         })
@@ -454,20 +454,20 @@
         })
       },
 
-      click16 (e){
+      click16 (e) {
         this.Popover.open(e, {
 
         })
       },
 
-      click17 (e){
+      click17 (e) {
         this.Popover.open(e, {
           refDom: this.$refs.btn17,
           positionType: 'absolute'
         })
       },
 
-      clickDomRefDemo (top, left, above, after){
+      clickDomRefDemo (top, left, above, after) {
         this.pressMenu2.open(null, {
           autoSetOrthocenter: true,
           position: 'domRelative',
@@ -475,11 +475,11 @@
           refCorner: `${top} ${left}`,
           relativeToCorner: `${above} ${after}`,
           propsData: {
-            items:[
+            items: [
               {
                 name: '',
                 click: () => {
-                  this.pressMenu2.close();
+                  this.pressMenu2.close()
                 }
               }
             ]

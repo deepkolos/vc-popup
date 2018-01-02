@@ -20,11 +20,6 @@
 <script>
   import VcPickerView from '../picker-view'
 
-  const fixZero = function (val){
-    if(val < 10) val = '0'+val
-    return val
-  }
-
   export default {
     name: 'vc-picker',
 
@@ -45,7 +40,7 @@
         default: '取消'
       },
       onConfirm: Function,
-      onCancel: Function,
+      onCancel: Function
     },
 
     components: {
@@ -55,37 +50,37 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.add('inital');
-          requestAnimationFrame(function(){
-            setTimeout(()=>{//给50ms来处理dom的一些设置
-              $el.classList.remove('inital');
-              $el.classList.add('inAnimation');
+          $el.classList.add('inital')
+          requestAnimationFrame(function () {
+            setTimeout(() => { //给50ms来处理dom的一些设置
+              $el.classList.remove('inital')
+              $el.classList.add('inAnimation')
 
-              this.onOpen instanceof Function && this.onOpen();
+              this.onOpen instanceof Function && this.onOpen()
             }, 50)
           }.bind(this))
         },
         beforeLeave: () => {
-          var $el = this.$el;
-          $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+          var $el = this.$el
+          $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            $el.classList.remove('inAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         }
       }
     },
 
     methods: {
-      _cancel (e){
+      _cancel (e) {
         this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
         this._controller.close()
       },
 
-      _confirm (e){
+      _confirm (e) {
         this.onConfirm instanceof Function && this.onConfirm(this.$refs.picker)
         this._controller.close()
       }

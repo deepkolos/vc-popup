@@ -9,10 +9,9 @@
 </template>
 
 <script>
-
   export default {
 
-    created (){
+    created () {
       this.dialog = new this.$popup.Dialog({
         propsData: {
           message: '憔悴..'

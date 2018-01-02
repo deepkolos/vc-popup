@@ -18,7 +18,7 @@
 
   export default {
     name: 'vc-month',
-    
+
     components: {
       VcDayRow
     },
@@ -35,7 +35,7 @@
       dayRules: Object
     },
 
-    data (){
+    data () {
       return {
         dayRows: []
       }
@@ -44,31 +44,31 @@
     created () {
       var days = countDays(this.year, this.month),
         startPlaceholders, endPlaceholders, rows,
-        i, j, i_day = 0, dayRows;
+        i, j, iDay = 0, dayRows
 
-      startPlaceholders = +new Date( this.year, this.month-1 ).getDay()
-      rows = Math.ceil( (days + startPlaceholders) / 7 )
-      endPlaceholders = rows*7 - days - startPlaceholders
+      startPlaceholders = +new Date(this.year, this.month - 1).getDay()
+      rows = Math.ceil((days + startPlaceholders) / 7)
+      endPlaceholders = rows * 7 - days - startPlaceholders
 
       //生成dayRows
       dayRows = []
-      for(i = 0 ; i < rows; i ++){
+      for (i = 0; i < rows; i++) {
         var dayRow = []
 
-        for(j = 0; j < 7; j++){
-          if( 
-            (i === 0 && j < startPlaceholders) || 
-            (i === rows-1 && j >= 7-endPlaceholders)
-          ){
+        for (j = 0; j < 7; j++) {
+          if (
+            (i === 0 && j < startPlaceholders) ||
+            (i === rows - 1 && j >= 7 - endPlaceholders)
+          ) {
             dayRow.push({
               isPlaceholder: true
             })
-          }else{
-            i_day++
+          } else {
+            iDay++
             dayRow.push(Object.assign({
-              day: i_day,
+              day: iDay,
               status: ''
-            }, this.dayRules ? this.dayRules[i_day] : {}))
+            }, this.dayRules ? this.dayRules[iDay] : {}))
           }
         }
         dayRows.push(dayRow)
@@ -82,7 +82,7 @@
 
     methods: {
       _click (e) {
-        if(e.carrier)
+        if (e.carrier)
           e.carrier.vm_month = this
       },
 
@@ -98,56 +98,56 @@
         return this.$refs.$rows[row].getVmDay(offset)
       },
 
-      getDayOffset (day){
+      getDayOffset (day) {
         var row, offset
-        row = Math.ceil( (this.startPlaceholders + day) / 7)
+        row = Math.ceil((this.startPlaceholders + day) / 7)
         offset = (this.startPlaceholders + day) % 7
-        if(offset === 0) offset = 7
+        if (offset === 0) offset = 7
 
-        return [row-1, offset-1]
+        return [row - 1, offset - 1]
       },
 
-      setRange (start, end){
+      setRange (start, end) {
         //在分发到row里面咯~
         //算出所涉及的row,然后继续分发
-        var startInThis = 
-          start.year === this.year && start.month === this.month;
-        var endInThis = 
-          end.year === this.year && end.month === this.month;
+        var startInThis =
+          start.year === this.year && start.month === this.month
+        var endInThis =
+          end.year === this.year && end.month === this.month
 
-        var endOffset = 0, startOffset, 
+        var endOffset = 0, startOffset,
           rowsInvoled = [],
-          vm_rows = this.$refs.$rows,
-          i, j, disableDaySelected, hasStartOrEnd;
+          vmRows = this.$refs.$rows,
+          i, j, disableDaySelected, hasStartOrEnd
 
         //生成所涉及的行
-        if(startInThis && endInThis){
+        if (startInThis && endInThis) {
           //开始结束都在这个月
           startOffset = this.getDayOffset(start.day)
           endOffset = this.getDayOffset(end.day)
           hasStartOrEnd = 'both'
-        }else if(startInThis){
+        } else if (startInThis) {
           //开始在这个月,结束不再
           startOffset = this.getDayOffset(start.day)
-          endOffset = [vm_rows.length-1, 6]
+          endOffset = [vmRows.length - 1, 6]
           hasStartOrEnd = 'start'
-        }else if(endInThis){
+        } else if (endInThis) {
           //结束在这个月,开始不在
           startOffset = [0, 0]
           endOffset = this.getDayOffset(end.day)
           hasStartOrEnd = 'end'
-        }else{
+        } else {
           //这个月全选
           startOffset = [0, 0]
-          endOffset = [vm_rows.length-1, 6]
+          endOffset = [vmRows.length - 1, 6]
           hasStartOrEnd = undefined
         }
 
-        for(var i = startOffset[0]; i <= endOffset[0]; i++ ){
+        for (i = startOffset[0]; i <= endOffset[0]; i++) {
           rowsInvoled.push({
             row: this.dayRows[i],
-            vm_row: vm_rows[i],
-            rowsLen: vm_rows.length,
+            vm_row: vmRows[i],
+            rowsLen: vmRows.length,
             whichRow: i,
             hasStartOrEnd: hasStartOrEnd,
             startPlaceholders: this.startPlaceholders,
@@ -163,28 +163,28 @@
         //我是需要检查这个dayRules
         disableDaySelected = []
         //检查第一行
-        if(startOffset[0] === endOffset[0]){
+        if (startOffset[0] === endOffset[0]) {
           //同一行
-          for(j = startOffset[1]; j <= endOffset[1]; j++){
-            if(this.dayRows[startOffset[0]][j].isDisable)
+          for (j = startOffset[1]; j <= endOffset[1]; j++) {
+            if (this.dayRows[startOffset[0]][j].isDisable)
               disableDaySelected.push(this.dayRows[i][j])
           }
-        }else{
+        } else {
           //检查第一行开始到末尾
-          for(j = startOffset[1]; j <= 6; j++){
-            if(this.dayRows[startOffset[0]][j].isDisable)
+          for (j = startOffset[1]; j <= 6; j++) {
+            if (this.dayRows[startOffset[0]][j].isDisable)
               disableDaySelected.push(this.dayRows[startOffset[0]][j])
           }
           //检查最后一行开始到末尾
-          for(j = 0; j <= endOffset[1]; j++){
-            if(this.dayRows[endOffset[0]][j].isDisable)
+          for (j = 0; j <= endOffset[1]; j++) {
+            if (this.dayRows[endOffset[0]][j].isDisable)
               disableDaySelected.push(this.dayRows[endOffset[0]][j])
           }
         }
-        
-        for(i = startOffset[0] + 1; i <= endOffset[0] - 1; i++){
-          for(j = 0; j < 7; j++){
-            if(this.dayRows[i][j].isDisable)
+
+        for (i = startOffset[0] + 1; i <= endOffset[0] - 1; i++) {
+          for (j = 0; j < 7; j++) {
+            if (this.dayRows[i][j].isDisable)
               disableDaySelected.push(this.dayRows[i][j])
           }
         }
@@ -193,16 +193,16 @@
           hashDisableDay: disableDaySelected.length !== 0,
           disableDaySelected: disableDaySelected,
           commit: () => {
-            rowsInvoled.forEach( config => {
+            rowsInvoled.forEach(config => {
               config.vm_row.setRange(config)
             })
           }
         }
       },
 
-      clearSelection (){
-        this.dayRows.forEach( row => {
-          row.forEach( day => {
+      clearSelection () {
+        this.dayRows.forEach(row => {
+          row.forEach(day => {
             day.status = undefined
           })
         })

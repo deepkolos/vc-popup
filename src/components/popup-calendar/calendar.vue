@@ -41,7 +41,7 @@
 
   export default {
     name: 'vc-calendar',
-    
+
     components: {
       VcMonth,
       VcPullDownRefresh
@@ -54,7 +54,7 @@
       isLargeRowledge: Boolean
     },
 
-    data (){
+    data () {
       return {
         month: null,
         year: null,
@@ -90,15 +90,14 @@
     },
 
     created () {
-      var months = {},
-        date = new Date(),
-        i, tmpY, tmpM, tmpD; 
+      var date = new Date(),
+        i, tmpY, tmpM, tmpD
 
-      this.year = this.initYear ? this.initYear : date.getFullYear()
-      this.month = this.inilMonth ? this.inilMonth : date.getMonth()+1
-      this.day = this.initDay ? this.initDay : date.getDate()
+      this.year  = this.initYear ? this.initYear : date.getFullYear()
+      this.month = this.inilMonth ? this.inilMonth : date.getMonth() + 1
+      this.day   = this.initDay ? this.initDay : date.getDate()
 
-      if(this.year < 1000 || this.year > 9999){
+      if (this.year < 1000 || this.year > 9999) {
         console.log('popup-calendar的年份输入错误~')
         return
       }
@@ -111,9 +110,9 @@
       [this.maxYear, this.maxMonth] = offsetMonth(this.year, this.month, 12)
 
       //默认显示5个月,从initMonth开始,(11-28update)改为2个,加快移动端的渲染速度
-      for(i = 0; i < 1; i++){
+      for (i = 0; i < 1; i++) {
         [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
-        this.$set(this.months, tmpY*12 + tmpM ,{
+        this.$set(this.months, tmpY * 12 + tmpM, {
           Y: tmpY,
           M: tmpM
         })
@@ -129,15 +128,15 @@
 
       //生成最后最前面的一些不可用的日子
       tmpD = Math.min(countDays(this.minYear, this.minMonth), this.day)
-      for(i = 1 ; i <= tmpD; i++){
+      for (i = 1; i <= tmpD; i++) {
         this.minMonthDayRules[i] = {
           isUnavailable: true
         }
       }
 
       tmpD = countDays(this.maxYear, this.maxMonth)
-      if(tmpD > this.day){
-        for(i = this.day + 1; i <= tmpD; i++){
+      if (tmpD > this.day) {
+        for (i = this.day + 1; i <= tmpD; i++) {
           this.maxMonthDayRules[i] = {
             isUnavailable: true
           }
@@ -146,132 +145,132 @@
     },
 
     methods: {
-      init (done){
-        for(let i = 0; i < 2; i++){
-          this.$nextTick(()=>{
-            requestAnimationFrame(()=>{
+      init (done) {
+        for (let i = 0; i < 2; i++) {
+          this.$nextTick(() => {
+            requestAnimationFrame(() => {
               var [tmpY, tmpM] = offsetMonth(this.year, this.month, i)
-              this.$set(this.months, tmpY*12 + tmpM ,{
+              this.$set(this.months, tmpY * 12 + tmpM, {
                 Y: tmpY,
                 M: tmpM
               })
               this.currentMaxY = tmpY
               this.currentMaxM = tmpM
 
-              if(i == 1) done()
+              if (i === 1) done()
             })
-          });
+          })
         }
       },
-      clearSelection (){
-        this.getVmMonths().forEach( vm_month => {
-          vm_month.clearSelection()
+      clearSelection () {
+        this.getVmMonths().forEach(vmMonth => {
+          vmMonth.clearSelection()
         })
       },
 
-      getMonth (year, month){
-        var vm_monthFirst = this.getMonthByOffset(0),
+      getMonth (year, month) {
+        var vmMonthFirst = this.getMonthByOffset(0),
           offset = monthsBetween(
             year, month,
-            vm_monthFirst.year, vm_monthFirst.month
-          );
-        
+            vmMonthFirst.year, vmMonthFirst.month
+          )
+
         return this.getMonthByOffset(offset)
       },
 
-      getMonthByOffset (offset){
+      getMonthByOffset (offset) {
         return this.$refs.wrapper.children[offset].__vue__
       },
 
-      getVmMonths (){
-        var $wrapper = this.$refs.wrapper;
-        var vm_months = [];
+      getVmMonths () {
+        var $wrapper = this.$refs.wrapper
+        var vmMonths = []
 
-        Array.prototype.forEach.call($wrapper.children  , (ele)=>{
-          vm_months.push(ele.__vue__)
+        Array.prototype.forEach.call($wrapper.children, (ele) => {
+          vmMonths.push(ele.__vue__)
         })
-        
-        return vm_months
+
+        return vmMonths
       },
 
-      disableDay (year, month, day){
+      disableDay (year, month, day) {
         this._setDayProps(year, month, day, 'isDisable', true)
       },
 
-      enableDay (year, month, day){
+      enableDay (year, month, day) {
         this._setDayProps(year, month, day, 'isDisable', false)
       },
 
-      availableDay (year, month, day){
+      availableDay (year, month, day) {
         this._setDayProps(year, month, day, 'isUnavailable', false)
       },
 
-      unavailableDay (year, month, day){
+      unavailableDay (year, month, day) {
         this._setDayProps(year, month, day, 'isUnavailable', true)
       },
 
       //私有方法
-      _loadMorePrev(success, error, noMore, noMoreTry){
-        var next;
-        
-        if(
-          this.currentMinY !== this.minYear || 
+      _loadMorePrev (success, error, noMore, noMoreTry) {
+        var next
+
+        if (
+          this.currentMinY !== this.minYear ||
           this.currentMinM !== this.minMonth
-        ){
+        ) {
           next = offsetMonth(this.currentMinY, this.currentMinM, -1)
 
-          if(next[0] === this.minYear && next[1] === this.minMonth)
-            this.$set(this.months, next[0]*12 + next[1] ,{
+          if (next[0] === this.minYear && next[1] === this.minMonth)
+            this.$set(this.months, next[0] * 12 + next[1], {
               Y: next[0],
               M: next[1],
               R: this.minMonthDayRules
             })
           else
-            this.$set(this.months, next[0]*12 + next[1] ,{
+            this.$set(this.months, next[0] * 12 + next[1], {
               Y: next[0],
               M: next[1]
             })
-          
+
           this.currentMinY = next[0]
           this.currentMinM = next[1]
           success()
-        }else{
+        } else {
           noMoreTry()
           noMore()
         }
       },
 
-      _loadMoreNext(noMoreTry){
-        var next;
-        
-        if(
-          this.currentMaxY !== this.maxYear || 
+      _loadMoreNext (noMoreTry) {
+        var next
+
+        if (
+          this.currentMaxY !== this.maxYear ||
           this.currentMaxM !== this.maxMonth
-        ){
+        ) {
           next = offsetMonth(this.currentMaxY, this.currentMaxM, 1)
-          
-          if(next[0] === this.maxYear && next[1] === this.maxMonth)
-            this.$set(this.months, next[0]*12 + next[1] ,{
+
+          if (next[0] === this.maxYear && next[1] === this.maxMonth)
+            this.$set(this.months, next[0] * 12 + next[1], {
               Y: next[0],
               M: next[1],
               R: this.maxMonthDayRules
             })
           else
-            this.$set(this.months, next[0]*12 + next[1] ,{
+            this.$set(this.months, next[0] * 12 + next[1], {
               Y: next[0],
               M: next[1]
             })
-            
+
           this.currentMaxY = next[0]
           this.currentMaxM = next[1]
-        }else{
+        } else {
           noMoreTry()
         }
       },
 
-      _setDayProps(year, month, day ,name, val){
-        var vm_month = this.getMonth(year, month);
-          day = vm_month.getDay(day)
+      _setDayProps (year, month, day, name, val) {
+        var vmMonth = this.getMonth(year, month)
+        day = vmMonth.getDay(day)
 
         this.$set(day, name, val)
         this.$parent && this.$parent.clearSelection()

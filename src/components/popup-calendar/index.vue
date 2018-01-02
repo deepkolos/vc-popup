@@ -75,8 +75,8 @@
     '星期六'
   ]
 
-  const fixZero = function (val){
-    if(val < 10) val = '0'+val
+  const fixZero = function (val) {
+    if (val < 10) val = '0' + val
     return val
   }
 
@@ -97,7 +97,7 @@
       onConfirm: Function,
       onConfirmLeaved: Function,
       onDisableDaySelected: Function,
-      enableTimeSelect:{
+      enableTimeSelect: {
         type: Boolean,
         default: false
       },
@@ -116,7 +116,7 @@
       }
     },
 
-    data (){
+    data () {
       return {
         selectedStart: null,
         selectedEnd: null,
@@ -139,69 +139,67 @@
             ],
             defaultIndex: 0
           }
-        ],
+        ]
       }
     },
 
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          if(!this._controller.config.animation)
-            $el.classList.add('inital');
-          requestAnimationFrame(()=>{
-            if(!this._controller.config.animation){
-              $el.classList.remove('inital');
-              $el.classList.add('inAnimation');
+          if (!this._controller.config.animation)
+            $el.classList.add('inital')
+          requestAnimationFrame(() => {
+            if (!this._controller.config.animation) {
+              $el.classList.remove('inital')
+              $el.classList.add('inAnimation')
             }
 
-            this.onOpen instanceof Function && this.onOpen();
+            this.onOpen instanceof Function && this.onOpen()
           })
         },
         afterEnter: () => {
           //完成剩余的初始化工作
-          this.$refs.calendarPicker.$refs.calendar.init(()=>{
-            if(this.defaultRange)
+          this.$refs.calendarPicker.$refs.calendar.init(() => {
+            if (this.defaultRange)
               this.$refs.calendarPicker.select(this.defaultRange)
-          });
-
-
+          })
         },
         beforeLeave: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          if(!this._controller.config.animation)
-            $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            if(!this._controller.config.animation)
-              $el.classList.remove('inAnimation');
+          if (!this._controller.config.animation)
+            $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            if (!this._controller.config.animation)
+              $el.classList.remove('inAnimation')
 
-            this.onClose instanceof Function && this.onClose();
+            this.onClose instanceof Function && this.onClose()
           }.bind(this))
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
 
       //初始化timeSlot
       var i
-      for(i = 1; i <= 12; i++)
+      for (i = 1; i <= 12; i++)
         this.timeSlots[0].values.push(fixZero(i))
-      for(i = 0; i <= 59 ; i++)
+      for (i = 0; i <= 59; i++)
         this.timeSlots[1].values.push(fixZero(i))
     },
 
     methods: {
-      _disableDaySelected (days){
-        this.onDisableDaySelected instanceof Function && 
+      _disableDaySelected (days) {
+        this.onDisableDaySelected instanceof Function &&
           this.onDisableDaySelected(days)
       },
 
-      _clearSelection (){
+      _clearSelection () {
         this.$refs.calendarPicker.clearSelection()
       },
 
-      _onSelect(start, end){
+      _onSelect (start, end) {
         this.selectedStart = start
         this.selectedEnd = end
         this.event.afterLeave = null
@@ -209,51 +207,51 @@
         this.status = this.type === 'range' ? (start && end) : start
       },
 
-      _close(){
+      _close () {
         this._controller.close()
       },
 
-      _confirm (){
-        function parseTimeHour(time){
-          return time[2] === '下午' 
+      _confirm () {
+        function parseTimeHour (time) {
+          return time[2] === '下午'
                  ? parseInt(time[0], 10) + 12
                  : parseInt(time[0], 10)
         }
-        if(this.status !== null){
-          var start = {}, end = {};
-          if(this.selectedStart){
-            Object.assign(start ,{
+        if (this.status !== null) {
+          var start = {}, end = {}
+          if (this.selectedStart) {
+            Object.assign(start, {
               year: this.selectedStart.year,
               month: this.selectedStart.month,
-              day: this.selectedStart.day,
+              day: this.selectedStart.day
             })
 
-            if(this.selectedTimeStart)
+            if (this.selectedTimeStart)
               Object.assign(start, {
                 hour: parseTimeHour(this.selectedTimeStart),
                 minute: parseInt(this.selectedTimeStart[1], 10)
               })
           }
-          
-          if(this.selectedEnd){
-            Object.assign(end ,{
+
+          if (this.selectedEnd) {
+            Object.assign(end, {
               year: this.selectedEnd.year,
               month: this.selectedEnd.month,
-              day: this.selectedEnd.day,
+              day: this.selectedEnd.day
             })
 
-            if(this.selectedTimeEnd)
+            if (this.selectedTimeEnd)
               Object.assign(end, {
                 hour: parseTimeHour(this.selectedTimeEnd),
                 minute: parseInt(this.selectedTimeEnd[1], 10)
               })
           }
-          
-          this.event.afterLeave = ()=>{
+
+          this.event.afterLeave = () => {
             this.onConfirmLeaved instanceof Function &&
               this.onConfirmLeaved(start, end) //不传递observable的对象感觉设置的时候会报错什么的
           }
-          
+
           this.onConfirm instanceof Function &&
             this.onConfirm(start, end)
 
@@ -261,24 +259,24 @@
         }
       },
 
-      _select (val){
+      _select (val) {
         this.$refs.calendarPicker.select(val)
       },
 
-      _changeStartTime (vm_picker, val){
-        if(this.enableTimeSelect)
+      _changeStartTime (vmPicker, val) {
+        if (this.enableTimeSelect)
           this.selectedTimeStart = val
       },
 
-      _changeEndTime (vm_picker, val){
-        if(this.enableTimeSelect)
+      _changeEndTime (vmPicker, val) {
+        if (this.enableTimeSelect)
           this.selectedTimeEnd = val
       }
     },
 
     filters: {
-      selectionFilter (selectedDate){
-        if(selectedDate){
+      selectionFilter (selectedDate) {
+        if (selectedDate) {
           var date = new Date(`${selectedDate.year}-${selectedDate.month}-${selectedDate.day}`)
 
           return `${selectedDate.year}-${fixZero(selectedDate.month)}-${fixZero(selectedDate.day)} ${weekToZh[date.getDay()]}`
@@ -287,28 +285,28 @@
         return '未选择'
       },
 
-      selectionTimeFilter (selectedTime){
+      selectionTimeFilter (selectedTime) {
         var hour
 
-        if(selectedTime){
-          if(selectedTime[2] === '下午')
+        if (selectedTime) {
+          if (selectedTime[2] === '下午')
             hour = parseInt(selectedTime[0], 10) + 12
           else
             hour = selectedTime[0]
-          
-          return `${hour}:${selectedTime[1]}` 
+
+          return `${hour}:${selectedTime[1]}`
         }
 
         return ''
       },
 
-      statusFilter (val){
-        if(val === null)
+      statusFilter (val) {
+        if (val === null)
           return 'disable'
       },
 
-      typeFilter(val){
-        if(val === 'point')
+      typeFilter (val) {
+        if (val === 'point')
           return 'oneline'
       }
     }
@@ -381,11 +379,11 @@
       }
 
       &::before{
-        transform: rotate(45deg);
+        transform: rotate(45deg)
       }
 
       &::after{
-        transform: translateX(-1.5px) rotate(-45deg);
+        transform: translateX(-1.5px) rotate(-45deg)
       }
     }
 

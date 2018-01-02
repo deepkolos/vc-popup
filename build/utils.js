@@ -76,15 +76,15 @@ var cachePkglist;
 var PACKAGE_PATH = path.resolve(__dirname, '../packages')
 
 exports.mapPkgList = function(callback){
-  if(cachePkglist instanceof Array){
+  if (cachePkglist instanceof Array){
     cachePkglist.forEach(function(subDir){
       callback(subDir)
     })
-  }else{
+  } else {
     var packageDir = fs.readdirSync(PACKAGE_PATH);
     cachePkglist = [];
     packageDir.forEach(function(subDir){
-      if(fs.statSync(PACKAGE_PATH+'/'+subDir).isDirectory()){
+      if (fs.statSync(PACKAGE_PATH+'/'+subDir).isDirectory()){
         cachePkglist.push(subDir)
         callback(subDir)
       }

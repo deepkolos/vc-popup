@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'vc-popup-over',
 
@@ -35,80 +34,79 @@
           this._setTriangle()
         },
         beforeEnter: () => {
-          var $el = this.$refs.menu;
-          
-          $el.classList.add('inital');
+          var $el = this.$refs.menu
 
-          requestAnimationFrame(function(){
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
-          }.bind(this))
+          $el.classList.add('inital')
+
+          requestAnimationFrame(function () {
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
+          })
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$refs.menu;
-          
+          var $el = this.$refs.menu
+
           $el.classList.add('outAnimation')
-          requestAnimationFrame(function(){
+          requestAnimationFrame(function () {
             $el.classList.remove('inAnimation')
           })
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
     },
-    
-    methods: {
-      _setTriangle (){
-        var $triangle = this.$refs.triangle,
-            $el = this.$el,
-            config = this._controller.config,
-            controller = this._controller,
-            refCorner, relativeToCorner,
-            rect = this.$el.getBoundingClientRect(),
-            fromLeft, fromTop;
 
-        refCorner = 
+    methods: {
+      _setTriangle () {
+        var $triangle = this.$refs.triangle,
+          $el = this.$el,
+          config = this._controller.config,
+          controller = this._controller,
+          refCorner, relativeToCorner,
+          rect = this.$el.getBoundingClientRect()
+
+        refCorner =
           controller.parseRefCorner(config.refCorner)
-        relativeToCorner = 
+        relativeToCorner =
           controller.parseRelativeToCorner(config.relativeToCorner)
 
-        function ajustLeftRight(){
-          if(refCorner[1] === 'left' && relativeToCorner[1] === 'after'){
+        function ajustLeftRight () {
+          if (refCorner[1] === 'left' && relativeToCorner[1] === 'after') {
             $triangle.style.left = '17px'
-          }else if(refCorner[1] === 'right' && relativeToCorner[1] === 'before'){
+          } else if (refCorner[1] === 'right' && relativeToCorner[1] === 'before') {
             $triangle.style.right = '10px'
-          }else if(refCorner[1] === 'center'){
-            $triangle.style.left = rect.width/2 + 'px'
+          } else if (refCorner[1] === 'center') {
+            $triangle.style.left = rect.width / 2 + 'px'
           }
         }
 
-        function ajustTopBottom(){
-          if(refCorner[0] === 'top' && relativeToCorner[0] === 'below'){
+        function ajustTopBottom () {
+          if (refCorner[0] === 'top' && relativeToCorner[0] === 'below') {
             $triangle.style.top = '17px'
-          }else if(refCorner[0] === 'bottom' && relativeToCorner[0] === 'above'){
+          } else if (refCorner[0] === 'bottom' && relativeToCorner[0] === 'above') {
             $triangle.style.bottom = '10px'
-          }else if(refCorner[0] === 'center'){
-            $triangle.style.top = rect.height/2 + 'px'
+          } else if (refCorner[0] === 'center') {
+            $triangle.style.top = rect.height / 2 + 'px'
           }
         }
 
-        if(refCorner[0] === 'top' && relativeToCorner[0] === 'above'){
+        if (refCorner[0] === 'top' && relativeToCorner[0] === 'above') {
           ajustLeftRight()
           $triangle.style.bottom = '-7px'
           $el.style.marginTop = '-8px'
-        }else if(refCorner[0] === 'bottom' && relativeToCorner[0] === 'below'){
+        } else if (refCorner[0] === 'bottom' && relativeToCorner[0] === 'below') {
           ajustLeftRight()
           $triangle.style.top = '0px'
           $el.style.marginTop = '8px'
-        }else if(refCorner[1] === 'left' && relativeToCorner[1] === 'before'){
+        } else if (refCorner[1] === 'left' && relativeToCorner[1] === 'before') {
           ajustTopBottom()
           $triangle.style.right = '-7px'
           $el.style.marginLeft = '-8px'
-        }else if(refCorner[1] === 'right' && relativeToCorner[1] === 'after'){
+        } else if (refCorner[1] === 'right' && relativeToCorner[1] === 'after') {
           ajustTopBottom()
           $triangle.style.left = '0px'
           $el.style.marginLeft = '8px'
-        }else{
+        } else {
           $triangle.style.opacity = 0
         }
       }

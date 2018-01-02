@@ -55,44 +55,44 @@
     created () {
       this.event = {
         beforeEnter: () => {
-          var $el = this.$el;
+          var $el = this.$el
 
-          $el.classList.add('inital');
+          $el.classList.add('inital')
           requestAnimationFrame(() => {
-            $el.classList.remove('inital');
-            $el.classList.add('inAnimation');
-            setTimeout(()=>{
-              if(this.skin === 'iosNative')
-                this._controller.vm_popUp.maskOpacity(0.4);
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
+            setTimeout(() => {
+              if (this.skin === 'iosNative')
+                this._controller.vm_popUp.maskOpacity(0.4)
             }, 0)
           })
         },
         afterEnter: () => {},
         beforeLeave: () => {
-          var $el = this.$el;
-          $el.classList.add('outAnimation');
-          requestAnimationFrame(function(){
-            $el.classList.remove('inAnimation');
+          var $el = this.$el
+          $el.classList.add('outAnimation')
+          requestAnimationFrame(function () {
+            $el.classList.remove('inAnimation')
           })
         },
-        afterLeave: () => {},
+        afterLeave: () => {}
       }
     },
 
     methods: {
 
-      close (){
-        this._controller.close();
+      close () {
+        this._controller.close()
       },
 
       confirmClick () {
-        if(typeof this.onComfrim === 'function')
+        if (typeof this.onComfrim === 'function')
           this.onComfrim()
         this.close()
       },
 
       cancelClick () {
-        if(typeof this.onCancel === 'function')
+        if (typeof this.onCancel === 'function')
           this.onCancel()
         this.close()
       }
