@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import popupCustom from '../components/popup-custom'
-  
   export default {
     mounted () {
       // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
@@ -18,11 +16,11 @@
           items: [
             {
               name: '自定义的popup',
-              click: e => {console.log('btn0 clicked');},
+              click: e => console.log('btn0 clicked'),
               src: 'http://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
-            },{
+            }, {
               name: '二维码',
-              click: e => {this.popupCustom.close(e)},
+              click: e => this.popupCustom.close(e),
               src: 'http://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
             }
           ]
@@ -31,8 +29,8 @@
     },
 
     methods: {
-      click (e){
-        this.popupCustom.open(e);
+      click (e) {
+        this.popupCustom.open(e)
       }
     }
   }

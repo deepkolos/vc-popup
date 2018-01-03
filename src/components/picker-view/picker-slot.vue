@@ -12,12 +12,9 @@
 <script>
   import draggable from '../../utils/draggable.js'
   import Transform from 'css3transform'
-  import emitter from '../../mixins/emitter'
 
   export default {
     name: 'vc-picker-slot',
-
-    mixins: [emitter],
 
     props: {
       values: {
@@ -237,7 +234,7 @@
       currentValue (val) {
         this.doOnValueChange()
         this.$emit('input', val)
-        this.dispatch('vc-picker-view', 'slotValueChange', this)
+        this.$parent.slotValueChange()
       }
     }
   }

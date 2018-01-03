@@ -1,7 +1,5 @@
 <template>
-  <div class="vc-popup-conatiner" ref="container">
-    
-  </div>
+  <div class="vc-popup-conatiner" ref="container"></div>
 </template>
 
 <script>

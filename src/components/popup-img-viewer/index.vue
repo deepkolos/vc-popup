@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { swipeDirective } from '../../mixins/event/swipe.js'
+  import swipeDirective from '../../mixins/event/swipe.js'
   import VcSwipeplus from '../swipeplus'
   import VcSwipeItem from '../swipe-item'
 
@@ -249,10 +249,6 @@
             ajustOne(i)
 
         $img = null
-      },
-
-      _initLongPressEvent () {
-
       },
 
       _onItemSwipe (info, preventDefault) {

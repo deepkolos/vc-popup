@@ -93,8 +93,3 @@
     align-items: center;
   }
 </style>
-<style lang="scss">
-  //这里编写用class可以应用到mask上面的,不过命名尽量不要污染太多
-
-</style>
-

@@ -1,6 +1,6 @@
 <template>
-  <div class="vc-popup-base" 
-    :routerId="routerId" 
+  <div class="vc-popup-base"
+    :routerId="routerId"
     ref="base"
     :style="{ position: positionType }"
     @touchmove="maskPreventScroll"
@@ -76,7 +76,7 @@
       },
 
       trunOnMaskTransition () {
-        this.$refs.mask.style.transitionDuration = null
+        this.$refs.mask.style.transitionDuration = ''
       },
 
       maskClassAdd (name) {
@@ -299,7 +299,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .vc-popup-base{
     width: 100%;
     height: 100%;

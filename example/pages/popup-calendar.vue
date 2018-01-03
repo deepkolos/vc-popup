@@ -79,7 +79,7 @@
               effect: 'zoomFromDom'
             }
           },
-          
+
           propsData: {
             enableShortcut: true,
             onConfirm: (start, end) => {
@@ -192,7 +192,7 @@
         this.calendar.open(e, {
           propsData: {
             isLargeRowledge: true,
-            
+
             onConfirm: (start, end) => {
               console.log(start, end)
             },
@@ -213,7 +213,7 @@
 
           propsData: {
             isLargeRowledge: true,
-            
+
             onConfirm: (start, end) => {
               console.log(start, end)
             },
@@ -231,10 +231,10 @@
             in: ['animated', 'bounceIn'],
             out: ['animated', 'bounceOut']
           },
-          
+
           propsData: {
             isLargeRowledge: true,
-            
+
             onConfirm: (start, end) => {
               console.log(start, end)
             },

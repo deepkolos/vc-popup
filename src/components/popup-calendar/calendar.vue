@@ -162,6 +162,7 @@
           })
         }
       },
+
       clearSelection () {
         this.getVmMonths().forEach(vmMonth => {
           vmMonth.clearSelection()
