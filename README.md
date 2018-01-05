@@ -17,7 +17,7 @@
 > 7. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆炸的情况~
 > 8. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
 
-> `注:` 因为这是之前给一个[组件库贡献的](https://github.com/tianyong90/we-vue/pull/17), 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~ 
+> `注:` 因为这是之前给一个[组件库贡献的](https://github.com/tianyong90/we-vue/pull/17), 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~
 
 
 ## 预览
@@ -32,9 +32,9 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-## 使用(未完善),最近都在改构建, 未稳定
+## 使用(未完善), 最近都在改构建, 未稳定
 
-注: 需要配合webpack来使用, 不支持jq那种方式
+> 注: 需要配合webpack来使用
 
 ```shell
 yarn add vc-popup
@@ -51,6 +51,27 @@ Vue.use(PopUp)
 ...
 ```
 
+在index.html结构需要如下: (id无关)
+
+```html
+...
+<body>
+  <div id="app"></div>
+  <!--将会插入下面节点-->
+  <div data-v-xxxxxxxx="" class="vc-popup-conatiner"></div>
+</body>
+...
+```
+
+会添加如下样式, 请确保用于挂载的节点如下样式生效
+
+```css
+body > *:first-child{
+  position: relative;
+  z-index: 0;
+}
+```
+
 在页面中使用:
 
 ```javascript
@@ -61,16 +82,14 @@ Vue.use(PopUp)
 </template>
 
 <script>
-
   export default {
     mounted () {
-      // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
+      // 通过console.log(this.$popup) 可以知道当前注册了那些popup
       this.Popover = new this.$popup.Popover({
         ...config
         propsData: {}
       })
     },
-
     methods: {
       click (e){
         this.Popover.open(e, {
@@ -83,15 +102,16 @@ Vue.use(PopUp)
 </script>
 ```
 
-### 配置参数
+### config配置参数
 ```
 {
   // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
   // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来了
-  name: String/Undefined, 
+  name: String/Undefined,
 
   // 定位的类型, 默认absolute, 将会全局的锁定
-  positionType: "absolute/fixed", 
+  positionType: "absolute/fixed",
+
   // 设置定位方式, 在popup的vue的style也可以定位, 不会与之冲突, 最终结果是二者的叠加
   position: "clickRelative/domRelative/center",
 
@@ -103,6 +123,7 @@ Vue.use(PopUp)
     left: Number/Undefined,
     right: Number/Undefined
   },
+
 
   //// clickRelative的相关 \\\\
 
@@ -131,6 +152,7 @@ Vue.use(PopUp)
   refCorner: "top/bottom/center left/right/center",
   // 设置相对于参考点的方位
   relativeToCorner: "above/below before/after",
+
 
   //// 动画设置 \\\\
 
@@ -161,7 +183,6 @@ popup的具体使用, 可以先看看代码, 参数都比较简单, 晚点更新
 [更新日志.md](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
 
 [自定义改造.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
-
 
 ## License
 

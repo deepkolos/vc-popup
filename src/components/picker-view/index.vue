@@ -4,11 +4,11 @@
       v-for="(slot, key) in slots" 
       :key="key" 
       :values="slot.values || []" 
-      :labelKey="slot.labelKey" 
+      :content="slot.content" 
       :divider="slot.divider" 
+      :labelKey="slot.labelKey" 
       :showItemNum="showItemNum" 
       :showItemHeight="showItemHeight" 
-      :content="slot.content" 
       v-model="values[slot.valueIndex]"
     ></vc-picker-slot>
   </div>

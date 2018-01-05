@@ -3,7 +3,13 @@
     <div class="vc-picker-mask" ref="mask"></div>
     <div class="vc-picker-indicator" ref="indicator"></div>
     <div class="vc-picker-content" ref="listWrapper">
-      <div class="vc-picker-item" :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item['disabled'] }" v-for="(item, key) in mutatingValues" :key="key">{{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}</div>
+      <div class="vc-picker-item" 
+        :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item.disabled }" 
+        v-for="(item, key) in mutatingValues" 
+        :key="key"
+      >
+        {{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}
+        </div>
     </div>
   </div>
   <div class="vc-picker-slot-divider" v-else v-html="content"></div>
