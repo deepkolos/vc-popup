@@ -147,8 +147,8 @@
           if (typeof this.maxDragOffset === 'number')
             offset = offset > this.maxDragOffset ? this.maxDragOffset : offset
 
-          $panel.style.transform = `translateY(${offset}px)`
-          $content.style.transform = `translateY(${offset}px)`
+          $panel.style.transform = `translateY(${offset}px) translateZ(0)`
+          $content.style.transform = `translateY(${offset}px) translateZ(0)`
 
           if (this.noMoreTry === true) {
             this._noMore(false)
@@ -297,8 +297,8 @@
           case 3:
             this._message(2)
 
-            $panel.style.transform = `translateY(50.4px)`
-            $content.style.transform = `translateY(50.4px)`
+            $panel.style.transform = `translateY(50.4px) translateZ(0)`
+            $content.style.transform = `translateY(50.4px) translateZ(0)`
 
             this.$emit('onLoad', this._success, this._error, this._noMore, this._noMoreTry)
             break

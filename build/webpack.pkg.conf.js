@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
@@ -6,7 +7,7 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const fs = require('fs')
+const MinifyPlugin      = require("babel-minify-webpack-plugin");
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -24,7 +25,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       cssProcessorOptions: {
         safe: true
       }
-    })
+    }),
+    new MinifyPlugin(),
   ]
 })
 
@@ -39,7 +41,7 @@ webpackConfig.output = {
 }
 
 utils.mapPkgList(function(popupName){
-  webpackConfig.entry[popupName] = 
+  webpackConfig.entry[popupName] =
     path.resolve(__dirname, `../packages/${popupName}/install.js`)
 })
 

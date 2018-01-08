@@ -6,6 +6,8 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MinifyPlugin      = require("babel-minify-webpack-plugin");
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: path.resolve(__dirname, '../src/index.js'),
@@ -24,13 +26,15 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   externals: 'vue',
   plugins: [
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true
       }
-    })
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css'
+    }),
+    new MinifyPlugin()
   ]
 })
 
