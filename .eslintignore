@@ -1,4 +1,4 @@
 node_modules/
-lib/*.min.js
+lib/*.js
 packages/*/index.js
 build/*

@@ -22,7 +22,7 @@
     <div class="btn" ref="btn16" @click="click16">popover</div>
     <div style="height: 20px;"></div>
 
-    <div class="title">位置定位示意图(25种)</div>
+    <div class="title">位置定位示意图(25种)(小圆可点击)</div>
 
     <div class="refDom" ref="demoRefDom">
       <div class="corner top_left">
@@ -49,7 +49,7 @@
         <div class="below_after" @click="clickDomRefDemo('bottom','left','below','after')"></div>
         <div class="below_before" @click="clickDomRefDemo('bottom','left','below','before')"></div>
       </div>
-      
+
       <div class="edge bottom_center">
         <div class="above" @click="clickDomRefDemo('bottom','center','above','before')"></div>
         <div class="below" @click="clickDomRefDemo('bottom','center','below','before')"></div>
@@ -70,7 +70,7 @@
       <div class="corner center_center" @click="clickDomRefDemo('center','center','above','before')"></div>
     </div>
 
-    <div class="cell">#定位说明</div>
+    <div class="cell">定位说明:</div>
     <div class="cell">top,bottom,left,right,center 设置定位点</div>
     <div class="cell">above,below,before,after 相对定位点偏移</div>
     <div class="cell">红色-> above after</div>
@@ -531,7 +531,7 @@
     margin: 30px auto;
     position: relative;
   }
-  
+
   .corner{
     position: absolute;
     height: 50px;
