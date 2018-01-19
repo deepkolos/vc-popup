@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import '../components/popup-custom'
+
   export default {
     mounted () {
       // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用
