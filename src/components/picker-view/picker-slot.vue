@@ -3,9 +3,9 @@
     <div class="vc-picker-mask" ref="mask"></div>
     <div class="vc-picker-indicator" ref="indicator"></div>
     <div class="vc-picker-content" ref="listWrapper">
-      <div class="vc-picker-item" 
-        :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item.disabled }" 
-        v-for="(item, key) in mutatingValues" 
+      <div class="vc-picker-item"
+        :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item.disabled }"
+        v-for="(item, key) in mutatingValues"
         :key="key"
       >
         {{ typeof item === 'object' && item[labelKey] ? item[labelKey] : item }}
@@ -62,19 +62,6 @@
 
       maxTranslateY () {
         return this.showItemHeight * Math.floor(this.showItemNum / 2)
-      },
-
-      valueIndex () {
-        var labelKey = this.labelKey
-        if (this.currentValue instanceof Object) {
-          //写个顺序查找好了
-          for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
-            if (this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
-              return i
-          }
-          return -1
-        } else
-          return this.mutatingValues.indexOf(this.currentValue)
       }
     },
 
@@ -111,9 +98,18 @@
         },
         drag: (event) => {
           let dragState = this.dragState
-          const deltaY = event.clientY - dragState.startPositionY
+          let deltaY = event.clientY - dragState.startPositionY
+          let translateY = dragState.startTranslateY + deltaY
+          let minTranslateY = this.minTranslateY
+          let maxTranslateY = this.maxTranslateY
 
-          wrapper.translateY = dragState.startTranslateY + deltaY
+          if (translateY > maxTranslateY)
+            translateY = (translateY - maxTranslateY) / 2 + maxTranslateY
+
+          if (translateY < minTranslateY)
+            translateY = (translateY - minTranslateY) / 2 + minTranslateY
+
+          wrapper.translateY = translateY
           dragState.currentPosifionY = event.clientY
           dragState.currentTranslateY = wrapper.translateY
           dragState.velocityTranslate =
@@ -166,8 +162,20 @@
 
     methods: {
       value2translate (value) {
-        const valueIndex = this.valueIndex
-        const offset = Math.floor(this.showItemNum / 2)
+        var offset     = Math.floor(this.showItemNum / 2)
+        var labelKey   = this.labelKey
+        var valueIndex = -1
+
+        if (value instanceof Object) {
+          //写个顺序查找好了,其实真的没有必要每次查找,每次查找的好处是动态更新,不需要去同步index...
+          for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
+            if (value[labelKey] === this.mutatingValues[i][labelKey]) {
+              valueIndex = i
+              break
+            }
+          }
+        } else
+          valueIndex = this.mutatingValues.indexOf(value)
 
         if (valueIndex !== -1) {
           return (valueIndex - offset) * -this.showItemHeight
@@ -256,7 +264,7 @@
     position: relative;
     height: 100%;
   }
-  
+
   .vc-picker-mask{
     z-index: 2;
     width: 100%;
@@ -272,7 +280,7 @@
     z-index: 3;
     height: 34px;
 
-    &:after, 
+    &:after,
     &:before {
       content: " ";
       position: absolute;
@@ -290,7 +298,7 @@
       -webkit-transform: scaleY(.5);
       transform: scaleY(.5);
     }
-    
+
     &:after {
       bottom: 0;
       border-bottom: 1px solid #e5e5e5;
