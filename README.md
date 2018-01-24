@@ -73,7 +73,7 @@ body > *:first-child{
 }
 ```
 
-在页面中使用:
+## 在页面中使用:
 
 ```javascript
 <template>
