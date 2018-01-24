@@ -1,4 +1,4 @@
-import PopupBase from './popup-base'
+import PopupBase from './popup-base.js'
 import Vue from 'vue'
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
@@ -9,6 +9,9 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   name = name[0].toUpperCase() + name.slice(1)
 
   function popupTemplate (constructConfig) {
+    if (this === undefined)
+      return console.log('记得加new~')
+
     this.constructor = popupTemplate
     this.init(
       defaultConfig, constructConfig,
@@ -19,6 +22,7 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
   }
 
   popupTemplate.prototype = PopupBase
+
   if (Vue.prototype.$popup) {
     Vue.prototype.$popup[name] = popupTemplate
   } else {

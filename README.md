@@ -46,6 +46,7 @@ yarn add vc-popup
 ...
 import Vue from 'vue'
 import PopUp from 'vc-popup'
+import 'vc-popup/lib/style.css'
 
 Vue.use(PopUp)
 ...

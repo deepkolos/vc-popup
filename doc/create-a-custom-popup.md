@@ -34,8 +34,8 @@ var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵�
 
 export default popupRegister(
   'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
-  template, 
-  popUpConfig, 
+  template,
+  popUpConfig,
   defaultConfig)
 ```
 #### /components/popup-custom/**popup-custom.vue**
@@ -83,8 +83,8 @@ export default popupRegister(
 
 <script>
   // popupCustom名字可以根据含义更改
-  import popupCustom from '../components/popup-custom'
-  
+  import '../components/popup-custom'
+
   export default {
     mounted () {
       // 这里需要注意,this.$refs在mounted后才会初始化, 请不要在created时候使用

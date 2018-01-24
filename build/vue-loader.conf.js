@@ -3,8 +3,7 @@ const utils = require('./utils')
 const config = require('../config')
 const isProduction = -1 !== [
   'module',
-  'production',
-  'packages'
+  'production'
 ].indexOf(process.env.NODE_ENV)
 
 module.exports = {

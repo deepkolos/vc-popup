@@ -68,7 +68,7 @@
     "eslint-plugin-vue": "^4.0.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.1",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "fs": "^0.0.1-security",
