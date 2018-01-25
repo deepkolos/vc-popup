@@ -103,48 +103,104 @@ body > *:first-child{
 </script>
 ```
 
-### config配置参数
-```
+### 基本参数
+```js
 {
   // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
-  // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来了
+  // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来
   // 一般不需要设置
-  name: String/Undefined,
-
-  // 定位的类型, 默认absolute, 将会全局的锁定
-  positionType: "absolute/fixed",
-
-  // 设置定位方式, 在popup的vue的style也可以定位, 不会与之冲突, 最终结果是二者的叠加
-  position: "clickRelative/domRelative/center",
-
-  // 相对于视窗的各边的距离, 支持负数,百分比
-  // 如果top,buttom同时为undefined, 设置为居中
-  position: {
-    top: Number/Undefined,
-    buttom: Number/Undefined,
-    left: Number/Undefined,
-    right: Number/Undefined
+  name: {
+    options: String | undefined
+    default: undefined
   },
 
+  // 设置定位方式
+  positionType,
+  position,
+
+  // clickRelative的相关
+  frame,
+  margin,
+
+  // domRelative的相关
+  refDom,
+  refCorner,
+  relativeToCorner,
+
+  // 动画设置
+  autoSetOrthocenter,
+  animation
+}
+```
+
+### 定位参数
+
+```js
+{
+  // 定位的类型, 是否锁定滚动
+  positionType: {
+    options: 'absolute' | 'fixed',
+    default: 'absolute'
+  },
+
+  // 设置定位方式, 在popup的vue的style也可以定位, 不会与之冲突, 最终结果是二者的叠加
+  position: {
+    options: 'clickRelative' | 'domRelative' | 'center' | positionConfig,
+    default: 'center',
+
+    // 相对于视窗的各边的距离, 支持负数,百分比
+    // 如果top, buttom同时为undefined, 设置为居中
+    positionConfig: {
+      top:    Number | undefined,
+      buttom: Number | undefined,
+      left:   Number | undefined,
+      right:  Number | undefined
+    }
+
+    // example
+    position: 'clickRelative',
+    position: 'domRelative',
+  },
 
   //// clickRelative的相关 \\\\
 
   // 弹出的popup在此区域之内
   frame: {
-    top: Number,
-    buttom: Number,
-    left: Number,
-    right: Number
+    options: HTMLElement | undefined | frameConfig,
+    default: undefined,
+
+    frameConfig: {
+      top:    Number,
+      buttom: Number,
+      left:   Number,
+      right:  Number
+    }
+
+    // example
+    frame: document.querySelector('#box'),
+    frame: {
+      top:    10,
+      buttom: 0,
+      left:   0,
+      right:  10
+    },
   },
-  frame: HTMLElement,
 
   // 弹出的popup距离区域边框的边距
   // 支持百分比, 百分比相对于区域对应轴
   // 比如margin: 10%, 结果是, 左/右: 10%区域宽, 上/下: 10%区域高
-  margin: Number/String,                     // 设置4个边一样
-  margin: [Number, Number],                  // 分别设置x,y轴
-  margin: [Number, Number, Number, Number],  // 分别设置4边
+  margin: {
+    options: marginUnit | Array<marginUnit>{2} | Array<marginUnit>{4},
+    default: undefined,
 
+    marginUnit: Number | String,
+
+    // example
+    margin: 10,    // 设置4个边一样 10px
+    margin: '10%', // 设置4个边一样 10%, css的长度单位即可
+    margin: [10%, '10px'],               // 分别设置x,y轴
+    margin: [10%, '10px', 10%, '10px'],  // 分别设置4边
+  },
 
   //// domRelative的相关 \\\\
 
@@ -159,20 +215,43 @@ body > *:first-child{
   //// 动画设置 \\\\
 
   // 根据position的位置设置transform-origin
-  autoSetOrthocenter: true,
+  autoSetOrthocenter: {
+    options: Boolean,
+    default: false
+
+    //example
+    autoSetOrthocenter: true,
+    autoSetOrthocenter: false,
+  },
 
   // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过度动画冲突
   // 在自定义popup的时候需要注意一下
   // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
   animation: {
-    in: ["animated", "flipInX"],
-    out: ["animated", "flipOutX"]
+    options: classConfig | effectConfig,
+    default: undefined,
 
-    in: {
-      effect: "zoomFromDom"
+    classConfig: {
+      in:  Array<String>,
+      out: Array<String>
     },
-    out: {
-      effect: "zoomFromDom"
+    effectConfig: {
+      in:  {effect: String},
+      out: {effect: String}
+    },
+
+    // example
+    animation: {
+      in:  ["animated", "flipInX"],
+      out: ["animated", "flipOutX"],
+    }
+    animation: {
+      in: {
+        effect: "zoomFromDom"
+      },
+      out: {
+        effect: "zoomFromDom"
+      }
     }
   }
 }
