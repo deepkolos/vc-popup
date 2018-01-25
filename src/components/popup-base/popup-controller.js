@@ -13,20 +13,23 @@ function prev (arr) {
 
 let PopUpContainerConstructor = Vue.extend(popUpContainerComponent)
 let PopUpBaseConstructor = Vue.extend(popUpBaseComponent)
-let vmPopUpContainer = new PopUpContainerConstructor({
-  el: document.createElement('div')
-})
+var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
+let vmPopUpContainer = null
 
 let RouterIdToPopUp = {}
 let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
-var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
-if (containerInBody.length !== 0) {
-  document.body.removeChild(containerInBody[0])
-}
-document.body.appendChild(vmPopUpContainer.$el)
 Router.initialParam('popUp')
+debugger
+if (containerInBody.length === 0) {
+  vmPopUpContainer = new PopUpContainerConstructor({
+    el: document.createElement('div')
+  })
+  document.body.appendChild(vmPopUpContainer.$el)
+} else {
+  vmPopUpContainer = containerInBody[0].__vue__
+}
 
 let PopUp = {
   fromUpdateRouter: false,

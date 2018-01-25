@@ -108,6 +108,7 @@ body > *:first-child{
 {
   // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
   // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来了
+  // 一般不需要设置
   name: String/Undefined,
 
   // 定位的类型, 默认absolute, 将会全局的锁定
