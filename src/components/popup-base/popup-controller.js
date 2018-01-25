@@ -21,7 +21,6 @@ let RouterIdToTrigger = {}
 let popUpIdQueue = []
 
 Router.initialParam('popUp')
-debugger
 if (containerInBody.length === 0) {
   vmPopUpContainer = new PopUpContainerConstructor({
     el: document.createElement('div')
