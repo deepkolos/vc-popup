@@ -5,11 +5,10 @@
       <a class="vc-picker-action"></a>
       <a class="vc-picker-action noExpand" @click="_confirm" v-text="confirmText"></a>
     </div>
-    <vc-picker-view 
-      :slots="slots" 
+    <vc-picker-view
+      :slots="slots"
       :onChange="onChange"
       :defaultValues="defaultValues"
-      :valueKey="valueKey"
       :showItemNum="showItemNum"
       :showItemHeight="showItemHeight"
       ref="picker"
@@ -28,7 +27,6 @@
       showItemNum: Number,
       showItemHeight: Number,
       defaultValues: Array,
-      valueKey: String,
       onChange: Function,
 
       confirmText: {

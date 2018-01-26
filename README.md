@@ -73,7 +73,7 @@ body > *:first-child{
 }
 ```
 
-## 在页面中使用:
+## 在页面中使用
 
 ```javascript
 <template>
@@ -113,6 +113,9 @@ body > *:first-child{
     options: String | undefined
     default: undefined
   },
+
+  // vue组件的参数
+  propsData: Object,
 
   // 设置定位方式
   positionType,
@@ -199,7 +202,7 @@ body > *:first-child{
     margin: 10,    // 设置4个边一样 10px
     margin: '10%', // 设置4个边一样 10%, css的长度单位即可
     margin: [10%, '10px'],               // 分别设置x,y轴
-    margin: [10%, '10px', 10%, '10px'],  // 分别设置4边
+    margin: [10%, '10px', 10%, '10px'],  // 分别设置4边, 顺序上右下左, 和css的margin一样
   },
 
   //// domRelative的相关 \\\\

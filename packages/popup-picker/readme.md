@@ -3,7 +3,7 @@
 
 -----
 
-描述
+从we-vue优化的picker, 其参考mint-ui, 所以算是从mint-ui的pick吧~ 改造成支持返回键的picker~
 
 ### 添加依赖
 
@@ -29,9 +29,6 @@ this.picker = new this.$popup.Picker({
   propsData: {}
 })
 
-// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
-// config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
-
 this.picker.open(e, {
   ...config
   propsData: {}
@@ -40,19 +37,37 @@ this.picker.open(e, {
 this.picker.close()
 ```
 
+> e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
+> config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
+
 ### propsData配置定义
 
-```json
+```js
 {
   e: Object // 从open(e, {})传进来的e
-  
+  slots: Array,
+  onChange: Function,
+  showItemNum: Number,
+  defaultValues: Array,
+  showItemHeight: Number,
+
+  confirmText: {
+    type: String,
+    default: '确定'
+  },
+  cancelText: {
+    type: String,
+    default: '取消'
+  },
+  onConfirm: Function,
+  onCancel:  Function
 }
 ```
 
 ### 效果预览
 
 <div>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/vc-popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-picker.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 ### License

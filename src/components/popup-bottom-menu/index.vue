@@ -1,6 +1,10 @@
 <template>
   <ul class="vc-popup-bottom-menu">
-    <li class="vc-popup-bottom-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+    <li class="vc-popup-bottom-menu-li" 
+      v-for="(item, key) in items" 
+      @click="item.click" 
+      :key="key"
+    >{{item.name}}</li>
   </ul>
 </template>
 

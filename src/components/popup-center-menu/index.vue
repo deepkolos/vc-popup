@@ -1,7 +1,11 @@
 <template>
   <vc-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
     <ul class="vc-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
-      <li class="vc-popup-center-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+      <li class="vc-popup-center-menu-li"
+        v-for="(item, key) in items"
+        @click="item.click"
+        :key="key"
+      >{{item.name}}</li>
     </ul>
   </vc-gesture-tile-press>
 </template>

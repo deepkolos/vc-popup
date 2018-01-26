@@ -41,7 +41,6 @@
         type: Number,
         default: 34
       },
-      valueKey: String,
       onChange: Function
     },
 

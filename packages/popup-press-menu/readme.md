@@ -3,7 +3,7 @@
 
 -----
 
-描述
+模仿微信的长按菜单~
 
 ### 添加依赖
 
@@ -29,9 +29,6 @@ this.pressMenu = new this.$popup.PressMenu({
   propsData: {}
 })
 
-// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
-// config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
-
 this.pressMenu.open(e, {
   ...config
   propsData: {}
@@ -40,12 +37,31 @@ this.pressMenu.open(e, {
 this.pressMenu.close()
 ```
 
+> e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
+> config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
+
 ### propsData配置定义
 
-```json
+```js
 {
   e: Object // 从open(e, {})传进来的e
-  
+  items: {
+    type: Array,
+    required: true,
+    example: [
+      {
+        name:  String,
+        click: Function,
+      },
+      {
+        name: '分享二维码',
+        click: () => console.log('btn0 clicked')
+      },
+      ...
+    ]
+  },
+  onClose: Function,
+  onOpen: Function
 }
 ```
 

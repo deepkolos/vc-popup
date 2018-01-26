@@ -3,7 +3,7 @@
 
 -----
 
-描述
+高仿antd-mobile的calendar组件~ API都差不多的~
 
 ### 添加依赖
 
@@ -29,9 +29,6 @@ this.calendar = new this.$popup.Calendar({
   propsData: {}
 })
 
-// e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
-// config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
-
 this.calendar.open(e, {
   ...config
   propsData: {}
@@ -40,19 +37,64 @@ this.calendar.open(e, {
 this.calendar.close()
 ```
 
+> e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
+> config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
+
 ### propsData配置定义
 
-```json
+```js
 {
-  e: Object // 从open(e, {})传进来的e
-  
+  e:         Object // 从open(e, {})传进来的e
+  onClose:   Function,
+  onOpen:    Function,
+  onConfirm: Function, // 确认按钮确认时触发
+  onConfirmLeaved:      Function, // 退出动画结束之后触发
+  onDisableDaySelected: Function,
+
+  // 开启时间部分的选择
+  enableTimeSelect: {
+    type: Boolean,
+    default: false
+  },
+
+  // 开启快捷按钮, 今天/昨天/明天 近一周/近一个月
+  enableShortcut: {
+    type: Boolean,
+    default: false
+  },
+
+  // 时间段/时间点
+  type: {
+    type: String,
+    default: 'range',
+    options: ['range', 'point']
+  },
+
+  // 默认选择时间段/时间点(start开头)
+  defaultRange: {
+    type: Object,
+    example: {
+      startY: 2017,
+      startM: 10,
+      startD: 26,
+      endY: 2017,
+      endM: 11,
+      endD: 7
+    }
+  },
+
+  // 大行距
+  isLargeRowledge: {
+    type: Boolean,
+    default: false
+  }
 }
 ```
 
 ### 效果预览
 
 <div>
-  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/vc-popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-calendar.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 ### License
