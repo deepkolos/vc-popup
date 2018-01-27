@@ -8,7 +8,7 @@ import PopupPicker from '../packages/popup-picker/install'
 import PopupCalendar from '../packages/popup-calendar/install'
 import PopupDatetimePicker from '../packages/popup-datetime-picker/install'
 
-const version = '1.0.21'
+const version = '1.0.22'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(PopupBottomMenu)

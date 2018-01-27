@@ -9,7 +9,6 @@
       :slots="slots" 
       :onChange="_onChange"
       :defaultValues="defaultValues"
-      :labelKey="labelKey"
       :showItemNum="showItemNum"
       :showItemHeight="showItemHeight"
       ref="picker"
@@ -43,7 +42,6 @@
       showItemNum: Number,
       showItemHeight: Number,
       defaultValues: Array,
-      labelKey: String,
       onChange: Function,
 
       confirmText: {

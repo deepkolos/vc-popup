@@ -62,6 +62,19 @@
 
       maxTranslateY () {
         return this.showItemHeight * Math.floor(this.showItemNum / 2)
+      },
+
+      valueIndex () {
+        var labelKey = this.labelKey
+        if (this.currentValue instanceof Object) {
+          //写个顺序查找好了
+          for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
+            if (this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
+              return i
+          }
+          return -1
+        } else
+          return this.mutatingValues.indexOf(this.currentValue)
       }
     },
 
@@ -95,6 +108,7 @@
           dragState.startTranslateY = wrapper.translateY
 
           wrapper.style.transition = null
+          console.log(wrapper.translateY)
         },
         drag: (event) => {
           let dragState = this.dragState
@@ -103,11 +117,15 @@
           let minTranslateY = this.minTranslateY
           let maxTranslateY = this.maxTranslateY
 
+          // console.log(maxTranslateY, maxTranslateY, dragState.startTranslateY, deltaY)
+
           if (translateY > maxTranslateY)
             translateY = (translateY - maxTranslateY) / 2 + maxTranslateY
 
           if (translateY < minTranslateY)
             translateY = (translateY - minTranslateY) / 2 + minTranslateY
+
+          console.log(translateY)
 
           wrapper.translateY = translateY
           dragState.currentPosifionY = event.clientY
@@ -161,21 +179,9 @@
     },
 
     methods: {
-      value2translate (value) {
-        var offset     = Math.floor(this.showItemNum / 2)
-        var labelKey   = this.labelKey
-        var valueIndex = -1
-
-        if (value instanceof Object) {
-          //写个顺序查找好了,其实真的没有必要每次查找,每次查找的好处是动态更新,不需要去同步index...
-          for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
-            if (value[labelKey] === this.mutatingValues[i][labelKey]) {
-              valueIndex = i
-              break
-            }
-          }
-        } else
-          valueIndex = this.mutatingValues.indexOf(value)
+      value2translate () {
+        const valueIndex = this.valueIndex
+        const offset = Math.floor(this.showItemNum / 2)
 
         if (valueIndex !== -1) {
           return (valueIndex - offset) * -this.showItemHeight
