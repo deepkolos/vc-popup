@@ -18,16 +18,18 @@
 
 #### /components/popup-custom/**index.js**
 
-```javascript
+```js
 // 根据情况修改template的路径
 import template from './popup-custom.vue'
 import { popupRegister } from 'vc-popup-base'
 // 需要手动安装一下npm i vc-popup-base依赖
 
+// API还没稳定
 var popUpConfig = {
 }
 
-var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵活度高
+// 可以在运行是覆盖, 一般在运行时定义灵活度高
+var defaultConfig = {
   autoSetOrthocenter: true,
   position: 'domRelative'
 }
@@ -38,6 +40,7 @@ export default popupRegister(
   popUpConfig,
   defaultConfig)
 ```
+
 #### /components/popup-custom/**popup-custom.vue**
 
 这个和vue单文件的结构一样, 但是多了一些可以配置的地方:
@@ -45,7 +48,7 @@ export default popupRegister(
 0. 主要是提供了`popup`事件钩子, 一共5个, 可以通过这些事件可以定制更多的过度动画
 1. 还提供了一个接受触发`popup`事件的`e`, 从`open()`里传进来的
 
-```javascript
+```js
 <template>
   <div></div>
 </template>
@@ -70,11 +73,12 @@ export default popupRegister(
   }
 </script>
 ```
+
 ### 最后在页面中使用
 
 然后需要使用的时候`import`这个组件进去就可以了, 可以单独的页面引用, 也可以在项目全局`import`, 名字可自定义
 
-```JavaScript
+```js
 <template>
   <div class="page">
     <div class="btn" ref="btn" @click="click">custom popover</div>
@@ -82,7 +86,13 @@ export default popupRegister(
 </template>
 
 <script>
-  // popupCustom名字可以根据含义更改
+  // 如果没有使用过vc-popup系列则需要注册一下
+  import Vue from 'vue'
+  import VcPopupBase from 'vc-popup-base'
+  import '../components/popup-custom'
+  Vue.use(VcPopupBase)
+
+  // 如果有使用过的话, 则只需要import即可
   import '../components/popup-custom'
 
   export default {

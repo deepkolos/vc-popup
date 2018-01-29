@@ -5,7 +5,10 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import VcPopupBase from 'vc-popup-base'
   import '../components/popup-custom'
+  Vue.use(VcPopupBase)
 
   export default {
     mounted () {

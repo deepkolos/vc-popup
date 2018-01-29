@@ -28,7 +28,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "init:pkgjson": "node build/init-pkgjson.js",
     "build:pkgentry": "node build/build-pkgentry.js",
-    "release": "node build/release.js"
+    "release": "yarn publish && yarn modules && yarn packages && leran publish"
   },
   "license": "MIT",
   "dependencies": {
