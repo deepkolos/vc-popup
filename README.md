@@ -42,7 +42,7 @@ yarn add vc-popup
 
 在入口`main.js`导入依赖, 除此之外,现在[可以单独组件使用了~](https://www.npmjs.com/~deepkolos)
 
-```javascript
+```js
 ...
 import Vue from 'vue'
 import PopUp from 'vc-popup'
@@ -75,7 +75,7 @@ body > *:first-child{
 
 ## 在页面中使用
 
-```javascript
+```js
 <template>
   <div class="page">
     <div class="btn" @click="click">show popup</div>
@@ -260,13 +260,27 @@ body > *:first-child{
 }
 ```
 
-popup的具体使用, 可以先看看代码, 参数都比较简单, 晚点更新这部分文档
+## propsData定义
+
+具体popup的使用可以查看`/packages/popup-name/readme.md`
+
+[popup-over的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-over/readme.md)
+[popup-calendar的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-calendar/readme.md)
+[popup-dialog的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-dialog/readme.md)
+[popup-picker的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-picker/readme.md)
+[popup-img-viewer的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-img-viewer/readme.md)
+[popup-press-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)
+[popup-bottom-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)
+[popup-center-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)
+[popup-datetime-picke的使用r](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
+
+## 拓展
 
 [在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
-[更新日志.md](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
-
 [自定义改造.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
+
+[更新日志.md](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
 
 ## License
 
