@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import { swipeDirective } from '../../mixins/event/swipe.js'
   import { throttle } from '../../mixins/utils'
+  import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
     name: 'vc-pull-down-refresh',
@@ -380,118 +380,118 @@
     & > .active{
       opacity: 1;
     }
-  }
 
-  .loading-circle-icon{
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    border: 1px solid ;
-    border-top-color: transparent;
-    animation: circle 1s linear infinite;
-  }
+    & .loading-circle-icon{
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      border: 1px solid ;
+      border-top-color: transparent;
+      animation: 'vc-pull-down-refresh-circle' 1s linear infinite;
+    }
 
-  .arrows-icon{
-    transition: all 0.3s ease;
+    & .arrows-icon{
+      transition: all 0.3s ease;
 
-    &.reverse{
-      transform: rotate(180deg);
+      &.reverse{
+        transform: rotate(180deg);
+      }
+    }
+
+    & .done-icon{
+      transition: opacity 0.3s ease;
+      display: inline-block;
+      box-sizing: content-box;
+      vertical-align: middle;
+      font-size: 20px;
+      height: calc(100% - 2px);
+      width: calc(100% - 2px);
+      border: 1px solid;
+      border-radius: 100%;
+      position: relative;
+      margin-left: -13px;
+
+      &:before{
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 8px;
+        height: 12px;
+        width: 6.5px;
+        border: solid;
+        border-width: 0 1px 1px 0;
+        transform: rotate(40deg);
+      }
+    }
+
+    & .arrows-icon {
+      display: inline-block;
+      font-size: 2em;
+      vertical-align: middle;
+      height: 100%;
+      border-left: 1px solid;
+      position: relative;
+      transition: transform .3s ease;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        font-size: .5em;
+        width: 12.5px;
+        bottom: 0px;
+        border-top: 1px solid;
+      }
+
+      &:before {
+        right: 1px;
+        transform: rotate(50deg);
+        transform-origin: right;
+      }
+
+      &:after {
+        left: 0px;
+        transform: rotate(-50deg);
+        transform-origin: left;
+      }
+
+    }
+
+    & .error-icon {
+      display: inline-block;
+      font-size: 2em;
+      vertical-align: middle;
+      position: relative;
+      transition: transform .3s ease;
+      height: calc(100% - 2px);
+      width: calc(100% - 2px);
+      border: 1px solid;
+      border-radius: 100%;
+      margin-left: -13px;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        font-size: .5em;
+        width: 12.5px;
+        top: 50%;
+        left: 23%;
+        border-top: 1px solid;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
     }
   }
 
-  .done-icon{
-    transition: opacity 0.3s ease;
-    display: inline-block;
-    box-sizing: content-box;
-    vertical-align: middle;
-    font-size: 20px;
-    height: calc(100% - 2px);
-    width: calc(100% - 2px);
-    border: 1px solid;
-    border-radius: 100%;
-    position: relative;
-    margin-left: -13px;
-
-    &:before{
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 8px;
-      height: 12px;
-      width: 6.5px;
-      border: solid;
-      border-width: 0 1px 1px 0;
-      transform: rotate(40deg);
-    }
-  }
-
-  .arrows-icon {
-    display: inline-block;
-    font-size: 2em;
-    vertical-align: middle;
-    height: 100%;
-    border-left: 1px solid;
-    position: relative;
-    transition: transform .3s ease;
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      font-size: .5em;
-      width: 12.5px;
-      bottom: 0px;
-      border-top: 1px solid;
-    }
-
-    &:before {
-      right: 1px;
-      transform: rotate(50deg);
-      transform-origin: right;
-    }
-
-    &:after {
-      left: 0px;
-      transform: rotate(-50deg);
-      transform-origin: left;
-    }
-
-  }
-
-  .error-icon {
-    display: inline-block;
-    font-size: 2em;
-    vertical-align: middle;
-    position: relative;
-    transition: transform .3s ease;
-    height: calc(100% - 2px);
-    width: calc(100% - 2px);
-    border: 1px solid;
-    border-radius: 100%;
-    margin-left: -13px;
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      font-size: .5em;
-      width: 12.5px;
-      top: 50%;
-      left: 23%;
-      border-top: 1px solid;
-    }
-
-    &:before {
-      transform: rotate(45deg);
-    }
-
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
-
-  @keyframes circle {
-    0%{transform: rotate(0deg);}
+  @keyframes vc-pull-down-refresh-circle {
+    0%  {transform: rotate(0deg);}
     100%{transform: rotate(1080deg);}
   }
 </style>

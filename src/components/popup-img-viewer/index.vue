@@ -1,17 +1,17 @@
 <template>
-  <vc-swipeplus class="popup-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
+  <vc-swipe class="vc-img-viewer-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
     <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-      <div class="swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
-        <img class="swipe-img" :src="img.src" alt="">
+      <div class="vc-img-viewer-swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
+        <img class="vc-img-viewer-swipe-img" :src="img.src" alt="">
       </div>
     </vc-swipe-item>
-  </vc-swipeplus>
+  </vc-swipe>
 </template>
 
 <script>
-  import swipeDirective from '../../mixins/event/swipe.js'
-  import VcSwipeplus from '../swipeplus'
+  import VcSwipe from '../swipe'
   import VcSwipeItem from '../swipe-item'
+  import swipeDirective from '../../mixins/event/swipe.js'
 
   export default {
     name: 'vc-popup-img-viewer',
@@ -24,7 +24,7 @@
     },
 
     components: {
-      VcSwipeplus,
+      VcSwipe,
       VcSwipeItem
     },
 
@@ -330,20 +330,20 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .popup-swipe.addWeight{
+<style lang="scss">
+  .vc-img-viewer-swipe.addWeight{
     height: 100vh;
     width: 100vw;
   }
 
-  .swipe-img{
+  .vc-img-viewer-swipe-img{
     width: 100vw;
     position: absolute;
     transition: all 270ms ease;
     will-change: transform, opacity;
   }
 
-  .swipe-wrapper{
+  .vc-img-viewer-swipe-wrapper{
     width: 100vw;
     height: 100vh;
     overflow: auto;

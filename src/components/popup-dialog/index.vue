@@ -1,6 +1,6 @@
 <template>
-  <div class="vc-dialog" 
-    :class="{ 
+  <div class="vc-dialog"
+    :class="{
       'skin_android': skin === 'android',
       'skin_ios_native': skin === 'iosNative'
     }
@@ -101,7 +101,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-dialog {
     will-change: opacity, transform;
     display: inline-block;
@@ -217,7 +217,7 @@
     }
   }
 
-  .skin_android {
+  .vc-dialog.skin_android {
     & .vc-dialog-footer:after{
       content: none;
     }
@@ -265,7 +265,7 @@
     }
   }
 
-  .skin_ios_native {
+  .vc-dialog.skin_ios_native {
     background: #e8e8e8;
     border-radius: 7px;
     color: #3d4145;

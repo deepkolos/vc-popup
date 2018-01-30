@@ -1,10 +1,10 @@
 <template>
-  <div class="month">
-    <div class="month-title">{{year}}年{{month}}月</div>
-    <div class="days-wrapper" @click="_click">
-      <vc-day-row 
+  <div class="vc-calendar-month">
+    <div class="vc-calendar-month-title">{{year}}年{{month}}月</div>
+    <div class="vc-calendar-days-wrapper" @click="_click">
+      <vc-day-row
         v-for="(row, $index) in dayRows"
-        :key="$index" 
+        :key="$index"
         :days="row"
         ref="$rows"
       ></vc-day-row>
@@ -211,17 +211,17 @@
   }
 </script>
 
-<style scoped>
-  .months-warpper{
+<style>
+  .vc-calendar-months-warpper{
     width: 100%;
   }
 
-  .month {
+  .vc-calendar-month {
     width: 100%;
     background: white;
   }
 
-  .month-title{
+  .vc-calendar-month-title{
     padding: 21px 0 6px 15px;
     font-size: 16px;
   }

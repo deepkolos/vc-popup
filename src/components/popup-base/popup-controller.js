@@ -36,7 +36,7 @@ let PopUp = {
 
   open (vmBase, routerId, domLoadCallback) {
     vmPopUpContainer.turnOn()
-    vmBase.enter()
+    vmBase._enter()
     popUpIdQueue.push(routerId)
     this.updateRouter(routerId)
     requestAnimationFrame(function () {
@@ -50,7 +50,7 @@ let PopUp = {
   close (routerId) {
     var vmPopUp = RouterIdToPopUp[routerId]
 
-    vmPopUp && vmPopUp.leave(() => {
+    vmPopUp && vmPopUp._leave(() => {
       this.destroyPopUp(routerId)
       popUpIdQueue.pop()
       if (popUpIdQueue.length === 0) {

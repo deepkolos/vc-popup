@@ -16,7 +16,7 @@
   import { swipeDirective } from '../../mixins/event/swipe.js'
 
   export default {
-    name: 'vc-swipeplus',
+    name: 'vc-swipe',
 
     created () {
       this.info = null
@@ -51,7 +51,7 @@
         animating: false,
         index: 0,
         timer: null,
-        reInitTimer: null,
+        reInitTimer: null
       }
     },
 
@@ -101,15 +101,15 @@
       onSwitch: {
         type: Function,
         default: null
-      },
+      }
     },
 
     mounted () {
       this.ready = true
 
-      this.setTimer();
-      this.reInitPages();
-      window.addEventListener('resize',this.reSize);
+      this.setTimer()
+      this.reInitPages()
+      window.addEventListener('resize', this.reSize)
     },
 
     methods: {
@@ -132,83 +132,81 @@
       },
 
       reInitPages (fromSwipeItem) {
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.vc-swipe-items'),
-            $pages = this.dom.$pages = $pageContainer.children;
+        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.vc-swipe-items')
+        var $pages = this.dom.$pages = $pageContainer.children
 
         let intDefaultIndex = Math.floor(this.defaultIndex)
         let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < $pages.length) ? intDefaultIndex : 0
-        this.index = defaultIndex;
-        this.dom.$pages = $pages;
-        this.dom.$indicatorContainer = this.$el.querySelector('.vc-swipe-indicators');
-        this.dom.$indicators = this.dom.$indicatorContainer.children;
+        this.index = defaultIndex
+        this.dom.$pages = $pages
+        this.dom.$indicatorContainer = this.$el.querySelector('.vc-swipe-indicators')
+        this.dom.$indicators = this.dom.$indicatorContainer.children
 
-        this.reSize();
+        this.reSize()
       },
 
       reSize () {
-        var $pageContainer = this.dom.$pageContainer,
-            $swiper =  this.$el.children[0],
-            $pages = this.dom.$pages,
-            $indicators = this.dom.$indicators,
-            index = this.index,
-            speed = this.speed,
-            continuous = this.continuous,
-            gap = this.gap,
-            self = this,
-            actualSwipeValue, itemWidth;
+        var self = this
+        var gap = this.gap
+        var index = this.index
+        var $pages = this.dom.$pages
+        var actualSwipeValue, itemWidth
+        var continuous = this.continuous
+        var $swiper = this.$el.children[0]
+        var $indicators = this.dom.$indicators
+        var $pageContainer = this.dom.$pageContainer
 
-        itemWidth = this.dom.itemWidth = this.itemWidth || $swiper.clientWidth;
-        actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap;
-        this.status.swipeStartOffset = index * actualSwipeValue;
+        itemWidth = this.dom.itemWidth = this.itemWidth || $swiper.clientWidth
+        actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap
+        this.status.swipeStartOffset = index * actualSwipeValue
 
         requestAnimationFrame(function () {
-          $pages[index].classList.add(self.status.activatedClass);
-          $indicators[index] && $indicators[index].classList.add(self.status.activatedClass);
+          $pages[index].classList.add(self.status.activatedClass)
+          $indicators[index] && $indicators[index].classList.add(self.status.activatedClass)
 
-          $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px';
+          $pageContainer.style.width = ($pages.length * actualSwipeValue) + 'px'
           Array.prototype.forEach.call($pages, function ($page) {
-            $page.style.width = itemWidth + 'px';
-            $page.style.marginRight = gap + 'px';
-          });
+            $page.style.width = itemWidth + 'px'
+            $page.style.marginRight = gap + 'px'
+          })
 
-          if (continuous){
-            $swiper.classList.add('loop');
-            Array.prototype.forEach.call($pages, function ($page ,i) {
-              $page.currentPosition = i * itemWidth ;
-              $page.index = i;
-              $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)';
-            });
+          if (continuous) {
+            $swiper.classList.add('loop')
+            Array.prototype.forEach.call($pages, function ($page, i) {
+              $page.currentPosition = i * itemWidth
+              $page.index = i
+              $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)'
+            })
           }
-          
-          self.goTo(index, true);
-        });
+
+          self.goTo(index, true)
+        })
       },
 
-      goTo (page, immediately){
-        var fromPage = this.index,
-          $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
-          self = this;
+      goTo (page, immediately) {
+        var fromPage = this.index
+        var $pages = this.dom.$pages
+        var self = this
 
         if (page === 'next')
-          page = this.index + 1;
+          page = this.index + 1
         else if (page === 'prev')
-          page = this.index - 1;
+          page = this.index - 1
 
         if (!this.continuous) {
-          if (page > $pages.length-1 || page < 0 ) return;
+          if (page > $pages.length - 1 || page < 0) return
         } else {
-          if (page > $pages.length-1) page = 0;
-          if (page < 0) page = $pages.length-1;
+          if (page > $pages.length - 1) page = 0
+          if (page < 0) page = $pages.length - 1
         }
 
-        this.index = page;
-        this.status.swipeStartOffset = page * this.dom.actualSwipeValue;
+        this.index = page
+        this.status.swipeStartOffset = page * this.dom.actualSwipeValue
 
         if (immediately)
-          self.noAnimate(fromPage, page);
+          self.noAnimate(fromPage, page)
         else
-          self.animate(fromPage, page);
+          self.animate(fromPage, page)
       },
 
       next () {
@@ -237,7 +235,7 @@
         }
       },
 
-      onSwipe (info){
+      onSwipe (info) {
         var $pageContainer = this.dom.$pageContainer,
           $pages = this.dom.$pages,
           continuous = this.continuous,
@@ -246,151 +244,150 @@
           self = this,
 
           offset = self.status.swipeStartOffset - info.offset,
-          i_to = (info.offset > 0) ? this.index - 1 : this.index + 1,
-          i_from = this.index,
+          indexTo = (info.offset > 0) ? this.index - 1 : this.index + 1,
+          indexFrom = this.index,
           maxOffset = ($pages.length - 1) * actualSwipeValue,
-          needPass = false;
-        
+          needPass = false
+
         // 更新状态
-        this.dragging = true;
-        this.animating = false;
+        this.dragging  = true
+        this.animating = false
 
         // 修正
-        if (i_to < 0) i_to = $pages.length - 1;
-        if (i_to > $pages.length - 1) i_to = 0;
-        if (self.status.edgeLocker == 1) return;
+        if (indexTo < 0) indexTo = $pages.length - 1
+        if (indexTo > $pages.length - 1) indexTo = 0
+        if (self.status.edgeLocker === 1) return
 
         if (offset < 0) {
-          offset = 0;
-          needPass = true;
+          offset = 0
+          needPass = true
         } else if (offset > maxOffset) {
-          offset = maxOffset;
-          needPass = true;
+          offset = maxOffset
+          needPass = true
         }
-        self.status.swipeCurrentOffset = offset;
+        self.status.swipeCurrentOffset = offset
 
         if (!self.status.rafLocker) {
-          self.status.rafLocker = true;
+          self.status.rafLocker = true
           requestAnimationFrame(function () {
             if (!self.status.initLocker) {
-              self.status.initLocker = true;
-      
-              if (continuous)
-                $pageContainer.classList.add('subNoneAnimation');
-              else
-                $pageContainer.classList.add('noneAnimation');
+              self.status.initLocker = true
 
-              self.status.swipeStartTime = Date.now();
+              if (continuous)
+                $pageContainer.classList.add('subNoneAnimation')
+              else
+                $pageContainer.classList.add('noneAnimation')
+
+              self.status.swipeStartTime = Date.now()
             }
             if (continuous) {
-              Array.prototype.forEach.call($pages,function($li){
-                $li.style.transform = 
-                  `translate3d(${$li.currentPosition + info.offset}px,0,0)`;
-              });
+              Array.prototype.forEach.call($pages, function ($li) {
+                $li.style.transform =
+                  `translate3d(${$li.currentPosition + info.offset}px,0,0)`
+              })
             } else {
-              $pageContainer.style.transform = 
-                `translate3d(${-offset}px,0,0)`;
+              $pageContainer.style.transform =
+                `translate3d(${-offset}px,0,0)`
             }
 
             self.indicatorOnSwipe instanceof Function && self.indicatorOnSwipe({
-              $form: self.dom.$indicators[i_from],
-              $to: self.dom.$indicators[i_to],
-              from: i_from,
-              to: i_to,
+              $form: self.dom.$indicators[indexFrom],
+              $to: self.dom.$indicators[indexTo],
+              from: indexFrom,
+              to: indexTo,
               percentage: Math.abs(info.offset / pageWidth)
-            });
+            })
 
-            self.status.rafLocker = false;
-          });
+            self.status.rafLocker = false
+          })
         }
-        if (needPass && !continuous) return handleOverflow(info);
+        if (needPass && !continuous) return handleOverflow(info)
       },
 
-      onSwipeDone (info){
-        var $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
-          itemWidth = this.dom.itemWidth,
-          continuous = this.continuous,
-          actualSwipeValue = this.dom.actualSwipeValue,
-          self = this,
+      onSwipeDone (info) {
+        var self = this
+        var needPass = false
+        var $pages = this.dom.$pages
+        var continuous = this.continuous
+        var itemWidth = this.dom.itemWidth
+        var actualSwipeValue = this.dom.actualSwipeValue
 
-          needPass = false,
-          maxOffset = ($pages.length - 1) * actualSwipeValue,
-          i_from = this.index,
-          i_to = i_from;
+        var maxOffset = ($pages.length - 1) * actualSwipeValue
+        var indexFrom = this.index
+        var indexTo = indexFrom
 
         // 状态更新
-        this.animating = true;
-        this.dragging = false;
+        this.dragging = false
+        this.animating = true
 
-        if (self.status.edgeLocker == 1) return;
+        if (self.status.edgeLocker === 1) return
 
         if (Math.abs(info.offset) / itemWidth > 0.15 &&
           self.status.swipeCurrentOffset <= maxOffset &&
           self.status.swipeCurrentOffset >= 0
         ) {//跳转
           if (info.offset > 0) {
-            if (self.index != 0 || continuous)
-              self.index--;
+            if (self.index !== 0 || continuous)
+              self.index--
             else
-              needPass = true;
+              needPass = true
           } else {
             if (self.index < $pages.length - 1 || continuous)
-              self.index++;
+              self.index++
             else
-              needPass = true;
+              needPass = true
           }
 
-          i_to = (info.offset > 0) ? i_from - 1 : i_from + 1;
+          indexTo = (info.offset > 0) ? indexFrom - 1 : indexFrom + 1
         } else
-          needPass = true;
-        
-        if (continuous){
-          if (i_to < 0){
-            i_to = $pages.length-1;
-            self.status.edgeLocker++;
-          } else if (i_to > $pages.length - 1){
-            i_to = 0;
-            self.status.edgeLocker++;
-          }
-        } else if (i_to < 0 || i_to > $pages.length - 1)
-          i_to = i_from;
+          needPass = true
 
-        if (i_to === i_from)
-          this.animate(i_from, i_to);
+        if (continuous) {
+          if (indexTo < 0) {
+            indexTo = $pages.length - 1
+            self.status.edgeLocker++
+          } else if (indexTo > $pages.length - 1) {
+            indexTo = 0
+            self.status.edgeLocker++
+          }
+        } else if (indexTo < 0 || indexTo > $pages.length - 1)
+          indexTo = indexFrom
+
+        if (indexTo === indexFrom)
+          this.animate(indexFrom, indexTo)
         else
-          this.animate(i_from, i_to, info);
-          
+          this.animate(indexFrom, indexTo, info)
+
         this.indicatorOnSwipe instanceof Function && this.indicatorOnSwipe({
-          $form: self.dom.$indicators[i_from],
-          $to: self.dom.$indicators[i_to],
-          from: i_from,
-          to: i_to
-        });
-        if (needPass && !continuous) return needPass;
+          $form: self.dom.$indicators[indexFrom],
+          $to: self.dom.$indicators[indexTo],
+          from: indexFrom,
+          to: indexTo
+        })
+        if (needPass && !continuous) return needPass
       },
 
       transitionendProcessor () {
-        this.clearTimer();
-        this.setTimer();
-        this.animating = false;
-        this.dom.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor);
+        this.clearTimer()
+        this.setTimer()
+        this.animating = false
+        this.dom.$pageContainer.removeEventListener('transitionend', this.transitionendProcessor)
       },
 
-      animate (i_from, i_to, info){
-        var $pageContainer = this.dom.$pageContainer,
-          $pages = this.dom.$pages,
-          index = this.index,
-          continuous = this.continuous,
-          actualSwipeValue = this.dom.actualSwipeValue,
-          speed = this.ajustSpeed(info),
-          self = this,
+      animate (indexFrom, indexTo, info) {
+        var $pageContainer = this.dom.$pageContainer
+        var $pages = this.dom.$pages
+        var index = this.index
+        var continuous = this.continuous
+        var actualSwipeValue = this.dom.actualSwipeValue
+        var speed = this.ajustSpeed(info)
+        var self = this
 
-          needPass = false,
-          maxOffset = ($pages.length - 1) * actualSwipeValue,
-          $showing = $pageContainer.querySelector('.is-active');
+        var needPass = false
+        var maxOffset = ($pages.length - 1) * actualSwipeValue
+        var $showing = $pageContainer.querySelector('.is-active')
 
-        $pageContainer.addEventListener('transitionend', self.transitionendProcessor);
+        $pageContainer.addEventListener('transitionend', self.transitionendProcessor)
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
         requestAnimationFrame(function () {
@@ -413,7 +410,7 @@
                 $li.style.webkitTransition = 
                   `-webkit-transform ${speed}ms ease`;
 
-                if (i == i_to || i == i_from)
+                if (i == indexTo || i == indexFrom)
                   $li.classList.remove('noneAnimation');
               });
 
@@ -488,11 +485,11 @@
           self.status.rafLocker = false;
           self.status.initLocker = false;
 
-          i_from === i_to && self.transitionendProcessor()
+          indexFrom === indexTo && self.transitionendProcessor()
         });
       },
 
-      noAnimate (i_from, i_to){
+      noAnimate (indexFrom, indexTo){
         var $pageContainer = this.dom.$pageContainer,
           $pages = this.dom.$pages,
           index = this.index,
@@ -504,111 +501,111 @@
           $showing = $pageContainer.querySelector('.is-active');
 
         self.status.swipeStartOffset = self.index * actualSwipeValue;
-        
-        if (!continuous){
-          $pageContainer.style['transform'] = 
+
+        if (!continuous) {
+          $pageContainer.style['transform'] =
             'translate3d(' + -self.status.swipeStartOffset + 'px,0,0)';
-          $pageContainer.style.webkitTransition = 
-            `-webkit-transform 0ms ease`;
+          $pageContainer.style.webkitTransition =
+            `-webkit-transform 0ms ease`
         } else {
-          Array.prototype.forEach.call($pages, function ($li,i) {
-            $li.currentPosition = 
-              ($li.index - self.index) * actualSwipeValue;
-            $li.style.transform = 
-              'translate3d(' + $li.currentPosition + 'px,0,0)';
-            $li.style.webkitTransition = 
-              `-webkit-transform 0ms ease`;
-          });
+          Array.prototype.forEach.call($pages, function ($li, i) {
+            $li.currentPosition =
+              ($li.index - self.index) * actualSwipeValue
+            $li.style.transform =
+              'translate3d(' + $li.currentPosition + 'px,0,0)'
+            $li.style.webkitTransition =
+              `-webkit-transform 0ms ease`
+          })
         }
 
         self.transitionendProcessor()
       },
 
-      handleOverflow (info){
-        var type = this.overflow;
+      handleOverflow (info) {
+        var type = this.overflow
 
         if (type === 'backDrag')
-          this.overflowBackDrag(info);
+          this.overflowBackDrag(info)
 
-        return true;
+        return true
       },
 
-      overflowBackDrag (info){
+      overflowBackDrag (info) {
         var x = 288 / 3 / 360,
-          speed = this.speed || 280; // 默认为微信的转换比例
+          speed = this.speed || 280 // 默认为微信的转换比例
 
-        x = - this.status.swipeStartOffset + info.offset * x;
+        x = -this.status.swipeStartOffset + info.offset * x
 
         requestAnimationFrame(() => {
-          this.dom.$pageContainer.style.transform = 
-            'translate3d(' + x + 'px,0,0)';
-          this.dom.$pageContainer.style.webkitTransition = 
-            `-webkit-transform ${speed}ms ease`;
-        });
+          this.dom.$pageContainer.style.transform =
+            'translate3d(' + x + 'px,0,0)'
+          this.dom.$pageContainer.style.webkitTransition =
+            `-webkit-transform ${speed}ms ease`
+        })
 
-        return true;
+        return true
       },
 
-      updateIndex (val, oVal){
-        var max = this.dom.$pages.length - 1;
+      updateIndex (val, oVal) {
+        var max = this.dom.$pages.length - 1
 
-        if ( val >= 0 && val <= max ){
-          if (oVal < 0) oVal = max;
-          if (oVal > max) oVal = 0;
+        if (val >= 0 && val <= max) {
+          if (oVal < 0) oVal = max
+          if (oVal > max) oVal = 0
 
-          this.dom.$pages[val].classList.add(this.status.activatedClass);
-          this.dom.$pages[oVal].classList.remove(this.status.activatedClass);
+          this.dom.$pages[val].classList.add(this.status.activatedClass)
+          this.dom.$pages[oVal].classList.remove(this.status.activatedClass)
 
-          this.dom.$indicators[val] && this.dom.$indicators[val].classList.add(this.status.activatedClass);
-          this.dom.$indicators[oVal] && this.dom.$indicators[oVal].classList.remove(this.status.activatedClass);
+          this.dom.$indicators[val] && this.dom.$indicators[val].classList.add(this.status.activatedClass)
+          this.dom.$indicators[oVal] && this.dom.$indicators[oVal].classList.remove(this.status.activatedClass)
 
-          this.dom.$pages[val] && 
-            this.dom.$pages[val].__vue__&&
-              this.dom.$pages[val].__vue__.onEnter instanceof Function && 
-                this.dom.$pages[val].__vue__.onEnter[val]();
+          this.dom.$pages[val] &&
+            this.dom.$pages[val].__vue__ &&
+              this.dom.$pages[val].__vue__.onEnter instanceof Function &&
+                this.dom.$pages[val].__vue__.onEnter[val]()
 
-          this.dom.$pages[oVal] && 
-            this.dom.$pages[oVal].__vue__&&
+          this.dom.$pages[oVal] &&
+            this.dom.$pages[oVal].__vue__ &&
               this.dom.$pages[oVal].__vue__.onLeave instanceof Function &&
-                this.dom.$pages[oVal].__vue__.onLeave[oVal]();
+                this.dom.$pages[oVal].__vue__.onLeave[oVal]()
 
-          this.dom.$indicators[val] && 
-            this.dom.$indicators[val].__vue__&&
-              this.dom.$indicators[val].__vue__.onEnter instanceof Function && 
-                this.dom.$indicators[val].__vue__.onEnter[val]();
+          this.dom.$indicators[val] &&
+            this.dom.$indicators[val].__vue__ &&
+              this.dom.$indicators[val].__vue__.onEnter instanceof Function &&
+                this.dom.$indicators[val].__vue__.onEnter[val]()
 
-          this.dom.$indicators[oVal] && 
-            this.dom.$indicators[oVal].__vue__&&
+          this.dom.$indicators[oVal] &&
+            this.dom.$indicators[oVal].__vue__ &&
               this.dom.$indicators[oVal].__vue__.onLeave instanceof Function &&
-                this.dom.$indicators[oVal].__vue__.onLeave[oldVal]();
+                this.dom.$indicators[oVal].__vue__.onLeave[oVal]()
 
-          this.onSwitch instanceof Function && 
-            this.onSwitch(val, oldVal);
+          this.onSwitch instanceof Function &&
+            this.onSwitch(val, oVal)
         }
       },
 
-      ajustSpeed (info){
+      ajustSpeed (info) {
         var speed = this.speed || 240,
           swipeTime = Date.now() - this.status.swipeStartTime,
-          avgSwipeSpeed , offsetToAnimate , swipeOffset, speedOfAnimate, _speed;
+          avgSwipeSpeed, offsetToAnimate, swipeOffset, speedOfAnimate, _speed
 
-        if (info){
-          swipeOffset = Math.abs(info.offset);
-          avgSwipeSpeed = swipeOffset / swipeTime;
-          offsetToAnimate = this.dom.itemWidth - swipeOffset;
-          speedOfAnimate = offsetToAnimate * avgSwipeSpeed;
-          
-          _speed = offsetToAnimate / (swipeOffset / swipeTime) * 1.2;
+        if (info) {
+          swipeOffset = Math.abs(info.offset)
+          avgSwipeSpeed = swipeOffset / swipeTime
+          offsetToAnimate = this.dom.itemWidth - swipeOffset
+          speedOfAnimate = offsetToAnimate * avgSwipeSpeed
+
+          _speed = offsetToAnimate / (swipeOffset / swipeTime) * 1.2
 
           if (_speed > 1.6 * speed)
-            _speed = 1.6 * speed;
+            _speed = 1.6 * speed
 
           if (_speed < 0.5 * speed)
-            _speed = 0.5 * speed;
-          speed = _speed;
+            _speed = 0.5 * speed
+          speed = _speed
         }
-        
-        return speed;
+
+        return speed
       }
     },
 
@@ -636,7 +633,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-swipe {
     overflow: hidden;
     width: 100%;
@@ -650,7 +647,7 @@
         will-change: transform;
         transition: all 0.2s ease 0s;
 
-        div { //这嵌套层次有点多...
+        div {
           position: relative;
           height: 100%;
           width:100vw;
@@ -695,13 +692,13 @@
         }
       }
     }
-  }
 
-  .noneAnimation , .subNoneAnimation * {
-    transition: none!important;
-  }
+    & .noneAnimation , & .subNoneAnimation * {
+      transition: none!important;
+    }
 
-  *::-webkit-scrollbar{
-    display: none;
+    & *::-webkit-scrollbar{
+      display: none;
+    }
   }
 </style>

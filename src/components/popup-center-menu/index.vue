@@ -84,7 +84,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-popup-center-menu {
     will-change: opacity, transform;
     width: calc(100vw - 36px*2 - 4px*2);
@@ -119,13 +119,7 @@
     border-bottom: calc(2px/3) solid #EBEBEB;
   }
 
-
   .vc-popup-center-menu-li:last-child{
     border-bottom: none;
-  }
-
-  .centerMenu > li .description{
-    font-size: 12.5px;
-    float: right;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <ul class="vc-popup-over" ref="menu">
-    <span class="triangle" ref="triangle"></span>
+    <span class="vc-popup-over-triangle" ref="triangle"></span>
     <li class="vc-popup-over-li" v-for="(item, key) in items" @click="item.click" :key="key">
       <span class="li-icon-container">
         <img class="li-icon" :src="item.src" alt="">
@@ -114,7 +114,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-popup-over {
     will-change: opacity, transform;
     border-radius: 3.5px;
@@ -140,7 +140,7 @@
     }
   }
 
-  .triangle {
+  .vc-popup-over-triangle {
     position: absolute;
     width: 7px;
     height: 7px;
@@ -162,16 +162,15 @@
     border-bottom: none;
   }
 
-  .li-icon-container{
+  .vc-popup-over-li .li-icon-container{
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  .li-icon{
+  .vc-popup-over-li .li-icon{
     margin-right: 8px;
     width: 18px;
     height: 18px;
   }
-
 </style>

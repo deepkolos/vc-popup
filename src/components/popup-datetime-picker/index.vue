@@ -408,7 +408,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-picker{
     will-change: opacity, transform;
     position: fixed;

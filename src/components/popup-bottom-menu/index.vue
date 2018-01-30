@@ -59,7 +59,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-popup-bottom-menu {
     will-change: opacity, transform;
     position: fixed;

@@ -52,8 +52,8 @@
         <p>开始: {{selectedStart | selectionFilter}} {{selectedTimeStart | selectionTimeFilter}}</p>
         <p>结束: {{selectedEnd |selectionFilter}} {{selectedTimeEnd | selectionTimeFilter}}</p>
       </div>
-      <div class="btn-confirm" 
-        @click="_confirm" 
+      <div class="btn-confirm"
+        @click="_confirm"
         :data-status="status | statusFilter"
         :data-style="type | typeFilter"
       >确认</div>
@@ -62,8 +62,8 @@
 </template>
 
 <script>
-  import VcCalendarPicker from './calendar-picker.vue'
   import VcPickerView from '../picker-view'
+  import VcCalendarPicker from './calendar-picker.vue'
 
   const weekToZh = [
     '星期日',
@@ -313,7 +313,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-popup-calendar {
     background-color: white;
     will-change: opacity, transform;
@@ -345,136 +345,134 @@
       transform: translateY(5%) translateZ(0);
       transition-duration: 300ms;
     }
-  }
 
-  .header {
-    width: 100%;
-    margin-top: 5px;
-    flex-shrink: 0;
-
-    & .btn {
-      position: absolute;
-      padding: 0 8px;
-      margin: 0 5px;
-      font-size: 14px;
-      color: #1aad19;
-      line-height: 23px;
-      height: 23px;
-    }
-
-    & .btn-close {
-      width: 22px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &::before, &::after{
-        content: ' ';
-        position: relative;
-        width: 0px;
-        height: 15px;
-        border-left: 1.5px solid;
-        border-radius: 0.2px;
-      }
-
-      &::before{
-        transform: rotate(45deg)
-      }
-
-      &::after{
-        transform: translateX(-1.5px) rotate(-45deg)
-      }
-    }
-
-    & .btn-clear {
-      right: 0px;
-      top: 5px;
-    }
-
-    & .title{
-      display: inline-block;
-      text-align: center;
+    & .header {
       width: 100%;
-      padding: 4px 0 5px;
-      font-weight: 600;
-      color: black;
+      margin-top: 5px;
+      flex-shrink: 0;
+
+      & .btn {
+        position: absolute;
+        padding: 0 8px;
+        margin: 0 5px;
+        font-size: 14px;
+        color: #1aad19;
+        line-height: 23px;
+        height: 23px;
+      }
+
+      & .btn-close {
+        width: 22px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before, &::after{
+          content: ' ';
+          position: relative;
+          width: 0px;
+          height: 15px;
+          border-left: 1.5px solid;
+          border-radius: 0.2px;
+        }
+
+        &::before{
+          transform: rotate(45deg)
+        }
+
+        &::after{
+          transform: translateX(-1.5px) rotate(-45deg)
+        }
+      }
+
+      & .btn-clear {
+        right: 0px;
+        top: 5px;
+      }
+
+      & .title{
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        padding: 4px 0 5px;
+        font-weight: 600;
+        color: black;
+      }
+    }
+
+    & .calendar-picker{
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      display: flex;
+      overflow-y: auto;
+    }
+
+    & .controll-bar{
+      display: flex;
+      height: 53px;
+      width: calc(100% - 30px);
+      padding: 0 15px;
+      align-items: center;
+      border-top: 1px solid #ddd;
+      background: #f7f7f7;
+      flex: 0 0 auto;
+
+      & .result {
+        flex: auto;
+        font-size: 12px;
+      }
+    }
+
+    & .shortcut-bar{
+      display: flex;
+      flex: 0 0 auto;
+      height: 43px;
+      justify-content: space-around;
+      align-items: center;
+      color: green;
+      border-top: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    & .time-select-bar{
+      flex: 0 0 auto;
+    }
+
+    & .time-select-title{
+      height: 44px;
+      font-size: 16px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      line-height: 44px;
+    }
+
+    & .btn-confirm {
+      flex: 0 0 auto;
+      text-align: center;
+      width: 80px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      background: #1aad19;
+
+      &[data-status='disable'] {
+        color: #bbb;
+        background: #ddd;
+      }
+
+      &[data-style='oneline'] {
+        flex: auto;
+        width: auto;
+      }
     }
   }
 
-  .calendar-picker{
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    display: flex;
-    overflow-y: auto;
-  }
-
-  .controll-bar{
-    display: flex;
-    height: 53px;
-    width: calc(100% - 30px);
-    padding: 0 15px;
-    align-items: center;
-    border-top: 1px solid #ddd;
-    background: #f7f7f7;
-    flex: 0 0 auto;
-
-    & .result {
-      flex: auto;
-      font-size: 12px;
-    }
-  }
-
-  .shortcut-bar{
-    display: flex;
-    flex: 0 0 auto;
-    height: 43px;
-    justify-content: space-around;
-    align-items: center;
-    color: green;
-    border-top: 1px solid #ddd;
-    font-size: 16px;
-  }
-
-  .time-select-bar{
-    flex: 0 0 auto;
-  }
-
-  .time-select-title{
-    height: 44px;
-    font-size: 16px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-    line-height: 44px;
-  }
-
-  .btn-confirm {
-    flex: 0 0 auto;
-    text-align: center;
-    width: 80px;
-    height: 36px;
-    line-height: 36px;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 300;
-    background: #1aad19;
-
-    &[data-status='disable'] {
-      color: #bbb;
-      background: #ddd;
-    }
-
-    &[data-style='oneline'] {
-      flex: auto;
-      width: auto;
-    }
-  }
-</style>
-
-<style>
   .vc-calendar-picker[data-style='row-xl'] .day-row+.day-row{
     margin-top: 21px;
   }

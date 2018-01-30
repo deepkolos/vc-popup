@@ -1,5 +1,5 @@
 <template>
-  <div class="day-row">
+  <div class="vc-calendar-day-row">
     <vc-day-cell v-for="(day, $index ) in days" 
     :key="$index"
     :day="day.day" 
@@ -17,7 +17,7 @@
   import VcDayCell from './day-cell.vue'
 
   export default {
-    name: 'vc-day-row',
+    name: 'vc-vc-calendar-day-row',
 
     components: {
       VcDayCell
@@ -145,12 +145,12 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .day-row{
+<style lang="scss">
+  .vc-calendar-day-row{
     display: flex;
   }
 
-  .day-row+.day-row{
+  .vc-calendar-day-row+.vc-calendar-day-row{
     margin-top: 6px;
   }
 </style>

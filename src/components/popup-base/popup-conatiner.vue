@@ -26,7 +26,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-popup-conatiner {
     position: absolute;
     width: 100%;

@@ -1,9 +1,9 @@
 <template>
-  <div class="day-cell" :data-status="_check(status)" @click="_click">
-    <div class="day-number-wrapper">
-      <div class="day-number-left"></div>
-      <div class="day-number">{{ _checkDay(day) }}</div>
-      <div class="day-number-right"></div>
+  <div class="vc-calendar-day-cell" :data-status="_check(status)" @click="_click">
+    <div class="vc-calendar-day-number-wrapper">
+      <div class="vc-calendar-day-number-left"></div>
+      <div class="vc-calendar-day-number">{{ _checkDay(day) }}</div>
+      <div class="vc-calendar-day-number-right"></div>
     </div>
     <div class="day-description">{{ _checkDescription(status) }}</div>
   </div>
@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'vc-day-cell',
+    name: 'vc-vc-calendar-day-cell',
 
     props: {
       status: String,
@@ -79,14 +79,14 @@
 </script>
 
 <style scoped lang="scss">
-  .day-cell{
+  .vc-calendar-day-cell{
     flex: auto;
     text-align: center;
     color: black;
 
     &[data-status|="selected"]{
       color: #1AAD19!important;
-      & .day-number {
+      & .vc-calendar-day-number {
         color: white;
         background-color: #1AAD19;
       }
@@ -94,30 +94,30 @@
 
     &[data-status="selected-right"],
     &[data-status="selected-start-right"]{
-      & .day-number {
+      & .vc-calendar-day-number {
         border-top-left-radius: 100%;
         border-bottom-left-radius: 100%;
       }
 
-      & .day-number-right {
+      & .vc-calendar-day-number-right {
         background-color: #1AAD19;
       }
     }
 
     &[data-status="selected-left"],
     &[data-status="selected-end-left"]{
-      & .day-number {
+      & .vc-calendar-day-number {
         border-top-right-radius: 100%;
         border-bottom-right-radius: 100%;
       }
 
-      & .day-number-left {
+      & .vc-calendar-day-number-left {
         background-color: #1AAD19;
       }
     }
 
     &[data-status="selected-full"]{
-      & .day-number-left , & .day-number-right{
+      & .vc-calendar-day-number-left , & .vc-calendar-day-number-right{
         background-color: #1AAD19;
       }
     }
@@ -126,14 +126,14 @@
     &[data-status="selected-end"],
     &[data-status="selected-start-end"],
     &[data-status="selected-left-right"] {
-      & .day-number {
+      & .vc-calendar-day-number {
         border-radius: 100%;
         background-color: #1AAD19;
       }
     }
 
     &[data-status="disabled"]{
-      & .day-number {
+      & .vc-calendar-day-number {
         color: #bbb;
         border-radius: 100%;
         background-color: #eee;
@@ -145,7 +145,7 @@
     }
 
     &[data-status="unavailable"]{
-      & .day-number {
+      & .vc-calendar-day-number {
         color: #bbb;
         border-radius: 100%;
         background-color: #eee;
@@ -157,7 +157,7 @@
     }
   }
 
-  .day-number{
+  .vc-calendar-day-number{
     flex: 0 0 auto;
     width: 35px;
     height: 35px;
@@ -173,11 +173,11 @@
     text-align: center;
   }
 
-  .day-number-wrapper{
+  .vc-calendar-day-number-wrapper{
     display: flex;
   }
 
-  .day-number-left, .day-number-right{
+  .vc-calendar-day-number-left, .vc-calendar-day-number-right{
     flex: auto;
   }
 </style>

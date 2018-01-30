@@ -3,11 +3,11 @@
     :routerId="routerId"
     ref="base"
     :style="{ position: positionType }"
-    @touchmove="maskPreventScroll"
-    @mousewheel="maskPreventScroll"
-    @DOMMouseScroll="maskPreventScroll"
+    @touchmove="_maskPreventScroll"
+    @mousewheel="_maskPreventScroll"
+    @DOMMouseScroll="_maskPreventScroll"
   >
-    <div class="vc-popup-mask" ref="mask" @click="turnOffMask" ></div>
+    <div class="vc-popup-mask" ref="mask" @click="_turnOffMask" ></div>
     <div class="vc-popup-slot" ref="slotContainer">
       <div ref="slot" @touchmove="_stopPropagation"></div>
     </div>
@@ -44,39 +44,15 @@
     },
 
     methods: {
-      enter () {
-        this._beforeEnter()
-        this.status = 'on'
-      },
-
-      leave (callback) {
-        this.status = 'off'
-        this._beforeLeave()
-        this._afterLeaveCallback = callback
-      },
-
+      // 以下是提供给外部使用的
       afterDomLoad () {
         this.vm_slot.event &&
         this.vm_slot.event.afterDomLoad &&
           this.vm_slot.event.afterDomLoad()
       },
 
-      turnOffMask () {
-        if (!this.maskDisable) {
-          this.vm_slot._controller.close()
-        }
-      },
-
       maskOpacity (val) {
         this.$refs.mask.style.opacity = val
-      },
-
-      trunOffMaskTransition () {
-        this.$refs.mask.style.transitionDuration = '0ms'
-      },
-
-      trunOnMaskTransition () {
-        this.$refs.mask.style.transitionDuration = ''
       },
 
       maskClassAdd (name) {
@@ -87,13 +63,12 @@
         this.$refs.mask.classList.remove(name)
       },
 
-      maskPreventScroll (e) {
-        if (this.runtimeConfig && this.runtimeConfig.positionType === 'absolute') {
-          return
-        }
-        if (this.status === 'on') {
-          e.preventDefault()
-        }
+      trunOffMaskTransition () {
+        this.$refs.mask.style.transitionDuration = '0ms'
+      },
+
+      trunOnMaskTransition () {
+        this.$refs.mask.style.transitionDuration = ''
       },
 
       setAnimateDom ($dom) {
@@ -105,6 +80,32 @@
       },
 
       //内部使用的
+      _enter () {
+        this._beforeEnter()
+        this.status = 'on'
+      },
+
+      _leave (callback) {
+        this.status = 'off'
+        this._beforeLeave()
+        this._afterLeaveCallback = callback
+      },
+
+      _turnOffMask () {
+        if (!this.maskDisable) {
+          this.vm_slot._controller.close()
+        }
+      },
+
+      _maskPreventScroll (e) {
+        if (this.runtimeConfig && this.runtimeConfig.positionType === 'absolute') {
+          return
+        }
+        if (this.status === 'on') {
+          e.preventDefault()
+        }
+      },
+
       _addAnimationEndListener (callback, lock) {
         var $dom = this.$animateDom || this.$refs.slot
 
@@ -299,7 +300,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   .vc-popup-base{
     width: 100%;
     height: 100%;
