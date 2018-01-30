@@ -86,7 +86,7 @@ export default popupRegister(
 </template>
 
 <script>
-  // 如果没有使用过vc-popup系列则需要注册一下
+  // 如果没有在全局Vue.use(vc-popup系列), 则需要注册一下
   import Vue from 'vue'
   import VcPopupBase from 'vc-popup-base'
   import '../components/popup-custom'
