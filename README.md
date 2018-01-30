@@ -264,24 +264,15 @@ body > *:first-child{
 
 具体popup的使用可以查看`/packages/[popup-name]/readme.md`
 
-[popup-over的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-over/readme.md)
-
-[popup-calendar的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-calendar/readme.md)
-
-[popup-dialog的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-dialog/readme.md)
-
-[popup-picker的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-picker/readme.md)
-
-[popup-img-viewer的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-img-viewer/readme.md)
-
-[popup-press-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)
-
-[popup-bottom-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)
-
-[popup-center-menu的使用](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)
-
-[popup-datetime-picke的使用r](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
-
+[popup-over](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-over/readme.md)\
+[popup-calendar](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-calendar/readme.md)\
+[popup-dialog](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-dialog/readme.md)\
+[popup-picker](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-picker/readme.md)\
+[popup-img-viewer](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-img-viewer/readme.md)\
+[popup-press-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)\
+[popup-bottom-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)\
+[popup-center-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)\
+[popup-datetime-picke](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
 
 ## 拓展
 
