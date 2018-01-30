@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-picker",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "vc-popup-picker",
   "main": "index.js",
   "scripts": {

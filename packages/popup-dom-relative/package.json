@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-dom-relative",
-  "version": "0.0.8",
+  "version": "0.0.13",
   "description": "vc-popup-dom-relative",
   "main": "index.js",
   "scripts": {
