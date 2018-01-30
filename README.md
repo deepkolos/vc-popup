@@ -264,23 +264,23 @@ body > *:first-child{
 
 具体popup的使用可以查看`/packages/[popup-name]/readme.md`
 
-[popup-over](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-over/readme.md)\
-[popup-calendar](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-calendar/readme.md)\
-[popup-dialog](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-dialog/readme.md)\
-[popup-picker](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-picker/readme.md)\
-[popup-img-viewer](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-img-viewer/readme.md)\
-[popup-press-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)\
-[popup-bottom-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)\
-[popup-center-menu](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)\
-[popup-datetime-picke](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
+[popup-over's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-over/readme.md)\
+[popup-dialog's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-dialog/readme.md)\
+[popup-picker's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-picker/readme.md)\
+[popup-calendar's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-calendar/readme.md)\
+[popup-img-viewer's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-img-viewer/readme.md)\
+[popup-press-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)\
+[popup-bottom-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)\
+[popup-center-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)\
+[popup-datetime-pick's readmee](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
 
 ## 拓展
 
-[在已有项目中自定义一个popup.md](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
+[在已有项目中自定义一个popup](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
-[自定义改造.md](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
+[自定义改造](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
 
-[更新日志.md](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
+[更新日志](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
 
 ## License
 
