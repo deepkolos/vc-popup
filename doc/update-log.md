@@ -1,6 +1,6 @@
 ## update log
 
-##### 01/31: 优化calendar月份dom节点加载很多时, 导致Recalculate Style耗时太多导致的卡顿
+##### 01/31: 优化calendar月份dom节点加载很多时, 导致Recalculate Style耗时太多导致的卡顿[但是在手机效果明显, 已撤回]
 
 ![](https://github.com/deepkolos/vc-popup/blob/master/static/vc-popup-calendar-optimize-before.gif)
 

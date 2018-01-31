@@ -320,14 +320,14 @@
       background-color: #eee;
     }
 
-    & .pull-down-refresh.pulling .vc-calendar-month:nth-child(1),
-    & .pull-down-refresh.pulling .vc-calendar-month:nth-child(2)
-    {
-      display: block;
-    }
+    // & .pull-down-refresh.pulling .vc-calendar-month:nth-child(1),
+    // & .pull-down-refresh.pulling .vc-calendar-month:nth-child(2)
+    // {
+    //   display: block;
+    // }
 
-    & .pull-down-refresh.pulling .vc-calendar-month{
-      display: none;
-    }
+    // & .pull-down-refresh.pulling .vc-calendar-month{
+    //   display: none;
+    // }
   }
 </style>
