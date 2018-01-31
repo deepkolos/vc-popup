@@ -175,8 +175,8 @@
           propsData: {
             defaultRange: {
               startY: date.getFullYear(),
-              startM: date.getMonth(),
-              startD: getRandDay() + 1,
+              startM: date.getMonth() + 1,
+              startD: getRandDay(),
               endY: date.getFullYear(),
               endM: date.getMonth() + 2,
               endD: getRandDay()

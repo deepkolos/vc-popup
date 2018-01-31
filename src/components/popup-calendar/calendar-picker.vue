@@ -82,10 +82,6 @@
           startD = date.getDate()
         } else if (range instanceof Object) {
           ({startY, startM, startD, endY, endM, endD} = range)
-          startM--
-          endM--
-          // 格式还是从1还是算
-
           // 在这里验证格式, 因为vue出现格式错误还是继续执行代码...
           if (
             // 月
@@ -96,6 +92,10 @@
             startD < 1  || startD < 1 ||
             startD > 31 || startD > 31
           ) return console.error('请检查defaultRange的输入, 有效范围分别为, 月: 1~12, 日: 1~31')
+
+          // 格式还是从1还是算
+          startM--
+          endM--
         }
         this.clearSelection()
         this._select(startY, startM + 1, startD, endY, endM + 1, endD)
