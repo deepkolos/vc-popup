@@ -109,7 +109,9 @@
         type: String,
         default: 'range'
       },
-      defaultRange: Object,
+      defaultRange: {
+        type: Object
+      },
       isLargeRowledge: {
         type: Boolean,
         default: false

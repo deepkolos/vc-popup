@@ -166,15 +166,20 @@
       },
 
       click8 (e) {
+        var date = new Date()
+        var getRandDay = function () {
+          return Math.ceil(Math.random() * 30)
+        }
+
         this.calendar.open(e, {
           propsData: {
             defaultRange: {
-              startY: 2017,
-              startM: 10,
-              startD: 26,
-              endY: 2017,
-              endM: 11,
-              endD: 7
+              startY: date.getFullYear(),
+              startM: date.getMonth(),
+              startD: getRandDay() + 1,
+              endY: date.getFullYear(),
+              endM: date.getMonth() + 2,
+              endD: getRandDay()
             },
 
             onConfirm: (start, end) => {

@@ -157,7 +157,7 @@
               this.currentMaxY = tmpY
               this.currentMaxM = tmpM
 
-              if (i === 1) done()
+              if (i === 1) this.$nextTick(done)
             })
           })
         }
