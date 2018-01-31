@@ -24,11 +24,11 @@ export function countDays (year, month) {
 }
 
 export function offsetMonth (year, month, offset = 0) {
-  if (month < 0 || month > 12) {
-    console.log('检查到非法month')
+  if (month < 1 || month > 12) {
+    console.log('检查到非法month, 范围应该为1~12')
   }
 
-  year = year + Math.floor((month + offset) / 13)
+  year = year + Math.floor((month + offset - 1) / 12)
   month = month + offset
   if (offset > 0) {
     month = month % 12
