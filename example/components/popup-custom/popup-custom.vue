@@ -2,9 +2,6 @@
   <ul class="vc-popup-custom" ref="menu">
     <span class="triangle" ref="triangle"></span>
     <li class="vc-popup-custom-li" v-for="(item, key) in items" @click="item.click" :key="key">
-      <span class="li-icon-container">
-        <img class="li-icon" :src="item.src" alt="">
-      </span>
       <span class="li-title">
         {{item.name}}
       </span>
@@ -120,7 +117,7 @@
     transition: all 250ms ease 0s;
     display: inline-block;
     padding: 0px 8px;
-    background: white;
+    background: rgb(0, 0, 0);
 
     &.inital {
       opacity: 0;
@@ -143,7 +140,7 @@
     position: absolute;
     width: 7px;
     height: 7px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     transform: translate(-3.5px, -3.5px) rotate(45deg) ;
   }
 
@@ -152,7 +149,7 @@
     padding: 9px 8px;
     font-size: 15px;
     line-height: 1.4;
-    color: black;
+    color: white;
     border-bottom: calc(2px/3) solid #EBEBEB;
     display: flex;
   }
@@ -160,17 +157,4 @@
   .vc-popup-custom-li:last-child{
     border-bottom: none;
   }
-
-  .li-icon-container{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .li-icon{
-    margin-right: 8px;
-    width: 18px;
-    height: 18px;
-  }
-
 </style>

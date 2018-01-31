@@ -1,6 +1,6 @@
 <template>
   <div class="page" ref="page">
-    <div class="btn" ref="btn16" @click="click">a custom popover under the example project</div>
+    <div class="btn" ref="btn16" @click="click">自定义的popup</div>
   </div>
 </template>
 
@@ -21,12 +21,10 @@
           items: [
             {
               name: '自定义的popup',
-              click: e => console.log('btn0 clicked'),
-              src: 'http://gw.alipayobjects.com/zos/rmsportal/tOtXhkIWzwotgGSeptou.svg'
+              click: e => console.log('btn0 clicked')
             }, {
-              name: '二维码',
-              click: e => this.popupCustom.close(e),
-              src: 'http://gw.alipayobjects.com/zos/rmsportal/PKAgAqZWJVNwKsAJSmXd.svg'
+              name: '关闭',
+              click: e => this.popupCustom.close(e)
             }
           ]
         }

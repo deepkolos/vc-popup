@@ -71,14 +71,14 @@
     </div>
 
     <div class="cell">定位说明:</div>
-    <div class="cell">top,bottom,left,right,center 设置定位点</div>
-    <div class="cell">above,below,before,after 相对定位点偏移</div>
-    <div class="cell">红色-> above after</div>
-    <div class="cell">绿色-> above before</div>
-    <div class="cell">黄色-> below after</div>
-    <div class="cell">蓝色-> below before</div>
-    <div class="cell">边缘居中的时候,所居中的轴的对应的偏移设置将会失效</div>
-    <div class="cell">比如做边缘的垂直居中,垂直方向的above,below偏移设置将会无效</div>
+    <div class="cell">top bottom left right center 设置定位点</div>
+    <div class="cell">above below before after 相对定位点偏移</div>
+    <div class="cell">红色 -> above after</div>
+    <div class="cell">绿色 -> above before</div>
+    <div class="cell">黄色 -> below after</div>
+    <div class="cell">蓝色 -> below before</div>
+    <div class="cell">边缘居中的时候, 所居中的轴的对应的偏移设置将会失效</div>
+    <div class="cell">比如做边缘的垂直居中, 垂直方向的above,below偏移设置将会无效</div>
   </div>
 </template>
 
@@ -113,7 +113,7 @@
           ],
 
           onOpen: function () {
-            this.$refs.page.style.filter = 'blur(5px)'
+            this.$refs.page.style.filter = 'blur(1.5px)'
           }.bind(this),
 
           onClose: function () {
