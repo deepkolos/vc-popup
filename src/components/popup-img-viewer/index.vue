@@ -1,7 +1,14 @@
 <template>
-  <vc-swipe class="vc-img-viewer-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
+  <vc-swipe class="vc-img-viewer-swipe addWeight" 
+    overflow="backDrag"
+    :gap="gap"
+    :continuous="loop"
+    :defaultIndex="defaultIndex"
+    ref="swiper">
     <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-      <div class="vc-img-viewer-swipe-wrapper" v-swipe:down="swipeConfig" @click="$popupCtrl.close()">
+      <div class="vc-img-viewer-swipe-wrapper"
+        v-swipe:down="swipeConfig"
+        @click="$popupCtrl.close()">
         <img class="vc-img-viewer-swipe-img" :src="img.src" alt="">
       </div>
     </vc-swipe-item>
@@ -39,6 +46,10 @@
       loop: {
         type: Boolean,
         default: false
+      },
+      gap: {
+        type: Number,
+        default: 16
       }
     },
 
@@ -60,7 +71,7 @@
               `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
 
           requestAnimationFrame(() => {
-            $onSwipeImg.style.transform = `translate3d(0,0,0) scale(1)`
+            $onSwipeImg.style.transform = `translate3d(0,0,0)`
             if (hasClip)
               $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
 
@@ -159,7 +170,9 @@
         //生成开始位置
         scale = imgRect.width / wWidth
         zoomedImgCenterX = wWidth / 2
-        zoomedImgCenterY = (iRatio > wRotaio) ? wHeight / 2 : wWidth / iRatio / 2
+        zoomedImgCenterY = iRatio > wRotaio
+                         ? wHeight / 2
+                         : wWidth / iRatio / 2
         triggeredImgCenterX = imgRect.left + imgRect.width / 2
         triggeredImgCenterY = imgRect.top + imgRect.height / 2
 
@@ -168,16 +181,16 @@
         translateY = triggeredImgCenterY - zoomedImgCenterY
 
         //设置clip-path
-        clipTop = contianerRect.top - imgRect.top
-        clipLeft = contianerRect.left - imgRect.left
-        clipBottom = imgRect.bottom - contianerRect.bottom
-        clipRight = imgRect.right - contianerRect.right
-        clipRadius = containerStyle.borderRadius
+        clipTop     = contianerRect.top - imgRect.top
+        clipLeft    = contianerRect.left - imgRect.left
+        clipBottom  = imgRect.bottom - contianerRect.bottom
+        clipRight   = imgRect.right - contianerRect.right
+        clipRadius  = containerStyle.borderRadius
 
-        clipTop = clipTop > 0 ? clipTop / scale : 0
-        clipLeft = clipLeft > 0 ? clipLeft / scale : 0
-        clipBottom = clipBottom > 0 ? clipBottom / scale : 0
-        clipRight = clipRight > 0 ? clipRight / scale : 0
+        clipTop     = clipTop     > 0 ? clipTop     / scale : 0
+        clipLeft    = clipLeft    > 0 ? clipLeft    / scale : 0
+        clipBottom  = clipBottom  > 0 ? clipBottom  / scale : 0
+        clipRight   = clipRight   > 0 ? clipRight   / scale : 0
 
         //clipRadius放大麻烦一丢丢,仅仅px,先是最简单版本
         clipRightVals = clipRadius.split(' ')
@@ -194,8 +207,9 @@
         })
         clipRadius = clipRightVals.join(' ')
 
-        hasClip = clipTop !== 0 || clipLeft !== 0 ||
-                  clipBottom !== 0 || clipRight !== 0 || clipRadius !== '0px'
+        hasClip = clipTop    !== 0 || clipLeft  !== 0 ||
+                  clipBottom !== 0 || clipRight !== 0 ||
+                  clipRadius !== '0px'
 
         return {
           clipTop: clipTop,
@@ -310,7 +324,11 @@
           this.$popupCtrl.vmBase.setMaskOpacity(1)
         })
 
-        if (info.directionFour === 'down' && y >= 284 / 3 && $item.scrollTop === 0) {
+        if (
+          info.directionFour === 'down' &&
+          $item.scrollTop === 0 &&
+          y >= 284 / 3
+        ) {
           this.$popupCtrl.close()
         } else {
           $item.style.overflow = null
@@ -330,7 +348,7 @@
   }
 </script>
 
-<style lang="scss">
+<style>
   .vc-img-viewer-swipe.addWeight{
     height: 100vh;
     width: 100vw;

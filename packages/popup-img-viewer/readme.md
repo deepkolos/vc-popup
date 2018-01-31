@@ -52,6 +52,10 @@ this.imgViewer.close()
   loop: {   // 是否允许循环滑动
     type: Boolean,
     default: false
+  },
+  gap: {    // 图片之间的间隙
+    type: Number,
+    default: 16
   }
 }
 ```

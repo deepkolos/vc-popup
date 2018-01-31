@@ -1,14 +1,14 @@
 <template>
   <div class="vc-picker-body" ref="body">
     <vc-picker-slot 
-      v-for="(slot, key) in slots" 
-      :key="key" 
-      :values="slot.values || []" 
-      :content="slot.content" 
-      :divider="slot.divider" 
-      :labelKey="slot.labelKey" 
-      :showItemNum="showItemNum" 
-      :showItemHeight="showItemHeight" 
+      v-for="(slot, key) in slots"
+      :key="key"
+      :values="slot.values || []"
+      :content="slot.content"
+      :divider="slot.divider"
+      :labelKey="slot.labelKey"
+      :showItemNum="showItemNum"
+      :showItemHeight="showItemHeight"
       v-model="values[slot.valueIndex]"
     ></vc-picker-slot>
   </div>
@@ -79,9 +79,6 @@
 
       this.defaultValues instanceof Array &&
         this.setValues(this.defaultValues)
-
-      if (this.showItemNum > 7)
-        this.showItemNum = 7
     },
 
     mounted () {
