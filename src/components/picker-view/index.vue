@@ -85,7 +85,8 @@
     },
 
     mounted () {
-      this.$refs.body.style.height = this.showItemHeight * this.showItemNum + 'px'
+      this.$refs.body.style.height =
+        this.showItemHeight * this.showItemNum + 'px'
     },
 
     methods: {
@@ -179,7 +180,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style>
   .vc-picker-body {
     display: -webkit-box;
     display: -webkit-flex;

@@ -20,7 +20,7 @@
   import VcPickerView from '../picker-view'
 
   export default {
-    name: 'vc-picker',
+    name: 'vc-popup-picker',
 
     props: {
       slots: Array,

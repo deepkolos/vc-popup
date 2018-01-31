@@ -1,8 +1,8 @@
 <template>
-  <div class="vc-picker-group" v-if="!divider">
+  <div class="vc-picker-group" ref="group" v-if="!divider">
     <div class="vc-picker-mask" ref="mask"></div>
     <div class="vc-picker-indicator" ref="indicator"></div>
-    <div class="vc-picker-content" ref="listWrapper">
+    <div class="vc-picker-content" ref="content">
       <div class="vc-picker-item"
         :class="{ 'vc-picker-item_disabled': typeof item === 'object' && item.disabled }"
         v-for="(item, key) in mutatingValues"
@@ -16,9 +16,6 @@
 </template>
 
 <script>
-  import draggable from '../../utils/draggable.js'
-  import Transform from 'css3transform'
-
   export default {
     name: 'vc-picker-slot',
 
@@ -30,6 +27,7 @@
         }
       },
       value: {},
+      content: String,
       labelKey: String,
       defaultIndex: {
         type: Number,
@@ -40,12 +38,7 @@
         default: false
       },
       showItemNum: Number,
-      showItemHeight: Number,
-      content: {}
-    },
-
-    created () {
-      this.dragState = {}
+      showItemHeight: Number
     },
 
     data () {
@@ -67,7 +60,6 @@
       valueIndex () {
         var labelKey = this.labelKey
         if (this.currentValue instanceof Object) {
-          //写个顺序查找好了
           for (var i = 0, len = this.mutatingValues.length; i < len; i++) {
             if (this.currentValue[labelKey] === this.mutatingValues[i][labelKey])
               return i
@@ -85,39 +77,45 @@
 
       if (this.divider) return
 
-      const wrapper = this.$refs.listWrapper
-      const $indicator = this.$refs.indicator
-      const $mask = this.$refs.mask
-      Transform(wrapper, true)
-
-      //初始化indicator的位置
-      $indicator.style.top =
+      this.$refs.indicator.style.top =
         (this.showItemHeight * this.showItemNum - 34) / 2 + 'px'
 
-      $mask.style.backgroundSize =
+      this.$refs.mask.style.backgroundSize =
         '100% ' + (this.showItemHeight * (this.showItemNum - 1)) / 2 + 'px'
 
       this.doOnValueChange()
+      this.initListener()
+    },
 
-      draggable(this.$el, {
-        start: (event) => {
-          let dragState = this.dragState
+    methods: {
+      initListener () {
+        var self = this
+        var $group = this.$refs.group
+        var $content = this.$refs.content
+        var $indicator = this.$refs.indicator
+        var itemHeight = self.showItemHeight
+        var minTranslateY = self.minTranslateY
+        var maxTranslateY = self.maxTranslateY
 
-          dragState.start = new Date()
-          dragState.startPositionY = event.clientY
-          dragState.startTranslateY = wrapper.translateY
+        var lastEvt = null
+        var startTime = null
+        var startPositionY = null
+        var prevTranslateY = null
+        var startTranslateY = null
+        var velocityTranslate = null
 
-          wrapper.style.transition = null
-          console.log(wrapper.translateY)
-        },
-        drag: (event) => {
-          let dragState = this.dragState
-          let deltaY = event.clientY - dragState.startPositionY
-          let translateY = dragState.startTranslateY + deltaY
-          let minTranslateY = this.minTranslateY
-          let maxTranslateY = this.maxTranslateY
+        $group.addEventListener('touchstart', function (evt) {
+          lastEvt = evt
+          startTime = new Date()
+          startPositionY = evt.touches[0].clientY
+          prevTranslateY = startTranslateY = self.currentTranslateY
 
-          // console.log(maxTranslateY, maxTranslateY, dragState.startTranslateY, deltaY)
+          $content.style.transition = null
+        })
+
+        $group.addEventListener('touchmove', function (evt) {
+          var deltaY = evt.touches[0].clientY - startPositionY
+          var translateY = startTranslateY + deltaY
 
           if (translateY > maxTranslateY)
             translateY = (translateY - maxTranslateY) / 2 + maxTranslateY
@@ -125,60 +123,55 @@
           if (translateY < minTranslateY)
             translateY = (translateY - minTranslateY) / 2 + minTranslateY
 
-          console.log(translateY)
+          self.setTranslateY(translateY)
+          velocityTranslate = translateY - prevTranslateY
+          prevTranslateY = translateY
+          lastEvt = evt
+        })
 
-          wrapper.translateY = translateY
-          dragState.currentPosifionY = event.clientY
-          dragState.currentTranslateY = wrapper.translateY
-          dragState.velocityTranslate =
-            dragState.currentTranslateY - dragState.prevTranslateY
-          dragState.prevTranslateY = dragState.currentTranslateY
-        },
-        end: (event) => {
-          let dragState = this.dragState
-          let momentumRatio = 7
-          let currentTranslate = wrapper.translateY
-          let duration = new Date() - dragState.start
-          let distance = Math.abs(dragState.startTranslateY - currentTranslate)
+        $group.addEventListener('touchend', function () {
+          var momentumRatio = 7
+          var translateY = self.currentTranslateY
+          var duration = new Date() - startTime
+          var distance = Math.abs(startTranslateY - translateY)
+          var rect, offset, momentumTranslate
 
-          let rect, offset
           if (distance < 6) {
             rect = $indicator.getBoundingClientRect()
-            offset = Math.floor((event.clientY - rect.top) / this.showItemHeight) * this.showItemHeight
+            offset = Math.floor((lastEvt.touches[0].clientY - rect.top) / itemHeight) * itemHeight
 
-            if (offset > this.maxTranslateY)
-              offset = this.maxTranslateY
+            if (offset > maxTranslateY)
+              offset = maxTranslateY
 
-            dragState.velocityTranslate = 0
-            currentTranslate -= offset
+            velocityTranslate = 0
+            translateY -= offset
           }
 
-          let momentumTranslate
           if (duration < 300) {
-            momentumTranslate = currentTranslate + dragState.velocityTranslate * momentumRatio
+            momentumTranslate =
+              translateY + velocityTranslate * momentumRatio
           }
 
-          wrapper.style.transition = 'all 200ms ease'
+          $content.style.transition = 'transform 200ms ease'
 
-          this.$nextTick(() => {
-            let translate
-            if (momentumTranslate) {
-              translate = Math.round(momentumTranslate / this.showItemHeight) * this.showItemHeight
-            } else {
-              translate = Math.round(currentTranslate / this.showItemHeight) * this.showItemHeight
-            }
+          self.$nextTick(() => {
+            var translate = momentumTranslate
+              ? Math.round(momentumTranslate / itemHeight) * itemHeight
+              : Math.round(translateY / itemHeight) * itemHeight
 
-            translate = Math.max(Math.min(translate, this.maxTranslateY), this.minTranslateY)
+            translate = Math.max(Math.min(translate, maxTranslateY), minTranslateY)
 
-            wrapper.translateY = translate
-            this.currentValue = this.translate2value(translate)
+            self.setTranslateY(translate)
+            self.currentValue = self.translate2value(translate)
           })
-          this.dragState = {}
-        }
-      })
-    },
+        })
+      },
 
-    methods: {
+      setTranslateY (val) {
+        this.currentTranslateY = val
+        this.$refs.content.style.transform = `translate3d(0, ${val}px, 0)`
+      },
+
       value2translate () {
         const valueIndex = this.valueIndex
         const offset = Math.floor(this.showItemNum / 2)
@@ -196,12 +189,10 @@
       },
 
       doOnValueChange (val) {
-        let value = val || this.currentValue
-        let wrapper = this.$refs.listWrapper
-
         if (this.divider) return
 
-        wrapper.translateY = this.value2translate(value)
+        this.setTranslateY(
+          this.value2translate(val || this.currentValue))
       },
 
       nearby (val, values) {
@@ -260,7 +251,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-picker-group{
     z-index: 0;
     overflow: hidden;
