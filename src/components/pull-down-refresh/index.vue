@@ -38,7 +38,10 @@
      */
 
     /** 事件
-     * onLoad 用户一定交互之后会触发加载更多
+     * @function{onLoad} 用户一定交互之后会触发加载更多
+     * @function{onScrollLoad} 滑动到底部触发的更多加载
+     * @function{onPullStart} 开始触发下拉的时候
+     * @function{onPullEnd} finger leave screen
      */
 
     data () {
@@ -141,6 +144,7 @@
         if (this.status === 0) {
           this.startY = info.movingY
           this.status = 1
+          this.$emit('onPullStart')
         } else {
           offset = parseInt((info.movingY - this.startY) / 2)
 
@@ -171,10 +175,14 @@
           $panel.style.transitionDuration = null
           $content.style.transitionDuration = null
 
-          if (this.status === 1 || this.noMoreTry === true)
-            this.status = 0
-          else if (this.status === 2)
-            this.status = 3
+          this.$emit('onPullEnd')
+
+          requestAnimationFrame(() => {
+            if (this.status === 1 || this.noMoreTry === true)
+              this.status = 0
+            else if (this.status === 2)
+              this.status = 3
+          })
         })
       },
 
@@ -312,7 +320,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-pull-down-refresh-warpper {
     overflow: auto;
     z-index: 0;

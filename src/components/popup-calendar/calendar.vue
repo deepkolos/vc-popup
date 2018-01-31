@@ -1,5 +1,5 @@
 <template>
-  <div class="calendar">
+  <div class="vc-calendar">
     <div class="week-indicator">
       <div class="week-indicator-item grey">日</div>
       <div class="week-indicator-item">一</div>
@@ -10,21 +10,24 @@
       <div class="week-indicator-item grey">六</div>
     </div>
     <div class="months-warpper">
-      <vc-pull-down-refresh 
-        @onLoad="_loadMorePrev" 
+      <vc-pull-down-refresh
+        @onLoad="_loadMorePrev"
         @onScrollLoad="_loadMoreNext"
-        :showMsgIcon="false" 
-        :maxDragOffset="80" 
+        @onPullStart="pulling = true"
+        @onPullEnd="pulling = false"
+        :showMsgIcon="false"
+        :maxDragOffset="80"
         :customMsg="pullDownMsg"
         :triggerScrollLoadOffset="300"
         class="pull-down-refresh"
+        :class="pulling ? 'pulling' : ''"
         ref="pullDownRefresh"
       >
         <div class="wrapper" ref="wrapper">
-          <vc-month 
+          <vc-month
             v-for="(month, $index) in months"
             :key="$index"
-            :year="month.Y" 
+            :year="month.Y"
             :month="month.M"
             :dayRules="month.R"
           ></vc-month>
@@ -36,8 +39,8 @@
 
 <script>
   import VcMonth from './month.vue'
-  import { countDays, offsetMonth, monthsBetween } from '../../mixins/utils'
   import VcPullDownRefresh from '../pull-down-refresh'
+  import { countDays, offsetMonth, monthsBetween } from '../../mixins/utils'
 
   export default {
     name: 'vc-calendar',
@@ -63,6 +66,7 @@
         minMonth: null,
         maxYear: null,
         maxMonth: null,
+        pulling: false,
         months: {},
         rules: {},
         pullDownMsg: [
@@ -282,39 +286,49 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .week-indicator {
-    width: 100%;
+<style lang="scss">
+  .vc-calendar{
     display: flex;
-    flex-shrink: 0;
-  }
+    overflow-y: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
 
-  .week-indicator-item {
-    flex: auto;
-    text-align: center;
-    border-bottom: 1px solid #ddd; 
-
-    &.grey{
-      color: #bbb;
+    & .week-indicator {
+      width: 100%;
+      display: flex;
+      flex-shrink: 0;
     }
-  }
 
-  .calendar{
-    display: flex;
-    overflow-y: auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .months-warpper{
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    overflow-y: auto;
-    background-color: #eee;
+    & .week-indicator-item {
+      flex: auto;
+      text-align: center;
+      border-bottom: 1px solid #ddd; 
+
+      &.grey{
+        color: #bbb;
+      }
+    }
+
+    & .months-warpper{
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      overflow-y: auto;
+      background-color: #eee;
+    }
+
+    & .pull-down-refresh.pulling .vc-calendar-month:nth-child(1),
+    & .pull-down-refresh.pulling .vc-calendar-month:nth-child(2)
+    {
+      display: block;
+    }
+
+    & .pull-down-refresh.pulling .vc-calendar-month{
+      display: none;
+    }
   }
 </style>

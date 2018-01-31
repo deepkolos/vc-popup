@@ -1,6 +1,10 @@
 ## update log
 
-##### 01/31: 接近稳定版本
+##### 01/31: 优化calendar月份dom节点加载很多时, 导致Recalculate Style耗时太多导致的卡顿
+
+![](https://github.com/deepkolos/vc-popup/blob/master/static/vc-popup-calendar-optimize-before.gif)
+
+![](https://github.com/deepkolos/vc-popup/blob/master/static/vc-popup-calendar-optimize-after.gif)
 
 ##### 12-08: imgView支持懒加载图片,从加载状态的预设图片到加载完成的src同步变化~
 

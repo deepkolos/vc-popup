@@ -78,7 +78,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .vc-calendar-day-cell{
     flex: auto;
     text-align: center;
@@ -155,6 +155,12 @@
     &.grey {
       color: #bbb;
     }
+
+    & .day-description{
+      font-size: 10px;
+      height: 15px;
+      text-align: center;
+    }
   }
 
   .vc-calendar-day-number{
@@ -165,12 +171,6 @@
     text-align: center;
     margin: 0 auto;
     overflow: hidden;
-  }
-
-  .day-description{
-    font-size: 10px;
-    height: 15px;
-    text-align: center;
   }
 
   .vc-calendar-day-number-wrapper{
