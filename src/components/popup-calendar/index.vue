@@ -31,16 +31,16 @@
     <div class="time-select-bar" v-show="enableTimeSelect && (selectedStart || selectedEnd)">
       <div v-show="selectedStart && !selectedEnd">
         <div class="time-select-title">选择<span v-show="type === 'range'">开始</span>时间</div>
-        <vc-picker-view 
-          :slots="timeSlots" 
+        <vc-picker-view
+          :slots="timeSlots"
           :onChange="_changeStartTime"
           :showItemNum="5"
         ></vc-picker-view>
       </div>
       <div v-show="selectedEnd">
         <div class="time-select-title">选择结束时间</div>
-        <vc-picker-view 
-          :slots="timeSlots" 
+        <vc-picker-view
+          :slots="timeSlots"
           :onChange="_changeEndTime"
           :showItemNum="5"
         ></vc-picker-view>
@@ -52,7 +52,7 @@
         <p>开始: {{selectedStart | selectionFilter}} {{selectedTimeStart | selectionTimeFilter}}</p>
         <p>结束: {{selectedEnd |selectionFilter}} {{selectedTimeEnd | selectionTimeFilter}}</p>
       </div>
-      <div class="btn-confirm"
+      <div class="btn-confirm btn"
         @click="_confirm"
         :data-status="status | statusFilter"
         :data-style="type | typeFilter"
@@ -472,6 +472,11 @@
         flex: auto;
         width: auto;
       }
+    }
+
+    & .btn:active,
+    & .shortcut-bar div:active{
+      color: rgb(209, 209, 209);
     }
   }
 

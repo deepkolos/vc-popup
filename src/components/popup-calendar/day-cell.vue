@@ -157,9 +157,10 @@
     }
 
     & .day-description{
-      font-size: 10px;
+      font-size: 11px;
       height: 15px;
       text-align: center;
+      line-height: 18px;
     }
   }
 

@@ -8,7 +8,9 @@
   color: black;
   display: block;
   text-decoration:none;
+  transition: all 100ms ease;
 }
+
 .cell:not(:last-child){
   border-bottom: 1px solid #e2e2e2;
 }
@@ -18,8 +20,13 @@
   color: rgb(155, 155, 155);
 }
 
+.cell:active{
+  background: #e2e2e2;
+  transition: all 30ms ease;
+}
+
 .title{
   padding: 10px 10px 0 10px;
   font-size: 15px;
   color: #919191;
-} 
+}
