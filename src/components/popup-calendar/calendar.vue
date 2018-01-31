@@ -317,7 +317,6 @@
       -webkit-box-direction: normal;
       -webkit-box-orient: vertical;
       overflow-y: auto;
-      background-color: #eee;
     }
 
     // & .pull-down-refresh.pulling .vc-calendar-month:nth-child(1),
