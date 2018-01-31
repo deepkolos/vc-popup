@@ -1,5 +1,5 @@
-import PopupBase from './popup-base.js'
 import Vue from 'vue'
+import PopupBase from './popup-base.js'
 
 function popupRegister (name, template, popUpConfig, defaultConfig) {
   var incrId = 0

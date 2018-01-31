@@ -1,7 +1,7 @@
 <template>
   <vc-swipe class="vc-img-viewer-swipe addWeight" overflow="backDrag" :gap="16" :continuous="loop" :defaultIndex="defaultIndex" ref="swiper">
     <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
-      <div class="vc-img-viewer-swipe-wrapper" v-swipe:down="swipeConfig" @click="_controller.close()">
+      <div class="vc-img-viewer-swipe-wrapper" v-swipe:down="swipeConfig" @click="$popupCtrl.close()">
         <img class="vc-img-viewer-swipe-img" :src="img.src" alt="">
       </div>
     </vc-swipe-item>
@@ -49,7 +49,7 @@
 
           var {clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex)
 
-          this._controller.vm_popUp.setAnimateDom($onSwipeImg)
+          this.$popupCtrl.vmBase.setAnimateDom($onSwipeImg)
           this._initPosition()
 
           $onSwipeImg.style.transform =
@@ -65,7 +65,7 @@
               $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
 
             setTimeout(() => {
-              this._controller.vm_popUp.maskOpacity(1)
+              this.$popupCtrl.vmBase.setMaskOpacity(1)
             }, 0)
           })
         },
@@ -76,7 +76,7 @@
 
           var {clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(index)
 
-          this._controller.vm_popUp.setAnimateDom($onSwipeImg)
+          this.$popupCtrl.vmBase.setAnimateDom($onSwipeImg)
 
           if (hasClip)
             $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
@@ -278,7 +278,7 @@
         if (!this.status.initLock) {
           this.status.initLock = true
           $img.style.transitionDuration = '0ms'
-          this._controller.vm_popUp.trunOffMaskTransition()
+          this.$popupCtrl.vmBase.trunOffMaskTransition()
           $img.style['transform-origin'] = transformOrgin
           $item.style['overflow'] = 'hidden'
         }
@@ -289,7 +289,7 @@
             'translate3d(' + x + 'px,' + y + 'px,0) scale(' + scale + ')',
             'important'
           )
-          this._controller.vm_popUp.maskOpacity(scale)
+          this.$popupCtrl.vmBase.setMaskOpacity(scale)
         })
       },
 
@@ -304,14 +304,14 @@
 
         requestAnimationFrame(() => {
           $img.style.transitionDuration = null
-          this._controller.vm_popUp.trunOnMaskTransition()
+          this.$popupCtrl.vmBase.trunOnMaskTransition()
           $img.style['transform-origin'] = null
           $img.style.transform = null
-          this._controller.vm_popUp.maskOpacity(1)
+          this.$popupCtrl.vmBase.setMaskOpacity(1)
         })
 
         if (info.directionFour === 'down' && y >= 284 / 3 && $item.scrollTop === 0) {
-          this._controller.close()
+          this.$popupCtrl.close()
         } else {
           $item.style.overflow = null
         }

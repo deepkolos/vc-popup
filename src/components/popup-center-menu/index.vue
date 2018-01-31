@@ -39,7 +39,7 @@
             vmTile = this.$refs.tile,
             $content = vmTile.$refs.content
 
-          this._controller.vm_popUp.setAnimateDom($content)
+          this.$popupCtrl.vmBase.setAnimateDom($content)
 
           $el.classList.add('inital')
           requestAnimationFrame(function () {
@@ -53,7 +53,7 @@
             $content = vmTile.$refs.content,
             deg = vmTile.maxDeg * 1.15
 
-          this._controller.vm_popUp.setAnimateDom($content)
+          this.$popupCtrl.vmBase.setAnimateDom($content)
           vmTile.orientationY = vmTile.orientationY === undefined ? 1 : vmTile.orientationY
           vmTile.orientationX = vmTile.orientationX === undefined ? 0 : vmTile.orientationX
 
@@ -73,7 +73,7 @@
     methods: {
       _checkCloseTrigger () {
         setTimeout(() => {
-          var status = this._controller.vm_popUp.status,
+          var status = this.$popupCtrl.vmBase.status,
             vmTile = this.$refs.tile
 
           if (status === 'on')

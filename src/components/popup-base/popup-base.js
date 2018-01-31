@@ -21,41 +21,24 @@ let popUpBase = {
     this.config.propsData = Object.assign({}, this.constructConfig.propsData, runtimeConfig ? runtimeConfig.propsData : {})
     this.config.e = this.config.propsData.e = e
 
-    this.vm_popUp = popUpController.createPopUp(this.popUpConfig, routerId, e, this.config)
-    this.vm_slot = new this.Factory({
-      el: this.vm_popUp.$refs.slot,
+    this.vmBase = popUpController.createPopUp(this.popUpConfig, routerId, e, this.config)
+    this.vmSlot = new this.Factory({
+      el: this.vmBase.$refs.slot,
       propsData: this.config.propsData
     })
-    this.vm_popUp.$refs.slot = this.vm_slot.$el
-    this.vm_popUp.vm_slot = this.vm_slot // 我觉得我的命名开始凌乱了...
-    this.vm_slot._controller = this
+    this.vmBase.$refs.slot = this.vmSlot.$el
+    this.vmBase.vmSlot = this.vmSlot
+    this.vmSlot.$popupCtrl = this
 
-    popUpController.open(this.vm_popUp, routerId, () => {
+    popUpController.open(this.vmBase, routerId, () => {
       this.configPosition(e)
     })
   },
 
-  getRouterId: function () {
-    if (this.config.name === undefined && !this.instancesMap.hasOwnProperty(name)) {
-      return this.name + '_' + this.config.id
-    } else if (typeof this.config.name === 'string' && this.config.name !== '') {
-      return this.config.name
-    } else {
-      console.log('出现不合法的routerId~')
-      return null
-    }
-  },
-
-  close: function () {
-    if (this.vm_popUp.status === 'on') {
-      history.back()
-    }
-  },
-
   configPosition: function (e) {
     var config = this.config
-    var $slot = this.vm_slot.$el
-    var $slotContainer = this.vm_popUp.$refs.slotContainer
+    var $slot = this.vmSlot.$el
+    var $slotContainer = this.vmBase.$refs.slotContainer
     var position = config.position
 
     // 公用
@@ -73,7 +56,7 @@ let popUpBase = {
     var $refDom, refRect
     var refCorner, relativeToCorner
 
-    this.vm_popUp.positionType = config.positionType || 'fixed'
+    this.vmBase.positionType = config.positionType || 'fixed'
 
     if (config.positionType === 'absolute') {
       $slotContainer.style.marginTop = window.scrollY + 'px'
@@ -319,6 +302,18 @@ let popUpBase = {
     }
   },
 
+  // 以下是外部使用
+  getRouterId: function () {
+    if (this.config.name === undefined && !this.instancesMap.hasOwnProperty(name)) {
+      return this.name + '_' + this.config.id
+    } else if (typeof this.config.name === 'string' && this.config.name !== '') {
+      return this.config.name
+    } else {
+      console.log('出现不合法的routerId~')
+      return null
+    }
+  },
+
   parseRefCorner: function (cRefCorner) {
     // 解析refCorner
     var refCorner
@@ -368,6 +363,12 @@ let popUpBase = {
       console.log('relativeToCorner配置有误~')
     }
     return relativeToCorner
+  },
+
+  close: function () {
+    if (this.vmBase.status === 'on') {
+      history.back()
+    }
   }
 }
 

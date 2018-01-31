@@ -63,7 +63,7 @@
             $el.classList.add('inAnimation')
             setTimeout(() => {
               if (this.skin === 'iosNative')
-                this._controller.vm_popUp.maskOpacity(0.4)
+                this.$popupCtrl.vmBase.setMaskOpacity(0.4)
             }, 0)
           })
         },
@@ -82,7 +82,7 @@
     methods: {
 
       close () {
-        this._controller.close()
+        this.$popupCtrl.close()
       },
 
       confirmClick () {

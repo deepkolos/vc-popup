@@ -1,2 +1,2 @@
 export { default } from './popup-controller.js'
-export { popupRegister, importVue } from './popup-register'
+export { popupRegister } from './popup-register'

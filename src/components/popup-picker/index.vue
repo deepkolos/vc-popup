@@ -75,12 +75,12 @@
     methods: {
       _cancel (e) {
         this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
-        this._controller.close()
+        this.$popupCtrl.close()
       },
 
       _confirm (e) {
         this.onConfirm instanceof Function && this.onConfirm(this.$refs.picker)
-        this._controller.close()
+        this.$popupCtrl.close()
       }
     }
   }

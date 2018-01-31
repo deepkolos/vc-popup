@@ -148,10 +148,10 @@
         beforeEnter: () => {
           var $el = this.$el
 
-          if (!this._controller.config.animation)
+          if (!this.$popupCtrl.config.animation)
             $el.classList.add('inital')
           requestAnimationFrame(() => {
-            if (!this._controller.config.animation) {
+            if (!this.$popupCtrl.config.animation) {
               $el.classList.remove('inital')
               $el.classList.add('inAnimation')
             }
@@ -169,10 +169,10 @@
         beforeLeave: () => {
           var $el = this.$el
 
-          if (!this._controller.config.animation)
+          if (!this.$popupCtrl.config.animation)
             $el.classList.add('outAnimation')
           requestAnimationFrame(function () {
-            if (!this._controller.config.animation)
+            if (!this.$popupCtrl.config.animation)
               $el.classList.remove('inAnimation')
 
             this.onClose instanceof Function && this.onClose()
@@ -208,7 +208,7 @@
       },
 
       _close () {
-        this._controller.close()
+        this.$popupCtrl.close()
       },
 
       _confirm () {

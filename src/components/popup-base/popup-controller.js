@@ -14,7 +14,7 @@ function prev (arr) {
 let PopUpContainerConstructor = Vue.extend(popUpContainerComponent)
 let PopUpBaseConstructor = Vue.extend(popUpBaseComponent)
 var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
-let vmPopUpContainer = null
+let vmBaseContainer = null
 
 let RouterIdToPopUp = {}
 let RouterIdToTrigger = {}
@@ -22,12 +22,12 @@ let popUpIdQueue = []
 
 Router.initialParam('popUp')
 if (containerInBody.length === 0) {
-  vmPopUpContainer = new PopUpContainerConstructor({
+  vmBaseContainer = new PopUpContainerConstructor({
     el: document.createElement('div')
   })
-  document.body.appendChild(vmPopUpContainer.$el)
+  document.body.appendChild(vmBaseContainer.$el)
 } else {
-  vmPopUpContainer = containerInBody[0].__vue__
+  vmBaseContainer = containerInBody[0].__vue__
 }
 
 let PopUp = {
@@ -35,26 +35,26 @@ let PopUp = {
   fromHashChange: false,
 
   open (vmBase, routerId, domLoadCallback) {
-    vmPopUpContainer.turnOn()
+    vmBaseContainer.turnOn()
     vmBase._enter()
     popUpIdQueue.push(routerId)
     this.updateRouter(routerId)
     requestAnimationFrame(function () {
       // 和那边的enter和enter的执行位置同步
-      vmPopUpContainer.addPopUp(vmBase.$el)
+      vmBaseContainer.addPopUp(vmBase.$el)
       domLoadCallback && domLoadCallback()
-      vmBase.afterDomLoad()
+      vmBase._afterDomLoad()
     })
   },
 
   close (routerId) {
-    var vmPopUp = RouterIdToPopUp[routerId]
+    var vmBase = RouterIdToPopUp[routerId]
 
-    vmPopUp && vmPopUp._leave(() => {
+    vmBase && vmBase._leave(() => {
       this.destroyPopUp(routerId)
       popUpIdQueue.pop()
       if (popUpIdQueue.length === 0) {
-        vmPopUpContainer.turnOff()
+        vmBaseContainer.turnOff()
       }
     })
   },
@@ -78,7 +78,7 @@ let PopUp = {
   },
 
   destroyPopUp (routerId) {
-    vmPopUpContainer.removePopUp(RouterIdToPopUp[routerId].$el)
+    vmBaseContainer.removePopUp(RouterIdToPopUp[routerId].$el)
     RouterIdToPopUp[routerId].$destroy()
     RouterIdToPopUp[routerId] = null
   },
@@ -114,15 +114,15 @@ Router.listenParam('popUp', {
     trigger && trigger()
   },
 
-  onLeave (val, oldVal) {
-    var oldList = oldVal ? oldVal.split('/') : []
+  onLeave (val, oVal) {
+    var oList = oVal ? oVal.split('/') : []
     var list = val ? val.split('/') : []
-    var oldListTop = top(oldList)
+    var oListTop = top(oList)
 
-    if (prev(list) !== oldListTop) {
+    if (prev(list) !== oListTop) {
       PopUp.fromUpdateRouter = false
       PopUp.fromHashChange = false
-      PopUp.close(oldListTop)
+      PopUp.close(oListTop)
     }
   },
 

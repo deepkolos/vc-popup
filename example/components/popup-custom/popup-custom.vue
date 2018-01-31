@@ -59,8 +59,8 @@
       _setTriangle () {
         var $triangle = this.$refs.triangle,
           $el = this.$el,
-          config = this._controller.config,
-          controller = this._controller,
+          config = this.$popupCtrl.config,
+          controller = this.$popupCtrl,
           refCorner, relativeToCorner,
           rect = this.$el.getBoundingClientRect()
 

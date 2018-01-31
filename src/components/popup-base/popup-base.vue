@@ -45,21 +45,15 @@
 
     methods: {
       // 以下是提供给外部使用的
-      afterDomLoad () {
-        this.vm_slot.event &&
-        this.vm_slot.event.afterDomLoad &&
-          this.vm_slot.event.afterDomLoad()
-      },
-
-      maskOpacity (val) {
+      setMaskOpacity (val) {
         this.$refs.mask.style.opacity = val
       },
 
-      maskClassAdd (name) {
+      addMaskClass (name) {
         this.$refs.mask.classList.add(name)
       },
 
-      maskClassRemove (name) {
+      removeMaskClass (name) {
         this.$refs.mask.classList.remove(name)
       },
 
@@ -80,6 +74,12 @@
       },
 
       //内部使用的
+      _afterDomLoad () {
+        this.vmSlot.event &&
+        this.vmSlot.event.afterDomLoad &&
+          this.vmSlot.event.afterDomLoad()
+      },
+
       _enter () {
         this._beforeEnter()
         this.status = 'on'
@@ -93,7 +93,7 @@
 
       _turnOffMask () {
         if (!this.maskDisable) {
-          this.vm_slot._controller.close()
+          this.vmSlot.$popupCtrl.close()
         }
       },
 
@@ -135,14 +135,14 @@
         requestAnimationFrame(() => {
           this.$refs.slot.style.transitionDuration = '0ms'
           //设置mask的初始化样式
-          this.maskOpacity(0)
+          this.setMaskOpacity(0)
 
           //设置slot的初始化样式
           this._animation('in')
 
-          this.vm_slot.event &&
-          this.vm_slot.event.beforeEnter instanceof Function &&
-            this.vm_slot.event.beforeEnter()
+          this.vmSlot.event &&
+          this.vmSlot.event.beforeEnter instanceof Function &&
+            this.vmSlot.event.beforeEnter()
 
           //设置事件
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
@@ -151,7 +151,7 @@
             if (!this._animationNoneReday) {
               this.$refs.slot.style.transitionDuration = null
             }
-            this.maskOpacity(0.25)
+            this.setMaskOpacity(0.25)
           })
         })
       },
@@ -161,21 +161,21 @@
 
         this._animation('in', true)
 
-        this.vm_slot.event &&
-        this.vm_slot.event.afterEnter instanceof Function &&
-          this.vm_slot.event.afterEnter()
+        this.vmSlot.event &&
+        this.vmSlot.event.afterEnter instanceof Function &&
+          this.vmSlot.event.afterEnter()
 
         this.animationendTriggered = true
       },
 
       _beforeLeave () {
         requestAnimationFrame(() => {
-          this.maskOpacity(0)
+          this.setMaskOpacity(0)
           this._animation('out')
 
-          this.vm_slot.event &&
-          this.vm_slot.event.beforeLeave instanceof Function &&
-            this.vm_slot.event.beforeLeave()
+          this.vmSlot.event &&
+          this.vmSlot.event.beforeLeave instanceof Function &&
+            this.vmSlot.event.beforeLeave()
 
           //前一个animationend导致提前触发
           this._freezeEvents()
@@ -188,9 +188,9 @@
       _afterLeave () {
         this._animation('out', true)
 
-        this.vm_slot.event &&
-          this.vm_slot.event.afterLeave instanceof Function &&
-            this.vm_slot.event.afterLeave()
+        this.vmSlot.event &&
+          this.vmSlot.event.afterLeave instanceof Function &&
+            this.vmSlot.event.afterLeave()
 
         requestAnimationFrame(() => {
           this._afterLeaveCallback instanceof Function &&
@@ -213,7 +213,7 @@
       },
 
       _animation (progressName, unset = false) {
-        var animation = this.vm_slot._controller.config.animation
+        var animation = this.vmSlot.$popupCtrl.config.animation
         var $dom = this.getAnimateDom()
         var value
 
@@ -244,7 +244,7 @@
 
       _triggerZoomFromDom (progress, value, unset) {
         var $fromDom = value.fromDom || (this.e ? this.e.target : null),
-          $slot = this.vm_slot.$el,
+          $slot = this.vmSlot.$el,
           fromDomRect, slotRect,
 
           scaleAdjusted = 2 / 3,

@@ -69,10 +69,23 @@ export default popupRegister(
         beforeLeave:  () => {}, // 触发离开事件时执行
         afterLeave:   () => {}, // 离开动画结束时执行
       }
+
+      // 可以通过$popupCtrl, 来获取父级节点的引用和操作
+      this.$popupCtrl = {
+        config,         // defaultConfig, constructConfig(new时候), runtimeConfig(open时候)所合并出来的config
+        vmBase,         // vc-popup-base的vm引用
+        vmSlot,         // vc-popup-slot的vm引用
+        close(),        // 关闭popup
+        getRouterId(),  // 获取hash的id
+        parseRefCorner(String),       // 纯函数, 提供refCorner的参数解析
+        parseRelativeToCorner(String) // 纯函数, 提供relativeToCorner的参数解析
+      }
     }
   }
 </script>
 ```
+
+this.$popupCtrl的详细API可以查看[this.$popupCtrl's API](https://raw.githubusercontent.com/deepkolos/vc-popup/master/doc/$popupCtrl's api.md)
 
 ### 最后在页面中使用
 

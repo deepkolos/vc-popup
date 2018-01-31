@@ -39,8 +39,7 @@
       z-index: 0;
     }
   }
-</style>
-<style>
+
   body > *:first-child{
     position: relative;
     z-index: 0;
