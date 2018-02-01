@@ -94,8 +94,6 @@
         var $content = this.$refs.content
         var $indicator = this.$refs.indicator
         var itemHeight = self.showItemHeight
-        var minTranslateY = self.minTranslateY
-        var maxTranslateY = self.maxTranslateY
 
         var lastEvt = null
         var startTime = null
@@ -116,6 +114,8 @@
         $group.addEventListener('touchmove', function (evt) {
           var deltaY = evt.touches[0].clientY - startPositionY
           var translateY = startTranslateY + deltaY
+          var minTranslateY = self.minTranslateY
+          var maxTranslateY = self.maxTranslateY
 
           if (translateY > maxTranslateY)
             translateY = (translateY - maxTranslateY) / 2 + maxTranslateY
@@ -134,6 +134,8 @@
           var translateY = self.currentTranslateY
           var duration = new Date() - startTime
           var distance = Math.abs(startTranslateY - translateY)
+          var minTranslateY = self.minTranslateY
+          var maxTranslateY = self.maxTranslateY
           var rect, offset, momentumTranslate
 
           if (distance < 6) {
