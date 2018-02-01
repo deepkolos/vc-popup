@@ -35,12 +35,15 @@
 
     data () {
       return {
-        status: null,
-        afterEnterLocker: false,
-        afterLeaveLocker: false,
-        $animateDom: null,
         positionType: null
       }
+    },
+
+    created () {
+      this.isShowing = null
+      this.afterEnterLocker = false
+      this.afterLeaveLocker = false
+      this.$animateDom = null
     },
 
     methods: {
@@ -82,11 +85,11 @@
 
       _enter () {
         this._beforeEnter()
-        this.status = 'on'
+        this.isShowing = true
       },
 
       _leave (callback) {
-        this.status = 'off'
+        this.isShowing = false
         this._beforeLeave()
         this._afterLeaveCallback = callback
       },
@@ -98,12 +101,9 @@
       },
 
       _maskPreventScroll (e) {
-        if (this.runtimeConfig && this.runtimeConfig.positionType === 'absolute') {
-          return
-        }
-        if (this.status === 'on') {
+        this.isShowing === true &&
+        this.runtimeConfig.positionType !== 'absolute' &&
           e.preventDefault()
-        }
       },
 
       _addAnimationEndListener (callback, lock) {

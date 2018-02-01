@@ -1,6 +1,6 @@
 <template>
-  <ul class="vc-popup-press-menu">
-    <li class="vc-popup-press-menu-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
+  <ul class="vc-popup-by-animation">
+    <li class="vc-popup-by-animation-li" v-for="(item, key) in items" @click="item.click" :key="key">{{item.name}}</li>
   </ul>
 </template>
 
@@ -51,7 +51,7 @@
 </script>
 
 <style lang="scss">
-  .vc-popup-press-menu {
+  .vc-popup-by-animation {
     will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 350ms ease 0s;
@@ -84,7 +84,7 @@
     }
   }
 
-  .vc-popup-press-menu-li {
+  .vc-popup-by-animation-li {
     height: 43px;
     line-height: 43px;
     padding: 0 30px 0 15px;
@@ -95,7 +95,7 @@
     transition: all 200ms linear 0ms;
   }
 
-  .vc-popup-press-menu-li:active {
+  .vc-popup-by-animation-li:active {
     background: #E8E8E8;
     transition-duration: 85ms;
   }

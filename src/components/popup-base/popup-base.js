@@ -1,33 +1,23 @@
 import popUpController from '../popup-base/index.js'
 
 let popUpBase = {
-  init: function (
-    defaultConfig, constructConfig, popUpConfig, instancesMap, template, id, Vue
-  ) {
-    this.constructConfig = Object.assign({}, defaultConfig, constructConfig)
-    this.popUpConfig = popUpConfig
-    this.instancesMap = instancesMap
-    this.constructConfig.id = id
-    this.config = this.constructConfig
-    this.Factory = Vue.extend(template)
-    this.instancesMap[this.getRouterId()] = this
-    popUpController.register(this.getRouterId(), this.open.bind(this))
-  },
-
   open: function (e, runtimeConfig) {
     var routerId = this.getRouterId()
 
     this.config = Object.assign({}, this.constructConfig, runtimeConfig)
-    this.config.propsData = Object.assign({}, this.constructConfig.propsData, runtimeConfig ? runtimeConfig.propsData : {})
-    this.config.e = this.config.propsData.e = e
-
-    this.vmBase = popUpController.createPopUp(this.popUpConfig, routerId, e, this.config)
-    this.vmSlot = new this.Factory({
+    this.config.propsData = Object.assign(
+      {}, this.constructConfig.propsData,
+      runtimeConfig ? runtimeConfig.propsData : {}
+    )
+    this.config.propsData.e = e
+    this.vmBase = popUpController.createPopUp(
+      this.popUpConfig, this.config, routerId
+    )
+    this.vmBase.vmSlot = this.vmSlot = new this.Template({
       el: this.vmBase.$refs.slot,
       propsData: this.config.propsData
     })
     this.vmBase.$refs.slot = this.vmSlot.$el
-    this.vmBase.vmSlot = this.vmSlot
     this.vmSlot.$popupCtrl = this
 
     popUpController.open(this.vmBase, routerId, () => {
@@ -304,8 +294,8 @@ let popUpBase = {
 
   // 以下是外部使用
   getRouterId: function () {
-    if (this.config.name === undefined && !this.instancesMap.hasOwnProperty(name)) {
-      return this.name + '_' + this.config.id
+    if (this.config.name === undefined) {
+      return this.name + '_' + this.id
     } else if (typeof this.config.name === 'string' && this.config.name !== '') {
       return this.config.name
     } else {
@@ -366,7 +356,7 @@ let popUpBase = {
   },
 
   close: function () {
-    if (this.vmBase.status === 'on') {
+    if (this.vmBase.isShowing) {
       history.back()
     }
   }

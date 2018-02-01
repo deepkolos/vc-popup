@@ -73,11 +73,8 @@
     methods: {
       _checkCloseTrigger () {
         setTimeout(() => {
-          var status = this.$popupCtrl.vmBase.status,
-            vmTile = this.$refs.tile
-
-          if (status === 'on')
-            vmTile.unsetPressEffect()
+          if (this.$popupCtrl.vmBase.isShowing)
+            this.$refs.tile.unsetPressEffect()
         }, 30)
       }
     }

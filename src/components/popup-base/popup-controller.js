@@ -1,7 +1,7 @@
-import Router from './router.js'
-import popUpContainerComponent from './popup-conatiner.vue'
-import popUpBaseComponent from './popup-base.vue'
 import Vue from 'vue'
+import Router from './router.js'
+import popUpBaseTpl from './popup-base.vue'
+import popUpContainerTpl from './popup-conatiner.vue'
 
 function top (arr) {
   return arr[arr.length - 1]
@@ -11,76 +11,71 @@ function prev (arr) {
   return arr[arr.length - 2]
 }
 
-let PopUpContainerConstructor = Vue.extend(popUpContainerComponent)
-let PopUpBaseConstructor = Vue.extend(popUpBaseComponent)
+var popUpContainer = null
+var vmBaseOfRouterId = {}
+var popUpInShowingNum = 0
+var constructorOfRouterId = {}
+var PopUpBaseConstructor = Vue.extend(popUpBaseTpl)
+var PopUpContainerConstructor = Vue.extend(popUpContainerTpl)
 var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
-let vmBaseContainer = null
-
-let RouterIdToPopUp = {}
-let RouterIdToTrigger = {}
-let popUpIdQueue = []
 
 Router.initialParam('popUp')
 if (containerInBody.length === 0) {
-  vmBaseContainer = new PopUpContainerConstructor({
+  popUpContainer = new PopUpContainerConstructor({
     el: document.createElement('div')
   })
-  document.body.appendChild(vmBaseContainer.$el)
+  document.body.appendChild(popUpContainer.$el)
 } else {
-  vmBaseContainer = containerInBody[0].__vue__
+  popUpContainer = containerInBody[0].__vue__
 }
 
-let PopUp = {
-  fromUpdateRouter: false,
+var PopUp = {
   fromHashChange: false,
+  fromUpdateRouter: false,
 
   open (vmBase, routerId, domLoadCallback) {
-    vmBaseContainer.turnOn()
+    popUpContainer.turnOn()
     vmBase._enter()
-    popUpIdQueue.push(routerId)
+    popUpInShowingNum++
     this.updateRouter(routerId)
     requestAnimationFrame(function () {
       // 和那边的enter和enter的执行位置同步
-      vmBaseContainer.addPopUp(vmBase.$el)
+      popUpContainer.addPopUp(vmBase.$el)
       domLoadCallback && domLoadCallback()
       vmBase._afterDomLoad()
     })
   },
 
   close (routerId) {
-    var vmBase = RouterIdToPopUp[routerId]
+    var vmBase = vmBaseOfRouterId[routerId]
 
     vmBase && vmBase._leave(() => {
       this.destroyPopUp(routerId)
-      popUpIdQueue.pop()
-      if (popUpIdQueue.length === 0) {
-        vmBaseContainer.turnOff()
+      popUpInShowingNum--
+      if (popUpInShowingNum === 0) {
+        popUpContainer.turnOff()
       }
     })
   },
 
   register (routerId, trigger) {
-    RouterIdToTrigger[routerId] = trigger
+    constructorOfRouterId[routerId] = trigger
   },
 
-  createPopUp (config, routerId, e, runtimeConfig) {
-    config = Object.assign({}, config)
-    config.e = e
+  createPopUp (config, runtimeConfig, routerId) {
     config.routerId = routerId
     config.runtimeConfig = runtimeConfig
 
-    RouterIdToPopUp[routerId] = new PopUpBaseConstructor({
+    return (vmBaseOfRouterId[routerId] = new PopUpBaseConstructor({
       el: document.createElement('div'),
       propsData: config
-    })
-
-    return RouterIdToPopUp[routerId]
+    }))
   },
 
   destroyPopUp (routerId) {
-    vmBaseContainer.removePopUp(RouterIdToPopUp[routerId].$el)
-    RouterIdToPopUp[routerId].$destroy()
-    RouterIdToPopUp[routerId] = null
+    popUpContainer.removePopUp(vmBaseOfRouterId[routerId].$el)
+    vmBaseOfRouterId[routerId].$destroy()
+    vmBaseOfRouterId[routerId] = undefined
   },
 
   updateRouter (popUpName) {
@@ -109,7 +104,7 @@ Router.listenParam('popUp', {
     }
 
     var list = val ? val.split('/') : []
-    var trigger = RouterIdToTrigger[top(list)]
+    var trigger = constructorOfRouterId[top(list)]
     PopUp.fromHashChange = true
     trigger && trigger()
   },
@@ -131,5 +126,5 @@ Router.listenParam('popUp', {
   }
 })
 
-export default PopUp
 export { PopUp }
+export default PopUp
