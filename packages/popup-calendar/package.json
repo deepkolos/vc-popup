@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-calendar",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "vc-popup-calendar",
   "main": "index.js",
   "scripts": {

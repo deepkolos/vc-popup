@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-dialog",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "vc-popup-dialog",
   "main": "index.js",
   "scripts": {
