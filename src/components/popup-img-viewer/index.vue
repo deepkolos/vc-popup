@@ -18,7 +18,7 @@
 <script>
   import VcSwipe from '../swipe'
   import VcSwipeItem from '../swipe-item'
-  import swipeDirective from '../../mixins/event/swipe.js'
+  import swipeDirective from 'vue-swipe-directive'
 
   export default {
     name: 'vc-popup-img-viewer',
@@ -104,8 +104,8 @@
       }
 
       this.swipeConfig = {
-        onSwipe: this._onItemSwipe,
-        onSwipeDone: this._onItemSwipeDone
+        move: this._onItemSwipe,
+        end: this._onItemSwipeDone
       }
     },
 

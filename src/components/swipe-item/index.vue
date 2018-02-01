@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { swipeDirective } from '../../mixins/event/swipe.js'
+  import { swipeDirective } from 'vue-swipe-directive'
 
   export default {
     name: 'vc-swipe-item',
@@ -18,7 +18,7 @@
       onLeave: {
         type: Function,
         default: null
-      },
+      }
     },
 
     mounted () {

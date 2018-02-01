@@ -34,7 +34,8 @@
   "dependencies": {
     "vc-popup-base": "^0.0.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-swipe-directive": "0.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

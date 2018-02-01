@@ -1954,10 +1954,6 @@ css-what@2.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
 
-css3transform@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/css3transform/-/css3transform-1.1.8.tgz#861d5aceb9e934c8faa1e035b4168fb91a3265c3"
-
 cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
@@ -7158,6 +7154,10 @@ vue-style-loader@^3.0.0, vue-style-loader@^3.0.3:
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
+
+vue-swipe-directive@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/vue-swipe-directive/-/vue-swipe-directive-0.0.0.tgz#3cd97b657a6f463420f3031b6ff9090361a3fb9c"
 
 vue-template-compiler@^2.5.2:
   version "2.5.13"

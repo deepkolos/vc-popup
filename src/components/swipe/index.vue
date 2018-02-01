@@ -13,7 +13,7 @@
 
 <script>
   import { once } from '../../utils/dom.js'
-  import { swipeDirective } from '../../mixins/event/swipe.js'
+  import { swipeDirective } from 'vue-swipe-directive'
 
   export default {
     name: 'vc-swipe',
@@ -39,8 +39,8 @@
         swipeStartTime: null
       }
       this.swipeConfig = {
-        onSwipe: this.onSwipe,
-        onSwipeDone: this.onSwipeDone
+        move: this.onSwipe,
+        end: this.onSwipeDone
       }
     },
 

@@ -17,15 +17,15 @@
 
 <script>
   import { throttle } from '../../mixins/utils'
-  import { swipeDirective } from '../../mixins/event/swipe.js'
+  import { swipeDirective } from 'vue-swipe-directive'
 
   export default {
     name: 'vc-pull-down-refresh',
 
     created () {
       this.swipeConfig = {
-        onSwipe: this._onSwipe,
-        onSwipeDone: this._onSwipeDone
+        move: this._onSwipe,
+        end: this._onSwipeDone
       }
     },
 
