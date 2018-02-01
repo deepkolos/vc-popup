@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-datetime-picker",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "vc-popup-datetime-picker",
   "main": "index.js",
   "scripts": {

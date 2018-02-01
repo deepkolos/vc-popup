@@ -32,7 +32,7 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-## 使用(未完善), 最近都在改构建, 未稳定
+## 使用(alpha)
 
 > 注: 需要配合webpack来使用
 
