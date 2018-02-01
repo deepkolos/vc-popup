@@ -230,6 +230,7 @@ body > *:first-child{
   // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过度动画冲突
   // 在自定义popup的时候需要注意一下
   // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
+  // 不过并非所有都支持animation, 需要对应实现了动画设置提供了支持才行, 可参考拓展在自定义popup
   animation: {
     options: classConfig | effectConfig,
     default: undefined,
@@ -250,10 +251,12 @@ body > *:first-child{
     }
     animation: {
       in: {
-        effect: "zoomFromDom"
+        effect: "zoomFromDom",
+        fromDom: HTMLElement | evt.target
       },
       out: {
-        effect: "zoomFromDom"
+        effect: "zoomFromDom",
+        fromDom: HTMLElement | evt.target
       }
     }
   }

@@ -89,15 +89,14 @@
       },
 
       _leave (callback) {
-        this.isShowing = false
-        this._beforeLeave()
         this._afterLeaveCallback = callback
+        this._beforeLeave()
+        this.isShowing = false
       },
 
       _turnOffMask () {
-        if (!this.maskDisable) {
+        !this.maskDisable &&
           this.vmSlot.$popupCtrl.close()
-        }
       },
 
       _maskPreventScroll (e) {
@@ -125,39 +124,32 @@
           }
         }
 
-        $dom.addEventListener(
-          'transitionend', onAnimationEnd)
-        $dom.addEventListener(
-          'animationend', onAnimationEnd)
+        $dom.addEventListener('transitionend', onAnimationEnd)
+        $dom.addEventListener('animationend',  onAnimationEnd)
       },
 
       _beforeEnter () {
         requestAnimationFrame(() => {
           this.$refs.slot.style.transitionDuration = '0ms'
-          //设置mask的初始化样式
           this.setMaskOpacity(0)
-
-          //设置slot的初始化样式
           this._animation('in')
 
           this.vmSlot.event &&
           this.vmSlot.event.beforeEnter instanceof Function &&
             this.vmSlot.event.beforeEnter()
 
-          //设置事件
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
           requestAnimationFrame(() => {
-            if (!this._animationNoneReday) {
+            if (!this._animationNoneReday)
               this.$refs.slot.style.transitionDuration = null
-            }
             this.setMaskOpacity(0.25)
           })
         })
       },
 
       _afterEnter () {
-        if (this.animationendTriggered === true) return
+        if (this.animationendTriggered) return
 
         this._animation('in', true)
 
@@ -252,12 +244,15 @@
           fromDomCenterX, fromDomCenterY,
           slotCenterX, slotCenterY
 
+        if (!$fromDom)
+          throw new Error('无法找到zoomFromDom的参考dom节点, 请检查设置')
+
         if ($fromDom && !unset) {
           this._animationNoneReday = true
           $slot.style.opacity = 0
           requestAnimationFrame(() => {
-            fromDomRect = $fromDom.getBoundingClientRect()
             slotRect = $slot.getBoundingClientRect()
+            fromDomRect = $fromDom.getBoundingClientRect()
 
             if (value.offset !== undefined)
               scaleAdjusted = value.offset
@@ -267,7 +262,6 @@
             fromDomCenterX = fromDomRect.left + fromDomRect.width / 2
             fromDomCenterY = fromDomRect.top + fromDomRect.height / 2
 
-            //然后做动画偏移, 需要区分布局偏移
             translateX = fromDomCenterX - slotCenterX
             translateY = fromDomCenterY - slotCenterY
 

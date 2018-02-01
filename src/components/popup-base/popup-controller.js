@@ -65,6 +65,7 @@ var PopUp = {
   createPopUp (config, runtimeConfig, routerId) {
     config.routerId = routerId
     config.runtimeConfig = runtimeConfig
+    config.e = runtimeConfig.propsData.e
 
     return (vmBaseOfRouterId[routerId] = new PopUpBaseConstructor({
       el: document.createElement('div'),

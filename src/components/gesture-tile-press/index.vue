@@ -1,6 +1,6 @@
 <template>
-  <div class="gesture-tile-press-wrapper" @touchstart="_touchStart" @touchmove="_touchMove" @touchend="_touchEnd">
-    <div class="gesture-tile-press-content" ref="content">
+  <div class="vc-gesture-tile-press-wrapper" @touchstart="_touchStart" @touchmove="_touchMove" @touchend="_touchEnd">
+    <div class="vc-gesture-tile-press-content" ref="content">
       <slot></slot>
     </div>
   </div>
@@ -111,26 +111,26 @@
     },
 
     destroyed () {
+      this.clickY       = null
+      this.clickX       = null
+      this.destance     = null
+      this.diagonal     = null
       this.orthocenterX = null
       this.orthocenterY = null
-      this.clickX = null
-      this.clickY = null
-      this.destance = null
-      this.diagonal = null
       this.orientationX = null
       this.orientationY = null
     }
   }
 </script>
 
-<style scoped>
-  .gesture-tile-press-wrapper {
+<style>
+  .vc-gesture-tile-press-wrapper {
     perspective: 1000px;
     transform-style: preserve-3d;
     display: inline-block;
   }
 
-  .gesture-tile-press-content {
+  .vc-gesture-tile-press-content {
     transition: all 180ms ease 0ms;
   }
 </style>
