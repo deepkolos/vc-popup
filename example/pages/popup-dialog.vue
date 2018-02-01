@@ -5,6 +5,7 @@
     <div class="cell" @click="showDialog('android', true, '标题')">Android Dialog 有标题</div>
     <div class="cell" @click="showDialog('android', false)">Android Dialog 无标题</div>
     <div class="cell" @click="showDialog('iosNative', true, '标题')">IOS Native Dialog</div>
+    <div class="cell" @click="showDialog('lol', true, '标题')">LOL皮肤 Dialog</div>
   </div>
 </template>
 

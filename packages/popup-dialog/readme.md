@@ -51,7 +51,7 @@ this.dialog.close()
   skin: {
     type: String,
     default: 'ios'
-    options: ['android', 'ios', 'iosNative'],
+    options: ['android', 'ios', 'iosNative', 'lol'],
   },
   title: String,
   message: String,
@@ -78,6 +78,9 @@ this.dialog.close()
 
 <div>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/vc-popup-dialog.gif" width = "250" alt="" style="display:inline-block;"/>
+</div>
+<div>
+  <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/vc-popup-dialog-lol.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
 ### License

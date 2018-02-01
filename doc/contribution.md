@@ -11,7 +11,7 @@
 > npm run build
 
 # 生成packages
-> npm run build:pkg
+> npm run packages
 
 # 生成packages的install.js, 编译出pkg的index.js
 > npm run build:pkgentry
