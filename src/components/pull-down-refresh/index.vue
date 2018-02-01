@@ -124,7 +124,7 @@
     },
 
     methods: {
-      _onSwipe (info, preventDefault) {
+      _onSwipe (info, lock) {
         var $wrapper = this.$refs.wrapper
 
         if (
@@ -164,7 +164,7 @@
               this.status = 1
           }
         }
-        preventDefault()
+        lock(true)
       },
 
       _onSwipeDone () {

@@ -478,7 +478,18 @@
   }
 
   .vc-dialog-effect-blur {
-    filter: url('#skin_lol-turbulence-out');
+    -webkit-animation: skin_lol-turbulence-out 1s;
+            animation: skin_lol-turbulence-out 1s;
+  }
+  @keyframes skin_lol-turbulence-out{
+    0%{
+      -webkit-filter: url('#skin_lol-turbulence-out');
+      opacity: 1;
+    }
+    100%{
+      -webkit-filter: none;
+      opacity: 0;
+    }
   }
 </style>
 
