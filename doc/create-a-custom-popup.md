@@ -30,8 +30,9 @@ var popUpConfig = {
 
 // 可以在运行是覆盖, 一般在运行时定义灵活度高
 var defaultConfig = {
+  position: 'domRelative',
   autoSetOrthocenter: true,
-  position: 'domRelative'
+  animationConfigurable: false // 如果, 定制过度动画则通过改设置, 屏蔽animation设置
 }
 
 export default popupRegister(
@@ -78,6 +79,9 @@ export default popupRegister(
 
           // animation operation
         }*/
+
+        // 如果需要定制过度动画, 则在defaultConfig.animationConfigurable = false
+        // 然后定制过度动画则放在beforeEnter/beforeLeave里面
       }
 
       // 可以通过$popupCtrl, 来获取父级节点的引用和操作

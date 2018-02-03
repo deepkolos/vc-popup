@@ -151,6 +151,7 @@
           var $el = this.$el
 
           $el.classList.add('inital')
+          $el.style.height = window.innerHeight + 'px'
           requestAnimationFrame(function () {
             $el.classList.remove('inital')
             $el.classList.add('inAnimation')
