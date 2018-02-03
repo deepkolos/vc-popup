@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.0-3",
+    "vc-popup-base": "0.1.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-swipe-directive": "0.0.0"
