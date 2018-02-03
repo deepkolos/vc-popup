@@ -54,6 +54,8 @@
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 350ms ease 0s;
     display: inline-block;
+    padding: 0;
+    margin: 0;
 
     &.inital {
       opacity: 0;

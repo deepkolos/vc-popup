@@ -118,6 +118,8 @@
     display: inline-block;
     padding: 0px 8px;
     background: rgb(0, 0, 0);
+    padding: 0;
+    margin: 0;
 
     &.inital {
       opacity: 0;

@@ -88,6 +88,8 @@
     border-radius: 3.5px;
     overflow: hidden;
     transition: all 250ms ease 0s;
+    padding: 0;
+    margin: 0;
 
     &.inital {
       opacity: 0;
@@ -114,6 +116,7 @@
     line-height: 1.4;
     color: black;
     border-bottom: calc(2px/3) solid #EBEBEB;
+    margin: 0;
   }
 
   .vc-popup-center-menu-li:last-child{

@@ -54,6 +54,8 @@
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 220ms ease 0s;
     display: inline-block;
+    padding: 0;
+    margin: 0;
 
     &.inital {
       opacity: 0;
@@ -80,6 +82,7 @@
     display: block;
     background: white;
     min-width: calc(90px - 45px);
+    margin: 0;
   }
 
   .vc-popup-dom-relative-li:active {

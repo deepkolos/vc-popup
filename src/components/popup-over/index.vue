@@ -123,6 +123,7 @@
     display: inline-block;
     padding: 0px 8px;
     background: white;
+    margin: 0;
 
     &.inital {
       opacity: 0;
@@ -157,6 +158,7 @@
     color: black;
     border-bottom: calc(2px/3) solid #EBEBEB;
     display: flex;
+    margin: 0;
   }
 
   .vc-popup-over-li:last-child{

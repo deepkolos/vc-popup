@@ -61,6 +61,8 @@
     width: 100vw;
     height: auto;
     transition: all 250ms ease 0s;
+    padding: 0;
+    margin: 0;
 
     &.inital {
       opacity: 0;
@@ -88,5 +90,6 @@
     min-height: 42px;
     display: flex;
     align-items: center;
+    margin: 0;
   }
 </style>
