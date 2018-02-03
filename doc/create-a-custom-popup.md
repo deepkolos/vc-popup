@@ -36,7 +36,7 @@ var defaultConfig = {
 }
 
 export default popupRegister(
-  'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
+  'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.$popup[name]里
   template,
   popUpConfig,
   defaultConfig)
@@ -59,11 +59,13 @@ export default popupRegister(
     props: {
       e: {
         default: null           // 从open()传进来的
-      }
+      },
+      onClose: Function,        // 已经在base提供了支持
+      onOpen: Function
     },
 
     created () {
-      this.event = {            // 执行顺序如下
+      this.popupEvt = {            // 执行顺序如下
         beforeEnter:  () => {}, // 在appendChild前一帧执行
         afterDomLoad: () => {}, // 在appenChild那一帧执行, 定位需要使用到getBoundingClientRect的话就挂在这里
         afterEnter:   () => {}, // 进入动画结束时执行

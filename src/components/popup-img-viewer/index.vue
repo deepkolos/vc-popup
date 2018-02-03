@@ -55,7 +55,7 @@
     },
 
     created () {
-      this.event = {
+      this.popupEvt = {
         beforeEnter: () => {
           var $onSwipeImg = this._getSwipeImg(this.defaultIndex)
 

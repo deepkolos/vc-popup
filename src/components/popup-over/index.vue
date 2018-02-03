@@ -29,7 +29,7 @@
     },
 
     created () {
-      this.event = {
+      this.popupEvt = {
         inAnimation: () => {
           var $el = this.$el
 

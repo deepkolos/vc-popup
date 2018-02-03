@@ -80,9 +80,9 @@
 
       //内部使用的
       _afterDomLoad () {
-        this.vmSlot.event &&
-        this.vmSlot.event.afterDomLoad &&
-          this.vmSlot.event.afterDomLoad()
+        this.vmSlot.popupEvt &&
+        this.vmSlot.popupEvt.afterDomLoad &&
+          this.vmSlot.popupEvt.afterDomLoad()
       },
 
       _enter (openRestFunc) {
@@ -151,14 +151,14 @@
           this._animationConfigurable &&
             this._animation('in')
 
-          this.vmSlot.event &&
-            this.vmSlot.event.beforeEnter instanceof Function &&
-              this.vmSlot.event.beforeEnter(hasConfigInAnimation)
+          this.vmSlot.popupEvt &&
+            this.vmSlot.popupEvt.beforeEnter instanceof Function &&
+              this.vmSlot.popupEvt.beforeEnter(hasConfigInAnimation)
 
           !hasConfigInAnimation &&
-            this.vmSlot.event &&
-              this.vmSlot.event.inAnimation instanceof Function &&
-                this.vmSlot.event.inAnimation()
+            this.vmSlot.popupEvt &&
+              this.vmSlot.popupEvt.inAnimation instanceof Function &&
+                this.vmSlot.popupEvt.inAnimation()
 
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
@@ -180,9 +180,9 @@
         this._animationConfigurable &&
           this._animation('in', true)
 
-        this.vmSlot.event &&
-          this.vmSlot.event.afterEnter instanceof Function &&
-            this.vmSlot.event.afterEnter()
+        this.vmSlot.popupEvt &&
+          this.vmSlot.popupEvt.afterEnter instanceof Function &&
+            this.vmSlot.popupEvt.afterEnter()
 
         this.animationendTriggered = true
       },
@@ -201,14 +201,14 @@
           this._animationConfigurable &&
             this._animation('out')
 
-          this.vmSlot.event &&
-            this.vmSlot.event.beforeLeave instanceof Function &&
-              this.vmSlot.event.beforeLeave(hasConfigOutAnimation)
+          this.vmSlot.popupEvt &&
+            this.vmSlot.popupEvt.beforeLeave instanceof Function &&
+              this.vmSlot.popupEvt.beforeLeave(hasConfigOutAnimation)
 
           !hasConfigOutAnimation &&
-            this.vmSlot.event &&
-              this.vmSlot.event.outAnimation instanceof Function &&
-                this.vmSlot.event.outAnimation()
+            this.vmSlot.popupEvt &&
+              this.vmSlot.popupEvt.outAnimation instanceof Function &&
+                this.vmSlot.popupEvt.outAnimation()
 
           this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
 
@@ -221,9 +221,9 @@
         this._animationConfigurable &&
           this._animation('out', true)
 
-        this.vmSlot.event &&
-          this.vmSlot.event.afterLeave instanceof Function &&
-            this.vmSlot.event.afterLeave()
+        this.vmSlot.popupEvt &&
+          this.vmSlot.popupEvt.afterLeave instanceof Function &&
+            this.vmSlot.popupEvt.afterLeave()
 
         this._afterLeaveCallback instanceof Function &&
           this._afterLeaveCallback()

@@ -3,7 +3,7 @@
 
 -----
 
-描述
+提供popup的基础支持
 
 ### 添加依赖
 
@@ -11,17 +11,7 @@
 > yarn add vc-popup-base || npm i vc-popup-base || cnpm i vc-popup-base --by=yarn
 ```
 
-### 引入
-
-```javascript
-import Vue from 'vue'
-import VcPopupBase from 'vc-popup-base'
-// 这里名字可以随意
-
-Vue.use(VcPopupBase)
-```
-
-### 在具体页面中使用
+### 使用
 
 ```javascript
 // 根据情况修改template的路径
@@ -44,14 +34,7 @@ export default popupRegister(
   defaultConfig)
 ```
 
-### propsData配置定义
-
-```json
-{
-  e: Object // 从open(e, {})传进来的e
-  
-}
-```
+使用vc-popup-base[自定义一个popup](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
 ### 效果预览
 

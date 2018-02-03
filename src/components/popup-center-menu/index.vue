@@ -33,7 +33,7 @@
     },
 
     created () {
-      this.event = {
+      this.popupEvt = {
         beforeEnter: () => {
           var $el = this.$refs.menu,
             vmTile = this.$refs.tile,

@@ -44,7 +44,7 @@ this.bottomMenu.close()
 
 ```js
 {
-  e:       Object     // 从open(e, {})传进来的e
+  e: Object, // 从open(e, {})传进来的e
   items: {
     type: Array,
     required: true,

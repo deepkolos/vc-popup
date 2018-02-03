@@ -67,7 +67,11 @@ this.calendar.close()
   type: {
     type: String,
     default: 'range',
-    options: ['range', 'point']
+    options: ['range', 'point'],
+    example: {
+      type: 'range',
+      type: 'point',
+    }
   },
 
   // 默认选择时间段/时间点(start开头)
@@ -75,11 +79,11 @@ this.calendar.close()
     type: Object,
     example: {
       startY: 2017,
-      startM: 10,
-      startD: 26,
+      startM: 10, // 1~12
+      startD: 26, // 1~31
       endY: 2017,
-      endM: 11,
-      endD: 7
+      endM: 11,   // 1~12
+      endD: 7     // 1~31
     }
   },
 

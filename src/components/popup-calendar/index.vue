@@ -146,7 +146,7 @@
     },
 
     created () {
-      this.event = {
+      this.popupEvt = {
         inAnimation: () => {
           var $el = this.$el
 
@@ -198,7 +198,7 @@
       _onSelect (start, end) {
         this.selectedStart = start
         this.selectedEnd = end
-        this.event.afterLeave = null
+        this.popupEvt.afterLeave = null
 
         this.status = this.type === 'range' ? (start && end) : start
       },
@@ -243,7 +243,7 @@
               })
           }
 
-          this.event.afterLeave = () => {
+          this.popupEvt.afterLeave = () => {
             this.onConfirmLeaved instanceof Function &&
               this.onConfirmLeaved(start, end) //不传递observable的对象感觉设置的时候会报错什么的
           }

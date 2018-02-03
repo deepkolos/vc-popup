@@ -24,7 +24,7 @@
     },
 
     created () {
-      this.event = {
+      this.popupEvt = {
         afterDomLoad: () => {
           this._setTriangle()
           console.log('say hello from custom popup')
