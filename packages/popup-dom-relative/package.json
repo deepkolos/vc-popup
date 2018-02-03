@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-dom-relative",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "vc-popup-dom-relative",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.3"
+    "vc-popup-base": "^0.1.4"
   }
 }
