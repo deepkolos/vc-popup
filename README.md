@@ -32,7 +32,7 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-## 使用(alpha)
+## 使用(alpha 未稳定)
 
 > 注: 需要配合webpack来使用
 
@@ -131,8 +131,9 @@ body > *:first-child{
   relativeToCorner,
 
   // 动画设置
+  animation,
   autoSetOrthocenter,
-  animation
+  animationConfigurable
 }
 ```
 
@@ -259,7 +260,17 @@ body > *:first-child{
         fromDom: HTMLElement | evt.target
       }
     }
-  }
+  },
+
+  // 是否支持animation的配置来修改过度动画, 在一些定制的过度动画可以设置为true来避免冲突
+  animationConfigurable: {
+    options: Boolean,
+    default: true
+
+    //example
+    animationConfigurable: true,
+    animationConfigurable: false,
+  },
 }
 ```
 

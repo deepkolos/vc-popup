@@ -68,7 +68,7 @@
 
     created () {
       this.event = {
-        beforeEnter: () => {
+        inAnimation: () => {
           var $el = this.$el
 
           $el.classList.add('inital')
@@ -81,8 +81,7 @@
             }, 0)
           })
         },
-        afterEnter: () => {},
-        beforeLeave: () => {
+        outAnimation: () => {
           var $el = this.$el
 
           $el.classList.add('outAnimation')
@@ -92,6 +91,9 @@
             $el.classList.remove('inAnimation')
           })
         },
+        beforeEnter: () => {},
+        afterEnter: () => {},
+        beforeLeave: () => {},
         afterLeave: () => {}
       }
     },

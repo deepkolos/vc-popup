@@ -255,7 +255,10 @@
               name: '扫描二维码',
               click: (e) => this.byAnimation2.open(e)
             }
-          ]
+          ],
+
+          onOpen: () => { console.log('opened') },
+          onClose: () => { console.log('closed') }
         }
       })
 

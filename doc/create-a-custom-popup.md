@@ -68,6 +68,16 @@ export default popupRegister(
         afterEnter:   () => {}, // 进入动画结束时执行
         beforeLeave:  () => {}, // 触发离开事件时执行
         afterLeave:   () => {}, // 离开动画结束时执行
+
+        inAnimation:  () => {},
+        outAnimation: () => {},
+
+        /* inAnimation等效于, outAnimation同理
+        beforeEnter (animationConfiged) {
+          if (animationConfiged) return
+
+          // animation operation
+        }*/
       }
 
       // 可以通过$popupCtrl, 来获取父级节点的引用和操作
@@ -138,4 +148,8 @@ this.$popupCtrl的详细API可以查看[this.$popupCtrl's API](https://raw.githu
     }
   }
 </script>
+
+// 自定义popup建议使用scoped
+<style scoped>
+</style>
 ```

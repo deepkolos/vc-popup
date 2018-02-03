@@ -6,6 +6,7 @@ var popUpConfig = {
 }
 
 var defaultConfig = {
+  animationConfigurable: false
 }
 
 export default popupRegister('centerMenu', template, popUpConfig, defaultConfig)

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import { throttle } from '../../mixins/utils'
+  import { throttle } from '../../utils/utils'
   import { swipeDirective } from 'vue-swipe-directive'
 
   export default {

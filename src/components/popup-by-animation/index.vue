@@ -22,28 +22,26 @@
 
     created () {
       this.event = {
-        beforeEnter: () => {
+        inAnimation: () => {
           var $el = this.$el
 
           $el.classList.add('inital')
-          requestAnimationFrame(() => {
+          requestAnimationFrame(function () {
             $el.classList.remove('inital')
             $el.classList.add('inAnimation')
-
-            this.onOpen instanceof Function && this.onOpen()
           })
         },
-        afterEnter: () => {},
-        beforeLeave: () => {
+        outAnimation: () => {
           var $el = this.$el
 
           $el.classList.remove('inAnimation')
           requestAnimationFrame(function () {
             $el.classList.add('outAnimation')
-
-            this.onClose instanceof Function && this.onClose()
-          }.bind(this))
+          })
         },
+        beforeEnter: () => {},
+        afterEnter: () => {},
+        beforeLeave: () => {},
         afterLeave: () => {}
       }
     }

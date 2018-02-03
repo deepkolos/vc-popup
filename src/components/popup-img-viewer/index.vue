@@ -286,6 +286,8 @@
         else
           scale = 1
 
+        scale < 0 && (scale = 0)
+
         if ($img.overHeight)
           transformOrgin = 'center 17%'
 
@@ -357,7 +359,7 @@
   .vc-img-viewer-swipe-img{
     width: 100vw;
     position: absolute;
-    transition: all 270ms ease;
+    transition: all 350ms ease;
     will-change: transform, opacity;
   }
 

@@ -26,33 +26,26 @@
 
     created () {
       this.event = {
-        beforeEnter: () => {
+        inAnimation: () => {
           var $el = this.$el
 
-          if (!this.$popupCtrl.config.animation)
-            $el.classList.add('inital')
+          $el.classList.add('inital')
           requestAnimationFrame(function () {
-            if (!this.$popupCtrl.config.animation) {
-              $el.classList.remove('inital')
-              $el.classList.add('inAnimation')
-            }
-
-            this.onOpen instanceof Function && this.onOpen()
-          }.bind(this))
+            $el.classList.remove('inital')
+            $el.classList.add('inAnimation')
+          })
         },
-        afterEnter: () => {},
-        beforeLeave: () => {
+        outAnimation: () => {
           var $el = this.$el
 
-          if (!this.$popupCtrl.config.animation)
+          $el.classList.remove('inAnimation')
+          requestAnimationFrame(function () {
             $el.classList.add('outAnimation')
-          requestAnimationFrame(function () {
-            if (!this.$popupCtrl.config.animation)
-              $el.classList.remove('inAnimation')
-
-            this.onClose instanceof Function && this.onClose()
-          }.bind(this))
+          })
         },
+        beforeEnter: () => {},
+        afterEnter: () => {},
+        beforeLeave: () => {},
         afterLeave: () => {}
       }
     }

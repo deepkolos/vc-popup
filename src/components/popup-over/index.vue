@@ -30,28 +30,29 @@
 
     created () {
       this.event = {
-        afterDomLoad: () => {
-          this._setTriangle()
-        },
-        beforeEnter: () => {
-          var $el = this.$refs.menu
+        inAnimation: () => {
+          var $el = this.$el
 
           $el.classList.add('inital')
-
           requestAnimationFrame(function () {
             $el.classList.remove('inital')
             $el.classList.add('inAnimation')
           })
         },
-        afterEnter: () => {},
-        beforeLeave: () => {
-          var $el = this.$refs.menu
+        outAnimation: () => {
+          var $el = this.$el
 
-          $el.classList.add('outAnimation')
+          $el.classList.remove('inAnimation')
           requestAnimationFrame(function () {
-            $el.classList.remove('inAnimation')
+            $el.classList.add('outAnimation')
           })
         },
+        afterDomLoad: () => {
+          this._setTriangle()
+        },
+        beforeEnter: () => {},
+        afterEnter: () => {},
+        beforeLeave: () => {},
         afterLeave: () => {}
       }
     },

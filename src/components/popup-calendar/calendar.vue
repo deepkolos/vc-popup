@@ -40,7 +40,7 @@
 <script>
   import VcMonth from './month.vue'
   import VcPullDownRefresh from '../pull-down-refresh'
-  import { countDays, offsetMonth, monthsBetween } from '../../mixins/utils'
+  import { countDays, offsetMonth, monthsBetween } from '../../utils/utils'
 
   export default {
     name: 'vc-calendar',

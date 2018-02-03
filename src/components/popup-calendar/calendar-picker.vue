@@ -6,7 +6,7 @@
 
 <script>
   import VcCalendar from './calendar.vue'
-  import { monthsBetween } from '../../mixins/utils'
+  import { monthsBetween } from '../../utils/utils'
 
   export default {
     name: 'vc-calendar-picker',

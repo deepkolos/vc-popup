@@ -34,15 +34,13 @@ var PopUp = {
   fromUpdateRouter: false,
 
   open (vmBase, routerId, domLoadCallback) {
-    popUpContainer.turnOn()
-    vmBase._enter()
-    popUpInShowingNum++
-    this.updateRouter(routerId)
-    requestAnimationFrame(function () {
-      // 和那边的enter和enter的执行位置同步
+    vmBase._enter(() => {
+      popUpContainer.turnOn()
       popUpContainer.addPopUp(vmBase.$el)
       domLoadCallback && domLoadCallback()
       vmBase._afterDomLoad()
+      popUpInShowingNum++
+      this.updateRouter(routerId)
     })
   },
 

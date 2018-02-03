@@ -44,6 +44,8 @@
       this.afterEnterLocker = false
       this.afterLeaveLocker = false
       this.$animateDom = null
+      this._removeAnimationEndListener = null
+      this._animationConfigurable = null
     },
 
     methods: {
@@ -83,8 +85,8 @@
           this.vmSlot.event.afterDomLoad()
       },
 
-      _enter () {
-        this._beforeEnter()
+      _enter (openRestFunc) {
+        this._beforeEnter(openRestFunc)
         this.isShowing = true
       },
 
@@ -115,31 +117,55 @@
             if (this[lock]) return
             this[lock] = true
 
-            $dom.removeEventListener(
-              'transitionend', onAnimationEnd)
-            $dom.removeEventListener(
-              'animationend', onAnimationEnd)
-
+            this._removeAnimationEndListener()
             callback instanceof Function && callback()
           }
         }
 
         $dom.addEventListener('transitionend', onAnimationEnd)
         $dom.addEventListener('animationend',  onAnimationEnd)
+        this.hasAnimationEndListener = true
+
+        this._removeAnimationEndListener = () => {
+          if (this.hasAnimationEndListener) {
+            $dom.removeEventListener('transitionend', onAnimationEnd)
+            $dom.removeEventListener('animationend',  onAnimationEnd)
+            this.hasAnimationEndListener = false
+          }
+        }
       },
 
-      _beforeEnter () {
+      _beforeEnter (openRestFunc) {
         requestAnimationFrame(() => {
           this.$refs.slot.style.transitionDuration = '0ms'
           this.setMaskOpacity(0)
-          this._animation('in')
+
+          var hasConfigInAnimation =
+                this._animationConfigurable &&
+                  this.vmSlot.$popupCtrl.config.animation &&
+                    this.vmSlot.$popupCtrl.config.animation.in
+
+          this._animationConfigurable =
+            this.vmSlot.$popupCtrl.config.animationConfigurable
+
+          this._animationConfigurable &&
+            this._animation('in')
 
           this.vmSlot.event &&
-          this.vmSlot.event.beforeEnter instanceof Function &&
-            this.vmSlot.event.beforeEnter()
+            this.vmSlot.event.beforeEnter instanceof Function &&
+              this.vmSlot.event.beforeEnter(hasConfigInAnimation)
+
+          !hasConfigInAnimation &&
+            this.vmSlot.event &&
+              this.vmSlot.event.inAnimation instanceof Function &&
+                this.vmSlot.event.inAnimation()
 
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
+          this.vmSlot.onOpen instanceof Function &&
+            this.vmSlot.onOpen()
+
+          openRestFunc()
           requestAnimationFrame(() => {
             if (!this._animationNoneReday)
               this.$refs.slot.style.transitionDuration = null
@@ -151,34 +177,48 @@
       _afterEnter () {
         if (this.animationendTriggered) return
 
-        this._animation('in', true)
+        this._animationConfigurable &&
+          this._animation('in', true)
 
         this.vmSlot.event &&
-        this.vmSlot.event.afterEnter instanceof Function &&
-          this.vmSlot.event.afterEnter()
+          this.vmSlot.event.afterEnter instanceof Function &&
+            this.vmSlot.event.afterEnter()
 
         this.animationendTriggered = true
       },
 
       _beforeLeave () {
         requestAnimationFrame(() => {
+          this._freezeEvents()
+          this._removeAnimationEndListener()
+          this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
+
+          var hasConfigOutAnimation =
+                this._animationConfigurable &&
+                  this.vmSlot.$popupCtrl.config.animation &&
+                    this.vmSlot.$popupCtrl.config.animation.in
+
           this.setMaskOpacity(0)
-          this._animation('out')
+          this._animationConfigurable &&
+            this._animation('out')
 
           this.vmSlot.event &&
-          this.vmSlot.event.beforeLeave instanceof Function &&
-            this.vmSlot.event.beforeLeave()
+            this.vmSlot.event.beforeLeave instanceof Function &&
+              this.vmSlot.event.beforeLeave(hasConfigOutAnimation)
 
-          //前一个animationend导致提前触发
-          this._freezeEvents()
-          setTimeout(() => {
-            this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
-          }, 28)
+          !hasConfigOutAnimation &&
+            this.vmSlot.event &&
+              this.vmSlot.event.outAnimation instanceof Function &&
+                this.vmSlot.event.outAnimation()
+
+          this.vmSlot.onClose instanceof Function &&
+            this.vmSlot.onClose()
         })
       },
 
       _afterLeave () {
-        this._animation('out', true)
+        this._animationConfigurable &&
+          this._animation('out', true)
 
         this.vmSlot.event &&
           this.vmSlot.event.afterLeave instanceof Function &&

@@ -15,7 +15,9 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
     this.popUpConfig = popUpConfig
     this.Template = Vue.extend(template)
     this.config = this.constructConfig =
-      Object.assign({}, defaultConfig, constructConfig)
+      Object.assign({
+        animationConfigurable: true
+      }, defaultConfig, constructConfig)
 
     popUpController.register(this.getRouterId(), this.open.bind(this))
   }
