@@ -5,7 +5,7 @@
         <slot></slot>
       </div>
     </div>
-    <div class="vc-swipe-indicators" v-show="showIndicators">
+    <div class="vc-swipe-indicators" v-show="showIndicators" ref="swipeIndicators">
       <slot name="indicator"></slot>
     </div>
   </div>
@@ -42,6 +42,7 @@
         move: this.onSwipe,
         end: this.onSwipeDone
       }
+      this.swipeItemMounted = 0
     },
 
     data () {
@@ -101,46 +102,64 @@
       onSwitch: {
         type: Function,
         default: null
+      },
+      swipeItemLen: {
+        type: Number,
+        default: null
       }
     },
 
     mounted () {
       this.ready = true
-
       this.setTimer()
-      this.reInitPages()
       window.addEventListener('resize', this.reSize)
+      this.dom.$pageContainer = this.$refs.swipeItems
+      this.dom.$indicatorContainer = this.$refs.swipeIndicators
+
+      // this.reInitPages()
     },
 
     methods: {
       swipeItemCreated () {
+        this.swipeItemMounted++
         if (!this.ready) return
 
-        clearTimeout(this.reInitTimer)
-        this.reInitTimer = setTimeout(() => {
-          this.reInitPages(true)
-        }, 3)
+        if (this.swipeItemLen === null) {
+          clearTimeout(this.reInitTimer)
+          this.reInitTimer = setTimeout(() => {
+            this.reInitPages()
+          }, 20)
+        } else
+
+        if (this.swipeItemLen === this.swipeItemMounted) {
+          this.reInitPages()
+        }
       },
 
       swipeItemDestroyed () {
+        this.swipeItemMounted--
         if (!this.ready) return
 
-        clearTimeout(this.reInitTimer)
-        this.reInitTimer = setTimeout(() => {
+        if (this.swipeItemLen === null) {
+          clearTimeout(this.reInitTimer)
+          this.reInitTimer = setTimeout(() => {
+            this.reInitPages(true)
+          }, 20)
+        } else
+
+        if (this.swipeItemLen === this.swipeItemMounted) {
           this.reInitPages()
-        }, 3)
+        }
       },
 
-      reInitPages (fromSwipeItem) {
-        var $pageContainer = this.dom.$pageContainer = this.$el.querySelector('.vc-swipe-items')
-        var $pages = this.dom.$pages = $pageContainer.children
-
-        let intDefaultIndex = Math.floor(this.defaultIndex)
-        let defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < $pages.length) ? intDefaultIndex : 0
-        this.index = defaultIndex
-        this.dom.$pages = $pages
-        this.dom.$indicatorContainer = this.$el.querySelector('.vc-swipe-indicators')
+      reInitPages () {
+        this.dom.$pages = this.dom.$pageContainer.children
         this.dom.$indicators = this.dom.$indicatorContainer.children
+
+        this.index = (
+            this.defaultIndex >= 0 &&
+            this.defaultIndex < this.dom.$pages.length
+          ) ? this.defaultIndex : 0
 
         this.reSize()
       },
@@ -156,11 +175,11 @@
         var $indicators = this.dom.$indicators
         var $pageContainer = this.dom.$pageContainer
 
-        itemWidth = this.dom.itemWidth = this.itemWidth || $swiper.clientWidth
-        actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap
-        this.status.swipeStartOffset = index * actualSwipeValue
+        requestAnimationFrame(() => {
+          itemWidth = this.dom.itemWidth = this.itemWidth || $swiper.clientWidth
+          actualSwipeValue = this.dom.actualSwipeValue = this.dom.itemWidth + gap
+          this.status.swipeStartOffset = index * actualSwipeValue
 
-        requestAnimationFrame(function () {
           $pages[index].classList.add(self.status.activatedClass)
           $indicators[index] && $indicators[index].classList.add(self.status.activatedClass)
 
@@ -648,7 +667,6 @@
           display: block;
           float: left;
           overflow-y: auto;
-
         }
       }
 

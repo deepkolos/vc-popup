@@ -22,7 +22,7 @@
     },
 
     mounted () {
-      this.$parent && this.$parent.swipeItemCreated();
+      this.$parent && this.$parent.swipeItemCreated()
     },
 
     destroyed () {

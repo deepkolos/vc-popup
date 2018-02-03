@@ -4,6 +4,7 @@
     :gap="gap"
     :continuous="loop"
     :defaultIndex="defaultIndex"
+    :swipeItemLen="originalImgs.length"
     ref="swiper">
     <vc-swipe-item v-for="(img, $index) in originalImgs" :key="$index">
       <div class="vc-img-viewer-swipe-wrapper"
