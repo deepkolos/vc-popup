@@ -48,11 +48,9 @@ var PopUp = {
     var vmBase = vmBaseOfRouterId[routerId]
 
     vmBase && vmBase._leave(() => {
-      this.destroyPopUp(routerId)
-      popUpInShowingNum--
-      if (popUpInShowingNum === 0) {
+      if (--popUpInShowingNum === 0)
         popUpContainer.turnOff()
-      }
+      this.destroyPopUp(routerId)
     })
   },
 

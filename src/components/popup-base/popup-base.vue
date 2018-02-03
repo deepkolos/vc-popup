@@ -115,10 +115,10 @@
         var onAnimationEnd = (e) => {
           if (e.target === $dom) {
             if (this[lock]) return
-            this[lock] = true
 
             this._removeAnimationEndListener()
             callback instanceof Function && callback()
+            this[lock] = true
           }
         }
 
@@ -140,13 +140,13 @@
           this.$refs.slot.style.transitionDuration = '0ms'
           this.setMaskOpacity(0)
 
+          this._animationConfigurable =
+            this.vmSlot.$popupCtrl.config.animationConfigurable
+
           var hasConfigInAnimation =
                 this._animationConfigurable &&
                   this.vmSlot.$popupCtrl.config.animation &&
                     this.vmSlot.$popupCtrl.config.animation.in
-
-          this._animationConfigurable =
-            this.vmSlot.$popupCtrl.config.animationConfigurable
 
           this._animationConfigurable &&
             this._animation('in')
@@ -191,12 +191,11 @@
         requestAnimationFrame(() => {
           this._freezeEvents()
           this._removeAnimationEndListener()
-          this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
 
           var hasConfigOutAnimation =
                 this._animationConfigurable &&
                   this.vmSlot.$popupCtrl.config.animation &&
-                    this.vmSlot.$popupCtrl.config.animation.in
+                    this.vmSlot.$popupCtrl.config.animation.out
 
           this.setMaskOpacity(0)
           this._animationConfigurable &&
@@ -211,6 +210,8 @@
               this.vmSlot.event.outAnimation instanceof Function &&
                 this.vmSlot.event.outAnimation()
 
+          this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
+
           this.vmSlot.onClose instanceof Function &&
             this.vmSlot.onClose()
         })
@@ -224,10 +225,8 @@
           this.vmSlot.event.afterLeave instanceof Function &&
             this.vmSlot.event.afterLeave()
 
-        requestAnimationFrame(() => {
-          this._afterLeaveCallback instanceof Function &&
-            this._afterLeaveCallback()
-        })
+        this._afterLeaveCallback instanceof Function &&
+          this._afterLeaveCallback()
       },
 
       _freezeEvents () {
@@ -260,9 +259,9 @@
               $dom.classList.remove(value)
           } else if (value instanceof Array) {
             if (unset === false)
-              value.forEach(val => $dom.classList.add(val))
+              $dom.classList.add.apply($dom.classList, value)
             else
-              value.forEach(val => $dom.classList.remove(val))
+              $dom.classList.remove.apply($dom.classList, value)
           } else if (value instanceof Object) {
             if (value.effect === 'zoomFromDom')
               this._triggerZoomFromDom(progressName, value, unset)
