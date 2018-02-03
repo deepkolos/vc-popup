@@ -42,7 +42,6 @@
       showItemNum: Number,
       showItemHeight: Number,
       defaultValues: Array,
-      onChange: Function,
 
       confirmText: {
         type: String,
@@ -52,8 +51,18 @@
         type: String,
         default: '取消'
       },
-      onConfirm: Function,
-      onCancel: Function,
+      onConfirm: {
+        type: Function,
+        default: function () {}
+      },
+      onCancel: {
+        type: Function,
+        default: function () {}
+      },
+      onChange: {
+        type: Function,
+        default: function () {}
+      },
 
       mode: {
         type: String,
