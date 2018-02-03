@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-by-animation",
-  "version": "0.1.0-alpha-2",
+  "version": "0.1.0-0",
   "description": "vc-popup-by-animation",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.0.1"
+    "vc-popup-base": "^0.1.0-0"
   }
 }
