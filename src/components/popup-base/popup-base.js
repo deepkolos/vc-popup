@@ -1,4 +1,5 @@
-import popupController from '../popup-base/index.js'
+import popupController from './index'
+import { popupInShowingNum } from './popup-controller'
 
 let popupBase = {
   open: function (e, runtimeConfig) {
@@ -295,7 +296,7 @@ let popupBase = {
   // 以下是外部使用
   getRouterId: function () {
     if (this.config.name === undefined) {
-      return this.name + '_' + this.id
+      return this.name + '_' + popupInShowingNum
     } else if (typeof this.config.name === 'string' && this.config.name !== '') {
       return this.config.name
     } else {

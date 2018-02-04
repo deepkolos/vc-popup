@@ -70,3 +70,21 @@ export function fixZero (val) {
   if (val < 10) val = '0' + val
   return val
 }
+
+export function forEach (obj, func, context) {
+  for (var p in obj) {
+    if (context) {
+      func.call(context, obj[p], p)
+    } else {
+      func(obj[p], p)
+    }
+  }
+}
+
+export function arrToUrlArg (obj) {
+  var arg = '?'
+  for (var p in obj) {
+    arg += p + '=' + obj[p] + '&'
+  }
+  return arg.slice(0, -1)
+}

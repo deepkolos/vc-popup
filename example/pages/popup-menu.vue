@@ -100,7 +100,21 @@
             },
             {
               name: '换个样式',
-              click: () => { alert('还是没变') }
+              click: (e) => {
+                this.bottomMenu.open(e, {
+                  propsData: {
+                    items: [
+                      {
+                        name: '应该会有嵌套问题',
+                        click: () => { console.log('btn0 clicked') }
+                      }, {
+                        name: '应该会有嵌套问题',
+                        click: () => { console.log('btn0 clicked') }
+                      }
+                    ]
+                  }
+                })
+              }
             },
             {
               name: '保存到手机',
@@ -118,8 +132,7 @@
 
           onClose: function () {
             this.$refs.page.style.filter = null
-            once(this.$refs.page, 'transitionend', function () {
-            })
+            once(this.$refs.page, 'transitionend', function () {})
           }.bind(this)
         }
       })

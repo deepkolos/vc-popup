@@ -1,23 +1,6 @@
+import {forEach, arrToUrlArg} from '../../utils/utils'
 
-function forEach (obj, func, context) {
-  for (var p in obj) {
-    if (context) {
-      func.call(context, obj[p], p)
-    } else {
-      func(obj[p], p)
-    }
-  }
-}
-
-function arrToUrlArg (obj) {
-  var arg = '?'
-  for (var p in obj) {
-    arg += p + '=' + obj[p] + '&'
-  }
-  return arg.slice(0, -1)
-}
-
-let Router = {
+var Router = {
   history: [],
   listeners: {},
   created () {
@@ -189,5 +172,5 @@ let Router = {
 
 Router.created()
 
-export default Router
 export { Router }
+export default Router

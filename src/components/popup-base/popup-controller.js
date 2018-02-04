@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from './router.js'
+import Router from './router'
 import popupBaseTpl from './popup-base.vue'
 import popupContainerTpl from './popup-conatiner.vue'
 
@@ -123,5 +123,5 @@ Router.listenParam('popup', {
   }
 })
 
-export { Popup }
 export default Popup
+export { Popup, popupInShowingNum }
