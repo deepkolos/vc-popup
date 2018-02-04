@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import PopupBase from './popup-base'
-import popupController from './index'
 
 function popupRegister (name, template, popupConfig, defaultConfig) {
   // 首字母大写

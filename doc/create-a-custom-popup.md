@@ -93,7 +93,7 @@ export default popupRegister(
         vmBase,         // vc-popup-base的vm引用
         vmSlot,         // vc-popup-slot的vm引用
         close(),        // 关闭popup
-        getRouterId(),  // 获取hash的id
+        getRouterId(),  // 获取hash的id, 注意仅仅当前popup打开的时候, 获取的生效的, 需要关闭后/嵌套时, 注意缓存
         parseRefCorner(String),       // 纯函数, 提供refCorner的参数解析
         parseRelativeToCorner(String) // 纯函数, 提供relativeToCorner的参数解析
       }

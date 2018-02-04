@@ -1,16 +1,18 @@
 import popupController from './index'
-import { popupInShowingNum } from './popup-controller'
 
 let popupBase = {
   open: function (e, runtimeConfig = {}) {
-    if (this.vmBase)
-      return console.log('已经open调用了, 需要close之后再调用')
+    if (this.vmBase && this.vmBase.isShowing)
+      return console.log('已经open调用了, 需要close之后再调用, 不过可以多次new')
 
     var routerId = this.getRouterId()
 
     this.config = Object.assign({
       animation: {}
     }, this.constructConfig, runtimeConfig)
+
+    this.config.propsData = Object.assign(
+      {}, this.constructConfig.propsData, runtimeConfig.propsData)
 
     this.config.propsData.e = e
     this.vmBase = popupController.createPopup(
@@ -27,6 +29,10 @@ let popupBase = {
     popupController.open(this.vmBase, routerId, () => {
       this.configPosition(e)
     })
+  },
+
+  close: function () {
+    this.vmBase.isShowing && history.back()
   },
 
   configPosition: function (e) {
@@ -296,10 +302,9 @@ let popupBase = {
     }
   },
 
-  // 以下是外部使用
   getRouterId: function () {
     if (this.config.name === undefined) {
-      return this.name + '_' + popupInShowingNum
+      return this.name + '_' + popupController.popupInShowingNum
     } else if (typeof this.config.name === 'string' && this.config.name !== '') {
       return this.config.name
     } else {
@@ -357,12 +362,6 @@ let popupBase = {
       console.log('relativeToCorner配置有误~')
     }
     return relativeToCorner
-  },
-
-  close: function () {
-    if (this.vmBase.isShowing) {
-      history.back()
-    }
   }
 }
 

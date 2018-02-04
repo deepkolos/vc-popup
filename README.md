@@ -1,4 +1,4 @@
-# vc-popup [Demo](https://deepkolos.github.io/vc-popup/)
+# vc-popup
 
 一个行为标准的vue-popup组件集
 
@@ -19,7 +19,7 @@
 
 > `注:` 因为这是之前给一个[组件库贡献的](https://github.com/tianyong90/we-vue/pull/17), 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~
 
-## 预览
+## [预览Demo](https://deepkolos.github.io/vc-popup/)
 
 <div>
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/domRelative-25-location.png" width = "250" alt="" style="display:inline-block;"/>
@@ -96,6 +96,8 @@ body > *:first-child{
           ...config
           propsData: {}
         });
+
+        this.Popover.close()
       }
     }
   }
@@ -233,7 +235,7 @@ body > *:first-child{
   // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
   // 不过并非所有都支持animation, 一些使用定制过度动画, 会设置animationConfigurable为false
   // 注意: 自定义class需要有css3的过度动画, 不然animationend/transitionend就不会触发~
-  // 如果需要关闭动画可以通过transition-duration设置为一个0.0001s 不可以为0s, 然后虽然找一个css3过度属性即可, 比如opacity
+  // 如果需要关闭动画可以看下面的例子
   animation: {
     options: classConfig | effectConfig | switchConfig,
     default: undefined,
@@ -253,8 +255,8 @@ body > *:first-child{
 
     // example
     animation: {
-      in:  false, // 禁用进入过度动画
-      out: false, // 禁用离开过度动画
+      in:  false, // 禁用进入过度动画(包括mask)
+      out: false, // 禁用离开过度动画(包括mask)
     }
     animation: {
       in:  ["animated", "flipInX"],
@@ -302,10 +304,10 @@ body > *:first-child{
 
 [在已有项目中自定义一个popup](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)
 
+## License
+
 [自定义改造](https://github.com/deepkolos/vc-popup/blob/master/doc/contribution.md)
 
 [更新日志](https://github.com/deepkolos/vc-popup/blob/master/doc/update-log.md)
-
-## License
 
 MIT 一起来扣细节~
