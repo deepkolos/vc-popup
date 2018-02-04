@@ -435,6 +435,7 @@
       click15 (e) {
         this.centerMenu.open(e, {
           positionType: 'absolute',
+          lockScroll: false,
           position: 'center'
         })
       },

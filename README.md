@@ -1,4 +1,4 @@
-# vc-popup
+# vc-popup(beta)
 
 一个行为标准的vue-popup组件集
 
@@ -14,7 +14,7 @@
 > 6. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截输入事件, popup属于`不可交互状态`
 > 7. 可方便进行拓展~
 > 8. 差点忘说了, 强大的**定位支持**, 有`居中`, `clickRelative`, `domRelative`, 其中`domRelative` 支持25个位置
-> 9. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆炸的情况~
+> 9. `Layer`都经过优化了, 层次合理~, 压缩层比较少, 没有层爆炸的情况~
 > 10. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
 
 > `注:` 因为这是之前给一个[组件库贡献的](https://github.com/tianyong90/we-vue/pull/17), 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~
@@ -31,7 +31,7 @@
   <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/popup-tile-press.gif" width = "250" alt="" style="display:inline-block;"/>
 </div>
 
-## 使用(beta)
+## 使用
 
 > 注: 需要配合webpack来使用
 
@@ -119,6 +119,9 @@ body > *:first-child{
   // vue组件的参数
   propsData: Object,
 
+  // 父级滚动互斥
+  lockScroll,
+
   // 设置定位方式
   positionType,
   position,
@@ -147,6 +150,12 @@ body > *:first-child{
   positionType: {
     options: 'absolute' | 'fixed',
     default: 'absolute'
+  },
+
+  // 父级滚动互斥
+  lockScroll: {
+    options: true | false,
+    default: true
   },
 
   // 设置定位方式, 在popup的vue的style也可以定位, 不会与之冲突, 最终结果是二者的叠加

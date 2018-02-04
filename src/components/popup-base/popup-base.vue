@@ -98,7 +98,7 @@
 
       _maskPreventScroll (e) {
         this.isShowing === true &&
-        this.runtimeConfig.positionType !== 'absolute' &&
+        this.runtimeConfig.lockScroll &&
           e.preventDefault()
       },
 
@@ -131,6 +131,7 @@
       },
 
       _beforeEnter (openRestFunc) {
+        this._initMask()
         requestAnimationFrame(() => {
           this.$refs.slot.style.transitionDuration = '0ms'
 
@@ -331,11 +332,28 @@
             }
           })
         }
+      },
+
+      _initMask () {
+        // 因为背景没有文字, 所以可以使用动画偏移
+        this.$refs.mask.style.transform =
+          `translate(${window.scrollX}px,${window.scrollY}px)`
+
+        // mask就跟踪好了, 不使用fixed来做定位的了
+        if (!this.runtimeConfig.lockScroll)
+          window.addEventListener('scroll', this._maskFollowScroll)
+      },
+
+      _maskFollowScroll () {
+        this.$refs.mask.style.transitionDuration = '0ms'
+        this.$refs.mask.style.transform =
+          `translate(${window.scrollX}px,${window.scrollY}px)`
       }
     },
 
     destroyed () {
       this.$animateDom = null
+      window.removeEventListener('scroll', this._maskFollowScroll)
     }
   }
 </script>
@@ -349,11 +367,12 @@
 
   .vc-popup-slot{
     position: relative;
+    z-index: 0;
     height: 0;
   }
 
   .vc-popup-mask {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     top: 0;

@@ -8,7 +8,9 @@ let popupBase = {
     var routerId = this.getRouterId()
 
     this.config = Object.assign({
-      animation: {}
+      animation: {},
+      lockScroll: true,
+      positionType: 'absolute'
     }, this.constructConfig, runtimeConfig)
 
     this.config.propsData = Object.assign(
@@ -56,7 +58,7 @@ let popupBase = {
     var $refDom, refRect
     var refCorner, relativeToCorner
 
-    this.vmBase.positionType = config.positionType || 'fixed'
+    this.vmBase.positionType = config.positionType
 
     if (config.positionType === 'absolute') {
       $slotContainer.style.marginTop = window.scrollY + 'px'
