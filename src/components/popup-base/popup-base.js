@@ -10,7 +10,7 @@ let popupBase = {
       runtimeConfig ? runtimeConfig.propsData : {}
     )
     this.config.propsData.e = e
-    this.vmBase = popupController.createPopUp(
+    this.vmBase = popupController.createPopup(
       this.popupConfig, this.config, routerId
     )
     this.vmBase.vmSlot = this.vmSlot = new this.Template({

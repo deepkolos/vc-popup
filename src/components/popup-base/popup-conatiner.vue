@@ -7,11 +7,11 @@
     name: 'vc-popup-conatiner',
 
     methods: {
-      addPopUp ($dom) {
+      addPopup ($dom) {
         this.$refs.container.appendChild($dom)
       },
 
-      removePopUp ($dom) {
+      removePopup ($dom) {
         this.$refs.container.removeChild($dom)
       },
 

@@ -4,7 +4,6 @@
 拿`vc-popup`的`example`举例, 其目录结构如下, 在`components`下来编写自定义的popup组件
 这里拿`popup-custom`作为样例
 
-
 ```shell
 .\example
 ├───assets
