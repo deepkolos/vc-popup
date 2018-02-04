@@ -3,7 +3,7 @@ import {forEach, arrToUrlArg} from '../../utils/utils'
 var Router = {
   history: [],
   listeners: {},
-  created () {
+  init () {
     Object.defineProperty(this.history, 'top', {
       get: function () {
         return this[this.length - 1]
@@ -170,7 +170,7 @@ var Router = {
   }
 }
 
-Router.created()
+Router.init()
 
 export { Router }
 export default Router

@@ -92,6 +92,10 @@ var Popup = {
   }
 }
 
+function splitPopupValue (val) {
+  return val ? decodeURIComponent(val).split('/') : []
+}
+
 Router.listenParam('popup', {
   onEnter (val) {
     if (Popup.fromUpdateRouter) {
@@ -99,15 +103,15 @@ Router.listenParam('popup', {
       return Popup.fromUpdateRouter
     }
 
-    var list = val ? val.split('/') : []
+    var list = splitPopupValue(val)
     var trigger = constructorOfRouterId[top(list)]
     Popup.fromHashChange = true
     trigger && trigger()
   },
 
   onLeave (val, oVal) {
-    var oList = oVal ? oVal.split('/') : []
-    var list = val ? val.split('/') : []
+    var oList = splitPopupValue(oVal)
+    var list = splitPopupValue(val)
     var oListTop = top(oList)
 
     if (prev(list) !== oListTop) {
