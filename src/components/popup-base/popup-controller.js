@@ -59,7 +59,6 @@ var Popup = {
   },
 
   createPopup (config, runtimeConfig, routerId) {
-    config.routerId = routerId
     config.runtimeConfig = runtimeConfig
     config.e = runtimeConfig.propsData.e
 
@@ -95,6 +94,7 @@ var Popup = {
 
 Router.listenParam('popup', {
   onEnter (val) {
+    console.log(constructorOfRouterId)
     if (Popup.fromUpdateRouter) {
       Popup.fromUpdateRouter = false
       return Popup.fromUpdateRouter

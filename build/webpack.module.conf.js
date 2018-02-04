@@ -7,7 +7,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const MinifyPlugin      = require("babel-minify-webpack-plugin");
+// const MinifyPlugin      = require("babel-minify-webpack-plugin");
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: path.resolve(__dirname, '../src/index.js'),
@@ -34,7 +34,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new ExtractTextPlugin({
       filename: 'style.css'
     }),
-    new MinifyPlugin()
+    // new MinifyPlugin()
   ]
 })
 

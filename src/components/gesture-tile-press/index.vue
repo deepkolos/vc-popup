@@ -82,7 +82,7 @@
 
       _touchEnd () {
         if (this.unsetOnPressEnd === true) {
-          this._unsetPressEffect(true)
+          this.unsetPressEffect()
         }
       },
 
@@ -103,7 +103,7 @@
         this.$refs.content.style.transform = `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-${z}px)`
       },
 
-      unsetPressEffect (force) {
+      unsetPressEffect () {
         setTimeout(() => {
           this.$refs.content.style.transform = null
         }, 30)

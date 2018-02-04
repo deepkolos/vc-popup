@@ -1,6 +1,5 @@
 <template>
   <div class="vc-popup-base"
-    :routerId="routerId"
     ref="base"
     :style="{ position: positionType }"
     @touchmove="_maskPreventScroll"
@@ -21,10 +20,6 @@
     props: {
       e: {
         default: null
-      },
-      routerId: {
-        type: String,
-        required: true
       },
       maskDisable: {
         type: Boolean,

@@ -12,8 +12,7 @@ let popupBase = {
     )
     this.config.propsData.e = e
     this.vmBase = popupController.createPopup(
-      this.popupConfig, this.config, routerId
-    )
+      this.popupConfig, this.config, routerId)
     this.vmBase.vmSlot = this.vmSlot = new this.Template({
       el: this.vmBase.$refs.slot,
       propsData: this.config.propsData

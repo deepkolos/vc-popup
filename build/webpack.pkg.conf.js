@@ -7,7 +7,7 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const MinifyPlugin      = require("babel-minify-webpack-plugin");
+// const MinifyPlugin      = require("babel-minify-webpack-plugin");
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -19,14 +19,12 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   externals: ['vue', 'vc-popup-base'],
   plugins: [
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
         safe: true
       }
     }),
-    new MinifyPlugin(),
+    // new MinifyPlugin(),
   ]
 })
 
