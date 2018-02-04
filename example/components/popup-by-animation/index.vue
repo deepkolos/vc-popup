@@ -66,7 +66,7 @@
     }
 
     &.outAnimation {
-      animation: animation 280ms ease reverse ;
+      animation: animation 280ms ease reverse;
     }
   }
 

@@ -4,21 +4,20 @@
 
 [![Build Status](https://travis-ci.org/deepkolos/vc-popup.svg?branch=master)](https://travis-ci.org/deepkolos/vc-popup)
 
-# 特点
+## 特点
 
-> 0. 支持`返回键`, 可以按浏览器返回按钮关闭popup
-> 0. 支持popup的层叠显示
-> 1. 可以写出小复杂的`过度动画`, 比如磁贴按压效果[在popupMenu可看到~]
-> 2. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
-> 3. 提供了几个比较好的popup组件, calendar, picker, imgViewer
-> 4. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截输入事件, popup属于`不可交互状态`
-> 5. 可方便进行拓展~
-> 6. 差点忘说了, 强大的**定位支持**, 有`居中`, `clickRelative`, `domRelative`, 其中`domRelative` 支持25个位置
-> 7. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆炸的情况~
-> 8. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
+> 1. 支持`返回键`, 可以按浏览器返回按钮关闭popup
+> 2. 支持popup的层叠显示
+> 3. 可以写出小复杂的`过度动画`, 比如磁贴按压效果[在popupMenu可看到~]
+> 4. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
+> 5. 提供了几个比较好的popup组件, calendar, picker, imgViewer
+> 6. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截输入事件, popup属于`不可交互状态`
+> 7. 可方便进行拓展~
+> 8. 差点忘说了, 强大的**定位支持**, 有`居中`, `clickRelative`, `domRelative`, 其中`domRelative` 支持25个位置
+> 9. `Layer`都经过优化了, 层次合理~, 没有出现压缩层, 或者层爆炸的情况~
+> 10. 采用的是`绝对的置顶策略`, 就是即便在页面内设置`fixed`+`z-index:99999999999;`, 都不会遮盖弹出的`popup`~
 
 > `注:` 因为这是之前给一个[组件库贡献的](https://github.com/tianyong90/we-vue/pull/17), 现在把`popup系列`提取出来, ~~部分组件从那个组件库中拿来, 比如example用到的~~`cell`, `group`, `buttom`,(现在已经移除依赖~), 其中`picker-view`是我优化过的, 其余都是`自己写哒`~
-
 
 ## 预览
 
@@ -104,6 +103,7 @@ body > *:first-child{
 ```
 
 ### 基本参数
+
 ```js
 {
   // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
@@ -235,9 +235,13 @@ body > *:first-child{
   // 注意: 自定义class需要有css3的过度动画, 不然animationend/transitionend就不会触发~
   // 如果需要关闭动画可以通过transition-duration设置为一个0.0001s 不可以为0s, 然后虽然找一个css3过度属性即可, 比如opacity
   animation: {
-    options: classConfig | effectConfig,
+    options: classConfig | effectConfig | switchConfig,
     default: undefined,
 
+    switchConfig: {
+      in:  Boolean,
+      out: Boolean
+    },
     classConfig: {
       in:  Array<String>,
       out: Array<String>
@@ -248,6 +252,10 @@ body > *:first-child{
     },
 
     // example
+    animation: {
+      in:  false, // 禁用进入过度动画
+      out: false, // 禁用离开过度动画
+    }
     animation: {
       in:  ["animated", "flipInX"],
       out: ["animated", "flipOutX"],

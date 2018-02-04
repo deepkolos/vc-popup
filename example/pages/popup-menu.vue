@@ -90,6 +90,10 @@
 
     mounted () {
       this.bottomMenu = new this.$popup.BottomMenu({
+        animation: {
+          in: false,
+          out: false
+        },
         propsData: {
           items: [
             {

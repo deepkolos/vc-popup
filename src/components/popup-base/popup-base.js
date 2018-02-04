@@ -6,6 +6,7 @@ let popupBase = {
     var routerId = this.getRouterId()
 
     this.config = Object.assign({}, this.constructConfig, runtimeConfig)
+    this.config.animation = this.config.animation || {}
     this.config.propsData = Object.assign(
       {}, this.constructConfig.propsData,
       runtimeConfig ? runtimeConfig.propsData : {}
@@ -19,6 +20,7 @@ let popupBase = {
     })
     this.vmBase.$refs.slot = this.vmSlot.$el
     this.vmSlot.$popupCtrl = this
+    this.vmSlot.popupEvt = this.vmSlot.popupEvt || {}
 
     popupController.register(routerId, this.open.bind(this, e, runtimeConfig))
     popupController.open(this.vmBase, routerId, () => {

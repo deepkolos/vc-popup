@@ -133,27 +133,29 @@
       _beforeEnter (openRestFunc) {
         requestAnimationFrame(() => {
           this.$refs.slot.style.transitionDuration = '0ms'
-          this.setMaskOpacity(0)
 
           this._animationConfigurable =
             this.vmSlot.$popupCtrl.config.animationConfigurable
 
-          var hasConfigInAnimation =
+          var animationCfg = this.vmSlot.$popupCtrl.config.animation.in
+          var hasConfigAnimation =
                 this._animationConfigurable &&
-                  this.vmSlot.$popupCtrl.config.animation &&
-                    this.vmSlot.$popupCtrl.config.animation.in
+                animationCfg !== undefined
+
+          if (animationCfg !== false)
+            this.setMaskOpacity(0)
+          else
+            this.setMaskOpacity(0.25)
 
           this._animationConfigurable &&
             this._animation('in')
 
-          this.vmSlot.popupEvt &&
-            this.vmSlot.popupEvt.beforeEnter instanceof Function &&
-              this.vmSlot.popupEvt.beforeEnter(hasConfigInAnimation)
+          this.vmSlot.popupEvt.beforeEnter instanceof Function &&
+            this.vmSlot.popupEvt.beforeEnter(hasConfigAnimation)
 
-          !hasConfigInAnimation &&
-            this.vmSlot.popupEvt &&
-              this.vmSlot.popupEvt.inAnimation instanceof Function &&
-                this.vmSlot.popupEvt.inAnimation()
+          !hasConfigAnimation &&
+            this.vmSlot.popupEvt.inAnimation instanceof Function &&
+              this.vmSlot.popupEvt.inAnimation()
 
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
 
@@ -175,9 +177,8 @@
         this._animationConfigurable &&
           this._animation('in', true)
 
-        this.vmSlot.popupEvt &&
-          this.vmSlot.popupEvt.afterEnter instanceof Function &&
-            this.vmSlot.popupEvt.afterEnter()
+        this.vmSlot.popupEvt.afterEnter instanceof Function &&
+          this.vmSlot.popupEvt.afterEnter()
 
         this.animationendTriggered = true
       },
@@ -187,23 +188,25 @@
           this._freezeEvents()
           this._removeAnimationEndListener()
 
-          var hasConfigOutAnimation =
+          var animationCfg = this.vmSlot.$popupCtrl.config.animation.out
+          var hasConfigAnimation =
                 this._animationConfigurable &&
-                  this.vmSlot.$popupCtrl.config.animation &&
-                    this.vmSlot.$popupCtrl.config.animation.out
+                animationCfg !== undefined
 
-          this.setMaskOpacity(0)
+          if (animationCfg !== false)
+            this.setMaskOpacity(0)
+          else
+            this.setMaskOpacity(0.25)
+
           this._animationConfigurable &&
             this._animation('out')
 
-          this.vmSlot.popupEvt &&
-            this.vmSlot.popupEvt.beforeLeave instanceof Function &&
-              this.vmSlot.popupEvt.beforeLeave(hasConfigOutAnimation)
+          this.vmSlot.popupEvt.beforeLeave instanceof Function &&
+            this.vmSlot.popupEvt.beforeLeave(hasConfigAnimation)
 
-          !hasConfigOutAnimation &&
-            this.vmSlot.popupEvt &&
-              this.vmSlot.popupEvt.outAnimation instanceof Function &&
-                this.vmSlot.popupEvt.outAnimation()
+          !hasConfigAnimation &&
+            this.vmSlot.popupEvt.outAnimation instanceof Function &&
+              this.vmSlot.popupEvt.outAnimation()
 
           this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
 
@@ -216,9 +219,8 @@
         this._animationConfigurable &&
           this._animation('out', true)
 
-        this.vmSlot.popupEvt &&
-          this.vmSlot.popupEvt.afterLeave instanceof Function &&
-            this.vmSlot.popupEvt.afterLeave()
+        this.vmSlot.popupEvt.afterLeave instanceof Function &&
+          this.vmSlot.popupEvt.afterLeave()
 
         this._afterLeaveCallback instanceof Function &&
           this._afterLeaveCallback()
@@ -239,20 +241,30 @@
       },
 
       _animation (progressName, unset = false) {
-        var animation = this.vmSlot.$popupCtrl.config.animation
         var $dom = this.getAnimateDom()
+        var animation = this.vmSlot.$popupCtrl.config.animation
+        var animationOffClass = 'vc-animation-fake-off-' + progressName
         var value
 
         if (animation instanceof Object) {
           value = animation[progressName]
 
-          //string,array被classname设置占用了,只剩下object用于扩展了
+          //string,array被classname设置占用了,只剩下object用于扩展了,boolean用于开关
+          if (value === false) {
+            if (unset === false)
+              $dom.classList.add(animationOffClass)
+            else
+              $dom.classList.remove(animationOffClass)
+          } else
+
           if (value instanceof String) {
             if (unset === false)
               $dom.classList.add(value)
             else
               $dom.classList.remove(value)
-          } else if (value instanceof Array) {
+          } else
+
+          if (value instanceof Array) {
             if (unset === false)
               $dom.classList.add.apply($dom.classList, value)
             else
@@ -350,5 +362,18 @@
     background-color: #000000;
     transition: opacity 350ms ease 0s;
     will-change: opacity;
+  }
+
+  .vc-animation-fake-off-in {
+    animation: vc-animation-fake-off 10ms ease forwards;
+  }
+
+  .vc-animation-fake-off-out {
+    animation: vc-animation-fake-off 10ms ease reverse;
+  }
+
+  @keyframes vc-animation-fake-off {
+    0%  {opacity: 0.99;}
+    100%{opacity: 1.00;}
   }
 </style>
