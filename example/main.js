@@ -7,16 +7,12 @@ import router from './router'
 import './assets/animate.min.css'
 import './assets/animated-preset.css'
 import './assets/demo.css'
-import byAnimation from '../packages/popup-by-animation/install'
-import domRelative from '../packages/popup-dom-relative/install'
 // import PopUp from '../lib/vc-popup'
 // import '../lib/style.css'
 
 Vue.config.productionTip = false
 
 Vue.use(PopUp)
-Vue.use(byAnimation)
-Vue.use(domRelative)
 
 /* eslint-disable no-new */
 new Vue({

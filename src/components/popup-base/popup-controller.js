@@ -34,12 +34,12 @@ var Popup = {
   fromUpdateRouter: false,
 
   open (vmBase, routerId, domLoadCallback) {
+    popupContainer.turnOn()
+    popupInShowingNum++
     vmBase._enter(() => {
-      popupContainer.turnOn()
       popupContainer.addPopup(vmBase.$el)
       domLoadCallback && domLoadCallback()
       vmBase._afterDomLoad()
-      popupInShowingNum++
       this.updateRouter(routerId)
     })
   },

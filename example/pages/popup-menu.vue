@@ -83,7 +83,8 @@
 </template>
 
 <script>
-  import { once } from '../../src/utils/dom.js'
+  import '../components/popup-by-animation/index'
+  import '../components/popup-dom-relative/index'
 
   export default {
 
@@ -105,10 +106,10 @@
                   propsData: {
                     items: [
                       {
-                        name: '应该会有嵌套问题',
+                        name: '没有重复调用嵌套问题',
                         click: () => { console.log('btn0 clicked') }
                       }, {
-                        name: '应该会有嵌套问题',
+                        name: '可以复用同一个实例',
                         click: () => { console.log('btn0 clicked') }
                       }
                     ]
@@ -132,7 +133,6 @@
 
           onClose: function () {
             this.$refs.page.style.filter = null
-            once(this.$refs.page, 'transitionend', function () {})
           }.bind(this)
         }
       })
