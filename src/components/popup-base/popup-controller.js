@@ -69,9 +69,12 @@ var Popup = {
   },
 
   destroyPopup (routerId) {
-    popupContainer.removePopup(vmBaseOfRouterId[routerId].$el)
-    vmBaseOfRouterId[routerId].$destroy()
+    var vmBase = vmBaseOfRouterId[routerId]
+
     vmBaseOfRouterId[routerId] = undefined
+    popupContainer.removePopup(vmBase.$el)
+    vmBase.vmSlot.$destroy()
+    vmBase.$destroy()
   },
 
   updateRouter (popupName) {

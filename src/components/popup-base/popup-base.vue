@@ -135,9 +135,9 @@
           this.$refs.slot.style.transitionDuration = '0ms'
 
           this._animationConfigurable =
-            this.vmSlot.$popupCtrl.config.animationConfigurable
+            this.runtimeConfig.animationConfigurable
 
-          var animationCfg = this.vmSlot.$popupCtrl.config.animation.in
+          var animationCfg = this.runtimeConfig.animation.in
           var hasConfigAnimation =
                 this._animationConfigurable &&
                 animationCfg !== undefined
@@ -188,7 +188,7 @@
           this._freezeEvents()
           this._removeAnimationEndListener()
 
-          var animationCfg = this.vmSlot.$popupCtrl.config.animation.out
+          var animationCfg = this.runtimeConfig.animation.out
           var hasConfigAnimation =
                 this._animationConfigurable &&
                 animationCfg !== undefined
@@ -242,7 +242,7 @@
 
       _animation (progressName, unset = false) {
         var $dom = this.getAnimateDom()
-        var animation = this.vmSlot.$popupCtrl.config.animation
+        var animation = this.runtimeConfig.animation
         var animationOffClass = 'vc-animation-fake-off-' + progressName
         var value
 

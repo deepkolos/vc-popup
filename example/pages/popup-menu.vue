@@ -90,10 +90,6 @@
 
     mounted () {
       this.bottomMenu = new this.$popup.BottomMenu({
-        animation: {
-          in: false,
-          out: false
-        },
         propsData: {
           items: [
             {
@@ -107,6 +103,10 @@
               name: '换个样式',
               click: (e) => {
                 this.bottomMenu.open(e, {
+                  animation: {
+                    in: false,
+                    out: false
+                  },
                   propsData: {
                     items: [
                       {

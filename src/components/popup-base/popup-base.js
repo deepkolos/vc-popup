@@ -2,15 +2,15 @@ import popupController from './index'
 import { popupInShowingNum } from './popup-controller'
 
 let popupBase = {
-  open: function (e, runtimeConfig) {
+  open: function (e, runtimeConfig = {}) {
     var routerId = this.getRouterId()
 
-    this.config = Object.assign({}, this.constructConfig, runtimeConfig)
-    this.config.animation = this.config.animation || {}
-    this.config.propsData = Object.assign(
-      {}, this.constructConfig.propsData,
-      runtimeConfig ? runtimeConfig.propsData : {}
-    )
+    // 多次open, 会覆盖前面的config, 读取的时候不能从这里读取, 可以从vmBase.runtimeConfig
+    // 后面看一下API怎么修改好, 还是会有暗病的
+    this.config = Object.assign({
+      animation: {}
+    }, this.constructConfig, runtimeConfig)
+
     this.config.propsData.e = e
     this.vmBase = popupController.createPopup(
       this.popupConfig, this.config, routerId)
