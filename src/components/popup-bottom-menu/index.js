@@ -1,10 +1,10 @@
 import { popupRegister } from 'vc-popup-base'
 import template from './index.vue'
 
-var popUpConfig = {
+var popupConfig = {
 }
 
 var defaultConfig = {
 }
 
-export default popupRegister('bottomMenu', template, popUpConfig, defaultConfig)
+export default popupRegister('bottomMenu', template, popupConfig, defaultConfig)

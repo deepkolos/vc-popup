@@ -1,6 +1,6 @@
-import popUpController from '../popup-base/index.js'
+import popupController from '../popup-base/index.js'
 
-let popUpBase = {
+let popupBase = {
   open: function (e, runtimeConfig) {
     var routerId = this.getRouterId()
 
@@ -10,8 +10,8 @@ let popUpBase = {
       runtimeConfig ? runtimeConfig.propsData : {}
     )
     this.config.propsData.e = e
-    this.vmBase = popUpController.createPopUp(
-      this.popUpConfig, this.config, routerId
+    this.vmBase = popupController.createPopUp(
+      this.popupConfig, this.config, routerId
     )
     this.vmBase.vmSlot = this.vmSlot = new this.Template({
       el: this.vmBase.$refs.slot,
@@ -20,7 +20,7 @@ let popUpBase = {
     this.vmBase.$refs.slot = this.vmSlot.$el
     this.vmSlot.$popupCtrl = this
 
-    popUpController.open(this.vmBase, routerId, () => {
+    popupController.open(this.vmBase, routerId, () => {
       this.configPosition(e)
     })
   },
@@ -362,4 +362,4 @@ let popUpBase = {
   }
 }
 
-export default popUpBase
+export default popupBase

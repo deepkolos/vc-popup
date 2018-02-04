@@ -13,6 +13,7 @@
 │       └───index.js
 │       └───popup-custom.vue
 ├───pages
+│   └───popup-custom.vue
 └───router
 ```
 
@@ -25,7 +26,7 @@ import { popupRegister } from 'vc-popup-base'
 // 需要手动安装一下npm i vc-popup-base依赖
 
 // API还没稳定
-var popUpConfig = {
+var popupConfig = {
 }
 
 // 可以在运行是覆盖, 一般在运行时定义灵活度高
@@ -38,8 +39,9 @@ var defaultConfig = {
 export default popupRegister(
   'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.$popup[name]里
   template,
-  popUpConfig,
-  defaultConfig)
+  popupConfig,
+  defaultConfig
+)
 ```
 
 #### /components/popup-custom/**popup-custom.vue**
@@ -49,7 +51,7 @@ export default popupRegister(
 0. 主要是提供了`popup`事件钩子, 一共5个, 可以通过这些事件可以定制更多的过度动画
 1. 还提供了一个接受触发`popup`事件的`e`, 从`open()`里传进来的
 
-```js
+```vue
 <template>
   <div></div>
 </template>
@@ -107,7 +109,9 @@ this.$popupCtrl的详细API可以查看[this.$popupCtrl's API](https://raw.githu
 
 然后需要使用的时候`import`这个组件进去就可以了, 可以单独的页面引用, 也可以在项目全局`import`, 名字可自定义
 
-```js
+#### /pages/**popup-custom.vue**
+
+```vue
 <template>
   <div class="page">
     <div class="btn" ref="btn" @click="click">custom popover</div>

@@ -92,7 +92,7 @@
         propsData: {
           items: [
             {
-              name: '这里的popUp系列支持返回键',
+              name: '这里的popup系列支持返回键',
               click: () => { console.log('btn0 clicked') }
             }, {
               name: '分享二维码',

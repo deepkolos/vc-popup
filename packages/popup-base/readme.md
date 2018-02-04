@@ -19,7 +19,7 @@ import template from './popup-custom.vue'
 import { popupRegister } from 'vc-popup-base'
 // 需要手动安装一下npm i vc-popup-base依赖
 
-var popUpConfig = {
+var popupConfig = {
 }
 
 var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵活度高
@@ -30,7 +30,7 @@ var defaultConfig = {  // 可以在运行是覆盖, 一般在运行时定义灵�
 export default popupRegister(
   'Custom', // 自动首字母大写, 名字会覆盖已注册的, 会挂载到Vue.prototype.popup[name]里
   template,
-  popUpConfig,
+  popupConfig,
   defaultConfig)
 ```
 

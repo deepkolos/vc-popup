@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import PopupBase from './popup-base.js'
-import popUpController from '../popup-base/index.js'
+import popupController from '../popup-base/index.js'
 
-function popupRegister (name, template, popUpConfig, defaultConfig) {
+function popupRegister (name, template, popupConfig, defaultConfig) {
   var incrId = 0
   // 首字母大写
   name = name[0].toUpperCase() + name.slice(1)
@@ -12,14 +12,14 @@ function popupRegister (name, template, popUpConfig, defaultConfig) {
 
     this.id = incrId++
     this.name = name
-    this.popUpConfig = popUpConfig
+    this.popupConfig = popupConfig
     this.Template = Vue.extend(template)
     this.config = this.constructConfig =
       Object.assign({
         animationConfigurable: true
       }, defaultConfig, constructConfig)
 
-    popUpController.register(this.getRouterId(), this.open.bind(this))
+    popupController.register(this.getRouterId(), this.open.bind(this))
   }
 
   popupTemplate.prototype = PopupBase

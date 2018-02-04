@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from './router.js'
-import popUpBaseTpl from './popup-base.vue'
-import popUpContainerTpl from './popup-conatiner.vue'
+import popupBaseTpl from './popup-base.vue'
+import popupContainerTpl from './popup-conatiner.vue'
 
 function top (arr) {
   return arr[arr.length - 1]
@@ -11,22 +11,22 @@ function prev (arr) {
   return arr[arr.length - 2]
 }
 
-var popUpContainer = null
+var popupContainer = null
 var vmBaseOfRouterId = {}
-var popUpInShowingNum = 0
+var popupInShowingNum = 0
 var constructorOfRouterId = {}
-var PopUpBaseConstructor = Vue.extend(popUpBaseTpl)
-var PopUpContainerConstructor = Vue.extend(popUpContainerTpl)
+var PopUpBaseConstructor = Vue.extend(popupBaseTpl)
+var PopUpContainerConstructor = Vue.extend(popupContainerTpl)
 var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
 
-Router.initialParam('popUp')
+Router.initialParam('popup')
 if (containerInBody.length === 0) {
-  popUpContainer = new PopUpContainerConstructor({
+  popupContainer = new PopUpContainerConstructor({
     el: document.createElement('div')
   })
-  document.body.appendChild(popUpContainer.$el)
+  document.body.appendChild(popupContainer.$el)
 } else {
-  popUpContainer = containerInBody[0].__vue__
+  popupContainer = containerInBody[0].__vue__
 }
 
 var PopUp = {
@@ -35,11 +35,11 @@ var PopUp = {
 
   open (vmBase, routerId, domLoadCallback) {
     vmBase._enter(() => {
-      popUpContainer.turnOn()
-      popUpContainer.addPopUp(vmBase.$el)
+      popupContainer.turnOn()
+      popupContainer.addPopUp(vmBase.$el)
       domLoadCallback && domLoadCallback()
       vmBase._afterDomLoad()
-      popUpInShowingNum++
+      popupInShowingNum++
       this.updateRouter(routerId)
     })
   },
@@ -48,8 +48,8 @@ var PopUp = {
     var vmBase = vmBaseOfRouterId[routerId]
 
     vmBase && vmBase._leave(() => {
-      if (--popUpInShowingNum === 0)
-        popUpContainer.turnOff()
+      if (--popupInShowingNum === 0)
+        popupContainer.turnOff()
       this.destroyPopUp(routerId)
     })
   },
@@ -70,30 +70,30 @@ var PopUp = {
   },
 
   destroyPopUp (routerId) {
-    popUpContainer.removePopUp(vmBaseOfRouterId[routerId].$el)
+    popupContainer.removePopUp(vmBaseOfRouterId[routerId].$el)
     vmBaseOfRouterId[routerId].$destroy()
     vmBaseOfRouterId[routerId] = undefined
   },
 
-  updateRouter (popUpName) {
+  updateRouter (popupName) {
     if (this.fromHashChange) {
       this.fromHashChange = false
       return this.fromHashChange
     }
 
-    var value = Router.getParamValue('popUp')
-    if (value && value.split('/').pop() !== popUpName) {
-      value += '/' + popUpName
+    var value = Router.getParamValue('popup')
+    if (value && value.split('/').pop() !== popupName) {
+      value += '/' + popupName
     } else {
-      value = popUpName
+      value = popupName
     }
 
     this.fromUpdateRouter = true
-    Router.parseHashCommand('&popUp=' + value)
+    Router.parseHashCommand('&popup=' + value)
   }
 }
 
-Router.listenParam('popUp', {
+Router.listenParam('popup', {
   onEnter (val) {
     if (PopUp.fromUpdateRouter) {
       PopUp.fromUpdateRouter = false

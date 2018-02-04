@@ -1,8 +1,8 @@
 [
   {
     "path": "/popup-menu",
-    "name": "popUpMenu",
-    "description": "popUpMenu"
+    "name": "popupMenu",
+    "description": "popupMenu"
   },
   {
     "path": "/popup-img-viewer",
@@ -21,12 +21,12 @@
   },
   {
     "path": "/popup-picker",
-    "name": "popUpPicker",
-    "description": "popUp"
+    "name": "popupPicker",
+    "description": "popup"
   },
   {
     "path": "/popup-custom",
-    "name": "popUpCustom",
-    "description": "popUp"
+    "name": "popupCustom",
+    "description": "popup"
   }
 ]

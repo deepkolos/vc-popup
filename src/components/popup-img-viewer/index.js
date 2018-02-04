@@ -1,7 +1,7 @@
 import { popupRegister } from 'vc-popup-base'
 import template from './index.vue'
 
-var popUpConfig = {
+var popupConfig = {
 }
 
 var defaultConfig = {
@@ -10,4 +10,4 @@ var defaultConfig = {
   animationConfigurable: false
 }
 
-export default popupRegister('imgViewer', template, popUpConfig, defaultConfig)
+export default popupRegister('imgViewer', template, popupConfig, defaultConfig)

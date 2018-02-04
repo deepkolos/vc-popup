@@ -1,7 +1,7 @@
 import { popupRegister } from 'vc-popup-base'
 import template from './index.vue'
 
-var popUpConfig = {
+var popupConfig = {
 }
 
 var defaultConfig = {
@@ -9,4 +9,4 @@ var defaultConfig = {
   position: 'clickRelative'
 }
 
-export default popupRegister('pressMenu', template, popUpConfig, defaultConfig)
+export default popupRegister('pressMenu', template, popupConfig, defaultConfig)
