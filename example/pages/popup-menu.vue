@@ -110,10 +110,10 @@
                   propsData: {
                     items: [
                       {
-                        name: '没有重复调用嵌套问题',
+                        name: '嵌套调用open会又问题',
                         click: () => { console.log('btn0 clicked') }
                       }, {
-                        name: '可以复用同一个实例',
+                        name: '不用可以复用同一个实例, 因为数据被覆盖了',
                         click: () => { console.log('btn0 clicked') }
                       }
                     ]

@@ -3,10 +3,11 @@ import { popupInShowingNum } from './popup-controller'
 
 let popupBase = {
   open: function (e, runtimeConfig = {}) {
+    if (this.vmBase)
+      return console.log('已经open调用了, 需要close之后再调用')
+
     var routerId = this.getRouterId()
 
-    // 多次open, 会覆盖前面的config, 读取的时候不能从这里读取, 可以从vmBase.runtimeConfig
-    // 后面看一下API怎么修改好, 还是会有暗病的
     this.config = Object.assign({
       animation: {}
     }, this.constructConfig, runtimeConfig)
