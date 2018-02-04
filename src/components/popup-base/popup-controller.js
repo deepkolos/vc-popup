@@ -94,7 +94,6 @@ var Popup = {
 
 Router.listenParam('popup', {
   onEnter (val) {
-    console.log(constructorOfRouterId)
     if (Popup.fromUpdateRouter) {
       Popup.fromUpdateRouter = false
       return Popup.fromUpdateRouter

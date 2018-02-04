@@ -17,7 +17,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
-  externals: ['vue', 'vc-popup-base'],
+  externals: ['vue', 'vc-popup-base', 'vue-router'],
   plugins: [
     new OptimizeCSSPlugin({
       cssProcessorOptions: {

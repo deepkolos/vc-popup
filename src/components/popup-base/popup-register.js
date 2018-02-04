@@ -16,8 +16,6 @@ function popupRegister (name, template, popupConfig, defaultConfig) {
       Object.assign({
         animationConfigurable: true
       }, defaultConfig, constructConfig)
-
-    popupController.register(this.getRouterId(), this.open.bind(this))
   }
 
   popupTemplate.prototype = PopupBase

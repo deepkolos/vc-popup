@@ -20,6 +20,7 @@ let popupBase = {
     this.vmBase.$refs.slot = this.vmSlot.$el
     this.vmSlot.$popupCtrl = this
 
+    popupController.register(routerId, this.open.bind(this, e, runtimeConfig))
     popupController.open(this.vmBase, routerId, () => {
       this.configPosition(e)
     })

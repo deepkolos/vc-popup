@@ -24,7 +24,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     libraryExport: "default",
     libraryTarget: "umd"
   },
-  externals: 'vue',
+  externals: ['vue', 'vue-router'],
   plugins: [
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
