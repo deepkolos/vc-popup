@@ -17,6 +17,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.4"
+    "vc-popup-base": "^0.1.5"
   }
 }

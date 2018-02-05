@@ -20,6 +20,10 @@ function setVer(path, ver) {
       /"version": "(.*)"/,
       `"version": "${ver}"`
     )
+    data = data.replace(
+      /"vc-popup-base": "\^(.*)"/,
+      `"vc-popup-base": "^${newPkgVer}"`
+    )
     fs.writeFile(path, data, function (err) {
       if (err) throw err
     })
@@ -40,16 +44,7 @@ var newPkgVer = readlineSync.question(
 // var newModuleVer = '1.1.4'
 
 setVer('../lerna.json', newPkgVer)
-var packageStr = fs.readFileSync(p('../package.json'), 'utf8')
-packageStr = packageStr.replace(
-  /"vc-popup-base": "\^(.*)",/,
-  `"vc-popup-base": "^${newPkgVer}",`
-)
-packageStr = packageStr.replace(
-  /"version": "(.*)",/,
-  `"version": "${newModuleVer}",`
-)
-fs.writeFileSync(p('../package.json'), packageStr)
+setVer('../package.json', newModuleVer)
 
 utils.mapPkgList(function (subDir) {
   setVer(`../packages/${subDir}/package.json`, newPkgVer)
