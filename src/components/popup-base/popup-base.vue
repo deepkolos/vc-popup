@@ -185,10 +185,9 @@
       },
 
       _beforeLeave () {
+        this._freezeEvents()
+        this._removeAnimationEndListener()
         requestAnimationFrame(() => {
-          this._freezeEvents()
-          this._removeAnimationEndListener()
-
           var animationCfg = this.runtimeConfig.animation.out
           var hasConfigAnimation =
                 this._animationConfigurable &&

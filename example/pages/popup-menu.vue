@@ -4,7 +4,7 @@
     <div class="title">底部弹出菜单示例</div>
 
     <div class="cell" @click="click">背景模糊</div>
-    <div class="cell" @click="click2">支持animation.css动画库</div>
+    <div class="cell" @click="click2">支持animation.css动画库(自行加依赖)</div>
     <div class="cell" @click="click3">bounceInUp, bounceOutDown</div>
     <div class="cell" @click="click4">flipInX, flipOutX</div>
     <div class="cell" @click="click12">jackInTheBox hinge</div>

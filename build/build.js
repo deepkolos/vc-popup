@@ -49,18 +49,11 @@ webpack(webpackConfig, function (err, stats) {
     process.env.NODE_ENV === 'base'
   ) {
     const fs = require('fs')
-    let base = p('../node_modules/vc-popup-base')
 
-    fs.existsSync(base) == false && fs.mkdirSync(base)
-
-    let files = fs.readdirSync(p('../packages/popup-base'))
-
-    files.forEach(function(filename){
-      fs.copyFileSync(
-        p('../packages/popup-base/'+filename),
-        p('../node_modules/vc-popup-base/'+filename)
-      )
-    })
+    fs.copyFileSync(
+      p('../packages/popup-base/index.js'),
+      p('../node_modules/vc-popup-base/index.js')
+    )
 
     // 压缩就不做, 看到didi的后编译, 其实的确是重复了
   }

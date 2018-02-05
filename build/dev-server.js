@@ -6,6 +6,7 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
+const fs = require('fs')
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
@@ -14,6 +15,11 @@ const proxyMiddleware = require('http-proxy-middleware')
 const webpackConfig = (process.env.NODE_ENV === 'testing' || process.env.NODE_ENV === 'production')
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
+const popupBaseWebpackCfg = require('./webpack.popup-base.conf')
+
+function p(str){
+  return path.resolve(__dirname, str)
+}
 
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port
@@ -25,6 +31,17 @@ const proxyTable = config.dev.proxyTable
 
 const app = express()
 const compiler = webpack(webpackConfig)
+const popupBaseCompiler = webpack(popupBaseWebpackCfg)
+
+popupBaseCompiler.watch({}, function (err, stats) {
+  if (stats.hasErrors())
+    console.log(err)
+
+  fs.copyFileSync(
+    p('../packages/popup-base/index.js'),
+    p('../node_modules/vc-popup-base/index.js')
+  )
+})
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,

@@ -30,8 +30,8 @@ webpackConfig.entry = {
 }
 
 webpackConfig.output = {
-  path: path.resolve(__dirname, '../packages/'),
-  filename: `[name]/index.js`,
+  path: path.resolve(__dirname, '../packages/popup-base/'),
+  filename: `index.js`,
   libraryExport: "default",
   libraryTarget: "umd"
 }
