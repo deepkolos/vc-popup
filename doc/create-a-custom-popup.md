@@ -33,6 +33,12 @@ var defaultConfig = {
   position: 'domRelative',
   autoSetOrthocenter: true,
   animationConfigurable: false // 如果, 定制过渡动画则通过改设置, 屏蔽animation设置
+  // 最好设置一下默认值, 如果没有在popupEvt实现css3动画的话
+  animation: {
+    init: 'vc-init',
+    in: 'vc-in',
+    out: 'vc-out',
+  }
 }
 
 export default popupRegister(

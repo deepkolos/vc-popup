@@ -50,21 +50,4 @@
     align-items: center;
     margin: 0;
   }
-
-  // 增加init优先级
-  .vc-in.vc-init {
-    opacity: 0;
-    transform: translateY(100%) translateZ(0);
-  }
-
-  .vc-in {
-    opacity: 1;
-    transform: translateY(0%) translateZ(0);
-  }
-
-  .vc-out {
-    opacity: 0;
-    transform: translateY(100%) translateZ(0);
-    transition-duration: 400ms;
-  }
 </style>

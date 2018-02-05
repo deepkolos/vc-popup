@@ -322,6 +322,8 @@ body > *:first-child{
 }
 ```
 
+[过渡动画设置示例](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-animation-guide.md)
+
 ## propsData定义
 
 具体popup的使用可以查看`/packages/[popup-name]/readme.md`
