@@ -6,7 +6,12 @@ var popupConfig = {
 
 var defaultConfig = {
   autoSetOrthocenter: true,
-  position: 'clickRelative'
+  position: 'clickRelative',
+  animation: {
+    init: 'animation-init',
+    in: 'animation-in',
+    out: 'animation-out'
+  }
 }
 
 export default popupRegister('pressMenu', template, popupConfig, defaultConfig)

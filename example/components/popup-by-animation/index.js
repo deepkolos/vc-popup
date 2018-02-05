@@ -6,7 +6,11 @@ var popupConfig = {
 
 var defaultConfig = {
   autoSetOrthocenter: true,
-  position: 'clickRelative'
+  position: 'clickRelative',
+  animation: {
+    in: 'animation-in',
+    out: 'animation-out'
+  }
 }
 
 export default popupRegister('byAnimation', template, popupConfig, defaultConfig)

@@ -30,30 +30,9 @@
 
     created () {
       this.popupEvt = {
-        inAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        outAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.remove('inAnimation')
-          requestAnimationFrame(function () {
-            $el.classList.add('outAnimation')
-          })
-        },
         afterDomLoad: () => {
           this._setTriangle()
-        },
-        beforeEnter: () => {},
-        afterEnter: () => {},
-        beforeLeave: () => {},
-        afterLeave: () => {}
+        }
       }
     },
 
@@ -125,19 +104,19 @@
     background: white;
     margin: 0;
 
-    &.inital {
+    &.animation-in.animation-init {
       opacity: 0;
       transform: translateY(-10px);
     }
 
-    &.inAnimation {
+    &.animation-in {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    &.outAnimation {
+    &.animation-out {
       opacity: 0;
-      transform: translateY(  10px);
+      transform: translateY(10px);
       transition-duration: 300ms;
     }
   }

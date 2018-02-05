@@ -121,19 +121,19 @@
     padding: 0;
     margin: 0;
 
-    &.inital {
+    &.animation-in.animation-init {
       opacity: 0;
       transform: translateY(-10px);
     }
 
-    &.inAnimation {
+    &.animation-in {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    &.outAnimation {
+    &.animation-out {
       opacity: 0;
-      transform: translateY(  10px);
+      transform: translateY(10px);
       transition-duration: 300ms;
     }
   }

@@ -5,6 +5,11 @@ var popupConfig = {
 }
 
 var defaultConfig = {
+  animation: {
+    init: 'vc-animation-init',
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
+  }
 }
 
 export default popupRegister('datetimePicker', template, popupConfig, defaultConfig)

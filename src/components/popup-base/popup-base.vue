@@ -173,12 +173,11 @@
             this.vmSlot.popupEvt.inAnimation instanceof Function &&
               this.vmSlot.popupEvt.inAnimation()
 
-          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-
           this.vmSlot.onOpen instanceof Function &&
             this.vmSlot.onOpen()
 
           requestAnimationFrame(() => {
+            this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
             if (!this._animationNoneReday)
               this.$refs.slot.style.transitionDuration = null
 

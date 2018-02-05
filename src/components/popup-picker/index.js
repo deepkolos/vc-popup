@@ -6,7 +6,12 @@ var popupConfig = {
 
 var defaultConfig = {
   autoSetOrthocenter: true,
-  position: 'domRelative'
+  position: 'domRelative',
+  animation: {
+    init: 'vc-animation-init',
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
+  }
 }
 
 export default popupRegister('picker', template, popupConfig, defaultConfig)

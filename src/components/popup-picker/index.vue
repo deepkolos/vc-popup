@@ -53,32 +53,6 @@
       VcPickerView
     },
 
-    created () {
-      this.popupEvt = {
-        inAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        outAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.remove('inAnimation')
-          requestAnimationFrame(function () {
-            $el.classList.add('outAnimation')
-          })
-        },
-        beforeEnter: () => {},
-        afterEnter: () => {},
-        beforeLeave: () => {},
-        afterLeave: () => {}
-      }
-    },
-
     methods: {
       _cancel (e) {
         this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
@@ -103,22 +77,6 @@
     height: auto;
     transition: all 250ms ease 0s;
     border-top: 1px solid #e3e3e3;
-
-    &.inital {
-      opacity: 0.3;
-      transform: translateY(100%) translateZ(0);
-    }
-
-    &.inAnimation {
-      opacity: 1;
-      transform: translateY(0%) translateZ(0);
-    }
-
-    &.outAnimation {
-      opacity: 0;
-      transform: translateY(100%) translateZ(0);
-      transition-duration: 280ms;
-    }
   }
 
   .vc-picker-head {

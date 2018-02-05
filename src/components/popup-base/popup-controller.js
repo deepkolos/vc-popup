@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from './router'
 import popupBaseTpl from './popup-base.vue'
 import popupContainerTpl from './popup-conatiner.vue'
-import '../../style/animation-duration-preset.css'
 
 function top  (arr) { return arr[arr.length - 1] }
 function prev (arr) { return arr[arr.length - 2] }

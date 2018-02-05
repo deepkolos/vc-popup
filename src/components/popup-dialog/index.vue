@@ -71,10 +71,10 @@
         inAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('inital')
+          $el.classList.add('animation-init')
           requestAnimationFrame(() => {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
+            $el.classList.remove('animation-init')
+            $el.classList.add('animation-in')
             setTimeout(() => {
               if (
                 this.skin === 'iosNative' &&
@@ -86,17 +86,13 @@
         outAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('outAnimation')
+          $el.classList.add('animation-out')
           if (this.skin === 'lol')
             $el.parentElement.classList.add('vc-dialog-effect-blur')
           requestAnimationFrame(function () {
-            $el.classList.remove('inAnimation')
+            $el.classList.remove('animation-in')
           })
-        },
-        beforeEnter: () => {},
-        afterEnter: () => {},
-        beforeLeave: () => {},
-        afterLeave: () => {}
+        }
       }
     },
 
@@ -135,17 +131,17 @@
     overflow: hidden;
     text-align: center;
 
-    &.inital {
+    &.animation-init {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
     }
 
-    &.inAnimation {
+    &.animation-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
     }
 
-    &.outAnimation {
+    &.animation-out {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
       transition-duration: 300ms;
@@ -286,18 +282,18 @@
     color: #3d4145;
     width: 75vw;
 
-    &.inital {
+    &.animation-init {
       opacity: 0;
       transform: scale(1.3) translateZ(0);
     }
 
-    &.inAnimation {
+    &.animation-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
       transition-duration: 400ms;
     }
 
-    &.outAnimation {
+    &.animation-out {
       opacity: 0;
       transform: scale(0.7) translateZ(0);
       transition-duration: 400ms;
@@ -366,7 +362,7 @@
     box-shadow: 0px 0px 20px 2px #5f491e;
     overflow: visible;
 
-    &.outAnimation {
+    &.animation-out {
       opacity: 0;
       transform: scale(1);
       transition-duration: 300ms;

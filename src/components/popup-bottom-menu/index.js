@@ -6,9 +6,9 @@ var popupConfig = {
 
 var defaultConfig = {
   animation: {
-    init: 'vc-init',
-    in: 'vc-in',
-    out: 'vc-out'
+    init: 'vc-animation-init',
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
   }
 }
 

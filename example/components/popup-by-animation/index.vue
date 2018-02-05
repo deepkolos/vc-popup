@@ -57,15 +57,11 @@
     padding: 0;
     margin: 0;
 
-    &.inital {
-      opacity: 0;
-    }
-
-    &.inAnimation {
+    &.animation-in {
       animation: animation 280ms ease forwards;
     }
 
-    &.outAnimation {
+    &.animation-out {
       animation: animation 280ms ease reverse;
     }
   }

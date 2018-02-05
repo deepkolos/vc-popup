@@ -6,26 +6,26 @@
 ```js
 {
   animation: {
-    init: 'vc-init',
-    in: 'vc-in',
-    out: 'vc-out'
+    init: 'vc-animation-init',
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
   }
 }
 ```
 
 ```css
 /* 给init增加优先级*/
-.vc-in.vc-init {
+.vc-animation-in.vc-animation-init {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
 }
 
-.vc-in {
+.vc-animation-in {
   opacity: 1;
   transform: translateY(0%) translateZ(0);
 }
 
-.vc-out {
+.vc-animation-out {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
   transition-duration: 400ms;
@@ -37,18 +37,18 @@
 ```js
 {
   animation: {
-    in: 'vc-in',
-    out: 'vc-out'
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
   }
 }
 ```
 
 ```css
-.vc-in {
+.vc-animation-in {
   animation: animation 280ms ease forwards;
 }
 
-.vc-out {
+.vc-animation-out {
   animation: animation 280ms ease reverse;
 }
 

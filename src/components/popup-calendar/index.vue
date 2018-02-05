@@ -147,23 +147,6 @@
 
     created () {
       this.popupEvt = {
-        inAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        outAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.remove('inAnimation')
-          requestAnimationFrame(function () {
-            $el.classList.add('outAnimation')
-          })
-        },
         beforeEnter: () => {
           this.$el.style.height = window.innerHeight + 'px'
         },
@@ -172,9 +155,7 @@
             if (this.defaultRange)
               this.$refs.calendarPicker.select(this.defaultRange)
           })
-        },
-        beforeLeave: () => {},
-        afterLeave: () => {}
+        }
       }
 
       //初始化timeSlot
@@ -326,17 +307,17 @@
     flex-direction: column;
     display: flex;
 
-    &.inital {
+    &.in.init {
       opacity: 0;
       transform: translateY(5%) translateZ(0);
     }
 
-    &.inAnimation {
+    &.in {
       opacity: 1;
       transform: translateY(0) translateZ(0);
     }
 
-    &.outAnimation {
+    &.out {
       opacity: 0;
       transform: translateY(5%) translateZ(0);
       transition-duration: 300ms;
