@@ -131,17 +131,24 @@
       },
 
       _beforeEnter (openRestFunc) {
-        this._initMask()
         requestAnimationFrame(() => {
+          this._initMask()
           this.$refs.slot.style.transitionDuration = '0ms'
 
           this._animationConfigurable =
             this.runtimeConfig.animationConfigurable
 
+          var className = this.runtimeConfig.className
           var animationCfg = this.runtimeConfig.animation.in
           var hasConfigAnimation =
                 this._animationConfigurable &&
                 animationCfg !== undefined
+
+          if (typeof className === 'string')
+            this.vmSlot.$el.classList.add(className)
+          else if (className instanceof Array)
+            this.vmSlot.$el.classList.add.apply(
+              this.vmSlot.$el.classList, className)
 
           if (animationCfg !== false)
             this.setMaskOpacity(0)
@@ -392,6 +399,6 @@
 
   @keyframes vc-animation-fake-off {
     0%  {opacity: 0.99;}
-    100%{opacity: 1.00;}
+    100%{opacity: 1;}
   }
 </style>

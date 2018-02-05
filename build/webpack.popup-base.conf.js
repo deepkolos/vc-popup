@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -16,13 +15,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   externals: ['vue', 'vc-popup-base', 'vue-router'],
-  plugins: [
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
-    }),
-  ]
+  plugins: []
 })
 
 webpackConfig.entry = {

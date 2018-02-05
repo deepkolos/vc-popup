@@ -142,7 +142,7 @@
     position: absolute;
     width: 7px;
     height: 7px;
-    background-color: rgb(0, 0, 0);
+    background-color: inherit;
     transform: translate(-3.5px, -3.5px) rotate(45deg) ;
   }
 

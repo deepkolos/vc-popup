@@ -108,7 +108,7 @@ body > *:first-child{
 
 ```js
 {
-  // 在hash当中的名字, 如果为undefined的话,那么将会采用`popup's name_num`
+  // 在hash当中的名字, 如果为undefined的话,那么将会采用`popupName_levelNum`
   // 自定义的时候, 则需要人工保证唯一, 不然返回就检查不出来
   // 一般不需要设置
   name: {
@@ -138,7 +138,10 @@ body > *:first-child{
   // 动画设置
   animation,
   autoSetOrthocenter,
-  animationConfigurable
+  animationConfigurable,
+
+  // 样式覆盖内置
+  className
 }
 ```
 
@@ -292,6 +295,16 @@ body > *:first-child{
     animationConfigurable: true,
     animationConfigurable: false,
   },
+
+  // 样式覆盖内置
+  className: {
+    options: Array<String> | String,
+    default: undefined
+
+    //example
+    className: 'custom-skin',
+    className: ['custom-skin-base', 'custom-skin-baner']
+  }
 }
 ```
 

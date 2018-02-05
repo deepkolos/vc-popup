@@ -17,6 +17,7 @@
         refDom: this.$refs.btn16,
         refCorner: 'top right',
         relativeToCorner: 'above before',
+        className: ['test', 'test2'],
         propsData: {
           items: [
             {
@@ -47,6 +48,11 @@
     border-radius: 3px;
     text-align: center;
     line-height: 30px;
+  }
+</style>
+<style>
+  .test{
+    background: red!important;
   }
 </style>
 
