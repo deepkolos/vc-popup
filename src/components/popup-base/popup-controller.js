@@ -2,23 +2,18 @@ import Vue from 'vue'
 import Router from './router'
 import popupBaseTpl from './popup-base.vue'
 import popupContainerTpl from './popup-conatiner.vue'
+import '../../style/animation-duration-preset.css'
 
-function top (arr) {
-  return arr[arr.length - 1]
-}
-
-function prev (arr) {
-  return arr[arr.length - 2]
-}
-
+function top  (arr) { return arr[arr.length - 1] }
+function prev (arr) { return arr[arr.length - 2] }
 function splitPopupValue (val) {
   return val ? decodeURIComponent(val).split('/') : []
 }
 
 // 避免重复引用
 var Popup
-if (Vue.prototype.__PopUp__ !== undefined) {
-  Popup = Vue.prototype.__PopUp__
+if (Vue.prototype.__popup__ !== undefined) {
+  Popup = Vue.prototype.__popup__
 } else {
   var popupContainer = null
   var vmBaseOfRouterId = {}
@@ -37,7 +32,7 @@ if (Vue.prototype.__PopUp__ !== undefined) {
     popupContainer = containerInBody[0].__vue__
   }
 
-  Vue.prototype.__PopUp__ = Popup = {
+  Vue.prototype.__popup__ = Popup = {
     fromHashChange: false,
     fromUpdateRouter: false,
     popupInShowingNum: 0,

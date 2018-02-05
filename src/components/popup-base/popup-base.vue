@@ -161,8 +161,10 @@
           else
             this.setMaskOpacity(maskOpacity)
 
-          this._animationConfigurable &&
+          if (this._animationConfigurable) {
             this._animation('in')
+            this._animation('init')
+          }
 
           this.vmSlot.popupEvt.beforeEnter instanceof Function &&
             this.vmSlot.popupEvt.beforeEnter(hasConfigAnimation)
@@ -176,14 +178,18 @@
           this.vmSlot.onOpen instanceof Function &&
             this.vmSlot.onOpen()
 
-          openRestFunc()
           requestAnimationFrame(() => {
             if (!this._animationNoneReday)
               this.$refs.slot.style.transitionDuration = null
 
             this.setMaskOpacity(maskOpacity)
             maskBgColor && this.setMaskBgColor(maskBgColor)
+
+            if (this._animationConfigurable)
+              this._animation('init', true)
           })
+
+          openRestFunc()
         })
       },
 
@@ -272,7 +278,7 @@
               $dom.classList.remove(animationOffClass)
           } else
 
-          if (value instanceof String) {
+          if (typeof value === 'string') {
             if (unset === false)
               $dom.classList.add(value)
             else

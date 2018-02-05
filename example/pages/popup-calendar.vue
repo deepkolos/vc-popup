@@ -210,8 +210,8 @@
       click10 (e) {
         this.calendar.open(e, {
           animation: {
-            in: ['animated-500', 'slideInRight'],
-            out: ['animated-350', 'slideOutRight']
+            in: ['vc-duration-500', 'slideInRight'],
+            out: ['vc-duration-350', 'slideOutRight']
           },
 
           propsData: {

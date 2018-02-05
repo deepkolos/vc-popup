@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <p class="cell">
-      微信查看图片, 支持过度动画做边缘裁切, 显示更加自然<br><br>
+      微信查看图片, 支持过渡动画做边缘裁切, 显示更加自然<br><br>
       
     </p>
     <div class="row">

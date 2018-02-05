@@ -32,7 +32,7 @@ var popupConfig = {
 var defaultConfig = {
   position: 'domRelative',
   autoSetOrthocenter: true,
-  animationConfigurable: false // 如果, 定制过度动画则通过改设置, 屏蔽animation设置
+  animationConfigurable: false // 如果, 定制过渡动画则通过改设置, 屏蔽animation设置
 }
 
 export default popupRegister(
@@ -47,7 +47,7 @@ export default popupRegister(
 
 这个和vue单文件的结构一样, 但是多了一些可以配置的地方:
 
-0. 主要是提供了`popup`事件钩子, 一共5个, 可以通过这些事件可以定制更多的过度动画
+0. 主要是提供了`popup`事件钩子, 一共5个, 可以通过这些事件可以定制更多的过渡动画
 1. 还提供了一个接受触发`popup`事件的`e`, 从`open()`里传进来的
 
 ```vue
@@ -83,8 +83,8 @@ export default popupRegister(
           // animation operation
         }*/
 
-        // 如果需要定制过度动画, 则在defaultConfig.animationConfigurable = false
-        // 然后定制过度动画则放在beforeEnter/beforeLeave里面
+        // 如果需要定制过渡动画, 则在defaultConfig.animationConfigurable = false
+        // 然后定制过渡动画则放在beforeEnter/beforeLeave里面
       }
 
       // 可以通过$popupCtrl, 来获取父级节点的引用和操作

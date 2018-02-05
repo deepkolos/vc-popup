@@ -22,32 +22,6 @@
       },
       onClose: Function,
       onOpen: Function
-    },
-
-    created () {
-      this.popupEvt = {
-        inAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        outAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.remove('inAnimation')
-          requestAnimationFrame(function () {
-            $el.classList.add('outAnimation')
-          })
-        },
-        beforeEnter: () => {},
-        afterEnter: () => {},
-        beforeLeave: () => {},
-        afterLeave: () => {}
-      }
     }
   }
 </script>
@@ -63,22 +37,6 @@
     transition: all 250ms ease 0s;
     padding: 0;
     margin: 0;
-
-    &.inital {
-      opacity: 0;
-      transform: translateY(100%) translateZ(0);
-    }
-
-    &.inAnimation {
-      opacity: 1;
-      transform: translateY(0%) translateZ(0);
-    }
-
-    &.outAnimation {
-      opacity: 0;
-      transform: translateY(100%) translateZ(0);
-      transition-duration: 400ms;
-    }
   }
 
   .vc-popup-bottom-menu-li {
@@ -91,5 +49,22 @@
     display: flex;
     align-items: center;
     margin: 0;
+  }
+
+  // 增加init优先级
+  .vc-in.vc-init {
+    opacity: 0;
+    transform: translateY(100%) translateZ(0);
+  }
+
+  .vc-in {
+    opacity: 1;
+    transform: translateY(0%) translateZ(0);
+  }
+
+  .vc-out {
+    opacity: 0;
+    transform: translateY(100%) translateZ(0);
+    transition-duration: 400ms;
   }
 </style>

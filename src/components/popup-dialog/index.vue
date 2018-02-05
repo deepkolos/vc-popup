@@ -76,8 +76,10 @@
             $el.classList.remove('inital')
             $el.classList.add('inAnimation')
             setTimeout(() => {
-              if (this.skin === 'iosNative')
-                this.$popupCtrl.vmBase.setMaskOpacity(0.4)
+              if (
+                this.skin === 'iosNative' &&
+                this.$popupCtrl.config.maskOpacity !== undefined
+              ) this.$popupCtrl.vmBase.setMaskOpacity(0.4)
             }, 0)
           })
         },

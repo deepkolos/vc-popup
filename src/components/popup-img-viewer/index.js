@@ -7,7 +7,8 @@ var popupConfig = {
 var defaultConfig = {
   position: 'domRelative',
   autoSetOrthocenter: true,
-  animationConfigurable: false
+  animationConfigurable: false,
+  maskOpacity: 1
 }
 
 export default popupRegister('imgViewer', template, popupConfig, defaultConfig)

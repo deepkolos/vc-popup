@@ -75,10 +75,6 @@
             $onSwipeImg.style.transform = `translate3d(0,0,0)`
             if (hasClip)
               $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
-
-            setTimeout(() => {
-              this.$popupCtrl.vmBase.setMaskOpacity(1)
-            }, 0)
           })
         },
         afterEnter: () => {},

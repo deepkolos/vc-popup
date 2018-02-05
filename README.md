@@ -8,7 +8,7 @@
 
 > 1. 支持`返回键`, 可以按浏览器返回按钮关闭popup
 > 2. 支持popup的层叠显示
-> 3. 可以写出小复杂的`过度动画`, 比如磁贴按压效果[在popupMenu可看到~]
+> 3. 可以写出小复杂的`过渡动画`, 比如磁贴按压效果[在popupMenu可看到~]
 > 4. 支持css动画库, 比如animation.css, 使用的时候自行添加依赖就好了
 > 5. 提供了几个比较好的popup组件, calendar, picker, imgViewer
 > 6. `行为定义相对标准`, 这一点比较重要的, 前端行为定义犹如算法的输入定义一样, 比如触发关闭之后, 结束动画未结束之前, popup会拦截输入事件, popup属于`不可交互状态`
@@ -142,7 +142,8 @@ body > *:first-child{
 
   // 样式覆盖内置
   className,
-  maskOpacity
+  maskOpacity,
+  maskBgColor
 }
 ```
 
@@ -243,11 +244,11 @@ body > *:first-child{
     autoSetOrthocenter: false,
   },
 
-  // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过度动画冲突
+  // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过渡动画冲突
   // 在自定义popup的时候需要注意一下
   // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
-  // 不过并非所有都支持animation, 一些使用定制过度动画, 会设置animationConfigurable为false
-  // 注意: 自定义class需要有css3的过度动画, 不然animationend/transitionend就不会触发~
+  // 不过并非所有都支持animation, 一些使用定制过渡动画, 会设置animationConfigurable为false
+  // 注意: 自定义class需要有css3的过渡动画, 不然animationend/transitionend就不会触发~
   // 如果需要关闭动画可以看下面的例子
   animation: {
     options: classConfig | effectConfig | switchConfig,
@@ -268,8 +269,8 @@ body > *:first-child{
 
     // example
     animation: {
-      in:  false, // 禁用进入过度动画(包括mask)
-      out: false, // 禁用离开过度动画(包括mask)
+      in:  false, // 禁用进入过渡动画(包括mask)
+      out: false, // 禁用离开过渡动画(包括mask)
     }
     animation: {
       in:  ["animated", "flipInX"],
@@ -287,7 +288,7 @@ body > *:first-child{
     }
   },
 
-  // 是否支持animation的配置来修改过度动画, 在一些定制的过度动画可以设置为true来避免冲突
+  // 是否支持animation的配置来修改过渡动画, 在一些定制的过渡动画可以设置为true来避免冲突
   animationConfigurable: {
     options: Boolean,
     default: true

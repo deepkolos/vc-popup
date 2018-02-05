@@ -54,7 +54,8 @@
 
         if (fromLeft < rect.width / 3) {
           this.orientationX = -1
-        } else if (fromLeft >= rect.width / 3 && fromLeft < rect.width * 2 / 3) {
+        } else
+        if (fromLeft >= rect.width / 3 && fromLeft < rect.width * 2 / 3) {
           this.orientationX = 0
         } else {
           this.orientationX = 1
@@ -62,7 +63,8 @@
 
         if (fromTop < rect.height / 3) {
           this.orientationY = 1
-        } else if (fromTop >= rect.height / 3 && fromTop < rect.height * 2 / 3) {
+        } else
+        if (fromTop >= rect.height / 3 && fromTop < rect.height * 2 / 3) {
           this.orientationY = 0
         } else {
           this.orientationY = -1

@@ -9,7 +9,7 @@
     <div class="cell" @click="click4">flipInX, flipOutX</div>
     <div class="cell" @click="click12">jackInTheBox hinge</div>
 
-    <div class="title">通过自定义animation实现过度示例</div>
+    <div class="title">通过自定义animation实现过渡示例</div>
     <div class="cell" @click="click6">根据点击的位置定位</div>
     <div class="cell" @click="click7">支持通过animation实现更多小细节</div>
 
