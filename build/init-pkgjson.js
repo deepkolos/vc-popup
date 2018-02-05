@@ -2,7 +2,6 @@ var fs = require('fs')
 var path = require('path')
 var readlineSync = require('readline-sync');
 var deleteFolderRecursive = require('./utils').deleteFolderRecursive;
-require('shelljs/global');
 
 // 工具函数
 function _path(str){

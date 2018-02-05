@@ -1,6 +1,6 @@
 {
   "name": "vc-popup",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "vue popup components with power position and animation support and back key support as well",
   "author": "DeepKolos <k1206521365k@126.com>",
   "private": false,
@@ -31,11 +31,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "test": "echo no ok...",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "release": "yarn publish && yarn modules && yarn packages && leran publish"
+    "release": "node build/release.js && npm publish && lerna publish --skip-git --force-publish *"
   },
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.2",
+    "vc-popup-base": "^0.1.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-swipe-directive": "0.0.0"
