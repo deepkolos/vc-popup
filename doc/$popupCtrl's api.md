@@ -20,6 +20,7 @@ vmBase = {
   trunOnMaskTransition(viod),
   trunOffMaskTransition(viod),
   setMaskOpacity(Number),
+  setMaskBgColor(String),
   setAnimateDom(Dom),
   getAnimateDom()
 }

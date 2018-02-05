@@ -49,6 +49,10 @@
         this.$refs.mask.style.opacity = val
       },
 
+      setMaskBgColor (val) {
+        this.$refs.mask.style.backgroundColor = val
+      },
+
       addMaskClass (name) {
         this.$refs.mask.classList.add(name)
       },
@@ -140,6 +144,8 @@
 
           var className = this.runtimeConfig.className
           var animationCfg = this.runtimeConfig.animation.in
+          var maskOpacity = this.runtimeConfig.maskOpacity || 0.25
+          var maskBgColor = this.runtimeConfig.maskBgColor
           var hasConfigAnimation =
                 this._animationConfigurable &&
                 animationCfg !== undefined
@@ -153,7 +159,7 @@
           if (animationCfg !== false)
             this.setMaskOpacity(0)
           else
-            this.setMaskOpacity(0.25)
+            this.setMaskOpacity(maskOpacity)
 
           this._animationConfigurable &&
             this._animation('in')
@@ -174,7 +180,9 @@
           requestAnimationFrame(() => {
             if (!this._animationNoneReday)
               this.$refs.slot.style.transitionDuration = null
-            this.setMaskOpacity(0.25)
+
+            this.setMaskOpacity(maskOpacity)
+            maskBgColor && this.setMaskBgColor(maskBgColor)
           })
         })
       },

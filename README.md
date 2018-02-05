@@ -141,7 +141,8 @@ body > *:first-child{
   animationConfigurable,
 
   // 样式覆盖内置
-  className
+  className,
+  maskOpacity
 }
 ```
 
@@ -304,6 +305,18 @@ body > *:first-child{
     //example
     className: 'custom-skin',
     className: ['custom-skin-base', 'custom-skin-baner']
+  },
+
+  // mask的透明度
+  maskOpacity: {
+    options: Number,
+    default: 0.25,
+  },
+
+  // mask的颜色
+  maskBgColor: {
+    options: String,
+    default: 'black'
   }
 }
 ```

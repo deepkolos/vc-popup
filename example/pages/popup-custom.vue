@@ -18,6 +18,8 @@
         refCorner: 'top right',
         relativeToCorner: 'above before',
         className: ['test', 'test2'],
+        maskOpacity: 0.5,
+        maskBgColor: 'white',
         propsData: {
           items: [
             {
