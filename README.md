@@ -1,4 +1,4 @@
-# vc-popup(beta)
+# vc-popup(beta-2)
 
 一个行为标准的vue-popup组件集
 
