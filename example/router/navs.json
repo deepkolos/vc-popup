@@ -1,32 +1,30 @@
 [
   {
+    "path": "/popup-base",
+    "name": "popupBase"
+  },
+  {
     "path": "/popup-menu",
-    "name": "popupMenu",
-    "description": "popupMenu"
+    "name": "popupMenu"
   },
   {
     "path": "/popup-img-viewer",
-    "name": "PopUpImgViewer",
-    "description": "PopUpImgViewer"
+    "name": "popupImgViewer"
   },
   {
     "path": "/popup-calendar",
-    "name": "PopUpCalendar",
-    "description": "PopUpCalendar"
+    "name": "popupCalendar"
   },
   {
     "path": "/popup-dialog",
-    "name": "PopUpDialog",
-    "description": "PopUpDialogpUp"
+    "name": "popupDialog"
   },
   {
     "path": "/popup-picker",
-    "name": "popupPicker",
-    "description": "popup"
+    "name": "popupPicker"
   },
   {
     "path": "/popup-custom",
-    "name": "popupCustom",
-    "description": "popup"
+    "name": "popupCustom"
   }
 ]

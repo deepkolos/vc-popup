@@ -18,32 +18,6 @@
       },
       onClose: Function,
       onOpen: Function
-    },
-
-    created () {
-      this.popupEvt = {
-        inAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        outAnimation: () => {
-          var $el = this.$el
-
-          $el.classList.remove('inAnimation')
-          requestAnimationFrame(function () {
-            $el.classList.add('outAnimation')
-          })
-        },
-        beforeEnter: () => {},
-        afterEnter: () => {},
-        beforeLeave: () => {},
-        afterLeave: () => {}
-      }
     }
   }
 </script>
