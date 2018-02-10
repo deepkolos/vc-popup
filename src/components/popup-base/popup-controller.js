@@ -9,11 +9,12 @@ function splitPopupValue (val) {
   return val ? decodeURIComponent(val).split('/') : []
 }
 
-// 避免重复引用
 var Popup
 if (Vue.prototype.__popup__ !== undefined) {
   Popup = Vue.prototype.__popup__
 } else {
+  require('../../style/basic-animatin.css')
+  require('../../style/animation-duration-preset.css')
   var popupContainer = null
   var vmBaseOfRouterId = {}
   var constructorOfRouterId = {}
