@@ -137,6 +137,8 @@
       _beforeEnter (openRestFunc) {
         requestAnimationFrame(() => {
           this._initMask()
+          if (this.runtimeConfig.lockScroll)
+            document.body.style.overflow = 'hidden'
           this.$refs.slot.style.transitionDuration = '0ms'
 
           this._animationConfigurable =
@@ -244,6 +246,8 @@
 
         this._afterLeaveCallback instanceof Function &&
           this._afterLeaveCallback()
+
+        document.body.style.overflow = ''
       },
 
       _freezeEvents () {

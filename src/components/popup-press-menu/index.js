@@ -8,9 +8,9 @@ var defaultConfig = {
   autoSetOrthocenter: true,
   position: 'clickRelative',
   animation: {
-    init: 'animation-init',
-    in: 'animation-in',
-    out: 'animation-out'
+    init: 'vc-animation-init',
+    in: 'vc-animation-in',
+    out: 'vc-animation-out'
   }
 }
 

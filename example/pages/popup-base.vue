@@ -1,26 +1,15 @@
 <template>
   <div class="page" ref="page">
     <br>
-    <div class="title">animation示例</div>
+    <div class="title">animation设置示例</div>
 
-    <div class="cell" @click="click2">支持animation.css动画库(自行加依赖)</div>
-    <div class="cell" @click="click3">bounceInUp, bounceOutDown</div>
-    <div class="cell" @click="click4">flipInX, flipOutX</div>
-    <div class="cell" @click="click12">jackInTheBox hinge</div>
-    <div class="cell" @click="click">定制背景模糊</div>
+    <div class="cell" @click="click1">in/out(animation实现)</div>
+    <div class="cell" @click="click2">init/in/out(transition实现)</div>
 
-    <div class="title">通过自定义animation实现过渡示例</div>
-    <div class="cell" @click="click6">根据点击的位置定位</div>
-    <div class="cell" @click="click7">支持通过animation实现更多小细节</div>
-
-    <div class="title">上下居中的菜单示例</div>
-    <div class="cell" @click="click5">磁贴按压效果</div>
-
-    <div class="title">absolute的定位模式</div>
-    <div class="cell" @click="click15">不会锁定滚动</div>
-
-    <div class="btn" ref="btn16" @click="click16">popover</div>
-    <div style="height: 20px;"></div>
+    <div class="title">一些过度动画示例</div>
+    <div class="cell" @click="click3">背景模糊(设置#app的blur)</div>
+    <div class="cell" @click="click4">磁贴按压效果</div>
+    <div class="cell" @click="click5">不会锁定滚动</div>
 
     <div class="title">位置定位示意图(25种)(小圆可点击)</div>
 
@@ -83,80 +72,23 @@
 </template>
 
 <script>
-  import '../components/popup-by-animation/index'
-  import '../components/popup-dom-relative/index'
-
   export default {
-
     mounted () {
       this.bottomMenu = new this.$popup.BottomMenu({
         propsData: {
           items: [
             {
-              name: '这里的popup系列支持返回键',
-              click: () => { console.log('btn0 clicked') }
+              name: '条目0',
+              click: () => { this.bottomMenu.close() }
             }, {
-              name: '分享二维码',
-              click: () => { console.log('btn1 clicked') }
-            },
-            {
-              name: '换个样式',
-              click: (e) => {
-                this.bottomMenu.open(e, {
-                  animation: {
-                    in: false,
-                    out: false
-                  },
-                  propsData: {
-                    items: [
-                      {
-                        name: '嵌套调用open会又问题',
-                        click: () => { console.log('btn0 clicked') }
-                      }, {
-                        name: '不用可以复用同一个实例, 因为数据被覆盖了',
-                        click: () => { console.log('btn0 clicked') }
-                      }
-                    ]
-                  }
-                })
-              }
-            },
-            {
-              name: '保存到手机',
-              click: () => { this.bottomMenu2.open() }
-            },
-            {
-              name: '扫描二维码',
-              click: () => { this.bottomMenu2.open() }
-            }
-          ],
-
-          onOpen: function () {
-            this.$refs.page.style.filter = 'blur(1.5px)'
-          }.bind(this),
-
-          onClose: function () {
-            this.$refs.page.style.filter = null
-          }.bind(this)
-        }
-      })
-
-      this.bottomMenu2 = new this.$popup.BottomMenu({
-        propsData: {
-          items: [
-            {
-              name: '样式一',
-              click: () => {
-                console.log('btn2 clicked')
-                this.bottomMenu2.close()
-              }
-            },
-            {
-              name: '样式二',
-              click: () => {
-                console.log('btn3 clicked')
-                this.bottomMenu2.close()
-              }
+              name: '条目1',
+              click: () => { this.bottomMenu.close() }
+            }, {
+              name: '条目2',
+              click: () => { this.bottomMenu.close() }
+            }, {
+              name: '条目3',
+              click: () => { this.bottomMenu.close() }
             }
           ]
         }
@@ -166,44 +98,17 @@
         propsData: {
           items: [
             {
-              name: '分享二维码',
-              click: () => {
-                console.log('btn0 clicked')
-                this.centerMenu.close()
-              }
-            },
-            {
-              name: '换个样式',
-              click: () => { this.centerMenu2.open() }
-            },
-            {
-              name: '保存到手机',
-              click: () => { this.centerMenu2.open() }
-            },
-            {
-              name: '扫描二维码',
-              click: () => { this.centerMenu2.open() }
-            }
-          ]
-        }
-      })
-
-      this.centerMenu2 = new this.$popup.CenterMenu({
-        propsData: {
-          items: [
-            {
-              name: '样式一',
-              click: () => {
-                console.log('btn2 clicked')
-                this.centerMenu2.close()
-              }
-            },
-            {
-              name: '样式二',
-              click: () => {
-                console.log('btn3 clicked')
-                this.centerMenu2.close()
-              }
+              name: '条目0',
+              click: () => { this.centerMenu.close() }
+            }, {
+              name: '条目1',
+              click: () => { this.centerMenu.close() }
+            }, {
+              name: '条目2',
+              click: () => { this.centerMenu.close() }
+            }, {
+              name: '条目3',
+              click: () => { this.centerMenu.close() }
             }
           ]
         }
@@ -213,160 +118,17 @@
         propsData: {
           items: [
             {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.pressMenu2.open(e)
-            },
-            {
-              name: '保存到手机',
-              click: (e) => this.pressMenu2.open(e)
-            },
-            {
-              name: '扫描二维码',
-              click: (e) => this.pressMenu2.open(e)
-            }
-          ]
-        }
-      })
-
-      this.pressMenu2 = new this.$popup.PressMenu({
-        propsData: {
-          items: [
-            {
-              name: '样式一',
-              click: () => {
-                console.log('btn2 clicked')
-                this.pressMenu2.close()
-              }
-            },
-            {
-              name: '样式二',
-              click: () => {
-                console.log('btn3 clicked')
-                this.pressMenu2.close()
-              }
-            }
-          ]
-        }
-      })
-
-      this.byAnimation = new this.$popup.ByAnimation({
-        propsData: {
-          items: [
-            {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.byAnimation2.open(e)
-            },
-            {
-              name: '保存到手机',
-              click: (e) => this.byAnimation2.open(e)
-            },
-            {
-              name: '扫描二维码',
-              click: (e) => this.byAnimation2.open(e)
-            }
-          ],
-
-          onOpen: () => { console.log('opened') },
-          onClose: () => { console.log('closed') }
-        }
-      })
-
-      this.byAnimation2 = new this.$popup.ByAnimation({
-        propsData: {
-          items: [
-            {
-              name: '样式一',
-              click: () => {
-                console.log('btn2 clicked')
-                this.byAnimation2.close()
-              }
-            },
-            {
-              name: '样式二',
-              click: () => {
-                console.log('btn3 clicked')
-                this.byAnimation2.close()
-              }
-            }
-          ]
-        }
-      })
-
-      this.pressMenu_topLeft_belowAfter = new this.$popup.DomRelative({
-        refDom: this.$refs.btn8,
-        refCorner: 'top left',
-        relativeToCorner: 'below after',
-        propsData: {
-          items: [
-            {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.pressMenu.open(e)
-            }
-          ]
-        }
-      })
-
-      this.pressMenu_topRight_belowAfter = new this.$popup.DomRelative({
-        refDom: this.$refs.btn9,
-        refCorner: 'top right',
-        relativeToCorner: 'below after',
-        propsData: {
-          items: [
-            {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.pressMenu.open(e)
-            }
-          ]
-        }
-      })
-
-      this.pressMenu_bottomRight_aboveAfter = new this.$popup.DomRelative({
-        refDom: this.$refs.btn10,
-        refCorner: 'bottom right',
-        relativeToCorner: 'above after',
-        propsData: {
-          items: [
-            {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.pressMenu.open(e)
-            }
-          ]
-        }
-      })
-
-      this.pressMenu_centerRight_aboveAfter = new this.$popup.DomRelative({
-        refDom: this.$refs.btn11,
-        refCorner: 'bottom center',
-        relativeToCorner: 'below before',
-        propsData: {
-          items: [
-            {
-              name: '分享二维码',
-              click: () => console.log('btn0 clicked')
-            },
-            {
-              name: '换个样式',
-              click: (e) => this.pressMenu.open(e)
+              name: '条目0',
+              click: () => { this.pressMenu.close() }
+            }, {
+              name: '条目1',
+              click: () => { this.pressMenu.close() }
+            }, {
+              name: '条目2',
+              click: () => { this.pressMenu.close() }
+            }, {
+              name: '条目3',
+              click: () => { this.pressMenu.close() }
             }
           ]
         }
@@ -397,99 +159,68 @@
     },
 
     methods: {
-      click (e) {
-        this.bottomMenu.open(e)
+      click1 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            in: 'animation-in',
+            out: 'animation-out'
+          }
+        })
       },
 
       click2 (e) {
         this.bottomMenu.open(e, {
           animation: {
-            in: ['animated', 'bounceIn'],
-            out: ['animated', 'bounceOut']
+            init: 'transition-init',
+            in: 'transition-in',
+            out: 'transition-out'
           }
         })
       },
 
       click3 (e) {
         this.bottomMenu.open(e, {
-          animation: {
-            in: ['animated', 'bounceInUp'],
-            out: ['animated', 'bounceOutDown']
+          propsData: {
+            items: [
+              {
+                name: '条目0',
+                click: () => { this.bottomMenu.close() }
+              }, {
+                name: '条目1',
+                click: () => { this.bottomMenu.close() }
+              }, {
+                name: '条目2',
+                click: () => { this.bottomMenu.close() }
+              }, {
+                name: '条目3',
+                click: () => { this.bottomMenu.close() }
+              }
+            ],
+
+            onOpen: function () {
+              this.$refs.page.style.filter = 'blur(1.5px)'
+            }.bind(this),
+
+            onClose: function () {
+              this.$refs.page.style.filter = null
+            }.bind(this)
           }
         })
       },
 
       click4 (e) {
-        this.bottomMenu.open(e, {
-          animation: {
-            in: ['animated', 'flipInX'],
-            out: ['animated', 'flipOutX']
-          }
-        })
-      },
-
-      click5 (e) {
         this.centerMenu.open(e)
       },
 
-      click15 (e) {
+      click5 (e) {
         this.centerMenu.open(e, {
           positionType: 'absolute',
-          lockScroll: false,
-          position: 'center'
-        })
-      },
-
-      click6 (e) {
-        this.pressMenu.open(e)
-      },
-
-      click7 (e) {
-        this.byAnimation.open(e)
-      },
-
-      click8 (e) {
-        this.pressMenu_topLeft_belowAfter.open(e)
-      },
-      click9 (e) {
-        this.pressMenu_topRight_belowAfter.open(e)
-      },
-      click10 (e) {
-        this.pressMenu_bottomRight_aboveAfter.open(e)
-      },
-      click11 (e) {
-        this.pressMenu_centerRight_aboveAfter.open(e)
-      },
-      click12 (e) {
-        this.bottomMenu.open(e, {
-          animation: {
-            in: ['animated', 'jackInTheBox'],
-            out: ['animated', 'hinge']
-          }
-        })
-      },
-      click13 (e) {
-        this.pressMenu_centerRight_aboveAfter.open(e, {
-          positionType: 'absolute',
-          refDom: this.$refs.btn13
-        })
-      },
-
-      click16 (e) {
-        this.Popover.open(e, {
-
-        })
-      },
-
-      click17 (e) {
-        this.Popover.open(e, {
-          refDom: this.$refs.btn17,
-          positionType: 'absolute'
+          lockScroll: false
         })
       },
 
       clickDomRefDemo (top, left, above, after) {
-        this.pressMenu2.open(null, {
+        this.pressMenu.open(null, {
           autoSetOrthocenter: true,
           position: 'domRelative',
           refDom: this.$refs.demoRefDom,
@@ -511,25 +242,50 @@
   }
 </script>
 
+<style>
+  /* 自定义的动画class不可以使用scoped, 需要注意class命名问题 */
+
+  /* 使用transition的动画的时候则需要这样设置init来提高权重 */
+  .transition-in.transition-init {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+
+  .transition-in {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  .transition-out {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+
+  /* animation例子 */
+  .animation-in {
+    animation: animation 280ms ease forwards;
+  }
+
+  .animation-out {
+    animation: animation 280ms ease reverse;
+  }
+
+  @keyframes animation {
+    0%{
+      opacity: 0;
+      transform: scale(.7)
+    }
+    70%{
+      transform: scale(1.05)
+    }
+    100%{
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+</style>
+
 <style scoped>
-  img {
-    position: fixed;
-    z-index: 1000000000000000000000000000;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    margin: -50px 0 0 -50px;
-    /* 用于测试z-index的绝对覆盖 */
-  }
-
-  span{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
   .btn {
     width: 120px;
     height: 38px;

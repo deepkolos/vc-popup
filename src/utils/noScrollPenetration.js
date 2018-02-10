@@ -1,4 +1,4 @@
-/** 说明
+/** 说明(弃用, 还是使用overflow:hidden效果更完美)
  * 0. 仅仅支持移动端
  * 1. 仅仅支持纵向方向
  * 2. 仅仅支持一根手指, 未适配多根手指scroll的情况
@@ -55,7 +55,6 @@ const directive = {
 
       if (registerStart > 1 || registerEnd > 1) {
         evt.preventDefault()
-        console.log('noPenetarion', registerStart, registerEnd)
         $el.scrollTop = scrollTop - 0.1
       }
 

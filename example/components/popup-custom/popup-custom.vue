@@ -121,17 +121,17 @@
     padding: 0;
     margin: 0;
 
-    &.animation-in.animation-init {
+    &.vc-animation-in.vc-animation-init {
       opacity: 0;
       transform: translateY(-10px);
     }
 
-    &.animation-in {
+    &.vc-animation-in {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    &.animation-out {
+    &.vc-animation-out {
       opacity: 0;
       transform: translateY(10px);
       transition-duration: 300ms;

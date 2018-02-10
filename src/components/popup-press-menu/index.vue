@@ -31,17 +31,17 @@
     padding: 0;
     margin: 0;
 
-    &.animation-in.animation-init {
+    &.vc-animation-in.vc-animation-init {
       opacity: 0;
       transform: scale(0.8) translateZ(0);
     }
 
-    &.animation-in {
+    &.vc-animation-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
     }
 
-    &.animation-out {
+    &.vc-animation-out {
       opacity: 0;
       transform: scale(0.75) translateZ(0);
       transition-duration: 280ms;

@@ -71,10 +71,10 @@
         inAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('animation-init')
+          $el.classList.add('vc-animation-init')
           requestAnimationFrame(() => {
-            $el.classList.remove('animation-init')
-            $el.classList.add('animation-in')
+            $el.classList.remove('vc-animation-init')
+            $el.classList.add('vc-animation-in')
             setTimeout(() => {
               if (
                 this.skin === 'iosNative' &&
@@ -86,11 +86,11 @@
         outAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('animation-out')
+          $el.classList.add('vc-animation-out')
           if (this.skin === 'lol')
             $el.parentElement.classList.add('vc-dialog-effect-blur')
           requestAnimationFrame(function () {
-            $el.classList.remove('animation-in')
+            $el.classList.remove('vc-animation-in')
           })
         }
       }
@@ -131,17 +131,17 @@
     overflow: hidden;
     text-align: center;
 
-    &.animation-init {
+    &.vc-animation-init {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
     }
 
-    &.animation-in {
+    &.vc-animation-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
     }
 
-    &.animation-out {
+    &.vc-animation-out {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
       transition-duration: 300ms;
@@ -282,18 +282,18 @@
     color: #3d4145;
     width: 75vw;
 
-    &.animation-init {
+    &.vc-animation-init {
       opacity: 0;
       transform: scale(1.3) translateZ(0);
     }
 
-    &.animation-in {
+    &.vc-animation-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
       transition-duration: 400ms;
     }
 
-    &.animation-out {
+    &.vc-animation-out {
       opacity: 0;
       transform: scale(0.7) translateZ(0);
       transition-duration: 400ms;
@@ -362,7 +362,7 @@
     box-shadow: 0px 0px 20px 2px #5f491e;
     overflow: visible;
 
-    &.animation-out {
+    &.vc-animation-out {
       opacity: 0;
       transform: scale(1);
       transition-duration: 300ms;

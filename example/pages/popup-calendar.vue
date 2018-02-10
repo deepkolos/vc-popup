@@ -11,14 +11,14 @@
     <div class="cell" @click="click8">默认选择范围</div>
     <div class="cell" @click="click9">大行距</div>
     <div class="cell" @click="click10">水平进入</div>
-    <div class="cell" @click="click11">bounceIn</div>
+    <div class="cell" @click="click11">注: 仿antd-modile的calendar</div>
   </div>
 </template>
 
 <script>
   export default {
     mounted () {
-      this.calendar = new this.$popup.Calendar({})
+      this.calendar = new this.$popup.Calendar()
     },
 
     methods: {
@@ -251,8 +251,3 @@
     }
   }
 </script>
-
-<style scoped>
-  
-</style>
-
