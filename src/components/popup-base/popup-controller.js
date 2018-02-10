@@ -38,7 +38,8 @@ if (Vue.prototype.__popup__ !== undefined) {
 
     open (vmBase, routerId, domLoadCallback) {
       popupContainer.turnOn()
-      this.popupInShowingNum++
+      if (++this.popupInShowingNum === 1)
+        document.body.style.overflow = 'hidden'
       vmBase._enter(() => {
         popupContainer.addPopup(vmBase.$el)
         domLoadCallback && domLoadCallback()
@@ -51,8 +52,10 @@ if (Vue.prototype.__popup__ !== undefined) {
       var vmBase = vmBaseOfRouterId[routerId]
 
       vmBase && vmBase._leave(() => {
-        if (--this.popupInShowingNum === 0)
+        if (--this.popupInShowingNum === 0) {
           popupContainer.turnOff()
+          document.body.style.overflow = ''
+        }
         this.destroyPopup(routerId)
       })
     },

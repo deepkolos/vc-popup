@@ -17,7 +17,6 @@
       放大时,会同步更新src,支持懒加载图片
     </p>
   </div>
-  
 </template>
 
 <script>

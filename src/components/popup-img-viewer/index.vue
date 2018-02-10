@@ -77,7 +77,6 @@
               $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
           })
         },
-        afterEnter: () => {},
         beforeLeave: () => {
           var index = this.$refs.swiper.index,
             $onSwipeImg = this._getSwipeImg(index)
@@ -96,8 +95,7 @@
               $onSwipeImg.style.clipPath =
                 `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
           })
-        },
-        afterLeave: () => {}
+        }
       }
 
       this.swipeConfig = {
