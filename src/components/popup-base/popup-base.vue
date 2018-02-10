@@ -158,10 +158,7 @@
             this.vmSlot.$el.classList.add.apply(
               this.vmSlot.$el.classList, className)
 
-          if (animationCfg !== false)
-            this.setMaskOpacity(0)
-          else
-            this.setMaskOpacity(maskOpacity)
+          this.setMaskOpacity(animationCfg !== false ? 0 : maskOpacity)
 
           if (this._animationConfigurable) {
             this._animation('in')
@@ -215,11 +212,7 @@
                 this._animationConfigurable &&
                 animationCfg !== undefined
 
-          if (animationCfg !== false)
-            this.setMaskOpacity(0)
-          else
-            this.setMaskOpacity(0.25)
-
+          this.setMaskOpacity(animationCfg !== false ? 0 : 0.25)
           this._animationConfigurable &&
             this._animation('out')
 
@@ -358,13 +351,15 @@
       },
 
       _initMask () {
-        // 因为背景没有文字, 所以可以使用动画偏移
-        this.$refs.mask.style.transform =
-          `translate(${window.scrollX}px,${window.scrollY}px)`
+        if (this.runtimeConfig.positionType === 'absolute') {
+          // 因为背景没有文字, 所以可以使用动画偏移
+          this.$refs.mask.style.transform =
+            `translate(${window.scrollX}px,${window.scrollY}px)`
 
-        // mask就跟踪好了, 不使用fixed来做定位的了
-        if (!this.runtimeConfig.lockScroll)
-          window.addEventListener('scroll', this._maskFollowScroll)
+          // mask就跟踪好了, 不使用fixed来做定位的了
+          if (!this.runtimeConfig.lockScroll)
+            window.addEventListener('scroll', this._maskFollowScroll)
+        }
       },
 
       _maskFollowScroll () {

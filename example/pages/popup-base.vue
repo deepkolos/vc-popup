@@ -6,10 +6,14 @@
     <div class="cell" @click="click1">in/out(animation实现)</div>
     <div class="cell" @click="click2">init/in/out(transition实现)</div>
 
-    <div class="title">一些过度动画示例</div>
+    <div class="title">订制过度动画示例</div>
     <div class="cell" @click="click3">背景模糊(设置#app的blur)</div>
-    <div class="cell" @click="click4">磁贴按压效果</div>
-    <div class="cell" @click="click5">不会锁定滚动</div>
+    <div class="cell" @click="click4">磁贴按压效果(仅仅centerMenu提供,未集成base里)</div>
+    <div class="cell" @click="click5">zoomFromDom</div>
+    <div class="cell" @click="click7">turbulenceOut</div>
+
+    <div class="title">定位设置示例</div>
+    <div class="cell" @click="click6">不锁定滚动(默认锁定滚动, 通过overflow:hidden来实现的)</div>
 
     <div class="title">位置定位示意图(25种)(小圆可点击)</div>
 
@@ -156,6 +160,15 @@
           ]
         }
       })
+
+      this.dialog = new this.$popup.Dialog({
+        propsData: {
+          message: '内容',
+          skin: 'lol',
+          title: '标题',
+          showCancelBtn: false
+        }
+      })
     },
 
     methods: {
@@ -213,9 +226,27 @@
       },
 
       click5 (e) {
+        this.dialog.open(e, {
+          animation: {
+            in: {effect: 'zoomFromDom'},
+            out: {effect: 'zoomFromDom'}
+          }
+        })
+      },
+
+      click6 (e) {
         this.centerMenu.open(e, {
-          positionType: 'absolute',
+          positionType: 'fixed',
           lockScroll: false
+        })
+      },
+
+      click7 (e) {
+        this.dialog.open(e, {
+          animation: {
+            in: {effect: 'zoomFromDom'},
+            out: 'vc-effect-turbulence-out'
+          }
         })
       },
 

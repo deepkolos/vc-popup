@@ -57,9 +57,7 @@
           vmTile.orientationY = vmTile.orientationY === undefined ? 1 : vmTile.orientationY
           vmTile.orientationX = vmTile.orientationX === undefined ? 0 : vmTile.orientationX
 
-          // $el.classList.add('outAnimation')
           requestAnimationFrame(function () {
-            // $el.classList.remove('inAnimation')
             $content.style.transitionDuration = '280ms'
             $content.style.transform =
               `rotateX(${vmTile.orientationY * deg}deg) rotateY(${vmTile.orientationX * deg}deg) translateZ(-100px)`

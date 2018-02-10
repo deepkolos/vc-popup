@@ -13,3 +13,36 @@
   transform: translateY(100%) translateZ(0);
   transition-duration: 400ms;
 }
+
+.vc-effect-turbulence-in {
+  animation: vc-animation-turbulence-in 280ms;
+}
+
+.vc-effect-turbulence-out {
+  animation: vc-animation-turbulence-out 280ms;
+}
+
+@keyframes vc-animation-turbulence-out{
+  0%{
+    -webkit-filter: url('#vc-effect-turbulence');
+    opacity: 1;
+  }
+  100%{
+    -webkit-filter: url('#vc-effect-turbulence');
+    opacity: 0;
+  }
+}
+
+@keyframes vc-animation-turbulence-in{
+  0%{
+    -webkit-filter: none;
+    opacity: 0;
+  }
+  10%{
+    -webkit-filter: url('#vc-effect-turbulence');
+  }
+  100%{
+    -webkit-filter: none;
+    opacity: 1;
+  }
+}

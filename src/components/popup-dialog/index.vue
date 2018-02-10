@@ -21,12 +21,6 @@
           v-text="confirmText"></a>
       </div>
     </div>
-    <svg display="none">
-      <filter id="skin_lol-turbulence-out">
-          <feTurbulence type="fractalNoise" baseFrequency="0 8.001" numOctaves="2" data-filterId="3" />
-          <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" scale="20" />
-      </filter>
-    </svg>
   </div>
 </template>
 
@@ -88,7 +82,7 @@
 
           $el.classList.add('vc-animation-out')
           if (this.skin === 'lol')
-            $el.parentElement.classList.add('vc-dialog-effect-blur')
+            $el.parentElement.classList.add('vc-effect-turbulence-out')
           requestAnimationFrame(function () {
             $el.classList.remove('vc-animation-in')
           })
@@ -474,21 +468,6 @@
 
     & .vc-dialog-body {
       color: #d4b06a;
-    }
-  }
-
-  .vc-dialog-effect-blur {
-    -webkit-animation: skin_lol-turbulence-out 1s;
-            animation: skin_lol-turbulence-out 1s;
-  }
-  @keyframes skin_lol-turbulence-out{
-    0%{
-      -webkit-filter: url('#skin_lol-turbulence-out');
-      opacity: 1;
-    }
-    100%{
-      -webkit-filter: none;
-      opacity: 0;
     }
   }
 </style>
