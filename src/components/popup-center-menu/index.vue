@@ -11,8 +11,6 @@
 </template>
 
 <script>
-  import VcGestureTilePress from '../gesture-tile-press'
-
   export default {
     name: 'vc-popup-center-menu',
 
@@ -24,10 +22,6 @@
         type: Array,
         required: true
       }
-    },
-
-    components: {
-      VcGestureTilePress
     },
 
     created () {

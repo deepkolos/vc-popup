@@ -1,14 +1,14 @@
-.vc-animation-in.vc-animation-init {
+.vc-slide-up-in.vc-slide-up-init {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
 }
 
-.vc-animation-in {
+.vc-slide-up-in {
   opacity: 1;
   transform: translateY(0%) translateZ(0);
 }
 
-.vc-animation-out {
+.vc-slide-up-out {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
   transition-duration: 400ms;

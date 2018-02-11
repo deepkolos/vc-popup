@@ -303,6 +303,7 @@
         value = null
       },
 
+      // 强耦合了,想拆分出拓展接口也难了,一些数据的获取也比较的不利索,一些时间段的划分不合理
       _triggerZoomFromDom (progress, value, unset) {
         var $fromDom = value.fromDom || (this.e ? this.e.target : null),
           $slot = this.vmSlot.$el,

@@ -21,7 +21,10 @@ if (Vue.prototype.__popup__ !== undefined) {
   var PopupBaseConstructor = Vue.extend(popupBaseTpl)
   var PopupContainerConstructor = Vue.extend(popupContainerTpl)
   var containerInBody = document.body.getElementsByClassName('vc-popup-conatiner')
+  var GestureTilePress = require('../gesture-tile-press/index').default
 
+  // 额, 强耦合
+  Vue.component(GestureTilePress.name, GestureTilePress)
   Router.initialParam('popup')
   if (containerInBody.length === 0) {
     popupContainer = new PopupContainerConstructor({

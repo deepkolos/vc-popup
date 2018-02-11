@@ -6,26 +6,26 @@
 ```js
 {
   animation: {
-    init: 'vc-animation-init',
-    in: 'vc-animation-in',
-    out: 'vc-animation-out'
+    init: 'vc-slide-up-init',
+    in: 'vc-slide-up-in',
+    out: 'vc-slide-up-out'
   }
 }
 ```
 
 ```css
 /* 给init增加优先级*/
-.vc-animation-in.vc-animation-init {
+.vc-slide-up-in.vc-slide-up-init {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
 }
 
-.vc-animation-in {
+.vc-slide-up-in {
   opacity: 1;
   transform: translateY(0%) translateZ(0);
 }
 
-.vc-animation-out {
+.vc-slide-up-out {
   opacity: 0;
   transform: translateY(100%) translateZ(0);
   transition-duration: 400ms;
@@ -37,18 +37,18 @@
 ```js
 {
   animation: {
-    in: 'vc-animation-in',
-    out: 'vc-animation-out'
+    in: 'vc-slide-up-in',
+    out: 'vc-slide-up-out'
   }
 }
 ```
 
 ```css
-.vc-animation-in {
+.vc-slide-up-in {
   animation: animation 280ms ease forwards;
 }
 
-.vc-animation-out {
+.vc-slide-up-out {
   animation: animation 280ms ease reverse;
 }
 

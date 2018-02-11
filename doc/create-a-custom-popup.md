@@ -35,9 +35,9 @@ var defaultConfig = {
   animationConfigurable: false // 如果, 定制过渡动画则通过改设置, 屏蔽animation设置
   // 最好设置一下默认值, 如果没有在popupEvt实现css3动画的话
   animation: {
-    init: 'vc-animation-init',
-    in: 'vc-animation-in',
-    out: 'vc-animation-out',
+    init: 'vc-slide-up-init',
+    in: 'vc-slide-up-in',
+    out: 'vc-slide-up-out',
   }
 }
 

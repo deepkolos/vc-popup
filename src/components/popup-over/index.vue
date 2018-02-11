@@ -102,17 +102,17 @@
     background: white;
     margin: 0;
 
-    &.vc-animation-in.vc-animation-init {
+    &.vc-slide-up-in.vc-slide-up-init {
       opacity: 0;
       transform: translateY(-10px);
     }
 
-    &.vc-animation-in {
+    &.vc-slide-up-in {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    &.vc-animation-out {
+    &.vc-slide-up-out {
       opacity: 0;
       transform: translateY(10px);
       transition-duration: 300ms;

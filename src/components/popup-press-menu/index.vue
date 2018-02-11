@@ -29,17 +29,17 @@
     padding: 0;
     margin: 0;
 
-    &.vc-animation-in.vc-animation-init {
+    &.vc-slide-up-in.vc-slide-up-init {
       opacity: 0;
       transform: scale(0.8) translateZ(0);
     }
 
-    &.vc-animation-in {
+    &.vc-slide-up-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
     }
 
-    &.vc-animation-out {
+    &.vc-slide-up-out {
       opacity: 0;
       transform: scale(0.75) translateZ(0);
       transition-duration: 280ms;

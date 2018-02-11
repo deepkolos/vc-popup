@@ -65,10 +65,10 @@
         inAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('vc-animation-init')
+          $el.classList.add('vc-slide-up-init')
           requestAnimationFrame(() => {
-            $el.classList.remove('vc-animation-init')
-            $el.classList.add('vc-animation-in')
+            $el.classList.remove('vc-slide-up-init')
+            $el.classList.add('vc-slide-up-in')
             setTimeout(() => {
               if (
                 this.skin === 'iosNative' &&
@@ -80,11 +80,11 @@
         outAnimation: () => {
           var $el = this.$el
 
-          $el.classList.add('vc-animation-out')
+          $el.classList.add('vc-slide-up-out')
           if (this.skin === 'lol')
             $el.parentElement.classList.add('vc-effect-turbulence-out')
           requestAnimationFrame(function () {
-            $el.classList.remove('vc-animation-in')
+            $el.classList.remove('vc-slide-up-in')
           })
         }
       }
@@ -125,17 +125,17 @@
     overflow: hidden;
     text-align: center;
 
-    &.vc-animation-init {
+    &.vc-slide-up-init {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
     }
 
-    &.vc-animation-in {
+    &.vc-slide-up-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
     }
 
-    &.vc-animation-out {
+    &.vc-slide-up-out {
       opacity: 0;
       transform: scale(0.9) translateZ(0);
       transition-duration: 300ms;
@@ -276,18 +276,18 @@
     color: #3d4145;
     width: 75vw;
 
-    &.vc-animation-init {
+    &.vc-slide-up-init {
       opacity: 0;
       transform: scale(1.3) translateZ(0);
     }
 
-    &.vc-animation-in {
+    &.vc-slide-up-in {
       opacity: 1;
       transform: scale(1) translateZ(0);
       transition-duration: 400ms;
     }
 
-    &.vc-animation-out {
+    &.vc-slide-up-out {
       opacity: 0;
       transform: scale(0.7) translateZ(0);
       transition-duration: 400ms;
@@ -356,7 +356,7 @@
     box-shadow: 0px 0px 20px 2px #5f491e;
     overflow: visible;
 
-    &.vc-animation-out {
+    &.vc-slide-up-out {
       opacity: 0;
       transform: scale(1);
       transition-duration: 300ms;

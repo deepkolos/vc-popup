@@ -307,9 +307,9 @@ body > *:first-child{
       out: 'vc-effect-turbulence-out',
     }
     animation: {
-      init: 'vc-animation-init',        // 内置已提供
-      in:   'vc-animation-in',
-      out:  'vc-animation-out',
+      init: 'vc-slide-up-init',        // 内置已提供
+      in:   'vc-slide-up-in',
+      out:  'vc-slide-up-out',
     }
   },
 
