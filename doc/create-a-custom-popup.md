@@ -66,9 +66,7 @@ export default popupRegister(
     props: {
       e: {
         default: null           // 从open()传进来的
-      },
-      onClose: Function,        // 已经在base提供了支持
-      onOpen: Function
+      }
     },
 
     created () {

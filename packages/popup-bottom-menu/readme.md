@@ -59,9 +59,7 @@ this.bottomMenu.close()
       },
       ...
     ]
-  },
-  onOpen:  function,
-  onClose: function,
+  }
 }
 ```
 

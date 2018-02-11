@@ -143,7 +143,11 @@ body > *:first-child{
   // 样式覆盖内置
   className,
   maskOpacity,
-  maskBgColor
+  maskBgColor,
+
+  // 事件钩子
+  onOpen,
+  onClose
 }
 ```
 

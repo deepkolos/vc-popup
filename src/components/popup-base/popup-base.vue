@@ -172,8 +172,8 @@
             this.vmSlot.popupEvt.inAnimation instanceof Function &&
               this.vmSlot.popupEvt.inAnimation()
 
-          this.vmSlot.onOpen instanceof Function &&
-            this.vmSlot.onOpen()
+          this.runtimeConfig.onOpen instanceof Function &&
+            this.runtimeConfig.onOpen()
 
           requestAnimationFrame(() => {
             this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
@@ -225,8 +225,8 @@
 
           this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
 
-          this.vmSlot.onClose instanceof Function &&
-            this.vmSlot.onClose()
+          this.runtimeConfig.onClose instanceof Function &&
+            this.runtimeConfig.onClose()
         })
       },
 

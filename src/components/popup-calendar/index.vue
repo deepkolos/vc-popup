@@ -92,8 +92,6 @@
       e: {
         default: null
       },
-      onClose: Function,
-      onOpen: Function,
       onConfirm: Function,
       onConfirmLeaved: Function,
       onDisableDaySelected: Function,

@@ -23,9 +23,7 @@
       items: {
         type: Array,
         required: true
-      },
-      onClose: Function,
-      onOpen: Function
+      }
     },
 
     components: {

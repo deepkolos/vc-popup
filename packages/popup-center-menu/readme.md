@@ -59,9 +59,7 @@ this.centerMenu.close()
       },
       ...
     ]
-  },
-  onOpen:  function,
-  onClose: function,
+  }
 }
 ```
 

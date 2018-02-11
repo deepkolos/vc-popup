@@ -61,9 +61,7 @@ this.over.close()
       },
       ...
     ]
-  },
-  onClose: Function,
-  onOpen: Function
+  }
 }
 ```
 

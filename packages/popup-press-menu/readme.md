@@ -59,9 +59,7 @@ this.pressMenu.close()
       },
       ...
     ]
-  },
-  onClose: Function,
-  onOpen: Function
+  }
 }
 ```
 

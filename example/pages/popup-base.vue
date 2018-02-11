@@ -193,15 +193,13 @@
 
       click3 (e) {
         this.bottomMenu.open(e, {
-          propsData: {
-            onOpen: function () {
-              this.$refs.page.style.filter = 'blur(1.5px)'
-            }.bind(this),
+          onOpen: function () {
+            this.$refs.page.style.filter = 'blur(1.5px)'
+          }.bind(this),
 
-            onClose: function () {
-              this.$refs.page.style.filter = null
-            }.bind(this)
-          }
+          onClose: function () {
+            this.$refs.page.style.filter = null
+          }.bind(this)
         })
       },
 

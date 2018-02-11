@@ -45,8 +45,6 @@ this.calendar.close()
 ```js
 {
   e:         Object // 从open(e, {})传进来的e
-  onClose:   Function,
-  onOpen:    Function,
   onConfirm: Function, // 确认按钮确认时触发
   onConfirmLeaved:      Function, // 退出动画结束之后触发
   onDisableDaySelected: Function,
