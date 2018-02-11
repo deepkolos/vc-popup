@@ -8,11 +8,9 @@
 
     <div class="title">内置过度动画示例</div>
     <div class="cell" @click="click8">slideUp</div>
-    <div class="cell" @click="click9">slideUp</div>
+    <div class="cell" @click="click9">zoomIn</div>
     <div class="cell" @click="click5">zoomFromDom</div>
     <div class="cell" @click="click7">turbulenceOut</div>
-
-    <div class="title">订制过度动画示例</div>
     <div class="cell" @click="click3">背景模糊(设置#app的blur)</div>
     <div class="cell" @click="click4">磁贴按压效果</div>
 
@@ -80,6 +78,7 @@
 </template>
 
 <script>
+  // tilePress effect需要注册一下, 非内建
   import '../../src/components/popup-effect-tile-press'
 
   export default {
@@ -198,14 +197,26 @@
       },
 
       click3 (e) {
+        // 因为占用了, animation, 使用这种方式, 需要重新声明需要增加的class, 不如通过事件钩子来实现方便
+        // 但复用, 都是配置化嘛~
         this.bottomMenu.open(e, {
-          beforeEnter: function () {
-            this.$refs.page.style.filter = 'blur(1.5px)'
-          }.bind(this),
+          animation: {
+            in: [
+              'animation-in',
+              { effect: 'bodyBlur' }
+            ],
+            out: [
+              'animation-out',
+              { effect: 'bodyBlur' }
+            ]
+          }
+          // beforeEnter: function () {
+          //   this.$refs.page.style.filter = 'blur(1.5px)'
+          // }.bind(this),
 
-          beforeLeave: function () {
-            this.$refs.page.style.filter = null
-          }.bind(this)
+          // beforeLeave: function () {
+          //   this.$refs.page.style.filter = null
+          // }.bind(this)
         })
       },
 

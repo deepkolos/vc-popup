@@ -92,5 +92,17 @@ effectRegister('addClass', function (progress, cfg, unset, vmBase) {
   }
 })
 
+/**
+ * bodyBlur 实现模糊效果, 等同于addClass到#app而已, 这是图个方便
+ */
+effectRegister('bodyBlur', function (progress, cfg, unset, vmBase) {
+  if (progress === 'in' && !unset) {
+    document.querySelector('#app').style.filter = 'blur(1.5px)'
+  }
+  if (progress === 'out' && !unset) {
+    document.querySelector('#app').style.filter = ''
+  }
+})
+
 export default effectRegister
 export { effectStack, effectRegister }
