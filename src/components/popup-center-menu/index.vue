@@ -1,13 +1,11 @@
 <template>
-  <vc-gesture-tile-press :unsetOnPressEnd="false" ref="tile">
-    <ul class="vc-popup-center-menu" ref="menu" @touchend="_checkCloseTrigger">
-      <li class="vc-popup-center-menu-li"
-        v-for="(item, key) in items"
-        @click="item.click"
-        :key="key"
-      >{{item.name}}</li>
-    </ul>
-  </vc-gesture-tile-press>
+  <ul class="vc-popup-center-menu">
+    <li class="vc-popup-center-menu-li"
+      v-for="(item, key) in items"
+      @click="item.click"
+      :key="key"
+    >{{item.name}}</li>
+  </ul>
 </template>
 
 <script>
@@ -22,49 +20,6 @@
         type: Array,
         required: true
       }
-    },
-
-    created () {
-      this.popupEvt = {
-        beforeEnter: () => {
-          var $el = this.$refs.menu,
-            vmTile = this.$refs.tile,
-            $content = vmTile.$refs.content
-
-          this.$popupCtrl.vmBase.setAnimateDom($content)
-
-          $el.classList.add('inital')
-          requestAnimationFrame(function () {
-            $el.classList.remove('inital')
-            $el.classList.add('inAnimation')
-          })
-        },
-        beforeLeave: () => {
-          var vmTile = this.$refs.tile,
-            $content = vmTile.$refs.content,
-            deg = vmTile.maxDeg * 1.15
-
-          this.$popupCtrl.vmBase.setAnimateDom($content)
-          vmTile.orientationY = vmTile.orientationY === undefined ? 1 : vmTile.orientationY
-          vmTile.orientationX = vmTile.orientationX === undefined ? 0 : vmTile.orientationX
-
-          requestAnimationFrame(function () {
-            $content.style.transitionDuration = '280ms'
-            $content.style.transform =
-              `rotateX(${vmTile.orientationY * deg}deg) rotateY(${vmTile.orientationX * deg}deg) translateZ(-100px)`
-            $content.style.opacity = 0
-          })
-        }
-      }
-    },
-
-    methods: {
-      _checkCloseTrigger () {
-        setTimeout(() => {
-          if (this.$popupCtrl.vmBase.isShowing)
-            this.$refs.tile.unsetPressEffect()
-        }, 30)
-      }
     }
   }
 </script>
@@ -78,22 +33,6 @@
     transition: all 250ms ease 0s;
     padding: 0;
     margin: 0;
-
-    &.inital {
-      opacity: 0;
-      transform: rotateX(15deg) translateZ(-80px);
-    }
-
-    &.inAnimation {
-      opacity: 1;
-      transform: rotateX(0deg) translateZ(0px);
-    }
-
-    &.outAnimation {
-      opacity: 0;
-      transform: rotateX(-25deg) translateZ(-80px);
-      transition-duration: 300ms;
-    }
   }
 
   .vc-popup-center-menu-li {

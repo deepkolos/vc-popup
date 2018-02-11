@@ -6,7 +6,11 @@ var popupConfig = {
 }
 
 var defaultConfig = {
-  animationConfigurable: false
+  animation: {
+    init: 'vc-zoom-init',
+    in: 'vc-zoom-in',
+    out: 'vc-zoom-out'
+  }
 }
 
 export default popupRegister('centerMenu', template, popupConfig, defaultConfig)

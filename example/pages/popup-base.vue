@@ -7,13 +7,14 @@
     <div class="cell" @click="click2">init/in/out(transition实现)</div>
 
     <div class="title">内置过度动画示例</div>
-    <div class="cell" @click="click8">slideUp为一般默认动画</div>
+    <div class="cell" @click="click8">slideUp</div>
+    <div class="cell" @click="click9">slideUp</div>
     <div class="cell" @click="click5">zoomFromDom</div>
     <div class="cell" @click="click7">turbulenceOut</div>
 
     <div class="title">订制过度动画示例</div>
     <div class="cell" @click="click3">背景模糊(设置#app的blur)</div>
-    <div class="cell" @click="click4">磁贴按压效果(仅仅centerMenu提供,属于定制的示例)</div>
+    <div class="cell" @click="click4">磁贴按压效果</div>
 
     <div class="title">定位设置示例</div>
     <div class="cell" @click="click6">不锁定滚动(默认锁定滚动, 通过overflow:hidden来实现的)</div>
@@ -79,6 +80,8 @@
 </template>
 
 <script>
+  import '../../src/components/popup-effect-tile-press'
+
   export default {
     mounted () {
       this.bottomMenu = new this.$popup.BottomMenu({
@@ -207,7 +210,12 @@
       },
 
       click4 (e) {
-        this.centerMenu.open(e)
+        this.centerMenu.open(e, {
+          animation: {
+            in: { effect: 'tilePress' },
+            out: { effect: 'tilePress' }
+          }
+        })
       },
 
       click5 (e) {
@@ -241,6 +249,16 @@
             init: 'vc-slide-up-init',
             in: 'vc-slide-up-in',
             out: 'vc-slide-up-out'
+          }
+        })
+      },
+
+      click9 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            init: 'vc-zoom-init',
+            in: 'vc-zoom-in',
+            out: 'vc-zoom-out'
           }
         })
       },

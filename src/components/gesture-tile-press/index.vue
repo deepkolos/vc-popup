@@ -1,8 +1,6 @@
 <template>
   <div class="vc-gesture-tile-press-wrapper" @touchstart="_touchStart" @touchmove="_touchMove" @touchend="_touchEnd">
-    <div class="vc-gesture-tile-press-content" ref="content">
-      <slot></slot>
-    </div>
+    <div class="vc-gesture-tile-press-slot" ref="slot"></div>
   </div>
 </template>
 
@@ -102,12 +100,12 @@
         deg = deg < this.minDeg ? this.minDeg : deg
         z = z < this.minZ ? this.minZ : z
         // 需要注意rotate的x,y,z的旋转方向
-        this.$refs.content.style.transform = `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-${z}px)`
+        this.$refs.slot.style.transform = `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-${z}px)`
       },
 
       unsetPressEffect () {
         setTimeout(() => {
-          this.$refs.content.style.transform = null
+          this.$refs.slot.style.transform = null
         }, 30)
       }
     },
@@ -132,7 +130,7 @@
     display: inline-block;
   }
 
-  .vc-gesture-tile-press-content {
+  .vc-gesture-tile-press-slot {
     transition: all 180ms ease 0ms;
   }
 </style>

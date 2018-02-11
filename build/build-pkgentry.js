@@ -27,7 +27,7 @@ export default {
 }
 `
 var BASE_MAIN_TEMPLATE = `
-import { popupRegister } from '{{self}}'
+import { popupRegister, effectRegister } from '{{self}}'
 
 const version = '{{version}}'
 const install = function (Vue, config = {}) {
@@ -44,7 +44,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   version,
-  popupRegister
+  popupRegister,
+  effectRegister
 }
 `
 

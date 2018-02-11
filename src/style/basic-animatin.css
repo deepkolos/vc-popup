@@ -14,6 +14,21 @@
   transition-duration: 400ms;
 }
 
+.vc-zoom-in.vc-zoom-init {
+  opacity: 0;
+  transform: scale(0.8) translateZ(0);
+}
+
+.vc-zoom-in {
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+}
+
+.vc-zoom-out {
+  opacity: 0;
+  transform: scale(0.8) translateZ(0);
+}
+
 .vc-effect-turbulence-in {
   animation: vc-animation-turbulence-in 280ms;
 }

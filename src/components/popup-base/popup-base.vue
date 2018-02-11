@@ -14,6 +14,8 @@
 </template>
 
 <script>
+  import { effectStack } from './effect-register'
+
   export default {
     name: 'vc-popup-base',
 
@@ -75,6 +77,17 @@
 
       getAnimateDom ($dom) {
         return this.$animateDom || this.$refs.slot
+      },
+
+      wrapSlotWith (TplConstructor, props) {
+        var vmWrapper = new TplConstructor({
+          el: document.createElement('div'),
+          propsData: props
+        })
+        vmWrapper.$refs.slot.appendChild(this.$refs.slot)
+        this.$refs.slotContainer.appendChild(vmWrapper.$el)
+        this.vmWrapper = vmWrapper
+        return vmWrapper
       },
 
       //内部使用的
@@ -267,93 +280,43 @@
         var $dom = this.getAnimateDom()
         var animation = this.runtimeConfig.animation
         var animationOffClass = 'vc-animation-fake-off-' + progressName
-        var value
+        var cfg
+
+        var parseString = (val) => {
+          if (typeof val === 'string') {
+            if (unset === false)
+              $dom.classList.add(val)
+            else
+              $dom.classList.remove(val)
+          }
+        }
+        var parseObject = (val) => {
+          if (val instanceof Object) {
+            if (effectStack[val.effect])
+              effectStack[val.effect].call(null, progressName, val, unset, this)
+          }
+        }
 
         if (animation instanceof Object) {
-          value = animation[progressName]
+          cfg = animation[progressName]
 
           //string,array被classname设置占用了,只剩下object用于扩展了,boolean用于开关
-          if (value === false) {
+          if (cfg === false) {
             if (unset === false)
               $dom.classList.add(animationOffClass)
             else
               $dom.classList.remove(animationOffClass)
           } else
 
-          if (typeof value === 'string') {
-            if (unset === false)
-              $dom.classList.add(value)
-            else
-              $dom.classList.remove(value)
-          } else
-
-          if (value instanceof Array) {
-            if (unset === false)
-              $dom.classList.add.apply($dom.classList, value)
-            else
-              $dom.classList.remove.apply($dom.classList, value)
-          } else if (value instanceof Object) {
-            if (value.effect === 'zoomFromDom')
-              this._triggerZoomFromDom(progressName, value, unset)
+          if (cfg instanceof Array) {
+            cfg.forEach(function (val) {
+              parseString(val)
+              parseObject(val)
+            })
+          } else {
+            parseString(cfg)
+            parseObject(cfg)
           }
-        }
-
-        animation = null
-        $dom = null
-        value = null
-      },
-
-      // 强耦合了,想拆分出拓展接口也难了,一些数据的获取也比较的不利索,一些时间段的划分不合理
-      _triggerZoomFromDom (progress, value, unset) {
-        var $fromDom = value.fromDom || (this.e ? this.e.target : null),
-          $slot = this.vmSlot.$el,
-          fromDomRect, slotRect,
-
-          scaleAdjusted = 2 / 3,
-          translateX, translateY,
-          fromDomCenterX, fromDomCenterY,
-          slotCenterX, slotCenterY
-
-        if (!$fromDom)
-          throw new Error('无法找到zoomFromDom的参考dom节点, 请检查设置')
-
-        if ($fromDom && !unset) {
-          this._animationNoneReday = true
-          $slot.style.opacity = 0
-          requestAnimationFrame(() => {
-            slotRect = $slot.getBoundingClientRect()
-            fromDomRect = $fromDom.getBoundingClientRect()
-
-            if (value.offset !== undefined)
-              scaleAdjusted = value.offset
-
-            slotCenterX = slotRect.left + slotRect.width / 2
-            slotCenterY = slotRect.top + slotRect.height / 2
-            fromDomCenterX = fromDomRect.left + fromDomRect.width / 2
-            fromDomCenterY = fromDomRect.top + fromDomRect.height / 2
-
-            translateX = fromDomCenterX - slotCenterX
-            translateY = fromDomCenterY - slotCenterY
-
-            if (progress === 'in') {
-              this.$refs.slot.style.transitionDuration = '0ms'
-              $slot.style.opacity = 0
-              //无论in或者out都是一样的
-              $slot.style.transform =
-                `translate3d(${translateX * scaleAdjusted}px, ${translateY * scaleAdjusted}px,0) scale(${scaleAdjusted})`
-
-              requestAnimationFrame(() => {
-                $slot.style.transform = null
-                $slot.style.transitionDuration = null
-                this._animationNoneReday = null
-                $slot.style.opacity = null
-              })
-            } else if (progress === 'out') {
-              $slot.style.transform =
-                `translate3d(${translateX * scaleAdjusted}px, ${translateY * scaleAdjusted}px,0) scale(${scaleAdjusted})`
-              $slot.style.opacity = 0
-            }
-          })
         }
       },
 

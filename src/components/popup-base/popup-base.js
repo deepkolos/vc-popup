@@ -39,8 +39,8 @@ let popupBase = {
 
   configPosition: function (e) {
     var config = this.config
-    var $slot = this.vmSlot.$el
     var $slotContainer = this.vmBase.$refs.slotContainer
+    var $slot = $slotContainer.children[0]
     var position = config.position
 
     // 公用
