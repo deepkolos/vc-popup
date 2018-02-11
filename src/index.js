@@ -7,6 +7,7 @@ import PopupOver from '../packages/popup-over/install'
 import PopupPicker from '../packages/popup-picker/install'
 import PopupCalendar from '../packages/popup-calendar/install'
 import PopupDatetimePicker from '../packages/popup-datetime-picker/install'
+import PopupEffectTilePress from '../packages/popup-effect-tile-press/install'
 
 const version = '1.1.4'
 const install = function (Vue, config = {}) {
@@ -20,6 +21,7 @@ const install = function (Vue, config = {}) {
   Vue.use(PopupPicker)
   Vue.use(PopupCalendar)
   Vue.use(PopupDatetimePicker)
+  Vue.use(PopupEffectTilePress)
 }
 
 // auto install
