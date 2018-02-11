@@ -16,6 +16,13 @@ const env = process.env.NODE_ENV === 'testing'
   : config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('example')
+    }
+  },
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,

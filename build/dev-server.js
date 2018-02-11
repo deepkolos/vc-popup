@@ -36,6 +36,11 @@ const popupBaseCompiler = webpack(popupBaseWebpackCfg)
 popupBaseCompiler.watch({}, function (err, stats) {
   if (stats.hasErrors())
     console.log(err)
+
+  // fs.copyFileSync(
+  //   p('../packages/popup-base/index.js'),
+  //   p('../node_modules/vc-popup-base/index.js')
+  // )
 })
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
