@@ -1,0 +1,23 @@
+0 silly input [ 'vc-popup-base' ]
+1 silly flags { _: [ 'add' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   scope: 'vc-popup-effect-tile-press',
+1 silly flags   args: [ 'vc-popup-base' ] }
+2 verbose rootPath D:\DEV\Github\opensource\vc-popup
+3 info version 2.5.1
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync D:\DEV\Github\opensource\vc-popup\VERSION
+7 info scope vc-popup-effect-tile-press
+8 error EPACKAGES Errored while collecting packages and package graph
+9 error Error: No packages found that match scope 'vc-popup-effect-tile-press'
+9 error     at Function.filterPackages (D:\Program files\nodejs\node_modules\lerna\lib\PackageUtilities.js:217:17)
+9 error     at AddCommand.runPreparations (D:\Program files\nodejs\node_modules\lerna\lib\Command.js:326:60)
+9 error     at D:\Program files\nodejs\node_modules\lerna\lib\Command.js:225:18
+9 error     at new Promise (<anonymous>)
+9 error     at AddCommand.run (D:\Program files\nodejs\node_modules\lerna\lib\Command.js:212:14)
+9 error     at Object.handler (D:\Program files\nodejs\node_modules\lerna\lib\commands\AddCommand.js:71:77)
+9 error     at Object.self.runCommand (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\lib\command.js:233:22)
+9 error     at Object.Yargs.self._parseArgs (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\yargs.js:990:30)
+9 error     at Object.Yargs.self.parse (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\yargs.js:532:23)

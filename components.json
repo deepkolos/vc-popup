@@ -7,5 +7,6 @@
   "popup-over": "./src/components/popup-over/index.js",
   "popup-picker": "./src/components/popup-picker/index.js",
   "popup-calendar": "./src/components/popup-calendar/index.js",
-  "popup-datetime-picker": "./src/components/popup-datetime-picker/index.js"
+  "popup-datetime-picker": "./src/components/popup-datetime-picker/index.js",
+  "popup-effect-tile-press": "./src/components/popup-effect-tile-press/index.js"
 }
