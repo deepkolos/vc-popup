@@ -146,8 +146,10 @@ body > *:first-child{
   maskBgColor,
 
   // 事件钩子
-  onOpen,
-  onClose
+  beforeEnter,
+  afterEnter,
+  beforeLeave,
+  afterLeave
 }
 ```
 
@@ -359,7 +361,7 @@ body > *:first-child{
 [popup-press-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-press-menu/readme.md)\
 [popup-bottom-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-bottom-menu/readme.md)\
 [popup-center-menu's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-center-menu/readme.md)\
-[popup-datetime-pick's readmee](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
+[popup-datetime-pick's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)
 
 ## 拓展
 

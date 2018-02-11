@@ -22,6 +22,19 @@
   animation: vc-animation-turbulence-out 280ms;
 }
 
+.vc-animation-fake-off-in {
+  animation: vc-animation-fake-off 10ms ease forwards;
+}
+
+.vc-animation-fake-off-out {
+  animation: vc-animation-fake-off 10ms ease reverse;
+}
+
+@keyframes vc-animation-fake-off {
+  0%  {opacity: 0.99;}
+  100%{opacity: 1;}
+}
+
 @keyframes vc-animation-turbulence-out{
   0%{
     -webkit-filter: url('#vc-effect-turbulence');

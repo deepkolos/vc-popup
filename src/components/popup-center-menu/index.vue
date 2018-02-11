@@ -45,7 +45,6 @@
             $el.classList.add('inAnimation')
           })
         },
-        afterEnter: () => {},
         beforeLeave: () => {
           var vmTile = this.$refs.tile,
             $content = vmTile.$refs.content,
@@ -61,8 +60,7 @@
               `rotateX(${vmTile.orientationY * deg}deg) rotateY(${vmTile.orientationX * deg}deg) translateZ(-100px)`
             $content.style.opacity = 0
           })
-        },
-        afterLeave: () => {}
+        }
       }
     },
 

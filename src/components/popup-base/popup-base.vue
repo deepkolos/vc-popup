@@ -172,8 +172,8 @@
             this.vmSlot.popupEvt.inAnimation instanceof Function &&
               this.vmSlot.popupEvt.inAnimation()
 
-          this.runtimeConfig.onOpen instanceof Function &&
-            this.runtimeConfig.onOpen()
+          this.runtimeConfig.beforeEnter instanceof Function &&
+            this.runtimeConfig.beforeEnter()
 
           requestAnimationFrame(() => {
             this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
@@ -200,6 +200,9 @@
         this.vmSlot.popupEvt.afterEnter instanceof Function &&
           this.vmSlot.popupEvt.afterEnter()
 
+        this.runtimeConfig.afterEnter instanceof Function &&
+          this.runtimeConfig.afterEnter()
+
         this.animationendTriggered = true
       },
 
@@ -223,10 +226,10 @@
             this.vmSlot.popupEvt.outAnimation instanceof Function &&
               this.vmSlot.popupEvt.outAnimation()
 
-          this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
+          this.runtimeConfig.beforeLeave instanceof Function &&
+            this.runtimeConfig.beforeLeave()
 
-          this.runtimeConfig.onClose instanceof Function &&
-            this.runtimeConfig.onClose()
+          this._addAnimationEndListener(this._afterLeave, 'afterLeaveLocker')
         })
       },
 
@@ -236,6 +239,9 @@
 
         this.vmSlot.popupEvt.afterLeave instanceof Function &&
           this.vmSlot.popupEvt.afterLeave()
+
+        this.runtimeConfig.afterLeave instanceof Function &&
+          this.runtimeConfig.afterLeave()
 
         this._afterLeaveCallback instanceof Function &&
           this._afterLeaveCallback()
@@ -399,18 +405,5 @@
     background-color: #000000;
     transition: opacity 350ms ease 0s;
     will-change: opacity;
-  }
-
-  .vc-animation-fake-off-in {
-    animation: vc-animation-fake-off 10ms ease forwards;
-  }
-
-  .vc-animation-fake-off-out {
-    animation: vc-animation-fake-off 10ms ease reverse;
-  }
-
-  @keyframes vc-animation-fake-off {
-    0%  {opacity: 0.99;}
-    100%{opacity: 1;}
   }
 </style>

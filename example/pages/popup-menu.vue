@@ -12,11 +12,11 @@
   export default {
     mounted () {
       this.bottomMenu = new this.$popup.BottomMenu({
-        onOpen: function () {
+        beforeEnter: function () {
           this.$refs.page.style.filter = 'blur(1.5px)'
         }.bind(this),
 
-        onClose: function () {
+        beforeLeave: function () {
           this.$refs.page.style.filter = null
         }.bind(this),
 
