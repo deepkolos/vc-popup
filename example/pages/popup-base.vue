@@ -194,22 +194,6 @@
       click3 (e) {
         this.bottomMenu.open(e, {
           propsData: {
-            items: [
-              {
-                name: '条目0',
-                click: () => { this.bottomMenu.close() }
-              }, {
-                name: '条目1',
-                click: () => { this.bottomMenu.close() }
-              }, {
-                name: '条目2',
-                click: () => { this.bottomMenu.close() }
-              }, {
-                name: '条目3',
-                click: () => { this.bottomMenu.close() }
-              }
-            ],
-
             onOpen: function () {
               this.$refs.page.style.filter = 'blur(1.5px)'
             }.bind(this),

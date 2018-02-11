@@ -251,7 +251,7 @@ body > *:first-child{
   // 注意: 自定义class需要有css3的过渡动画, 不然animationend/transitionend就不会触发~
   // 如果需要关闭动画可以看下面的例子
   animation: {
-    options: classConfig | effectConfig | switchConfig,
+    options: classConfig | effectConfig | switchConfig | transitionCfg,
     default: undefined,
 
     switchConfig: {
@@ -259,13 +259,23 @@ body > *:first-child{
       out: Boolean
     },
     classConfig: {
-      in:  Array<String>,
-      out: Array<String>
+      in:  Array<String> | String,
+      out: Array<String> | String
     },
     effectConfig: {
       in:  {effect: String},
       out: {effect: String}
     },
+    transitionCfg: {
+      init: Array<String> | String,
+      in:   Array<String> | String,
+      out:  Array<String> | String
+    }
+    /* transitionCfg的init需要这样来提高一下权重
+    .in.init {}
+    .in {}
+    .out {}
+    */
 
     // example
     animation: {
@@ -273,18 +283,27 @@ body > *:first-child{
       out: false, // 禁用离开过渡动画(包括mask)
     }
     animation: {
-      in:  ["animated", "flipInX"],
+      in:  ["animated", "flipInX"],   // 需要引入animation.css库
       out: ["animated", "flipOutX"],
     }
     animation: {
       in: {
-        effect: "zoomFromDom",
+        effect: "zoomFromDom",         // 内置已提供
         fromDom: HTMLElement | evt.target
       },
       out: {
         effect: "zoomFromDom",
         fromDom: HTMLElement | evt.target
       }
+    }
+    animation: {
+      in:  'vc-effect-turbulence-in',   // 内置已提供
+      out: 'vc-effect-turbulence-out',
+    }
+    animation: {
+      init: 'vc-animation-init',        // 内置已提供
+      in:   'vc-animation-in',
+      out:  'vc-animation-out',
     }
   },
 
