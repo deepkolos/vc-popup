@@ -24,7 +24,7 @@ Vue.use(VcPopupOver)
 ### 在具体页面中使用
 
 ```javascript
-this.over = new this.$popup.Over({
+this.over = new this.$popup.Popover({
   ...config
   propsData: {}
 })

@@ -321,7 +321,7 @@
               scaleAdjusted = value.offset
 
             slotCenterX = slotRect.left + slotRect.width / 2
-            slotCenterY = slotRect.left + slotRect.width / 2
+            slotCenterY = slotRect.top + slotRect.height / 2
             fromDomCenterX = fromDomRect.left + fromDomRect.width / 2
             fromDomCenterY = fromDomRect.top + fromDomRect.height / 2
 
