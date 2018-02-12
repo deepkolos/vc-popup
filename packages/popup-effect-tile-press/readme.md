@@ -32,9 +32,6 @@ this.centerMenu = new this.$popup.CenterMenu({
 })
 ```
 
-> e为事件Event, 比如click时候取得的evt, 与一些定位方法相关
-> config可参考[popup-base/readme.md](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-base/readme.md)
-
 ### 效果预览
 
 <div>
