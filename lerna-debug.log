@@ -1,23 +1,336 @@
-0 silly input [ 'vc-popup-base' ]
-1 silly flags { _: [ 'add' ],
+0 silly input [ 'publish' ]
+1 silly flags { _: [ 'publish' ],
 1 silly flags   'reject-cycles': false,
 1 silly flags   rejectCycles: false,
-1 silly flags   scope: 'vc-popup-effect-tile-press',
-1 silly flags   args: [ 'vc-popup-base' ] }
+1 silly flags   'force-publish': '*',
+1 silly flags   forcePublish: '*' }
 2 verbose rootPath D:\DEV\Github\opensource\vc-popup
 3 info version 2.5.1
 4 silly isInitialized
 5 silly isInitialized true
 6 silly existsSync D:\DEV\Github\opensource\vc-popup\VERSION
-7 info scope vc-popup-effect-tile-press
-8 error EPACKAGES Errored while collecting packages and package graph
-9 error Error: No packages found that match scope 'vc-popup-effect-tile-press'
-9 error     at Function.filterPackages (D:\Program files\nodejs\node_modules\lerna\lib\PackageUtilities.js:217:17)
-9 error     at AddCommand.runPreparations (D:\Program files\nodejs\node_modules\lerna\lib\Command.js:326:60)
-9 error     at D:\Program files\nodejs\node_modules\lerna\lib\Command.js:225:18
-9 error     at new Promise (<anonymous>)
-9 error     at AddCommand.run (D:\Program files\nodejs\node_modules\lerna\lib\Command.js:212:14)
-9 error     at Object.handler (D:\Program files\nodejs\node_modules\lerna\lib\commands\AddCommand.js:71:77)
-9 error     at Object.self.runCommand (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\lib\command.js:233:22)
-9 error     at Object.Yargs.self._parseArgs (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\yargs.js:990:30)
-9 error     at Object.Yargs.self.parse (D:\Program files\nodejs\node_modules\lerna\node_modules\yargs\yargs.js:532:23)
+7 silly initialize attempt
+8 info current version 0.1.7
+9 silly isDetachedHead
+10 silly getCurrentBranch
+11 verbose getCurrentBranch master
+12 verbose isDetachedHead false
+13 silly getCurrentBranch
+14 verbose getCurrentBranch master
+15 silly getUpdates
+16 info Checking for updated packages...
+17 silly hasTags
+18 verbose hasTags true
+19 silly getLastTag
+20 verbose getLastTag v0.1.6
+21 info Comparing with v0.1.6.
+22 verbose updated vc-popup-base
+23 verbose updated vc-popup-bottom-menu
+24 verbose updated vc-popup-calendar
+25 verbose updated vc-popup-center-menu
+26 verbose updated vc-popup-datetime-picker
+27 verbose updated vc-popup-dialog
+28 verbose updated vc-popup-effect-tile-press
+29 verbose updated vc-popup-img-viewer
+30 verbose updated vc-popup-over
+31 verbose updated vc-popup-picker
+32 verbose updated vc-popup-press-menu
+33 info Checking for prereleased packages...
+34 silly collectDependents
+35 silly isPackageDependentOf vc-popup-base vc-popup-base
+36 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+37 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+38 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+39 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+40 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+41 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+42 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+43 silly isPackageDependentOf vc-popup-base vc-popup-over
+44 silly isPackageDependentOf vc-popup-base vc-popup-picker
+45 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+46 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-base
+47 verbose dependent vc-popup-bottom-menu depends on vc-popup-base
+48 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-bottom-menu
+49 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+50 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-calendar
+51 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+52 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-center-menu
+53 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+54 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-datetime-picker
+55 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+56 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-dialog
+57 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+58 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-effect-tile-press
+59 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+60 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-img-viewer
+61 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+62 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-over
+63 silly isPackageDependentOf vc-popup-base vc-popup-over
+64 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-picker
+65 silly isPackageDependentOf vc-popup-base vc-popup-picker
+66 silly isPackageDependentOf vc-popup-bottom-menu vc-popup-press-menu
+67 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+68 silly isPackageDependentOf vc-popup-calendar vc-popup-base
+69 verbose dependent vc-popup-calendar depends on vc-popup-base
+70 silly isPackageDependentOf vc-popup-calendar vc-popup-bottom-menu
+71 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+72 silly isPackageDependentOf vc-popup-calendar vc-popup-calendar
+73 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+74 silly isPackageDependentOf vc-popup-calendar vc-popup-center-menu
+75 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+76 silly isPackageDependentOf vc-popup-calendar vc-popup-datetime-picker
+77 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+78 silly isPackageDependentOf vc-popup-calendar vc-popup-dialog
+79 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+80 silly isPackageDependentOf vc-popup-calendar vc-popup-effect-tile-press
+81 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+82 silly isPackageDependentOf vc-popup-calendar vc-popup-img-viewer
+83 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+84 silly isPackageDependentOf vc-popup-calendar vc-popup-over
+85 silly isPackageDependentOf vc-popup-base vc-popup-over
+86 silly isPackageDependentOf vc-popup-calendar vc-popup-picker
+87 silly isPackageDependentOf vc-popup-base vc-popup-picker
+88 silly isPackageDependentOf vc-popup-calendar vc-popup-press-menu
+89 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+90 silly isPackageDependentOf vc-popup-center-menu vc-popup-base
+91 verbose dependent vc-popup-center-menu depends on vc-popup-base
+92 silly isPackageDependentOf vc-popup-center-menu vc-popup-bottom-menu
+93 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+94 silly isPackageDependentOf vc-popup-center-menu vc-popup-calendar
+95 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+96 silly isPackageDependentOf vc-popup-center-menu vc-popup-center-menu
+97 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+98 silly isPackageDependentOf vc-popup-center-menu vc-popup-datetime-picker
+99 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+100 silly isPackageDependentOf vc-popup-center-menu vc-popup-dialog
+101 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+102 silly isPackageDependentOf vc-popup-center-menu vc-popup-effect-tile-press
+103 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+104 silly isPackageDependentOf vc-popup-center-menu vc-popup-img-viewer
+105 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+106 silly isPackageDependentOf vc-popup-center-menu vc-popup-over
+107 silly isPackageDependentOf vc-popup-base vc-popup-over
+108 silly isPackageDependentOf vc-popup-center-menu vc-popup-picker
+109 silly isPackageDependentOf vc-popup-base vc-popup-picker
+110 silly isPackageDependentOf vc-popup-center-menu vc-popup-press-menu
+111 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+112 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-base
+113 verbose dependent vc-popup-datetime-picker depends on vc-popup-base
+114 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-bottom-menu
+115 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+116 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-calendar
+117 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+118 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-center-menu
+119 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+120 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-datetime-picker
+121 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+122 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-dialog
+123 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+124 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-effect-tile-press
+125 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+126 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-img-viewer
+127 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+128 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-over
+129 silly isPackageDependentOf vc-popup-base vc-popup-over
+130 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-picker
+131 silly isPackageDependentOf vc-popup-base vc-popup-picker
+132 silly isPackageDependentOf vc-popup-datetime-picker vc-popup-press-menu
+133 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+134 silly isPackageDependentOf vc-popup-dialog vc-popup-base
+135 verbose dependent vc-popup-dialog depends on vc-popup-base
+136 silly isPackageDependentOf vc-popup-dialog vc-popup-bottom-menu
+137 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+138 silly isPackageDependentOf vc-popup-dialog vc-popup-calendar
+139 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+140 silly isPackageDependentOf vc-popup-dialog vc-popup-center-menu
+141 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+142 silly isPackageDependentOf vc-popup-dialog vc-popup-datetime-picker
+143 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+144 silly isPackageDependentOf vc-popup-dialog vc-popup-dialog
+145 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+146 silly isPackageDependentOf vc-popup-dialog vc-popup-effect-tile-press
+147 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+148 silly isPackageDependentOf vc-popup-dialog vc-popup-img-viewer
+149 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+150 silly isPackageDependentOf vc-popup-dialog vc-popup-over
+151 silly isPackageDependentOf vc-popup-base vc-popup-over
+152 silly isPackageDependentOf vc-popup-dialog vc-popup-picker
+153 silly isPackageDependentOf vc-popup-base vc-popup-picker
+154 silly isPackageDependentOf vc-popup-dialog vc-popup-press-menu
+155 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+156 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-base
+157 verbose dependent vc-popup-effect-tile-press depends on vc-popup-base
+158 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-bottom-menu
+159 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+160 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-calendar
+161 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+162 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-center-menu
+163 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+164 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-datetime-picker
+165 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+166 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-dialog
+167 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+168 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-effect-tile-press
+169 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+170 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-img-viewer
+171 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+172 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-over
+173 silly isPackageDependentOf vc-popup-base vc-popup-over
+174 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-picker
+175 silly isPackageDependentOf vc-popup-base vc-popup-picker
+176 silly isPackageDependentOf vc-popup-effect-tile-press vc-popup-press-menu
+177 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+178 silly isPackageDependentOf vc-popup-img-viewer vc-popup-base
+179 verbose dependent vc-popup-img-viewer depends on vc-popup-base
+180 silly isPackageDependentOf vc-popup-img-viewer vc-popup-bottom-menu
+181 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+182 silly isPackageDependentOf vc-popup-img-viewer vc-popup-calendar
+183 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+184 silly isPackageDependentOf vc-popup-img-viewer vc-popup-center-menu
+185 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+186 silly isPackageDependentOf vc-popup-img-viewer vc-popup-datetime-picker
+187 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+188 silly isPackageDependentOf vc-popup-img-viewer vc-popup-dialog
+189 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+190 silly isPackageDependentOf vc-popup-img-viewer vc-popup-effect-tile-press
+191 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+192 silly isPackageDependentOf vc-popup-img-viewer vc-popup-img-viewer
+193 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+194 silly isPackageDependentOf vc-popup-img-viewer vc-popup-over
+195 silly isPackageDependentOf vc-popup-base vc-popup-over
+196 silly isPackageDependentOf vc-popup-img-viewer vc-popup-picker
+197 silly isPackageDependentOf vc-popup-base vc-popup-picker
+198 silly isPackageDependentOf vc-popup-img-viewer vc-popup-press-menu
+199 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+200 silly isPackageDependentOf vc-popup-over vc-popup-base
+201 verbose dependent vc-popup-over depends on vc-popup-base
+202 silly isPackageDependentOf vc-popup-over vc-popup-bottom-menu
+203 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+204 silly isPackageDependentOf vc-popup-over vc-popup-calendar
+205 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+206 silly isPackageDependentOf vc-popup-over vc-popup-center-menu
+207 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+208 silly isPackageDependentOf vc-popup-over vc-popup-datetime-picker
+209 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+210 silly isPackageDependentOf vc-popup-over vc-popup-dialog
+211 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+212 silly isPackageDependentOf vc-popup-over vc-popup-effect-tile-press
+213 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+214 silly isPackageDependentOf vc-popup-over vc-popup-img-viewer
+215 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+216 silly isPackageDependentOf vc-popup-over vc-popup-over
+217 silly isPackageDependentOf vc-popup-base vc-popup-over
+218 silly isPackageDependentOf vc-popup-over vc-popup-picker
+219 silly isPackageDependentOf vc-popup-base vc-popup-picker
+220 silly isPackageDependentOf vc-popup-over vc-popup-press-menu
+221 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+222 silly isPackageDependentOf vc-popup-picker vc-popup-base
+223 verbose dependent vc-popup-picker depends on vc-popup-base
+224 silly isPackageDependentOf vc-popup-picker vc-popup-bottom-menu
+225 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+226 silly isPackageDependentOf vc-popup-picker vc-popup-calendar
+227 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+228 silly isPackageDependentOf vc-popup-picker vc-popup-center-menu
+229 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+230 silly isPackageDependentOf vc-popup-picker vc-popup-datetime-picker
+231 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+232 silly isPackageDependentOf vc-popup-picker vc-popup-dialog
+233 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+234 silly isPackageDependentOf vc-popup-picker vc-popup-effect-tile-press
+235 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+236 silly isPackageDependentOf vc-popup-picker vc-popup-img-viewer
+237 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+238 silly isPackageDependentOf vc-popup-picker vc-popup-over
+239 silly isPackageDependentOf vc-popup-base vc-popup-over
+240 silly isPackageDependentOf vc-popup-picker vc-popup-picker
+241 silly isPackageDependentOf vc-popup-base vc-popup-picker
+242 silly isPackageDependentOf vc-popup-picker vc-popup-press-menu
+243 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+244 silly isPackageDependentOf vc-popup-press-menu vc-popup-base
+245 verbose dependent vc-popup-press-menu depends on vc-popup-base
+246 silly isPackageDependentOf vc-popup-press-menu vc-popup-bottom-menu
+247 silly isPackageDependentOf vc-popup-base vc-popup-bottom-menu
+248 silly isPackageDependentOf vc-popup-press-menu vc-popup-calendar
+249 silly isPackageDependentOf vc-popup-base vc-popup-calendar
+250 silly isPackageDependentOf vc-popup-press-menu vc-popup-center-menu
+251 silly isPackageDependentOf vc-popup-base vc-popup-center-menu
+252 silly isPackageDependentOf vc-popup-press-menu vc-popup-datetime-picker
+253 silly isPackageDependentOf vc-popup-base vc-popup-datetime-picker
+254 silly isPackageDependentOf vc-popup-press-menu vc-popup-dialog
+255 silly isPackageDependentOf vc-popup-base vc-popup-dialog
+256 silly isPackageDependentOf vc-popup-press-menu vc-popup-effect-tile-press
+257 silly isPackageDependentOf vc-popup-base vc-popup-effect-tile-press
+258 silly isPackageDependentOf vc-popup-press-menu vc-popup-img-viewer
+259 silly isPackageDependentOf vc-popup-base vc-popup-img-viewer
+260 silly isPackageDependentOf vc-popup-press-menu vc-popup-over
+261 silly isPackageDependentOf vc-popup-base vc-popup-over
+262 silly isPackageDependentOf vc-popup-press-menu vc-popup-picker
+263 silly isPackageDependentOf vc-popup-base vc-popup-picker
+264 silly isPackageDependentOf vc-popup-press-menu vc-popup-press-menu
+265 silly isPackageDependentOf vc-popup-base vc-popup-press-menu
+266 silly collectUpdates
+267 verbose has filtered update vc-popup-base
+268 verbose has filtered update vc-popup-bottom-menu
+269 verbose has filtered update vc-popup-calendar
+270 verbose has filtered update vc-popup-center-menu
+271 verbose has filtered update vc-popup-datetime-picker
+272 verbose has filtered update vc-popup-dialog
+273 verbose has filtered update vc-popup-effect-tile-press
+274 verbose has filtered update vc-popup-img-viewer
+275 verbose has filtered update vc-popup-over
+276 verbose has filtered update vc-popup-picker
+277 verbose has filtered update vc-popup-press-menu
+278 silly initialize success
+279 silly execute attempt
+280 silly addFile D:\DEV\Github\opensource\vc-popup\lerna.json
+281 silly runScriptSync preversion vc-popup-base
+282 silly runScriptSync version vc-popup-base
+283 silly runScriptSync preversion vc-popup-bottom-menu
+284 silly runScriptSync version vc-popup-bottom-menu
+285 silly runScriptSync preversion vc-popup-calendar
+286 silly runScriptSync version vc-popup-calendar
+287 silly runScriptSync preversion vc-popup-center-menu
+288 silly runScriptSync version vc-popup-center-menu
+289 silly runScriptSync preversion vc-popup-datetime-picker
+290 silly runScriptSync version vc-popup-datetime-picker
+291 silly runScriptSync preversion vc-popup-dialog
+292 silly runScriptSync version vc-popup-dialog
+293 silly runScriptSync preversion vc-popup-effect-tile-press
+294 silly runScriptSync version vc-popup-effect-tile-press
+295 silly runScriptSync preversion vc-popup-img-viewer
+296 silly runScriptSync version vc-popup-img-viewer
+297 silly runScriptSync preversion vc-popup-over
+298 silly runScriptSync version vc-popup-over
+299 silly runScriptSync preversion vc-popup-picker
+300 silly runScriptSync version vc-popup-picker
+301 silly runScriptSync preversion vc-popup-press-menu
+302 silly runScriptSync version vc-popup-press-menu
+303 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-base\package.json
+304 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-bottom-menu\package.json
+305 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-calendar\package.json
+306 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-center-menu\package.json
+307 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-datetime-picker\package.json
+308 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-dialog\package.json
+309 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-effect-tile-press\package.json
+310 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-img-viewer\package.json
+311 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-over\package.json
+312 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-picker\package.json
+313 silly addFile D:\DEV\Github\opensource\vc-popup\packages\popup-press-menu\package.json
+314 silly commit v0.1.7
+315 verbose commit [ 'commit', '--no-gpg-sign', '-m', 'v0.1.7' ]
+316 error execute caught error
+317 error Error: On branch master
+317 error Your branch is ahead of 'origin/master' by 3 commits.
+317 error   (use "git push" to publish your local commits)
+317 error
+317 error Changes not staged for commit:
+317 error 	deleted:    lerna-debug.log
+317 error
+317 error no changes added to commit
+317 error
+317 error     at Function.module.exports.sync (D:\Program files\nodejs\node_modules\lerna\node_modules\execa\index.js:303:26)
+317 error     at Function.execSync (D:\Program files\nodejs\node_modules\lerna\lib\ChildProcessUtilities.js:59:30)
+317 error     at Function.commit (D:\Program files\nodejs\node_modules\lerna\lib\GitUtilities.js:88:39)
+317 error     at PublishCommand.gitCommitAndTagVersion (D:\Program files\nodejs\node_modules\lerna\lib\commands\PublishCommand.js:739:30)
+317 error     at PublishCommand.commitAndTagUpdates (D:\Program files\nodejs\node_modules\lerna\lib\commands\PublishCommand.js:704:27)
+317 error     at PublishCommand.execute (D:\Program files\nodejs\node_modules\lerna\lib\commands\PublishCommand.js:307:14)
