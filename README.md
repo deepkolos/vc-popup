@@ -348,6 +348,7 @@ body > *:first-child{
 ```
 
 [过渡动画设置示例](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-animation-guide.md)
+[effect定制接口说明](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-effect-guide.md)
 
 ## propsData定义
 

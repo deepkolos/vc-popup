@@ -84,7 +84,6 @@
           el: document.createElement('div'),
           propsData: props
         })
-        console.log(this.$refs.slotContainer.outerHTML)
         this.$refs.slotContainer.appendChild(vmWrapper.$el)
         vmWrapper.$refs.slot.appendChild(this.$refs.slot)
         this.vmWrapper = vmWrapper

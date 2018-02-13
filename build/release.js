@@ -51,7 +51,9 @@ utils.mapPkgList(function (subDir) {
 })
 
 exec(`yarn build:entry && yarn module && yarn packages`)
-exec(`git add -A`)
-exec(`git commit -m "[release] v${newModuleVer}"`)
+setTimeout(function(){
+  exec(`git add -A`)
+  exec(`git commit -m "[release] v${newModuleVer}"`)
+}, 100)
 // exec(`lerna publish --force-publish *`)
 // exec(`npm publish`)
