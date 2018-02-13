@@ -1,4 +1,3 @@
-
 # animation设置
 
 如果使用通过**transition**来驱动的话, 则参考如下模版

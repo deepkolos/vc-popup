@@ -1,4 +1,4 @@
-## this.$popupCtrl的API说明
+# this.$popupCtrl的API说明
 
 ### 概览
 
@@ -23,6 +23,7 @@ vmBase = {
   setMaskBgColor(String),
   setAnimateDom(Dom),
   getAnimateDom()
+  wrapSlotWith(TplConstructor, props) // 用于自定义effect时候包装slot
 }
 
 vmSlot = {
@@ -36,6 +37,6 @@ config = {
 }
 ```
 
-##### vmBase和vmSlot例子
+#### vmBase和vmSlot例子
 
 <img src="https://raw.githubusercontent.com/deepkolos/vc-popup/master/static/$popupCtrl's api-0.png" alt="" style="display:inline-block;"/>

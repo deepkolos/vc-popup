@@ -1,4 +1,4 @@
-## 定制可复用的过渡动画
+# 定制可复用的过渡动画
 
 ```js
 import { effectRegister } from 'vc-popup-base'
