@@ -7,6 +7,7 @@ let popupBase = {
 
     var routerId = this.getRouterId()
 
+    // 配置初始化
     this.config = Object.assign({
       animation: {},
       lockScroll: true,
@@ -15,8 +16,9 @@ let popupBase = {
 
     this.config.propsData = Object.assign(
       {}, this.constructConfig.propsData, runtimeConfig.propsData)
-
     this.config.propsData.e = e
+
+    // dom节点初始化
     this.vmBase = popupController.createPopup(
       this.popupConfig, this.config, routerId)
     this.vmBase.vmSlot = this.vmSlot = new this.Template({

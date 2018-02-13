@@ -286,7 +286,7 @@
               {
                 name: '',
                 click: () => {
-                  this.pressMenu2.close()
+                  this.pressMenu.close()
                 }
               }
             ]

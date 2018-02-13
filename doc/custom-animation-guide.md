@@ -77,3 +77,42 @@
   }
 }
 ```
+
+提供了更复杂的过渡动画自定义编程接口, 更好的动画复用
+
+如下已经内置`zoomFromDom`, `bodyBlur`
+
+```js
+{
+  animation: {
+    in: {
+      effect: 'zoomFromDom'
+    },
+    out: {
+      effect: 'zoomFromDom'
+    }
+  }
+}
+```
+
+`tilePress`则需要加载依赖, 使用和popup其他是一样的
+
+```js
+import Vue from 'vue'
+import tilePress from 'vc-popup-effect-tile-press'
+// 这里名字可以随意
+
+Vue.use(tilePress)
+
+// 然后设置即可
+{
+  animation: {
+    in: {
+      effect: 'tilePress'
+    },
+    out: {
+      effect: 'tilePress'
+    }
+  }
+}
+```
