@@ -114,7 +114,6 @@
 
 <style lang="scss">
   .vc-dialog {
-    will-change: opacity, transform;
     display: inline-block;
     background: white;
     border-radius: 3px;

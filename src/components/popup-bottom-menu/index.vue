@@ -26,7 +26,6 @@
 
 <style lang="scss">
   .vc-popup-bottom-menu {
-    will-change: opacity, transform;
     position: fixed;
     bottom: 0;
     left: 0;

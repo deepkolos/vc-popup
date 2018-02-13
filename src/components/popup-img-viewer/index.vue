@@ -57,7 +57,10 @@
     created () {
       this.popupEvt = {
         beforeEnter: () => {
+          var vmSwiper = this.$refs.swiper
           var $onSwipeImg = this._getSwipeImg(this.defaultIndex)
+
+          vmSwiper.reSize()
 
           var {clipTop, clipLeft, clipBottom, clipRight, clipRadius, translateX, translateY, scale, hasClip} = this._getAnimationSettings(this.defaultIndex)
 
@@ -102,9 +105,7 @@
         move: this._onItemSwipe,
         end: this._onItemSwipeDone
       }
-    },
 
-    mounted () {
       var e = this.e,
         self = this,
         defaultIndex

@@ -26,7 +26,6 @@
 
 <style lang="scss">
   .vc-popup-center-menu {
-    will-change: opacity, transform;
     width: calc(100vw - 36px*2 - 4px*2);
     border-radius: 3.5px;
     overflow: hidden;

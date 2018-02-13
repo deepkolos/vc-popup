@@ -23,7 +23,7 @@
 
     created () {
       this.popupEvt = {
-        afterDomLoad: () => {
+        afterMount: () => {
           this._setTriangle()
           console.log('say hello from custom popup')
         },
@@ -110,7 +110,6 @@
 
 <style scoped lang="scss">
   .vc-popup-custom {
-    will-change: opacity, transform;
     border-radius: 3.5px;
     transition: all 250ms ease 0s;
     display: inline-block;

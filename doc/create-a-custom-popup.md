@@ -71,14 +71,15 @@ export default popupRegister(
 
     created () {
       this.popupEvt = {            // 执行顺序如下
-        beforeEnter:  () => {}, // 在appendChild前一帧执行
-        afterDomLoad: () => {}, // 在appenChild那一帧执行, 定位需要使用到getBoundingClientRect的话就挂在这里
+        beforeMount:  () => {}, // 在appenChild前执行
+        afterMount:   () => {}, // 在appenChild后执行, 定位需要使用到getBoundingClientRect的话就挂在这里
+        beforeEnter:  () => {}, // 相当于afterMount的别名, 用于设置进入是动画
         afterEnter:   () => {}, // 进入动画结束时执行
         beforeLeave:  () => {}, // 触发离开事件时执行
         afterLeave:   () => {}, // 离开动画结束时执行
 
-        inAnimation:  () => {},
-        outAnimation: () => {},
+        inAnimation:  () => {}, // beforeEnter的别名, 不过默认提供了于animation配置的互斥
+        outAnimation: () => {}, // beforeLeave的别名, 不过默认提供了于animation配置的互斥
 
         /* inAnimation等效于, outAnimation同理
         beforeEnter (animationConfiged) {

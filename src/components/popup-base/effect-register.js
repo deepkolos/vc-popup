@@ -13,29 +13,26 @@ function effectRegister (name, processor) {
  * zoomFromDom 效果是从触发事件点击的dom节点开始放大, 如其名
  * fromDom: HTMLElemet
  */
-effectRegister('zoomFromDom', function (progress, cfg, unset, vmBase) {
-  var $fromDom = cfg.fromDom || (vmBase.e ? vmBase.e.target : null),
-    $slot = vmBase.vmSlot.$el,
-    fromDomRect, slotRect,
+effectRegister('zoomFromDom', {
+  beforeEnter: function (cfg, vmBase) {
+    var $fromDom = cfg.fromDom || (vmBase.e ? vmBase.e.target : null),
+      $slot = vmBase.vmSlot.$el,
+      fromDomRect, slotRect,
 
-    scaleAdjusted = 2 / 3,
-    translateX, translateY,
-    fromDomCenterX, fromDomCenterY,
-    slotCenterX, slotCenterY
+      scaleAdjusted = 2 / 3,
+      translateX, translateY,
+      fromDomCenterX, fromDomCenterY,
+      slotCenterX, slotCenterY
 
-  if (!$fromDom)
-    throw new Error('无法找到zoomFromDom的参考dom节点, 请检查设置')
+    if (!$fromDom)
+      throw new Error('无法找到zoomFromDom的参考dom节点, 请检查设置')
 
-  if ($fromDom && !unset) {
-    vmBase._animationNoneReday = true
-    $slot.style.opacity = 0
-    requestAnimationFrame(() => {
-      // 需要挂载到dom里面才能获取到改信息, 所以推迟开始动画
+    if ($fromDom) {
       slotRect = $slot.getBoundingClientRect()
       fromDomRect = $fromDom.getBoundingClientRect()
 
-      if (cfg.offset !== undefined)
-        scaleAdjusted = cfg.offset
+      if (cfg.scale !== undefined)
+        scaleAdjusted = cfg.scale
 
       slotCenterX = slotRect.left + slotRect.width / 2
       slotCenterY = slotRect.top + slotRect.height / 2
@@ -45,21 +42,28 @@ effectRegister('zoomFromDom', function (progress, cfg, unset, vmBase) {
       translateX = fromDomCenterX - slotCenterX
       translateY = fromDomCenterY - slotCenterY
 
+      $slot._x = translateX * scaleAdjusted
+      $slot._y = translateY * scaleAdjusted
+      $slot._scale = scaleAdjusted
+
       //无论in或者out都是一样的
       $slot.style.opacity = 0
       $slot.style.transform =
-        `translate3d(${translateX * scaleAdjusted}px, ${translateY * scaleAdjusted}px,0) scale(${scaleAdjusted})`
-      if (progress === 'in') {
-        vmBase.$refs.slot.style.transitionDuration = '0ms'
+        `translate3d(${$slot._x}px, ${$slot._y}px,0) scale(${$slot._scale})`
 
-        requestAnimationFrame(() => {
-          $slot.style.transform = null
-          $slot.style.transitionDuration = null
-          vmBase._animationNoneReday = null
-          $slot.style.opacity = null
-        })
-      }
-    })
+      requestAnimationFrame(() => {
+        $slot.style.transform = null
+        $slot.style.transitionDuration = null
+        $slot.style.opacity = null
+      })
+    }
+  },
+  beforeLeave: function (cfg, vmBase) {
+    var $slot = vmBase.vmSlot.$el
+
+    $slot.style.opacity = 0
+    $slot.style.transform =
+      `translate3d(${$slot._x}px, ${$slot._y}px,0) scale(${$slot._scale})`
   }
 })
 
@@ -68,38 +72,43 @@ effectRegister('zoomFromDom', function (progress, cfg, unset, vmBase) {
  * value: String | Array
  * onDom: HTMLElemet | String(parse by document.querySelector)
  */
-effectRegister('addClass', function (progress, cfg, unset, vmBase) {
-  var $dom = vmBase.vmSlot.$el
+effectRegister('addClass', {
+  beforeEnter: function (cfg, vmBase) {
+    var $dom = vmBase.vmSlot.$el
 
-  if (typeof cfg.onDom === 'string') {
-    $dom = document.querySelector(cfg.onDom)
-  } else
-  if (cfg.onDom instanceof HTMLElement) {
-    $dom = cfg.onDom
-  }
+    if (typeof cfg.onDom === 'string')
+      $dom = document.querySelector(cfg.onDom)
+    else if (cfg.onDom instanceof HTMLElement)
+      $dom = cfg.onDom
 
-  if (typeof cfg.value === 'string') {
-    if (unset === false)
+    if (typeof cfg.value === 'string')
       $dom.classList.add(cfg.value)
-    else
-      $dom.classList.remove(cfg.value)
-  } else
-  if (cfg.value instanceof Array) {
-    if (unset === false)
+    else if (cfg.value instanceof Array)
       $dom.classList.add.apply($dom.classList, cfg.value)
-    else
-      $dom.classList.remove.apply($dom.classList, cfg.value)
+  },
+  beforeLeave: function (cfg, vmBase) {
+    var $dom = vmBase.vmSlot.$el
+
+    if (typeof cfg.onDom === 'string')
+      $dom = document.querySelector(cfg.onDom)
+    else if (cfg.onDom instanceof HTMLElement)
+      $dom = cfg.onDom
+
+    if (typeof cfg.value === 'string')
+      $dom.classList.add(cfg.value)
+    else if (cfg.value instanceof Array)
+      $dom.classList.add.apply($dom.classList, cfg.value)
   }
 })
 
 /**
  * bodyBlur 实现模糊效果, 等同于addClass到#app而已, 这是图个方便
  */
-effectRegister('bodyBlur', function (progress, cfg, unset, vmBase) {
-  if (progress === 'in' && !unset) {
+effectRegister('bodyBlur', {
+  beforeEnter: function () {
     document.querySelector('#app').style.filter = 'blur(1.5px)'
-  }
-  if (progress === 'out' && !unset) {
+  },
+  beforeLeave: function () {
     document.querySelector('#app').style.filter = ''
   }
 })

@@ -291,7 +291,6 @@
 <style lang="scss">
   .vc-popup-calendar {
     background-color: white;
-    will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 280ms ease 0s;
     position: absolute;

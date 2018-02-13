@@ -37,15 +37,13 @@ if (Vue.prototype.__popup__ !== undefined) {
     fromUpdateRouter: false,
     popupInShowingNum: 0,
 
-    open (vmBase, routerId, domLoadCallback) {
+    open (vmBase, routerId) {
       popupContainer.turnOn()
       this.popupInShowingNum++
-      vmBase._enter(() => {
-        popupContainer.addPopup(vmBase.$el)
-        domLoadCallback && domLoadCallback()
-        vmBase._afterDomLoad()
-        this.updateRouter(routerId)
-      })
+      vmBase._beforeMount()
+      popupContainer.addPopup(vmBase.$el)
+      vmBase._afterMount()
+      this.updateRouter(routerId)
     },
 
     close (routerId) {

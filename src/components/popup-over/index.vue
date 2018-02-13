@@ -28,7 +28,7 @@
 
     created () {
       this.popupEvt = {
-        afterDomLoad: () => {
+        afterMount: () => {
           this._setTriangle()
         }
       }
@@ -94,7 +94,6 @@
 
 <style lang="scss">
   .vc-popup-over {
-    will-change: opacity, transform;
     border-radius: 3.5px;
     transition: all 250ms ease 0s;
     display: inline-block;

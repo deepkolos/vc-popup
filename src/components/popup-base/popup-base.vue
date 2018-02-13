@@ -84,30 +84,14 @@
           el: document.createElement('div'),
           propsData: props
         })
-        vmWrapper.$refs.slot.appendChild(this.$refs.slot)
+        console.log(this.$refs.slotContainer.outerHTML)
         this.$refs.slotContainer.appendChild(vmWrapper.$el)
+        vmWrapper.$refs.slot.appendChild(this.$refs.slot)
         this.vmWrapper = vmWrapper
         return vmWrapper
       },
 
       //内部使用的
-      _afterDomLoad () {
-        this.vmSlot.popupEvt &&
-        this.vmSlot.popupEvt.afterDomLoad &&
-          this.vmSlot.popupEvt.afterDomLoad()
-      },
-
-      _enter (openRestFunc) {
-        this._beforeEnter(openRestFunc)
-        this.isShowing = true
-      },
-
-      _leave (callback) {
-        this._afterLeaveCallback = callback
-        this._beforeLeave()
-        this.isShowing = false
-      },
-
       _turnOffMask () {
         !this.maskDisable &&
           this.vmSlot.$popupCtrl.close()
@@ -147,68 +131,87 @@
         }
       },
 
-      _beforeEnter (openRestFunc) {
+      _beforeMount () {
+        this.$refs.slot.style.transitionDuration = '0ms'
+        if (this.runtimeConfig.lockScroll)
+          document.body.style.overflow = 'hidden'
+
+        var className = this.runtimeConfig.className
+        this._animationConfigurable =
+          this.runtimeConfig.animationConfigurable
+
+        if (typeof className === 'string')
+          this.vmSlot.$el.classList.add(className)
+        else if (className instanceof Array)
+          this.vmSlot.$el.classList.add.apply(
+            this.vmSlot.$el.classList, className)
+
+        this.vmSlot.popupEvt.beforeMount &&
+          this.vmSlot.popupEvt.beforeMount()
+
+        this._animation('beforeMount')
+      },
+
+      _afterMount () {
+        this.vmSlot.$popupCtrl.configPosition(this.e)
+
+        this._animation('afterMount')
+        this._enter()
+
+        this.vmSlot.popupEvt.afterMount &&
+          this.vmSlot.popupEvt.afterMount()
+      },
+
+      _enter () {
+        this._beforeEnter()
+        this.isShowing = true
+      },
+
+      _leave (callback) {
+        this._afterLeaveCallback = callback
+        this._beforeLeave()
+        this.isShowing = false
+      },
+
+      _beforeEnter () {
+        this._initMask()
+
+        var animationCfg = this.runtimeConfig.animation.in
+        var maskOpacity = this.runtimeConfig.maskOpacity || 0.25
+        var maskBgColor = this.runtimeConfig.maskBgColor
+        var hasConfigAnimation =
+          this._animationConfigurable && animationCfg !== undefined
+
+        this.setMaskOpacity(animationCfg !== false ? 0 : maskOpacity)
+
+        this._animation('beforeEnter')
+        this._animation('init')
+
+        this.vmSlot.popupEvt.beforeEnter instanceof Function &&
+          this.vmSlot.popupEvt.beforeEnter(hasConfigAnimation)
+
+        !hasConfigAnimation &&
+          this.vmSlot.popupEvt.inAnimation instanceof Function &&
+            this.vmSlot.popupEvt.inAnimation()
+
+        this.runtimeConfig.beforeEnter instanceof Function &&
+          this.runtimeConfig.beforeEnter()
+
+        this.getAnimateDom().style.transitionDuration = '0ms'
         requestAnimationFrame(() => {
-          this._initMask()
-          if (this.runtimeConfig.lockScroll)
-            document.body.style.overflow = 'hidden'
-          this.$refs.slot.style.transitionDuration = '0ms'
+          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
+          this.$refs.slot.style.transitionDuration = ''
+          this.getAnimateDom().style.transitionDuration = ''
 
-          this._animationConfigurable =
-            this.runtimeConfig.animationConfigurable
-
-          var className = this.runtimeConfig.className
-          var animationCfg = this.runtimeConfig.animation.in
-          var maskOpacity = this.runtimeConfig.maskOpacity || 0.25
-          var maskBgColor = this.runtimeConfig.maskBgColor
-          var hasConfigAnimation =
-                this._animationConfigurable &&
-                animationCfg !== undefined
-
-          if (typeof className === 'string')
-            this.vmSlot.$el.classList.add(className)
-          else if (className instanceof Array)
-            this.vmSlot.$el.classList.add.apply(
-              this.vmSlot.$el.classList, className)
-
-          this.setMaskOpacity(animationCfg !== false ? 0 : maskOpacity)
-
-          if (this._animationConfigurable) {
-            this._animation('in')
-            this._animation('init')
-          }
-
-          this.vmSlot.popupEvt.beforeEnter instanceof Function &&
-            this.vmSlot.popupEvt.beforeEnter(hasConfigAnimation)
-
-          !hasConfigAnimation &&
-            this.vmSlot.popupEvt.inAnimation instanceof Function &&
-              this.vmSlot.popupEvt.inAnimation()
-
-          this.runtimeConfig.beforeEnter instanceof Function &&
-            this.runtimeConfig.beforeEnter()
-
-          requestAnimationFrame(() => {
-            this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-            if (!this._animationNoneReday)
-              this.$refs.slot.style.transitionDuration = null
-
-            this.setMaskOpacity(maskOpacity)
-            maskBgColor && this.setMaskBgColor(maskBgColor)
-
-            if (this._animationConfigurable)
-              this._animation('init', true)
-          })
-
-          openRestFunc()
+          this.setMaskOpacity(maskOpacity)
+          maskBgColor && this.setMaskBgColor(maskBgColor)
         })
       },
 
       _afterEnter () {
         if (this.animationendTriggered) return
 
-        this._animationConfigurable &&
-          this._animation('in', true)
+        this._animation('afterEnter')
 
         this.vmSlot.popupEvt.afterEnter instanceof Function &&
           this.vmSlot.popupEvt.afterEnter()
@@ -229,8 +232,7 @@
                 animationCfg !== undefined
 
           this.setMaskOpacity(animationCfg !== false ? 0 : 0.25)
-          this._animationConfigurable &&
-            this._animation('out')
+          this._animation('beforeLeave')
 
           this.vmSlot.popupEvt.beforeLeave instanceof Function &&
             this.vmSlot.popupEvt.beforeLeave(hasConfigAnimation)
@@ -247,8 +249,7 @@
       },
 
       _afterLeave () {
-        this._animationConfigurable &&
-          this._animation('out', true)
+        this._animation('afterLeave')
 
         this.vmSlot.popupEvt.afterLeave instanceof Function &&
           this.vmSlot.popupEvt.afterLeave()
@@ -276,47 +277,104 @@
         e.preventDefault()
       },
 
-      _animation (progressName, unset = false) {
-        var $dom = this.getAnimateDom()
+      _animation (evt) {
         var animation = this.runtimeConfig.animation
-        var animationOffClass = 'vc-animation-fake-off-' + progressName
-        var cfg
+        if (!this._animationConfigurable) return
+        if (animation instanceof Object === false) return
 
-        var parseString = (val) => {
+        var cfg
+        var $dom = this.getAnimateDom()
+        var isPowerByTransition = animation.init !== undefined
+        var animationOffClass = 'vc-animation-fake-off-' + evt
+        var evtToCfg = {
+          beforeMount: 'in',
+          afterMount: 'in',
+          beforeEnter: 'in',
+          afterEnter: 'in',
+          beforeLeave: 'out',
+          afterLeave: 'out',
+          init: 'init'
+        }
+
+        var parseString = (val, unset) => {
           if (typeof val === 'string') {
-            if (unset === false)
+            if (!unset)
               $dom.classList.add(val)
             else
               $dom.classList.remove(val)
           }
         }
-        var parseObject = (val) => {
-          if (val instanceof Object) {
-            if (effectStack[val.effect])
-              effectStack[val.effect].call(null, progressName, val, unset, this)
-          }
-        }
-
-        if (animation instanceof Object) {
-          cfg = animation[progressName]
-
-          //string,array被classname设置占用了,只剩下object用于扩展了,boolean用于开关
-          if (cfg === false) {
-            if (unset === false)
+        var parseBoolean = (val, unset) => {
+          if (typeof val === 'boolean') {
+            if (!unset)
               $dom.classList.add(animationOffClass)
             else
               $dom.classList.remove(animationOffClass)
-          } else
+          }
+        }
+        var parseObject = (val) => {
+          var effect
+          if (val instanceof Object) {
+            effect = effectStack[val.effect]
+            if (effect)
+              effect[evt] instanceof Function && effect[evt](val, this)
+          }
+        }
 
-          if (cfg instanceof Array) {
+        cfg = animation[evtToCfg[evt]]
+        if (cfg === undefined) return
+
+        if (
+          evt === 'beforeMount' ||
+          evt === 'afterMount'  ||
+          evt === 'afterLeave'
+        ) {
+          parseObject(cfg)
+          cfg instanceof Array &&
+            cfg.forEach(function (val) {
+              parseObject(val)
+            })
+        } else
+        if (evt === 'init') {
+          parseString(cfg)
+          cfg instanceof Array &&
+            cfg.forEach(function (val) {
+              parseString(val)
+            })
+        } else
+        if (evt === 'beforeEnter') {
+          parseBoolean(cfg)
+          parseString(cfg)
+          parseObject(cfg)
+          isPowerByTransition &&
+            requestAnimationFrame(function () {
+              parseString(cfg, true)
+            })
+          cfg instanceof Array &&
             cfg.forEach(function (val) {
               parseString(val)
               parseObject(val)
             })
-          } else {
-            parseString(cfg)
-            parseObject(cfg)
-          }
+        } else
+        if (evt === 'afterEnter') {
+          parseBoolean(cfg, true)
+          parseString(cfg, true)
+          parseObject(cfg)
+          cfg instanceof Array &&
+            cfg.forEach(function (val) {
+              parseString(val, true)
+              parseObject(val)
+            })
+        } else
+        if (evt === 'beforeLeave') {
+          parseBoolean(cfg)
+          parseString(cfg)
+          parseObject(cfg)
+          cfg instanceof Array &&
+            cfg.forEach(function (val) {
+              parseString(val)
+              parseObject(val)
+            })
         }
       },
 
@@ -368,6 +426,6 @@
     opacity: 0;
     background-color: #000000;
     transition: opacity 350ms ease 0s;
-    will-change: opacity;
+    /* will-change: opacity; */
   }
 </style>

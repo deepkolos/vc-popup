@@ -35,6 +35,7 @@
 
 .vc-effect-turbulence-out {
   animation: vc-animation-turbulence-out 280ms;
+  -webkit-filter: url('#vc-effect-turbulence');
 }
 
 .vc-animation-fake-off-in {
@@ -52,11 +53,9 @@
 
 @keyframes vc-animation-turbulence-out{
   0%{
-    -webkit-filter: url('#vc-effect-turbulence');
     opacity: 1;
   }
   100%{
-    -webkit-filter: url('#vc-effect-turbulence');
     opacity: 0;
   }
 }

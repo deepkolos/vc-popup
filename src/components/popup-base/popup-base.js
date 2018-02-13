@@ -30,9 +30,7 @@ let popupBase = {
     this.vmSlot.popupEvt = this.vmSlot.popupEvt || {}
 
     popupController.register(routerId, this.open.bind(this, e, runtimeConfig))
-    popupController.open(this.vmBase, routerId, () => {
-      this.configPosition(e)
-    })
+    popupController.open(this.vmBase, routerId)
   },
 
   close: function () {

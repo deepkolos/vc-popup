@@ -22,7 +22,6 @@
 
 <style lang="scss">
   .vc-popup-dom-relative {
-    will-change: opacity, transform;
     box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
     transition: all 220ms ease 0s;
     display: inline-block;

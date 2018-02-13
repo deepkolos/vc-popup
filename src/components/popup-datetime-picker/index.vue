@@ -394,7 +394,6 @@
 
 <style lang="scss">
   .vc-picker{
-    will-change: opacity, transform;
     position: fixed;
     bottom: 0;
     left: 0;

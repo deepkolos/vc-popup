@@ -116,7 +116,7 @@
       this.dom.$pageContainer = this.$refs.swipeItems
       this.dom.$indicatorContainer = this.$refs.swipeIndicators
 
-      // this.reInitPages()
+      this.reInitPages()
     },
 
     methods: {

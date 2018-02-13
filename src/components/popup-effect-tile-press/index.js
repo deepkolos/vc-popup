@@ -5,10 +5,9 @@ import { effectRegister } from 'vc-popup-base'
 
 var TilePressConstructor = Vue.extend(template)
 
-effectRegister('tilePress', function (progress, cfg, unset, vmBase) {
-  var vmTile
-  if (progress === 'in' && !unset) {
-    vmTile = vmBase.wrapSlotWith(TilePressConstructor, {
+effectRegister('tilePress', {
+  beforeMount: function (cfg, vmBase) {
+    var vmTile = vmBase.wrapSlotWith(TilePressConstructor, {
       unsetOnPressEnd: false
     })
     var $el = vmBase.vmSlot.$el
@@ -26,10 +25,9 @@ effectRegister('tilePress', function (progress, cfg, unset, vmBase) {
       $el.classList.remove('vc-effect-tile-press-inital')
       $el.classList.add('vc-effect-tile-press-in')
     })
-  }
-
-  if (progress === 'out' && !unset) {
-    vmTile = vmBase.vmWrapper
+  },
+  beforeLeave: function (cfg, vmBase) {
+    var vmTile = vmBase.vmWrapper
     var $slot = vmTile.$refs.slot,
       deg = vmTile.maxDeg * 1.15
 
