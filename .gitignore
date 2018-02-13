@@ -5,9 +5,11 @@ lib/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 test/unit/coverage
 packages/*/index.js
 packages/*/index.js.map
+
 
 # Editor directories and files
 .idea

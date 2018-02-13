@@ -28,7 +28,8 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "test": "echo no ok...",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "release": "node build/release.js"
+    "release": "node build/release.js",
+    "publish:lerna": "lerna publish --force-publish * --skip-git"
   },
   "license": "MIT",
   "dependencies": {

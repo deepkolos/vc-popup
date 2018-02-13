@@ -55,5 +55,5 @@ setTimeout(function(){
   exec(`git add -A`)
   exec(`git commit -m "[release] v${newModuleVer}"`)
 }, 100)
-// exec(`lerna publish --force-publish *`)
+// exec(`lerna publish --force-publish * --skip-git`)
 // exec(`npm publish`)
