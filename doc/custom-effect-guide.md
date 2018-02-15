@@ -3,14 +3,27 @@
 ```js
 import { effectRegister } from 'vc-popup-base'
 
-var noop = function (cfg, vmBase) {}
+var doSomething = function (cfg, vmBase) {}
 
 effectRegister('effectName', {
-  beforeMount: noop,
-  afterMount:  noop,
-  beforeLeave: noop,
-  afterLeane:  noop,
-  beforeLeave: noop,
-  afterLeave:  noop
+  beforeMount: doSomething,
+  afterMount:  doSomething,
+  beforeLeave: doSomething,
+  afterLeane:  doSomething,
+  beforeLeave: doSomething,
+  afterLeave:  doSomething
+})
+```
+
+比如简单的bodyBlur实现就是
+
+```js
+effectRegister('bodyBlur', {
+  beforeEnter: function () {
+    document.querySelector('#app').style.filter = 'blur(1.5px)'
+  },
+  beforeLeave: function () {
+    document.querySelector('#app').style.filter = ''
+  }
 })
 ```

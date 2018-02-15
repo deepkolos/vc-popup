@@ -244,18 +244,12 @@ body > *:first-child{
   autoSetOrthocenter: {
     options: Boolean,
     default: false
-
-    //example
-    autoSetOrthocenter: true,
-    autoSetOrthocenter: false,
   },
 
   // 设置动画的进出动画, 会和popup的vue里面通过提供的事件钩子实现的过渡动画冲突
-  // 在自定义popup的时候需要注意一下
-  // 支持animation.css等动画库, 使用的时候自行添加依赖就好了
+  // 想定制通用过渡动画可参考effect的编写
   // 不过并非所有都支持animation, 一些使用定制过渡动画, 会设置animationConfigurable为false
   // 注意: 自定义class需要有css3的过渡动画, 不然animationend/transitionend就不会触发~
-  // 如果需要关闭动画可以看下面的例子
   animation: {
     options: classConfig | effectConfig | switchConfig | transitionCfg,
     default: undefined,
@@ -265,17 +259,17 @@ body > *:first-child{
       out: Boolean
     },
     classConfig: {
-      in:  Array<String> | String,
-      out: Array<String> | String
+      in:  Array<String | Object> | String,
+      out: Array<String | Object> | String
     },
     effectConfig: {
       in:  {effect: String},
       out: {effect: String}
     },
     transitionCfg: {
-      init: Array<String> | String,
-      in:   Array<String> | String,
-      out:  Array<String> | String
+      init: Array<String | Object> | String,
+      in:   Array<String | Object> | String,
+      out:  Array<String | Object> | String
     }
     /* transitionCfg的init需要这样来提高一下权重
     .in.init {}
@@ -310,6 +304,16 @@ body > *:first-child{
       init: 'vc-slide-up-init',        // 内置已提供
       in:   'vc-slide-up-in',
       out:  'vc-slide-up-out',
+    },
+    // 混合
+    animation: {
+      in:  [
+        'vc-effect-turbulence-in',
+        {
+          effect: 'bodyBlur'
+        }
+      ],
+      out: 'vc-effect-turbulence-out',
     }
   },
 
@@ -317,10 +321,6 @@ body > *:first-child{
   animationConfigurable: {
     options: Boolean,
     default: true
-
-    //example
-    animationConfigurable: true,
-    animationConfigurable: false,
   },
 
   // 样式覆盖内置
@@ -347,7 +347,7 @@ body > *:first-child{
 }
 ```
 
-[过渡动画设置示例](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-animation-guide.md)
+[过渡动画设置示例](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-animation-guide.md)\
 [effect定制接口说明](https://github.com/deepkolos/vc-popup/blob/master/doc/custom-effect-guide.md)
 
 ## propsData定义
