@@ -1,8 +1,8 @@
 <template>
   <div class="page" ref="page">
     <div class="cell" @click="click1">仿微信底部弹出菜单</div>
-    <div class="cell" @click="click2">仿微信长按菜单(click触发)</div>
-    <div class="cell" @click="click3">仿微信居中菜单</div>
+    <div class="cell" @click="click2">仿微信居中菜单</div>
+    <div class="cell" @click="click3">仿微信长按菜单(click触发)</div>
 
     <div class="btn" ref="btn16" @click="click4">popover(仿antd)</div>
   </div>

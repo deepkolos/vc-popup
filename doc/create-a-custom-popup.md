@@ -53,7 +53,7 @@ export default popupRegister(
 
 这个和vue单文件的结构一样, 但是多了一些可以配置的地方:
 
-0. 主要是提供了`popup`事件钩子, 一共5个, 可以通过这些事件可以定制更多的过渡动画
+0. 主要是提供了`popup`事件钩子, 一共6个, 可以通过这些事件可以定制更多的过渡动画
 1. 还提供了一个接受触发`popup`事件的`e`, 从`open()`里传进来的
 
 ```vue
@@ -70,7 +70,7 @@ export default popupRegister(
     },
 
     created () {
-      this.popupEvt = {            // 执行顺序如下
+      this.popupEvt = {         // 执行顺序如下
         beforeMount:  () => {}, // 在appenChild前执行
         afterMount:   () => {}, // 在appenChild后执行, 定位需要使用到getBoundingClientRect的话就挂在这里
         beforeEnter:  () => {}, // 相当于afterMount的别名, 用于设置进入是动画
@@ -107,7 +107,7 @@ export default popupRegister(
 </script>
 ```
 
-this.$popupCtrl的详细API可以查看[this.$popupCtrl's API](https://raw.githubusercontent.com/deepkolos/vc-popup/master/doc/$popupCtrl's api.md)
+this.$popupCtrl的详细API可以查看[this.$popupCtrl's API](https://raw.githubusercontent.com/deepkolos/vc-popup/master/doc/$popupCtrl-api.md)
 
 ### 最后在页面中使用
 
