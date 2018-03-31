@@ -70,13 +70,8 @@ var Router = {
   },
 
   setUrlParams (params) {
-    if (Object.keys(params).length > 0) {
-      history.replaceState({}, null,
-        this.getNoHashUrl() + this.getHashOfParams(params))
-    } else {
-      history.replaceState({}, null,
-        this.getNoHashUrl())
-    }
+    history.replaceState({}, null,
+      this.getNoHashUrl() + this.getHashOfParams(params))
   },
 
   getNoHashUrl () {
