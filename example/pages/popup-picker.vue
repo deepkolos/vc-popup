@@ -7,6 +7,8 @@
       多列选择<span>{{dayAndTime | pickerValueFilter}}</span></div>
     <div class="cell" @click="addressPickerClick">
       联动选择<span>{{address | pickerValueFilter}}</span></div>
+    <div class="cell" @click="labelKeyPickerClick">
+      导入label-key的形式<span>{{labelKey | labelKeyPickerValueFilter}}</span></div>
 
     <div class="title">日期选择器示例</div>
     <div class="cell" @click="timePickerClick">
@@ -80,6 +82,30 @@
         time24: null,
         date: null,
         datetime: null,
+        labelKey: null,
+        labelKeySlots: [
+          {
+            values: [
+              {
+                text: '值0',
+                value: 0, //可以附带其他值
+                str: '0'
+              },
+              {
+                text: '值1',
+                value: 1,
+                str: '1'
+              },
+              {
+                text: '值2',
+                value: 2,
+                str: '2'
+              }
+            ],
+            labelKey: 'text',
+            defaultIndex: 2
+          }
+        ],
         ticketSlots: [
           {
             values: [
@@ -126,6 +152,13 @@
     },
 
     created () {
+      this.labelKeyPicker = new this.$popup.Picker({
+        propsData: {
+          slots: this.labelKeySlots,
+          onConfirm: this.confirmLabelKey
+        }
+      })
+
       this.ticketPicker = new this.$popup.Picker({
         propsData: {
           slots: this.ticketSlots,
@@ -175,6 +208,13 @@
     },
 
     methods: {
+      labelKeyPickerClick (e) {
+        this.labelKeyPicker.open(e, {
+          propsData: {
+            defaultValues: this.labelKey
+          }
+        })
+      },
       ticketPickerClick (e) {
         this.ticketPicker.open(e, {
           propsData: {
@@ -242,6 +282,11 @@
         console.log(value)
       },
 
+      confirmLabelKey (picker) {
+        this.labelKey = picker.getValues()
+        console.log(this.labelKey)
+      },
+
       confirmTicket (picker) {
         this.ticket = picker.getValues()
       },
@@ -291,6 +336,14 @@
       pickerValueFilter (val) {
         if (Array.isArray(val)) {
           return val.toString()
+        } else {
+          return '请选择'
+        }
+      },
+
+      labelKeyPickerValueFilter (val) {
+        if (val !== null) {
+          return val[0].text
         } else {
           return '请选择'
         }
