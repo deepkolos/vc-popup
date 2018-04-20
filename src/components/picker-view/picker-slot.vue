@@ -108,7 +108,7 @@
           startPositionY = evt.touches[0].clientY
           prevTranslateY = startTranslateY = self.currentTranslateY
 
-          $content.style.transition = null
+          $content.style.webkitTransition = null
         })
 
         $group.addEventListener('touchmove', function (evt) {
@@ -154,7 +154,7 @@
               translateY + velocityTranslate * momentumRatio
           }
 
-          $content.style.transition = 'transform 200ms ease'
+          $content.style.webkitTransition = 'transform 200ms ease'
 
           self.$nextTick(() => {
             var translate = momentumTranslate
@@ -171,7 +171,7 @@
 
       setTranslateY (val) {
         this.currentTranslateY = val
-        this.$refs.content.style.transform = `translate3d(0, ${val}px, 0)`
+        this.$refs.content.style.webkitTransform = `translate3d(0, ${val}px, 0)`
       },
 
       value2translate () {
