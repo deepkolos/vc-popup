@@ -194,7 +194,7 @@
             Array.prototype.forEach.call($pages, function ($page, i) {
               $page.currentPosition = i * itemWidth
               $page.index = i
-              $page.style.transform = 'translate3d(' + $page.currentPosition + 'px,0,0)'
+              $page.style.webkitTransform = 'translate3d(' + $page.currentPosition + 'px,0,0)'
             })
           }
 
@@ -301,11 +301,11 @@
             }
             if (continuous) {
               Array.prototype.forEach.call($pages, function ($li) {
-                $li.style.transform =
+                $li.style.webkitTransform =
                   `translate3d(${$li.currentPosition + info.offset}px,0,0)`
               })
             } else {
-              $pageContainer.style.transform =
+              $pageContainer.style.webkitTransform =
                 `translate3d(${-offset}px,0,0)`
             }
 
@@ -419,7 +419,7 @@
                 $li.classList.add('noneAnimation')
                 $li.currentPosition =
                   ($li.index - self.index) * actualSwipeValue
-                $li.style.transform =
+                $li.style.webkitTransform =
                   'translate3d(' + $li.currentPosition + 'px,0,0)'
                 $li.style.webkitTransition =
                   `-webkit-transform ${speed}ms ease`
@@ -441,7 +441,7 @@
 
                 $pages[i].classList.add('noneAnimation')
                 $pages[i].currentPosition = currentPosition
-                $pages[i].style.transform = 'translate3d(' + $pages[i].currentPosition + 'px,0,0)'
+                $pages[i].style.webkitTransform = 'translate3d(' + $pages[i].currentPosition + 'px,0,0)'
                 requestAnimationFrame(function () {
                   $pages[i].classList.remove('noneAnimation')
                 })
@@ -467,7 +467,7 @@
 
                   Array.prototype.forEach.call($pages, function ($li) {
                     $li.currentPosition = ($li.index - self.index) * actualSwipeValue
-                    $li.style.transform = 'translate3d(' + $li.currentPosition + 'px,0,0)'
+                    $li.style.webkitTransform = 'translate3d(' + $li.currentPosition + 'px,0,0)'
                   })
 
                   _loop(true)
@@ -484,13 +484,13 @@
                 $pages[0].classList.remove('noneAnimation')
                 $pages[0].currentPosition =
                   ($pages.length - self.index) * actualSwipeValue
-                $pages[0].style.transform =
+                $pages[0].style.webkitTransform =
                   'translate3d(' + $pages[0].currentPosition + 'px,0,0)'
               } else if (self.index < 0) {
                 once($pages[$pages.length - 1], 'transitionend', animationEnd.bind(null, info))
                 $pages[$pages.length - 1].classList.remove('noneAnimation')
                 $pages[$pages.length - 1].currentPosition = (-1 - self.index) * actualSwipeValue
-                $pages[$pages.length - 1].style.transform = 'translate3d(' + $pages[$pages.length - 1].currentPosition + 'px,0,0)'
+                $pages[$pages.length - 1].style.webkitTransform = 'translate3d(' + $pages[$pages.length - 1].currentPosition + 'px,0,0)'
               }
             }
 
@@ -523,7 +523,7 @@
           Array.prototype.forEach.call($pages, function ($li, i) {
             $li.currentPosition =
               ($li.index - self.index) * actualSwipeValue
-            $li.style.transform =
+            $li.style.webkitTransform =
               'translate3d(' + $li.currentPosition + 'px,0,0)'
             $li.style.webkitTransition =
               `-webkit-transform 0ms ease`
@@ -549,7 +549,7 @@
         x = -this.status.swipeStartOffset + info.offset * x
 
         requestAnimationFrame(() => {
-          this.dom.$pageContainer.style.transform =
+          this.dom.$pageContainer.style.webkitTransform =
             'translate3d(' + x + 'px,0,0)'
           this.dom.$pageContainer.style.webkitTransition =
             `-webkit-transform ${speed}ms ease`

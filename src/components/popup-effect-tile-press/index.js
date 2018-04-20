@@ -36,8 +36,8 @@ effectRegister('tilePress', {
     vmTile.orientationX = vmTile.orientationX === undefined ? 0 : vmTile.orientationX
 
     requestAnimationFrame(function () {
-      $slot.style.transitionDuration = '280ms'
-      $slot.style.transform =
+      $slot.style.webkitTransitionDuration = '280ms'
+      $slot.style.webkitTransform =
         `rotateX(${vmTile.orientationY * deg}deg) rotateY(${vmTile.orientationX * deg}deg) translateZ(-100px)`
       $slot.style.opacity = 0
     })

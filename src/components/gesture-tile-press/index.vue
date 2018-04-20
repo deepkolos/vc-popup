@@ -100,12 +100,12 @@
         deg = deg < this.minDeg ? this.minDeg : deg
         z = z < this.minZ ? this.minZ : z
         // 需要注意rotate的x,y,z的旋转方向
-        this.$refs.slot.style.transform = `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-${z}px)`
+        this.$refs.slot.style.webkitTransform = `rotateX(${orientationY * deg}deg) rotateY(${orientationX * deg}deg) translateZ(-${z}px)`
       },
 
       unsetPressEffect () {
         setTimeout(() => {
-          this.$refs.slot.style.transform = null
+          this.$refs.slot.style.webkitTransform = null
         }, 30)
       }
     },

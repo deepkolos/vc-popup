@@ -48,12 +48,12 @@ effectRegister('zoomFromDom', {
 
       //无论in或者out都是一样的
       $slot.style.opacity = 0
-      $slot.style.transform =
+      $slot.style.webkitTransform =
         `translate3d(${$slot._x}px, ${$slot._y}px,0) scale(${$slot._scale})`
 
       requestAnimationFrame(() => {
-        $slot.style.transform = null
-        $slot.style.transitionDuration = null
+        $slot.style.webkitTransform = null
+        $slot.style.webkitTransitionDuration = null
         $slot.style.opacity = null
       })
     }
@@ -62,7 +62,7 @@ effectRegister('zoomFromDom', {
     var $slot = vmBase.vmSlot.$el
 
     $slot.style.opacity = 0
-    $slot.style.transform =
+    $slot.style.webkitTransform =
       `translate3d(${$slot._x}px, ${$slot._y}px,0) scale(${$slot._scale})`
   }
 })

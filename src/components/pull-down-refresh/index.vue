@@ -151,8 +151,8 @@
           if (typeof this.maxDragOffset === 'number')
             offset = offset > this.maxDragOffset ? this.maxDragOffset : offset
 
-          $panel.style.transform = `translateY(${offset}px) translateZ(0)`
-          $content.style.transform = `translateY(${offset}px) translateZ(0)`
+          $panel.style.webkitTransform = `translateY(${offset}px) translateZ(0)`
+          $content.style.webkitTransform = `translateY(${offset}px) translateZ(0)`
 
           if (this.noMoreTry === true) {
             this._noMore(false)
@@ -172,8 +172,8 @@
           $content = this.$refs.content
 
         requestAnimationFrame(() => {
-          $panel.style.transitionDuration = null
-          $content.style.transitionDuration = null
+          $panel.style.webkitTransitionDuration = null
+          $content.style.webkitTransitionDuration = null
 
           this.$emit('onPullEnd')
 
@@ -253,10 +253,10 @@
           if (withAnimation)
             requestAnimationFrame(() => {
               $panel.style.opacity = 0
-              $panel.style.transitionDuration = '0s'
+              $panel.style.webkitTransitionDuration = '0s'
               requestAnimationFrame(() => {
                 $panel.style.opacity = 1
-                $panel.style.transitionDuration = null
+                $panel.style.webkitTransitionDuration = null
               })
             })
         }
@@ -284,8 +284,8 @@
 
         switch (val) {
           case 0:
-            $panel.style.transform = null
-            $content.style.transform = null
+            $panel.style.webkitTransform = null
+            $content.style.webkitTransform = null
             $panel.style.visibility = null
             $panel.style.willChange = null
             $content.style.willChange = null
@@ -293,8 +293,8 @@
           case 1:
             $panel.style.willChange = 'all'
             $content.style.willChange = 'all'
-            $panel.style.transitionDuration = '0ms'
-            $content.style.transitionDuration = '0ms'
+            $panel.style.webkitTransitionDuration = '0ms'
+            $content.style.webkitTransitionDuration = '0ms'
             $panel.style.visibility = 'visible'
             if (this.noMoreTry === false)
               this._message(0)
@@ -305,8 +305,8 @@
           case 3:
             this._message(2)
 
-            $panel.style.transform = `translateY(50.4px) translateZ(0)`
-            $content.style.transform = `translateY(50.4px) translateZ(0)`
+            $panel.style.webkitTransform = `translateY(50.4px) translateZ(0)`
+            $content.style.webkitTransform = `translateY(50.4px) translateZ(0)`
 
             this.$emit('onLoad', this._success, this._error, this._noMore, this._noMoreTry)
             break

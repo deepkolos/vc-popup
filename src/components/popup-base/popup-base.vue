@@ -64,11 +64,11 @@
       },
 
       trunOffMaskTransition () {
-        this.$refs.mask.style.transitionDuration = '0ms'
+        this.$refs.mask.style.webkitTransitionDuration = '0ms'
       },
 
       trunOnMaskTransition () {
-        this.$refs.mask.style.transitionDuration = ''
+        this.$refs.mask.style.webkitTransitionDuration = ''
       },
 
       setAnimateDom ($dom) {
@@ -131,7 +131,7 @@
       },
 
       _beforeMount () {
-        this.$refs.slot.style.transitionDuration = '0ms'
+        this.$refs.slot.style.webkitTransitionDuration = '0ms'
         if (this.runtimeConfig.lockScroll)
           document.body.style.overflow = 'hidden'
 
@@ -196,11 +196,11 @@
         this.runtimeConfig.beforeEnter instanceof Function &&
           this.runtimeConfig.beforeEnter()
 
-        this.getAnimateDom().style.transitionDuration = '0ms'
+        this.getAnimateDom().style.webkitTransitionDuration = '0ms'
         requestAnimationFrame(() => {
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-          this.$refs.slot.style.transitionDuration = ''
-          this.getAnimateDom().style.transitionDuration = ''
+          this.$refs.slot.style.webkitTransitionDuration = ''
+          this.getAnimateDom().style.webkitTransitionDuration = ''
 
           this.setMaskOpacity(maskOpacity)
           maskBgColor && this.setMaskBgColor(maskBgColor)
@@ -380,7 +380,7 @@
       _initMask () {
         if (this.runtimeConfig.positionType === 'absolute') {
           // 因为背景没有文字, 所以可以使用动画偏移
-          this.$refs.mask.style.transform =
+          this.$refs.mask.style.webkitTransform =
             `translate(${window.scrollX}px,${window.scrollY}px)`
 
           // mask就跟踪好了, 不使用fixed来做定位的了
@@ -390,8 +390,8 @@
       },
 
       _maskFollowScroll () {
-        this.$refs.mask.style.transitionDuration = '0ms'
-        this.$refs.mask.style.transform =
+        this.$refs.mask.style.webkitTransitionDuration = '0ms'
+        this.$refs.mask.style.webkitTransform =
           `translate(${window.scrollX}px,${window.scrollY}px)`
       }
     },

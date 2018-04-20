@@ -67,7 +67,7 @@
           this.$popupCtrl.vmBase.setAnimateDom($onSwipeImg)
           this._initPosition()
 
-          $onSwipeImg.style.transform =
+          $onSwipeImg.style.webkitTransform =
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`
 
           if (hasClip)
@@ -75,7 +75,7 @@
               `inset(${clipTop}px ${clipRight}px ${clipBottom}px ${clipLeft}px round ${clipRadius})`
 
           requestAnimationFrame(() => {
-            $onSwipeImg.style.transform = `translate3d(0,0,0)`
+            $onSwipeImg.style.webkitTransform = `translate3d(0,0,0)`
             if (hasClip)
               $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
           })
@@ -92,7 +92,7 @@
             $onSwipeImg.style.clipPath = `inset(0px 0px 0px 0px round 0px)`
 
           requestAnimationFrame(() => {
-            $onSwipeImg.style.transform =
+            $onSwipeImg.style.webkitTransform =
             `translate3d(${translateX}px, ${translateY}px,0) scale(${scale})`
             if (hasClip)
               $onSwipeImg.style.clipPath =
@@ -289,7 +289,7 @@
 
         if (!this.status.initLock) {
           this.status.initLock = true
-          $img.style.transitionDuration = '0ms'
+          $img.style.webkitTransitionDuration = '0ms'
           this.$popupCtrl.vmBase.trunOffMaskTransition()
           $img.style['transform-origin'] = transformOrgin
           $item.style['overflow'] = 'hidden'
@@ -315,10 +315,10 @@
         this.swipeStartY = null
 
         requestAnimationFrame(() => {
-          $img.style.transitionDuration = null
+          $img.style.webkitTransitionDuration = null
           this.$popupCtrl.vmBase.trunOnMaskTransition()
           $img.style['transform-origin'] = null
-          $img.style.transform = null
+          $img.style.webkitTransform = null
           this.$popupCtrl.vmBase.setMaskOpacity(1)
         })
 
