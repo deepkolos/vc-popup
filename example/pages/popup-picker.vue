@@ -29,349 +29,345 @@
 </template>
 
 <script>
-  import chinaAreaData from 'china-area-data'
-  //import 'babel-polyfill' // 如果项目需要支持IOS7/8 则需要添加该依赖
-
-  let provinces = Object.values(chinaAreaData[86])
-
-  // 获取某一省下的市
-  function getCities (province) {
-    let provinceCode
-    for (let i in chinaAreaData[86]) {
-      if (province === chinaAreaData[86][i]) {
-        provinceCode = i
-        break
+import chinaAreaData from "china-area-data";
+//import 'babel-polyfill' // 如果项目需要支持IOS7/8 则需要添加该依赖
+// 或者使用MDN的polyfill
+if (!Object.values)
+  Object.values = function(obj) {
+    if (obj !== Object(obj))
+      throw new TypeError("Object.values called on a non-object");
+    var val = [],
+      key;
+    for (key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        val.push(obj[key]);
       }
     }
+    return val;
+  };
 
-    return Object.values(chinaAreaData[provinceCode])
-  }
+let provinces = Object.values(chinaAreaData[86]);
 
-  // 获取某一市下的区/县
-  function getAreas (province, city) {
-    let provinceCode, cityCode
-    for (let i in chinaAreaData[86]) {
-      if (province === chinaAreaData[86][i]) {
-        provinceCode = i
-        break
-      }
-    }
-
-    for (let i in chinaAreaData[provinceCode]) {
-      if (city === chinaAreaData[provinceCode][i]) {
-        cityCode = i
-        break
-      }
-    }
-
-    if (chinaAreaData[cityCode]) {
-      return Object.values(chinaAreaData[cityCode])
-    } else {
-      // 只有两级的情况
-      return []
+// 获取某一省下的市
+function getCities(province) {
+  let provinceCode;
+  for (let i in chinaAreaData[86]) {
+    if (province === chinaAreaData[86][i]) {
+      provinceCode = i;
+      break;
     }
   }
 
-  export default {
+  return Object.values(chinaAreaData[provinceCode]);
+}
 
-    data () {
-      return {
-        ticket: null,
-        dayAndTime: null,
-        address: null,
-        time: null,
-        time24: null,
-        date: null,
-        datetime: null,
-        labelKey: null,
-        labelKeySlots: [
-          {
-            values: [
-              {
-                text: '值0',
-                value: 0, //可以附带其他值
-                str: '0'
-              },
-              {
-                text: '值1',
-                value: 1,
-                str: '1'
-              },
-              {
-                text: '值2',
-                value: 2,
-                str: '2'
-              }
-            ],
-            labelKey: 'text',
-            defaultIndex: 2
-          }
-        ],
-        ticketSlots: [
-          {
-            values: [
-              '汽车票',
-              '飞机票',
-              '火车票',
-              '轮船票',
-              '其它'
-            ],
-            defaultIndex: 2
-          }
-        ],
-        daySlots: [
-          {
-            values: [
-              '星期一',
-              '星期二',
-              '星期三',
-              '星期四',
-              '星期五'
-            ],
-            defaultIndex: 0
-          },
-          {
-            values: [
-              '上午',
-              '下午'
-            ],
-            defaultIndex: 0
-          }
-        ],
-        addressSlots: [
-          {
-            values: provinces
-          },
-          {
-            values: []
-          },
-          {
-            values: []
-          }
-        ]
+// 获取某一市下的区/县
+function getAreas(province, city) {
+  let provinceCode, cityCode;
+  for (let i in chinaAreaData[86]) {
+    if (province === chinaAreaData[86][i]) {
+      provinceCode = i;
+      break;
+    }
+  }
+
+  for (let i in chinaAreaData[provinceCode]) {
+    if (city === chinaAreaData[provinceCode][i]) {
+      cityCode = i;
+      break;
+    }
+  }
+
+  if (chinaAreaData[cityCode]) {
+    return Object.values(chinaAreaData[cityCode]);
+  } else {
+    // 只有两级的情况
+    return [];
+  }
+}
+
+export default {
+  data() {
+    return {
+      ticket: null,
+      dayAndTime: null,
+      address: null,
+      time: null,
+      time24: null,
+      date: null,
+      datetime: null,
+      labelKey: null,
+      labelKeySlots: [
+        {
+          values: [
+            {
+              text: "值0",
+              value: 0, //可以附带其他值
+              str: "0"
+            },
+            {
+              text: "值1",
+              value: 1,
+              str: "1"
+            },
+            {
+              text: "值2",
+              value: 2,
+              str: "2"
+            }
+          ],
+          labelKey: "text",
+          defaultIndex: 2
+        }
+      ],
+      ticketSlots: [
+        {
+          values: ["汽车票", "飞机票", "火车票", "轮船票", "其它"],
+          defaultIndex: 2
+        }
+      ],
+      daySlots: [
+        {
+          values: ["星期一", "星期二", "星期三", "星期四", "星期五"],
+          defaultIndex: 0
+        },
+        {
+          values: ["上午", "下午"],
+          defaultIndex: 0
+        }
+      ],
+      addressSlots: [
+        {
+          values: provinces
+        },
+        {
+          values: []
+        },
+        {
+          values: []
+        }
+      ]
+    };
+  },
+
+  created() {
+    this.labelKeyPicker = new this.$popup.Picker({
+      propsData: {
+        slots: this.labelKeySlots,
+        onConfirm: this.confirmLabelKey
+      }
+    });
+
+    this.ticketPicker = new this.$popup.Picker({
+      propsData: {
+        slots: this.ticketSlots,
+        onConfirm: this.confirmTicket
+      }
+    });
+
+    this.dayPicker = new this.$popup.Picker({
+      propsData: {
+        slots: this.daySlots,
+        onConfirm: this.confirmDayTime
+      }
+    });
+
+    this.addressPicker = new this.$popup.Picker({
+      propsData: {
+        slots: this.addressSlots,
+        onConfirm: this.confirmAddress,
+        onChange: this.onAddressChange
+      }
+    });
+
+    this.timePicker = new this.$popup.DatetimePicker({
+      propsData: {
+        mode: "time",
+        use12Hours: true,
+        onConfirm: this.confirmTimePicker,
+        onChange: this.onTimePickerChange
+      }
+    });
+
+    this.datePicker = new this.$popup.DatetimePicker({
+      propsData: {
+        mode: "date",
+        onConfirm: this.confirmDatePicker,
+        onChange: this.onDatePickerChange
+      }
+    });
+
+    this.datetimePicker = new this.$popup.DatetimePicker({
+      propsData: {
+        mode: "datetime",
+        onConfirm: this.confirmDatetimePicker,
+        onChange: this.onDatetimePickerChange
+      }
+    });
+  },
+
+  methods: {
+    labelKeyPickerClick(e) {
+      this.labelKeyPicker.open(e, {
+        propsData: {
+          defaultValues: this.labelKey
+        }
+      });
+    },
+    ticketPickerClick(e) {
+      this.ticketPicker.open(e, {
+        propsData: {
+          defaultValues: this.ticket
+        }
+      });
+    },
+    dayPickerClick(e) {
+      this.dayPicker.open(e, {
+        propsData: {
+          defaultValues: this.dayAndTime
+        }
+      });
+    },
+    addressPickerClick(e) {
+      this.addressPicker.open(e, {
+        propsData: {
+          defaultValues: this.address
+        }
+      });
+    },
+    timePickerClick(e) {
+      this.timePicker.open(e, {
+        propsData: {
+          defaultValues: this.time
+        }
+      });
+    },
+    datePickerClick(e) {
+      this.datePicker.open(e, {
+        propsData: {
+          defaultValues: this.date
+        }
+      });
+    },
+    datetimePickerClick(showDivider, showUnit) {
+      this.datetimePicker.open(null, {
+        propsData: {
+          use12Hours: false,
+          showDivider: showDivider,
+          showUnit: showUnit
+        }
+      });
+    },
+    time24PickerClick(showDivider) {
+      this.timePicker.open(null, {
+        propsData: {
+          use12Hours: false,
+          onConfirm: this.confirmTime24Picker,
+          showDivider: showDivider
+        }
+      });
+    },
+    datetimePickerLimitClick() {
+      this.datetimePicker.open(null, {
+        propsData: {
+          use12Hours: false,
+          minDate: new Date(2015, 10, 7, 5, 20),
+          maxDate: new Date(2018, 10, 7, 5, 20)
+        }
+      });
+    },
+
+    onChange(picker, value) {
+      console.log(value);
+    },
+
+    confirmLabelKey(picker) {
+      this.labelKey = picker.getValues();
+      console.log(this.labelKey);
+    },
+
+    confirmTicket(picker) {
+      this.ticket = picker.getValues();
+    },
+
+    confirmDayTime(picker) {
+      this.dayAndTime = picker.getValues();
+    },
+
+    confirmAddress(picker) {
+      this.address = picker.getValues();
+    },
+
+    onAddressChange(picker, value) {
+      picker.setSlotValues(1, getCities(value[0]));
+      picker.setSlotValues(2, getAreas(value[0], value[1]));
+    },
+
+    confirmTimePicker(picker) {
+      this.time = picker.getValues();
+    },
+    confirmTime24Picker(picker) {
+      this.time24 = picker.getValues();
+    },
+
+    onTimePickerChange(picker, value) {
+      console.log(value);
+    },
+
+    confirmDatePicker(picker) {
+      this.date = picker.getValues();
+    },
+
+    onDatePickerChange(picker, val) {
+      console.log(val);
+    },
+
+    confirmDatetimePicker(picker) {
+      this.datetime = picker.getValues();
+    },
+
+    onDatetimePickerChange(picker, val) {
+      console.log(val);
+    }
+  },
+
+  filters: {
+    pickerValueFilter(val) {
+      if (Array.isArray(val)) {
+        return val.toString();
+      } else {
+        return "请选择";
       }
     },
 
-    created () {
-      this.labelKeyPicker = new this.$popup.Picker({
-        propsData: {
-          slots: this.labelKeySlots,
-          onConfirm: this.confirmLabelKey
-        }
-      })
-
-      this.ticketPicker = new this.$popup.Picker({
-        propsData: {
-          slots: this.ticketSlots,
-          onConfirm: this.confirmTicket
-        }
-      })
-
-      this.dayPicker = new this.$popup.Picker({
-        propsData: {
-          slots: this.daySlots,
-          onConfirm: this.confirmDayTime
-        }
-      })
-
-      this.addressPicker = new this.$popup.Picker({
-        propsData: {
-          slots: this.addressSlots,
-          onConfirm: this.confirmAddress,
-          onChange: this.onAddressChange
-        }
-      })
-
-      this.timePicker = new this.$popup.DatetimePicker({
-        propsData: {
-          mode: 'time',
-          use12Hours: true,
-          onConfirm: this.confirmTimePicker,
-          onChange: this.onTimePickerChange
-        }
-      })
-
-      this.datePicker = new this.$popup.DatetimePicker({
-        propsData: {
-          mode: 'date',
-          onConfirm: this.confirmDatePicker,
-          onChange: this.onDatePickerChange
-        }
-      })
-
-      this.datetimePicker = new this.$popup.DatetimePicker({
-        propsData: {
-          mode: 'datetime',
-          onConfirm: this.confirmDatetimePicker,
-          onChange: this.onDatetimePickerChange
-        }
-      })
-    },
-
-    methods: {
-      labelKeyPickerClick (e) {
-        this.labelKeyPicker.open(e, {
-          propsData: {
-            defaultValues: this.labelKey
-          }
-        })
-      },
-      ticketPickerClick (e) {
-        this.ticketPicker.open(e, {
-          propsData: {
-            defaultValues: this.ticket
-          }
-        })
-      },
-      dayPickerClick (e) {
-        this.dayPicker.open(e, {
-          propsData: {
-            defaultValues: this.dayAndTime
-          }
-        })
-      },
-      addressPickerClick (e) {
-        this.addressPicker.open(e, {
-          propsData: {
-            defaultValues: this.address
-          }
-        })
-      },
-      timePickerClick (e) {
-        this.timePicker.open(e, {
-          propsData: {
-            defaultValues: this.time
-          }
-        })
-      },
-      datePickerClick (e) {
-        this.datePicker.open(e, {
-          propsData: {
-            defaultValues: this.date
-          }
-        })
-      },
-      datetimePickerClick (showDivider, showUnit) {
-        this.datetimePicker.open(null, {
-          propsData: {
-            use12Hours: false,
-            showDivider: showDivider,
-            showUnit: showUnit
-          }
-        })
-      },
-      time24PickerClick (showDivider) {
-        this.timePicker.open(null, {
-          propsData: {
-            use12Hours: false,
-            onConfirm: this.confirmTime24Picker,
-            showDivider: showDivider
-          }
-        })
-      },
-      datetimePickerLimitClick () {
-        this.datetimePicker.open(null, {
-          propsData: {
-            use12Hours: false,
-            minDate: new Date(2015, 10, 7, 5, 20),
-            maxDate: new Date(2018, 10, 7, 5, 20)
-          }
-        })
-      },
-
-      onChange (picker, value) {
-        console.log(value)
-      },
-
-      confirmLabelKey (picker) {
-        this.labelKey = picker.getValues()
-        console.log(this.labelKey)
-      },
-
-      confirmTicket (picker) {
-        this.ticket = picker.getValues()
-      },
-
-      confirmDayTime (picker) {
-        this.dayAndTime = picker.getValues()
-      },
-
-      confirmAddress (picker) {
-        this.address = picker.getValues()
-      },
-
-      onAddressChange (picker, value) {
-        picker.setSlotValues(1, getCities(value[0]))
-        picker.setSlotValues(2, getAreas(value[0], value[1]))
-      },
-
-      confirmTimePicker (picker) {
-        this.time = picker.getValues()
-      },
-      confirmTime24Picker (picker) {
-        this.time24 = picker.getValues()
-      },
-
-      onTimePickerChange (picker, value) {
-        console.log(value)
-      },
-
-      confirmDatePicker (picker) {
-        this.date = picker.getValues()
-      },
-
-      onDatePickerChange (picker, val) {
-        console.log(val)
-      },
-
-      confirmDatetimePicker (picker) {
-        this.datetime = picker.getValues()
-      },
-
-      onDatetimePickerChange (picker, val) {
-        console.log(val)
+    labelKeyPickerValueFilter(val) {
+      if (val !== null) {
+        return val[0].text;
+      } else {
+        return "请选择";
       }
     },
 
-    filters: {
-      pickerValueFilter (val) {
-        if (Array.isArray(val)) {
-          return val.toString()
-        } else {
-          return '请选择'
-        }
-      },
-
-      labelKeyPickerValueFilter (val) {
-        if (val !== null) {
-          return val[0].text
-        } else {
-          return '请选择'
-        }
-      },
-
-      dateValueFilter (val) {
-        var values = []
-        if (Array.isArray(val)) {
-          val.forEach((obj) => {
-            if (obj.text)
-              values.push(obj.text)
-            else
-              values.push(obj)
-          })
-          return values.toString()
-        } else {
-          return '请选择'
-        }
+    dateValueFilter(val) {
+      var values = [];
+      if (Array.isArray(val)) {
+        val.forEach(obj => {
+          if (obj.text) values.push(obj.text);
+          else values.push(obj);
+        });
+        return values.toString();
+      } else {
+        return "请选择";
       }
     }
   }
+};
 </script>
 
 <style scoped>
-  img {
-    position: fixed;
-    z-index: 1000000000000000000000000000;
-  }
+img {
+  position: fixed;
+  z-index: 1000000000000000000000000000;
+}
 </style>
 
