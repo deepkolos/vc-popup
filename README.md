@@ -365,6 +365,11 @@ body > *:first-child{
 [popup-datetime-picker's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-datetime-picker/readme.md)\
 [popup-effect-tile-press's readme](https://github.com/deepkolos/vc-popup/blob/master/packages/popup-effect-tile-press/readme.md)
 
+## 已知问题
+如果项目需要支持IOS7/8, 在使用picker的时候, 需要添加Object.values的polyfill
+可以参考[http://babeljs.io/docs/usage/polyfill/](http://babeljs.io/docs/usage/polyfill/)
+或者[MDN's Object.values](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/values)
+
 ## 拓展
 
 [在已有项目中自定义一个popup](https://github.com/deepkolos/vc-popup/blob/master/doc/create-a-custom-popup.md)

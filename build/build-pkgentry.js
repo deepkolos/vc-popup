@@ -69,6 +69,9 @@ function build_install(popupName){
   })
   
 
+  if (fs.existsSync(p(`../packages/${popupName}/install.js`)))
+    fs.unlinkSync(p(`../packages/${popupName}/install.js`))
+  
   fs.writeFileSync(p(`../packages/${popupName}/install.js`), template);
   // 后面估计需要使用一些走异步加快构建速度了
 }

@@ -30,6 +30,7 @@
 
 <script>
   import chinaAreaData from 'china-area-data'
+  //import 'babel-polyfill' // 如果项目需要支持IOS7/8 则需要添加该依赖
 
   let provinces = Object.values(chinaAreaData[86])
 

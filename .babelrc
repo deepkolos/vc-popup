@@ -1,12 +1,3 @@
 {
-  "presets": ["env"],
-  "env": {
-    "test": {
-      "presets": ["env"],
-      "plugins": ["istanbul"]
-    },
-    "production": {
-      "presets": ["env"]
-    }
-  }
+  "presets": ["env"]
 }

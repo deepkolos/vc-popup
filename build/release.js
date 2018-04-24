@@ -50,7 +50,7 @@ utils.mapPkgList(function (subDir) {
   setVer(`../packages/${subDir}/package.json`, newPkgVer)
 })
 
-exec(`yarn build:entry && yarn module && yarn packages`)
+exec(`yarn build:entry && yarn build:pkgentry && yarn base && yarn module && yarn packages`)
 setTimeout(function(){
   exec(`git add -A`)
   exec(`git commit -m "[release] v${newModuleVer}"`)
