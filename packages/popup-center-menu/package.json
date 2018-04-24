@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-center-menu",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "vc-popup-center-menu",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.11"
+    "vc-popup-base": "^0.1.12"
   }
 }
