@@ -46,7 +46,7 @@ this.dialog.close()
 {
   e: Object // 从open(e, {})传进来的e
   onCancel: Function,
-  onComfrim: Function,
+  onConfirm: Function,
 
   skin: {
     type: String,

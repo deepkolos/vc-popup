@@ -33,7 +33,8 @@
         default: null
       },
       onCancel: Function,
-      onComfrim: Function,
+      onConfirm: Function,
+      onComfrim: Function, // 由于之前拼写错误, 但为了向下兼容
 
       //原本
       skin: {
@@ -97,6 +98,8 @@
       },
 
       confirmClick () {
+        if (typeof this.onConfirm === 'function')
+          this.onConfirm()
         if (typeof this.onComfrim === 'function')
           this.onComfrim()
         this.close()
