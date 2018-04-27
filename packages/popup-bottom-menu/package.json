@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-bottom-menu",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "vc-popup-bottom-menu",
   "main": "index.js",
   "keywords": [
@@ -15,6 +15,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.12"
+    "vc-popup-base": "^0.1.13"
   }
 }
