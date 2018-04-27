@@ -1,5 +1,5 @@
 
-const version = '0.1.12'
+const version = '0.1.13'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(require('vc-popup-base'))
