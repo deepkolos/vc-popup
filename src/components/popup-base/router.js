@@ -117,38 +117,33 @@ var Router = {
     if (command[0] === '&') {
       var currentParams = this.getUrlParams(location.hash)
       var params = this.getUrlParams('?' + command.slice(1))
+      var href = location.href
+      var hash = location.hash
       for (var p in params) {
         currentParams[p] = params[p]
       }
 
       command = arrToUrlArg(currentParams)
 
-      if (location.hash.indexOf('?') !== -1) {
-        command = location.href.slice(0, location.href.indexOf('#')) +
-          location.hash.slice(0, location.hash.indexOf('?')) +
-          command
-      } else if (location.href.indexOf('#') !== -1) {
-        command = location.href.slice(0, location.href.indexOf('#')) +
-        location.hash +
-        command
-      } else if (location.hash === '') {
-        command = location.href + '#' + command
+      if (hash.indexOf('?') !== -1) {
+        command = href.slice(0, href.indexOf('#')) + hash.slice(0, hash.indexOf('?')) + command
+      } else if (href.indexOf('#') !== -1) {
+        command = href.slice(0, href.indexOf('#')) + (hash || '#') + command
+      } else if (hash === '') {
+        command = href + '#' + command
       }
     } else if (command[0] === '?') {
-      if (location.hash.indexOf('?') !== -1) {
-        command = location.href.slice(0, location.href.indexOf('#')) +
-          location.hash.slice(0, location.hash.indexOf('?')) +
-          command
-      } else if (location.href.indexOf('#') !== -1) {
-        command = location.href.slice(0, location.href.indexOf('#')) +
-          location.hash +
-          command
-      } else if (location.hash === '') {
-        command = location.href + '#' + command
+      if (hash.indexOf('?') !== -1) {
+        command = href.slice(0, href.indexOf('#')) + hash.slice(0, hash.indexOf('?')) + command
+      } else if (href.indexOf('#') !== -1) {
+        command = href.slice(0, href.indexOf('#')) + hash + command
+      } else if (hash === '') {
+        command = href + '#' + command
       }
     }
 
     location.href = command
+    // window.history.replaceState({}, null, command)
     return true
   },
 
@@ -157,6 +152,10 @@ var Router = {
   },
 
   initialParam (paramName) {
+    // 修复显示两个##问题
+    if (location.href.indexOf('#') !== 1 && location.hash === '')
+      return
+
     var params = this.getUrlParams(location.hash)
 
     delete params[paramName]
