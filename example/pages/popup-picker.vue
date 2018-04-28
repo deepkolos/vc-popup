@@ -1,93 +1,92 @@
 <template>
-  <div class="page" ref="page">
-    <div class="title">选择器示例</div>
-    <div class="cell" @click="ticketPickerClick">
+  <div class='page' ref='page'>
+    <div class='title'>选择器示例</div>
+    <div class='cell' @click='ticketPickerClick'>
       单列选择<span>{{ticket | pickerValueFilter}}</span></div>
-    <div class="cell" @click="dayPickerClick">
+    <div class='cell' @click='dayPickerClick'>
       多列选择<span>{{dayAndTime | pickerValueFilter}}</span></div>
-    <div class="cell" @click="addressPickerClick">
+    <div class='cell' @click='addressPickerClick'>
       联动选择<span>{{address | pickerValueFilter}}</span></div>
-    <div class="cell" @click="labelKeyPickerClick">
+    <div class='cell' @click='labelKeyPickerClick'>
       导入label-key的形式<span>{{labelKey | labelKeyPickerValueFilter}}</span></div>
 
-    <div class="title">日期选择器示例</div>
-    <div class="cell" @click="timePickerClick">
+    <div class='title'>日期选择器示例</div>
+    <div class='cell' @click='timePickerClick'>
       时间<span>{{time | dateValueFilter}}</span></div>
-    <div class="cell" @click="time24PickerClick()">
+    <div class='cell' @click='time24PickerClick ()'>
       时间(24h)<span>{{time24 | dateValueFilter}}</span></div>
-    <div class="cell" @click="time24PickerClick(true)">
+    <div class='cell' @click='time24PickerClick (true)'>
       时间(24h, 显示区分符)<span>{{time24 | dateValueFilter}}</span></div>
-    <div class="cell" @click="datePickerClick">
+    <div class='cell' @click='datePickerClick'>
       日期<span>{{date | dateValueFilter}}</span></div>
-    <div class="cell" @click="datetimePickerClick(false, true)">
+    <div class='cell' @click='datetimePickerClick (false, true)'>
       日期时间<span>{{datetime | dateValueFilter}}</span></div>
-    <div class="cell" @click="datetimePickerClick(true, false)">
+    <div class='cell' @click='datetimePickerClick (true, false)'>
       无单位<span>{{datetime | dateValueFilter}}</span></div>
-    <div class="cell" @click="datetimePickerLimitClick">
+    <div class='cell' @click='datetimePickerLimitClick'>
       指定范围<span>{{datetime | dateValueFilter}}</span></div>
   </div>
 </template>
 
 <script>
-import chinaAreaData from "china-area-data";
+import chinaAreaData from 'china-area-data'
 //import 'babel-polyfill' // 如果项目需要支持IOS7/8 则需要添加该依赖
 // 或者使用MDN的polyfill
 if (!Object.values)
-  Object.values = function(obj) {
+  Object.values = function (obj) {
     if (obj !== Object(obj))
-      throw new TypeError("Object.values called on a non-object");
-    var val = [],
-      key;
+      throw new TypeError('Object.values called on a non-object')
+    var val = [], key
     for (key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        val.push(obj[key]);
+        val.push(obj[key])
       }
     }
-    return val;
-  };
+    return val
+  }
 
-let provinces = Object.values(chinaAreaData[86]);
+let provinces = Object.values(chinaAreaData[86])
 
 // 获取某一省下的市
-function getCities(province) {
-  let provinceCode;
+function getCities (province) {
+  let provinceCode
   for (let i in chinaAreaData[86]) {
     if (province === chinaAreaData[86][i]) {
-      provinceCode = i;
-      break;
+      provinceCode = i
+      break
     }
   }
 
-  return Object.values(chinaAreaData[provinceCode]);
+  return Object.values(chinaAreaData[provinceCode])
 }
 
 // 获取某一市下的区/县
-function getAreas(province, city) {
-  let provinceCode, cityCode;
+function getAreas (province, city) {
+  let provinceCode, cityCode
   for (let i in chinaAreaData[86]) {
     if (province === chinaAreaData[86][i]) {
-      provinceCode = i;
-      break;
+      provinceCode = i
+      break
     }
   }
 
   for (let i in chinaAreaData[provinceCode]) {
     if (city === chinaAreaData[provinceCode][i]) {
-      cityCode = i;
-      break;
+      cityCode = i
+      break
     }
   }
 
   if (chinaAreaData[cityCode]) {
-    return Object.values(chinaAreaData[cityCode]);
+    return Object.values(chinaAreaData[cityCode])
   } else {
     // 只有两级的情况
-    return [];
+    return []
   }
 }
 
 export default {
-  data() {
+  data () {
     return {
       ticket: null,
       dayAndTime: null,
@@ -101,38 +100,38 @@ export default {
         {
           values: [
             {
-              text: "值0",
+              text: '值0',
               value: 0, //可以附带其他值
-              str: "0"
+              str: '0'
             },
             {
-              text: "值1",
+              text: '值1',
               value: 1,
-              str: "1"
+              str: '1'
             },
             {
-              text: "值2",
+              text: '值2',
               value: 2,
-              str: "2"
+              str: '2'
             }
           ],
-          labelKey: "text",
+          labelKey: 'text',
           defaultIndex: 2
         }
       ],
       ticketSlots: [
         {
-          values: ["汽车票", "飞机票", "火车票", "轮船票", "其它"],
+          values: ['汽车票', '飞机票', '火车票', '轮船票', '其它'],
           defaultIndex: 2
         }
       ],
       daySlots: [
         {
-          values: ["星期一", "星期二", "星期三", "星期四", "星期五"],
+          values: ['星期一', '星期二', '星期三', '星期四', '星期五'],
           defaultIndex: 0
         },
         {
-          values: ["上午", "下午"],
+          values: ['上午', '下午'],
           defaultIndex: 0
         }
       ],
@@ -147,30 +146,30 @@ export default {
           values: []
         }
       ]
-    };
+    }
   },
 
-  created() {
+  created () {
     this.labelKeyPicker = new this.$popup.Picker({
       propsData: {
         slots: this.labelKeySlots,
         onConfirm: this.confirmLabelKey
       }
-    });
+    })
 
     this.ticketPicker = new this.$popup.Picker({
       propsData: {
         slots: this.ticketSlots,
         onConfirm: this.confirmTicket
       }
-    });
+    })
 
     this.dayPicker = new this.$popup.Picker({
       propsData: {
         slots: this.daySlots,
         onConfirm: this.confirmDayTime
       }
-    });
+    })
 
     this.addressPicker = new this.$popup.Picker({
       propsData: {
@@ -178,190 +177,190 @@ export default {
         onConfirm: this.confirmAddress,
         onChange: this.onAddressChange
       }
-    });
+    })
 
     this.timePicker = new this.$popup.DatetimePicker({
       propsData: {
-        mode: "time",
+        mode: 'time',
         use12Hours: true,
         onConfirm: this.confirmTimePicker,
         onChange: this.onTimePickerChange
       }
-    });
+    })
 
     this.datePicker = new this.$popup.DatetimePicker({
       propsData: {
-        mode: "date",
+        mode: 'date',
         onConfirm: this.confirmDatePicker,
         onChange: this.onDatePickerChange
       }
-    });
+    })
 
     this.datetimePicker = new this.$popup.DatetimePicker({
       propsData: {
-        mode: "datetime",
+        mode: 'datetime',
         onConfirm: this.confirmDatetimePicker,
         onChange: this.onDatetimePickerChange
       }
-    });
+    })
   },
 
   methods: {
-    labelKeyPickerClick(e) {
+    labelKeyPickerClick (e) {
       this.labelKeyPicker.open(e, {
         propsData: {
           defaultValues: this.labelKey
         }
-      });
+      })
     },
-    ticketPickerClick(e) {
+    ticketPickerClick (e) {
       this.ticketPicker.open(e, {
         propsData: {
           defaultValues: this.ticket
         }
-      });
+      })
     },
-    dayPickerClick(e) {
+    dayPickerClick (e) {
       this.dayPicker.open(e, {
         propsData: {
           defaultValues: this.dayAndTime
         }
-      });
+      })
     },
-    addressPickerClick(e) {
+    addressPickerClick (e) {
       this.addressPicker.open(e, {
         propsData: {
           defaultValues: this.address
         }
-      });
+      })
     },
-    timePickerClick(e) {
+    timePickerClick (e) {
       this.timePicker.open(e, {
         propsData: {
           defaultValues: this.time
         }
-      });
+      })
     },
-    datePickerClick(e) {
+    datePickerClick (e) {
       this.datePicker.open(e, {
         propsData: {
           defaultValues: this.date
         }
-      });
+      })
     },
-    datetimePickerClick(showDivider, showUnit) {
+    datetimePickerClick (showDivider, showUnit) {
       this.datetimePicker.open(null, {
         propsData: {
           use12Hours: false,
           showDivider: showDivider,
           showUnit: showUnit
         }
-      });
+      })
     },
-    time24PickerClick(showDivider) {
+    time24PickerClick (showDivider) {
       this.timePicker.open(null, {
         propsData: {
           use12Hours: false,
           onConfirm: this.confirmTime24Picker,
           showDivider: showDivider
         }
-      });
+      })
     },
-    datetimePickerLimitClick() {
+    datetimePickerLimitClick () {
       this.datetimePicker.open(null, {
         propsData: {
           use12Hours: false,
           minDate: new Date(2015, 10, 7, 5, 20),
           maxDate: new Date(2018, 10, 7, 5, 20)
         }
-      });
+      })
     },
 
-    onChange(picker, value) {
-      console.log(value);
+    onChange (picker, value) {
+      console.log(value)
     },
 
-    confirmLabelKey(picker) {
-      this.labelKey = picker.getValues();
-      console.log(this.labelKey);
+    confirmLabelKey (picker) {
+      this.labelKey = picker.getValues()
+      console.log(this.labelKey)
     },
 
-    confirmTicket(picker) {
-      this.ticket = picker.getValues();
+    confirmTicket (picker) {
+      this.ticket = picker.getValues()
     },
 
-    confirmDayTime(picker) {
-      this.dayAndTime = picker.getValues();
+    confirmDayTime (picker) {
+      this.dayAndTime = picker.getValues()
     },
 
-    confirmAddress(picker) {
-      this.address = picker.getValues();
+    confirmAddress (picker) {
+      this.address = picker.getValues()
     },
 
-    onAddressChange(picker, value) {
-      picker.setSlotValues(1, getCities(value[0]));
-      picker.setSlotValues(2, getAreas(value[0], value[1]));
+    onAddressChange (picker, value) {
+      picker.setSlotValues(1, getCities(value[0]))
+      picker.setSlotValues(2, getAreas(value[0], value[1]))
     },
 
-    confirmTimePicker(picker) {
-      this.time = picker.getValues();
+    confirmTimePicker (picker) {
+      this.time = picker.getValues()
     },
-    confirmTime24Picker(picker) {
-      this.time24 = picker.getValues();
-    },
-
-    onTimePickerChange(picker, value) {
-      console.log(value);
+    confirmTime24Picker (picker) {
+      this.time24 = picker.getValues()
     },
 
-    confirmDatePicker(picker) {
-      this.date = picker.getValues();
+    onTimePickerChange (picker, value) {
+      console.log(value)
     },
 
-    onDatePickerChange(picker, val) {
-      console.log(val);
+    confirmDatePicker (picker) {
+      this.date = picker.getValues()
     },
 
-    confirmDatetimePicker(picker) {
-      this.datetime = picker.getValues();
+    onDatePickerChange (picker, val) {
+      console.log(val)
     },
 
-    onDatetimePickerChange(picker, val) {
-      console.log(val);
+    confirmDatetimePicker (picker) {
+      this.datetime = picker.getValues()
+    },
+
+    onDatetimePickerChange (picker, val) {
+      console.log(val)
     }
   },
 
   filters: {
-    pickerValueFilter(val) {
+    pickerValueFilter (val) {
       if (Array.isArray(val)) {
-        return val.toString();
+        return val.toString()
       } else {
-        return "请选择";
+        return '请选择'
       }
     },
 
-    labelKeyPickerValueFilter(val) {
+    labelKeyPickerValueFilter (val) {
       if (val !== null) {
-        return val[0].text;
+        return val[0].text
       } else {
-        return "请选择";
+        return '请选择'
       }
     },
 
-    dateValueFilter(val) {
-      var values = [];
+    dateValueFilter (val) {
+      var values = []
       if (Array.isArray(val)) {
         val.forEach(obj => {
-          if (obj.text) values.push(obj.text);
-          else values.push(obj);
-        });
-        return values.toString();
+          if (obj.text) values.push(obj.text)
+          else values.push(obj)
+        })
+        return values.toString()
       } else {
-        return "请选择";
+        return '请选择'
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -370,4 +369,3 @@ img {
   z-index: 1000000000000000000000000000;
 }
 </style>
-

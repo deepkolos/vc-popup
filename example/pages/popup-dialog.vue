@@ -6,6 +6,7 @@
     <div class="cell" @click="showDialog('android', false)">Android Dialog 无标题</div>
     <div class="cell" @click="showDialog('iosNative', true, '标题')">IOS Native Dialog</div>
     <div class="cell" @click="showDialog('lol', true, '标题')">LOL皮肤 Dialog</div>
+    <div class="cell" @click="showDialog('lol', true, 'onConfirm里设置href')">onConfrim里设置href</div>
   </div>
 </template>
 
@@ -25,7 +26,12 @@
           propsData: {
             skin: skin,
             title: title,
-            showCancelBtn: showCancelBtn
+            showCancelBtn: showCancelBtn,
+            onConfirm: _ => {
+              if (title === 'onConfirm里设置href') {
+                location.href = 'https://ziranzhi.com/'
+              }
+            }
           }
         })
       }
