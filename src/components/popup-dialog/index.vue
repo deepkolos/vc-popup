@@ -92,23 +92,21 @@
     },
 
     methods: {
-
       close () {
         this.$popupCtrl.close()
       },
 
       confirmClick () {
+        this.close()
         if (typeof this.onConfirm === 'function')
-          this.onConfirm()
+        this.onConfirm()
         if (typeof this.onComfrim === 'function')
           this.onComfrim()
-        this.close()
       },
 
       cancelClick () {
-        if (typeof this.onCancel === 'function')
-          this.onCancel()
         this.close()
+        this.onCancel()
       }
 
     }
