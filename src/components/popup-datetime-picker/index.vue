@@ -238,13 +238,17 @@
 
     methods: {
       _cancel (e) {
-        this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
         this.$popupCtrl.close()
+        setTimeout(() => {
+          this.onCancel instanceof Function && this.onCancel(this.$refs.picker)
+        }, 0)
       },
 
       _confirm (e) {
-        this.onConfirm instanceof Function && this.onConfirm(this.$refs.picker)
         this.$popupCtrl.close()
+        setTimeout(() => {
+          this.onConfirm instanceof Function && this.onConfirm(this.$refs.picker)
+        }, 0)
       },
 
       _onChange (picker, val) {

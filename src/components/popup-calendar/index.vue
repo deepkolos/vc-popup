@@ -187,6 +187,8 @@
       },
 
       _confirm () {
+        this._close()
+
         function parseTimeHour (time) {
           return time[2] === '下午'
                  ? parseInt(time[0], 10) + 12
@@ -227,10 +229,10 @@
               this.onConfirmLeaved(start, end) //不传递observable的对象感觉设置的时候会报错什么的
           }
 
-          this.onConfirm instanceof Function &&
+          setTimeout(() => {
+            this.onConfirm instanceof Function &&
             this.onConfirm(start, end)
-
-          this._close()
+          }, 0)
         }
       },
 
