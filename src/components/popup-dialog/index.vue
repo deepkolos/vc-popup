@@ -98,15 +98,19 @@
 
       confirmClick () {
         this.close()
-        if (typeof this.onConfirm === 'function')
-        this.onConfirm()
-        if (typeof this.onComfrim === 'function')
-          this.onComfrim()
+        setTimeout(function(){
+          if (typeof this.onConfirm === 'function')
+          this.onConfirm()
+          if (typeof this.onComfrim === 'function')
+            this.onComfrim()
+        }, 1)
       },
 
       cancelClick () {
         this.close()
-        this.onCancel()
+        setTimeout(function(){
+          this.onCancel()
+        }, 1)
       }
 
     }
