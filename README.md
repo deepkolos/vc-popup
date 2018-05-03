@@ -48,6 +48,14 @@ import PopUp from 'vc-popup'
 import 'vc-popup/lib/style.css'
 
 Vue.use(PopUp)
+
+// 通过这样来部分引入
+import Picker from 'vc-popup/packages/popup-picker'
+
+// 或者yarn add vc-popup-[子包名]之后
+import Picker from 'vc-popup-picker'
+
+Vue.use(Picker)
 ...
 ```
 
