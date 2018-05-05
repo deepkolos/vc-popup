@@ -15,6 +15,7 @@
     <div class="cell" @click="click4">磁贴按压效果</div>
     <div class="cell" @click="click10">foldZoom</div>
     <div class="cell" @click="click11">jelly</div>
+    <div class="cell" @click="click12">donna</div>
 
     <div class="title">定位设置示例</div>
     <div class="cell" @click="click6">不锁定滚动(默认锁定滚动, 通过overflow:hidden来实现的)</div>
@@ -296,6 +297,15 @@
           animation: {
             in: 'vc-animation-jelly-in',
             out: 'vc-animation-jelly-out'
+          }
+        })
+      },
+
+      click12 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            in: 'vc-animation-donna-left-in',
+            out: 'vc-animation-donna-right-out'
           }
         })
       },
