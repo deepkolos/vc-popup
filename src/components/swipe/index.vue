@@ -13,7 +13,7 @@
 
 <script>
   import { once } from '../../utils/dom.js'
-  import { swipeDirective } from 'vue-swipe-directive'
+  import swipeDirective from 'vue-swipe-directive'
 
   export default {
     name: 'vc-swipe',

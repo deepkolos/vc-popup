@@ -20,7 +20,7 @@
   import VcSwipe from '../swipe'
   import VcSwipeItem from '../swipe-item'
   import swipeDirective from 'vue-swipe-directive'
-
+  
   export default {
     name: 'vc-popup-img-viewer',
 

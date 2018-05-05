@@ -2,3 +2,5 @@ node_modules/
 lib/*.js
 packages/*/index.js
 build/*
+src/utils/snap.svg.js
+src/utils/eve.js

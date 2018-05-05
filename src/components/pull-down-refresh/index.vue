@@ -17,7 +17,7 @@
 
 <script>
   import { throttle } from '../../utils/utils'
-  import { swipeDirective } from 'vue-swipe-directive'
+  import swipeDirective from 'vue-swipe-directive'
 
   export default {
     name: 'vc-pull-down-refresh',

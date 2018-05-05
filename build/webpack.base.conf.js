@@ -24,7 +24,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('example'),
-      'vc-popup-base': resolve('packages/popup-base/index.js')
+      'vc-popup-base': resolve('packages/popup-base/index.js'),
+      'snapsvg': resolve('src/utils/snap.svg.js'),
+      'eve': resolve('src/utils/eve.js')
     }
   },
   module: {
