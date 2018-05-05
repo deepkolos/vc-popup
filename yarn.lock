@@ -6479,9 +6479,9 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
-vc-popup-base@^0.1.17:
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/vc-popup-base/-/vc-popup-base-0.1.17.tgz#80d9df3749dfd1de73efc97bfc6dce1e50b6495c"
+vc-popup-base@^0.1.18:
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/vc-popup-base/-/vc-popup-base-0.1.18.tgz#a54aa35b3be448d6b230122c329906df49a45c26"
 
 vendors@^1.0.0:
   version "1.0.1"
@@ -6545,9 +6545,9 @@ vue-style-loader@^3.0.0, vue-style-loader@^3.0.3:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-swipe-directive@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/vue-swipe-directive/-/vue-swipe-directive-0.1.2.tgz#9cbcc0c2e3ebf99cce10dab298c31d0895463e83"
+vue-swipe-directive@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/vue-swipe-directive/-/vue-swipe-directive-0.1.3.tgz#b5c37776884f83b9fc7def5b1b0f7e2d03a87408"
 
 vue-template-compiler@^2.5.2:
   version "2.5.13"

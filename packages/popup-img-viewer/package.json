@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-img-viewer",
-  "version": "0.1.18",
+  "version": "1.1.19",
   "description": "vc-popup-img-viewer",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.18"
+    "vc-popup-base": "^1.1.19"
   }
 }
