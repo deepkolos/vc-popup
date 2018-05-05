@@ -1,6 +1,6 @@
 <template>
   <div style="position: relative;">
-  <div class="morph-shape" ref="morph"
+  <div class="effect-fold-zoom-svg-morph-shape" ref="morph"
     data-morph-open="M0,0h80c0,0,0,9.977,0,29.834c0,19.945,0,30.249,0,30.249H0c0,0,0-10.055,0-30.332C0,8.219,0,0,0,0z"
     data-morph-close="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
 	C3.084,29.762,0,29.75,0,29.75z">
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style>
-.morph-shape {
+.effect-fold-zoom-svg-morph-shape {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -38,7 +38,7 @@ export default {
 	z-index: -1;
 }
 
-.morph-shape svg {
+.effect-fold-zoom-svg-morph-shape svg {
 	fill: #fff;
 }
 </style>
