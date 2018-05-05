@@ -13,6 +13,8 @@
     <div class="cell" @click="click7">turbulenceOut</div>
     <div class="cell" @click="click3">背景模糊(设置#app的blur)</div>
     <div class="cell" @click="click4">磁贴按压效果</div>
+    <div class="cell" @click="click10">foldZoom</div>
+    <div class="cell" @click="click11">jelly</div>
 
     <div class="title">定位设置示例</div>
     <div class="cell" @click="click6">不锁定滚动(默认锁定滚动, 通过overflow:hidden来实现的)</div>
@@ -270,6 +272,30 @@
             init: 'vc-zoom-init',
             in: 'vc-zoom-in',
             out: 'vc-zoom-out'
+          }
+        })
+      },
+
+      click10 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            in: {
+              effect: 'foldZoom'
+              // bgColor: 'red'
+            },
+            out: {
+              effect: 'foldZoom'
+              // bgColor: 'blue'
+            }
+          }
+        })
+      },
+
+      click11 (e) {
+        this.bottomMenu.open(e, {
+          animation: {
+            in: 'vc-animation-jelly-in',
+            out: 'vc-animation-jelly-out'
           }
         })
       },

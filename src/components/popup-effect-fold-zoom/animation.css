@@ -1,0 +1,38 @@
+.vc-effect-fold-zoom-in.vc-effect-fold-zoom-inital {
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+}
+
+.vc-effect-fold-zoom-in {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+}
+
+.vc-effect-fold-zoom-out {
+  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+}
+
+.vc-effect-fold-zoom-animation {
+	transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.6,0,0.4,1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.vc-effect-fold-zoom-inner-in.vc-effect-fold-zoom-inner-init {
+	opacity: 0;
+	transform: scale3d(0.7, 0.5, 1);
+}
+
+.vc-effect-fold-zoom-inner-in {
+	opacity: 1;
+	transform: scale3d(1, 1, 1);
+	transition: opacity 0.3s, transform 0.3s;
+	transition-delay: 0.2s!important;
+}
+
+.vc-effect-fold-zoom-inner-out {
+	opacity: 0;
+	transform: scale3d(0.7, 0.5, 1);
+	transition: opacity 0.3s, transform 0.3s;
+}

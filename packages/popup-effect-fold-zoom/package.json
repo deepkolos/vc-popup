@@ -1,0 +1,19 @@
+{
+  "name": "vc-popup-effect-fold-zoom",
+  "version": "0.1.16",
+  "description": "vc-popup-effect-fold-zoom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo hasn't write test~"
+  },
+  "keywords": [
+    "vue",
+    "popup",
+    "popup-effect-fold"
+  ],
+  "author": "deepkolos",
+  "license": "MIT",
+  "dependencies": {
+    "vc-popup-base": "^0.1.16"
+  }
+}

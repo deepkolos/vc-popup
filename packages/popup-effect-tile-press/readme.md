@@ -1,5 +1,5 @@
 
-## vc-popup-effect-tile-press
+## vc-popup-effect-fold
 
 -----
 
@@ -8,14 +8,14 @@ wp的磁贴按压效果
 ### 添加依赖
 
 ```shell
-> yarn add vc-popup-effect-tile-press || npm i vc-popup-effect-tile-press || cnpm i vc-popup-effect-tile-press --by=yarn
+> yarn add vc-popup-effect-fold || npm i vc-popup-effect-fold || cnpm i vc-popup-effect-fold --by=yarn
 ```
 
 ### 引入
 
 ```javascript
 import Vue from 'vue'
-import tilePress from 'vc-popup-effect-tile-press'
+import tilePress from 'vc-popup-effect-fold'
 // 这里名字可以随意
 
 Vue.use(tilePress)

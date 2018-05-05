@@ -26,9 +26,7 @@
 
 <style lang="scss">
   .vc-popup-bottom-menu {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    background: white;
     width: 100vw;
     height: auto;
     transition: all 250ms ease 0s;
@@ -37,7 +35,6 @@
   }
 
   .vc-popup-bottom-menu-li {
-    background: white;
     padding: 0 21px;
     font-size: 16px;
     width: calc(100vw - 21px*2);

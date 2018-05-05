@@ -183,10 +183,10 @@ body > *:first-child{
     default: 'center',
 
     // 相对于视窗的各边的距离, 支持负数,百分比
-    // 如果top, buttom同时为undefined, 设置为居中
+    // 如果top, bottom同时为undefined, 设置为居中
     positionConfig: {
       top:    Number | undefined,
-      buttom: Number | undefined,
+      bottom: Number | undefined,
       left:   Number | undefined,
       right:  Number | undefined
     }

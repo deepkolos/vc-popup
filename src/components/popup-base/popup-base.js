@@ -61,8 +61,7 @@ let popupBase = {
     this.vmBase.positionType = config.positionType
 
     if (config.positionType === 'absolute') {
-      $slotContainer.style.marginTop = window.scrollY + 'px'
-      $slotContainer.style.marginLeft = window.scrollX + 'px'
+      $slotContainer.style.webkitTransform = `translate(${window.scrollX}px, ${window.scrollY}px)`
     }
 
     if (position === 'center' || position === undefined) {

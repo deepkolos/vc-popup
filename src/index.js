@@ -8,6 +8,7 @@ import PopupPicker from '../packages/popup-picker/install'
 import PopupCalendar from '../packages/popup-calendar/install'
 import PopupDatetimePicker from '../packages/popup-datetime-picker/install'
 import PopupEffectTilePress from '../packages/popup-effect-tile-press/install'
+import PopupEffectFoldZoom from '../packages/popup-effect-fold-zoom/install'
 
 const version = '1.1.15'
 const install = function (Vue, config = {}) {
@@ -22,6 +23,7 @@ const install = function (Vue, config = {}) {
   Vue.use(PopupCalendar)
   Vue.use(PopupDatetimePicker)
   Vue.use(PopupEffectTilePress)
+  Vue.use(PopupEffectFoldZoom)
 }
 
 // auto install
