@@ -94,7 +94,9 @@ webpackConfig.resolve = {
   extensions: ['.js', '.vue', '.json'],
   alias: {
     'vue$': 'vue/dist/vue.esm.js',
-    '@': path.resolve(__dirname, '../example')
+    '@': path.resolve(__dirname, '../example'),
+    'snapsvg': path.resolve(__dirname,'../src/utils/snap.svg.js'),
+    'eve': path.resolve(__dirname,'../src/utils/eve.js')
   }
 }
 
