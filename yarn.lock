@@ -6479,9 +6479,9 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
-vc-popup-base@^0.1.18:
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/vc-popup-base/-/vc-popup-base-0.1.18.tgz#a54aa35b3be448d6b230122c329906df49a45c26"
+vc-popup-base@^0.1.19:
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/vc-popup-base/-/vc-popup-base-0.1.19.tgz#eaf9dc9fd198864c17ab4fd007e71b1311707580"
 
 vendors@^1.0.0:
   version "1.0.1"

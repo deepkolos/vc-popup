@@ -9,6 +9,9 @@ var defaultConfig = {
     init: 'vc-slide-up-init',
     in: 'vc-slide-up-in',
     out: 'vc-slide-up-out'
+  },
+  position: {
+    bottom: 0
   }
 }
 

@@ -398,9 +398,6 @@
 
 <style lang="scss">
   .vc-picker{
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100vw;
     height: auto;
     transition: all 250ms ease 0s;

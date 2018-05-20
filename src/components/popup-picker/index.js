@@ -5,12 +5,13 @@ var popupConfig = {
 }
 
 var defaultConfig = {
-  autoSetOrthocenter: true,
-  position: 'domRelative',
   animation: {
     init: 'vc-slide-up-init',
     in: 'vc-slide-up-in',
     out: 'vc-slide-up-out'
+  },
+  position: {
+    bottom: 0
   }
 }
 
