@@ -91,7 +91,7 @@ var Router = {
     // 生成params部分
     hash += '?'
     for (var p in params) {
-      hash += `${p}=${params}&`
+      hash += `${p}=${params[p]}&`
     }
 
     return hash.slice(0, hash.length - 1)
