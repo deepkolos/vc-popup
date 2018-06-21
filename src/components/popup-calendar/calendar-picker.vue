@@ -127,7 +127,7 @@
       },
 
       _toTime (time) {
-        return +new Date(`${time.year}-${time.month}-${time.day}`).getTime()
+        return +new Date(`${time.year}/${time.month}/${time.day}`).getTime()
       },
 
       _setRange (start, end) {

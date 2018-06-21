@@ -254,7 +254,7 @@
     filters: {
       selectionFilter (selectedDate) {
         if (selectedDate) {
-          var date = new Date(`${selectedDate.year}-${selectedDate.month}-${selectedDate.day}`)
+          var date = new Date(`${selectedDate.year}/${selectedDate.month}/${selectedDate.day}`)
 
           return `${selectedDate.year}-${fixZero(selectedDate.month)}-${fixZero(selectedDate.day)} ${weekToZh[date.getDay()]}`
         }
