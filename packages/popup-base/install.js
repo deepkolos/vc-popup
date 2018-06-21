@@ -1,7 +1,7 @@
 
 import { popupRegister, effectRegister } from '../../src/components/popup-base'
 
-const version = '0.1.20'
+const version = '0.1.21'
 const install = function (Vue, config = {}) {
   if (install.installed) return
 
