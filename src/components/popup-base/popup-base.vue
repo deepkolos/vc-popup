@@ -99,6 +99,7 @@
       _maskPreventScroll (e) {
         this.isShowing === true &&
         this.runtimeConfig.lockScroll &&
+        this.$refs.base === e.target &&
           e.preventDefault()
       },
 
