@@ -1,6 +1,6 @@
 {
   "name": "vc-popup",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "vue popup components with power position and animation support and back key support as well",
   "author": "DeepKolos <k1206521365k@126.com>",
   "private": false,
