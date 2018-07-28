@@ -1,4 +1,11 @@
 
+## 使用vue-cli的template
+
+先cd到你的组件目录, 然后
+```shell
+vue init deepkolos/vc-popup-template my-popup
+```
+
 ## 在已有的项目里,自定义popup
 
 拿`vc-popup`的`example`举例, 其目录结构如下, 在`components`下来编写自定义的popup组件
