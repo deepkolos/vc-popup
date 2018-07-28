@@ -10,7 +10,7 @@ import PopupDatetimePicker from '../packages/popup-datetime-picker/install'
 import PopupEffectTilePress from '../packages/popup-effect-tile-press/install'
 import PopupEffectFoldZoom from '../packages/popup-effect-fold-zoom/install'
 
-const version = '1.1.22'
+const version = '1.1.23'
 const install = function (Vue, config = {}) {
   if (install.installed) return
   Vue.use(PopupBottomMenu)

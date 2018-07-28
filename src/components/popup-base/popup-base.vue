@@ -37,12 +37,13 @@
     },
 
     created () {
-      this.isShowing = null
+      this.isShowing = false
+      this.$animateDom = null
       this.afterEnterLocker = false
       this.afterLeaveLocker = false
-      this.$animateDom = null
-      this._removeAnimationEndListener = null
+      this._onOpenTimestamp = null
       this._animationConfigurable = null
+      this._removeAnimationEndListener = null
     },
 
     methods: {
@@ -105,6 +106,7 @@
 
       _addAnimationEndListener (callback, lock) {
         var $dom = this.$animateDom || this.$refs.slot
+        var safeBellTimer;
 
         this[lock] = false
 
@@ -122,11 +124,22 @@
         $dom.addEventListener('animationend',  onAnimationEnd)
         this.hasAnimationEndListener = true
 
+        if (callback === this._afterLeave && Date.now() - this._onOpenTimestamp < 200) {
+          // 快速关闭的时候, 会导致animationEnd不会触发
+          safeBellTimer = setTimeout(() => {
+            onAnimationEnd({
+              target: $dom
+            })
+          }, 200)
+        }
+
         this._removeAnimationEndListener = () => {
           if (this.hasAnimationEndListener) {
             $dom.removeEventListener('transitionend', onAnimationEnd)
             $dom.removeEventListener('animationend',  onAnimationEnd)
             this.hasAnimationEndListener = false
+
+            if (safeBellTimer) clearTimeout(safeBellTimer)
           }
         }
       },
@@ -165,6 +178,7 @@
       _enter () {
         this._beforeEnter()
         this.isShowing = true
+        this._onOpenTimestamp = Date.now()
       },
 
       _leave (callback) {

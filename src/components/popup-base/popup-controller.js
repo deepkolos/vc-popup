@@ -36,6 +36,7 @@ if (Vue.prototype.__popup__ !== undefined) {
     fromHashChange: false,
     fromUpdateRouter: false,
     popupInShowingNum: 0,
+    lastPageStatus: null,
 
     open (vmBase, routerId) {
       popupContainer.turnOn()
@@ -44,14 +45,18 @@ if (Vue.prototype.__popup__ !== undefined) {
       popupContainer.addPopup(vmBase.$el)
       vmBase._afterMount()
       this.updateRouter(routerId)
+      this.lastPageStatus = 'showing'
     },
 
     close (routerId) {
       var vmBase = vmBaseOfRouterId[routerId]
+      this.lastPageStatus = 'closing'
 
       vmBase && vmBase._leave(() => {
-        if (--this.popupInShowingNum === 0)
+        if (--this.popupInShowingNum === 0) {
           popupContainer.turnOff()
+          this.lastPageStatus = 'closed'
+        }
         this.destroyPopup(routerId)
       })
     },
@@ -98,6 +103,7 @@ if (Vue.prototype.__popup__ !== undefined) {
     }
   }
 
+  // 返回键
   Router.listenParam('popup', {
     onEnter (val) {
       if (Popup.fromUpdateRouter) {
@@ -126,6 +132,15 @@ if (Vue.prototype.__popup__ !== undefined) {
     onBack (val) {
 
     }
+  })
+
+  // esc键
+  var ESC_KEY_CODE = 27
+  window.addEventListener('keyup', function (e) {
+    e.keyCode === ESC_KEY_CODE &&
+      Popup.lastPageStatus === 'showing' &&
+        Popup.popupInShowingNum > 0 &&
+          history.back()
   })
 }
 
