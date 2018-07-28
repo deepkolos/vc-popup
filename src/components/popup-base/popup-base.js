@@ -34,7 +34,10 @@ let popupBase = {
   },
 
   close: function () {
-    this.vmBase.isShowing && history.back()
+    if (this.vmBase.isShowing) {
+      this.vmBase.isShowing = false
+      history.back()
+    }
   },
 
   configPosition: function (e) {

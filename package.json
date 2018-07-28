@@ -3,6 +3,7 @@
   "version": "1.1.22",
   "description": "vue popup components with power position and animation support and back key support as well",
   "author": "DeepKolos <k1206521365k@126.com>",
+  "repository": "https://github.com/deepkolos/vc-popup",
   "private": false,
   "main": "/lib/vc-popup.js",
   "style": "/lib/style.css",

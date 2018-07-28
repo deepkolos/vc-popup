@@ -100,7 +100,7 @@
         this.close()
         setTimeout(() => {
           if (typeof this.onConfirm === 'function')
-          this.onConfirm()
+            this.onConfirm()
           if (typeof this.onComfrim === 'function')
             this.onComfrim()
         }, 0)

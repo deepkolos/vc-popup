@@ -202,6 +202,7 @@
           this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
           this.$refs.slot.style.webkitTransitionDuration = ''
           this.getAnimateDom().style.webkitTransitionDuration = ''
+          this.getAnimateDom().classList.add('vc-popup-default-transition')
 
           this.setMaskOpacity(maskOpacity)
           maskBgColor && this.setMaskBgColor(maskBgColor)
@@ -346,10 +347,9 @@
           parseBoolean(cfg)
           parseString(cfg)
           parseObject(cfg)
-          isPowerByTransition &&
-            requestAnimationFrame(function () {
-              parseString(cfg, true)
-            })
+          isPowerByTransition && this.$nextTick(requestAnimationFrame(function () {
+            parseString(cfg, true)
+          }))
           cfg instanceof Array &&
             cfg.forEach(function (val) {
               parseString(val)
@@ -415,6 +415,10 @@
     position: relative;
     z-index: 0;
     height: 0;
+  }
+
+  .vc-popup-default-transition {
+    transition: all 280ms ease;
   }
 
   .vc-popup-mask {
