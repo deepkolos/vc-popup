@@ -212,14 +212,16 @@
           this.runtimeConfig.beforeEnter()
 
         this.getAnimateDom().style.webkitTransitionDuration = '0ms'
-        requestAnimationFrame(() => {
-          this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
-          this.$refs.slot.style.webkitTransitionDuration = ''
-          this.getAnimateDom().style.webkitTransitionDuration = ''
-          this.getAnimateDom().classList.add('vc-popup-default-transition')
+        this.$nextTick(() => {
+          requestAnimationFrame(() => {
+            this._addAnimationEndListener(this._afterEnter, 'afterEnterLocker')
+            this.$refs.slot.style.webkitTransitionDuration = ''
+            this.getAnimateDom().style.webkitTransitionDuration = ''
+            this.getAnimateDom().classList.add('vc-popup-default-transition')
 
-          this.setMaskOpacity(maskOpacity)
-          maskBgColor && this.setMaskBgColor(maskBgColor)
+            this.setMaskOpacity(maskOpacity)
+            maskBgColor && this.setMaskBgColor(maskBgColor)
+          })
         })
       },
 
@@ -361,9 +363,11 @@
           parseBoolean(cfg)
           parseString(cfg)
           parseObject(cfg)
-          isPowerByTransition && this.$nextTick(requestAnimationFrame(function () {
-            parseString(cfg, true)
-          }))
+          isPowerByTransition && this.$nextTick(function() {
+            requestAnimationFrame(function () {
+              parseString(cfg, true)
+            })
+          })
           cfg instanceof Array &&
             cfg.forEach(function (val) {
               parseString(val)

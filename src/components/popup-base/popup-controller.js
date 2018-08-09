@@ -32,6 +32,18 @@ if (Vue.prototype.__popup__ !== undefined) {
     popupContainer = containerInBody[0].__vue__
   }
 
+  // TODO: 提供全局常用方法来实现引用解耦
+  Vue.prototype.$popup = {}
+  Vue.prototype.$popup.prototype = {
+    $closeTop () {
+
+    },
+
+    $getPopupCtrls () {
+
+    }
+  }
+
   Vue.prototype.__popup__ = Popup = {
     fromHashChange: false,
     fromUpdateRouter: false,

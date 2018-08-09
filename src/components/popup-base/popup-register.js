@@ -18,14 +18,7 @@ function popupRegister (name, template, popupConfig, defaultConfig) {
   }
 
   popupTemplate.prototype = PopupBase
-
-  if (Vue.prototype.$popup)
-    Vue.prototype.$popup[name] = popupTemplate
-  else
-    Vue.prototype.$popup = {
-      [name]: popupTemplate
-    }
-
+  Vue.prototype.$popup[name] = popupTemplate
   return popupTemplate
 }
 
