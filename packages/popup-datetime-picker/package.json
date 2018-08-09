@@ -1,6 +1,6 @@
 {
   "name": "vc-popup-datetime-picker",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "vc-popup-datetime-picker",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,6 @@
   "author": "deepkolos",
   "license": "MIT",
   "dependencies": {
-    "vc-popup-base": "^0.1.25"
+    "vc-popup-base": "^0.1.26"
   }
 }
