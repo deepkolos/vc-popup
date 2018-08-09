@@ -51,10 +51,12 @@ effectRegister('zoomFromDom', {
       $slot.style.webkitTransform =
         `translate3d(${$slot._x}px, ${$slot._y}px,0) scale(${$slot._scale})`
 
-      requestAnimationFrame(() => {
-        $slot.style.webkitTransform = null
-        $slot.style.webkitTransitionDuration = null
-        $slot.style.opacity = null
+      vmBase.$nextTick(function () {
+        requestAnimationFrame(function () {
+          $slot.style.webkitTransform = null
+          $slot.style.webkitTransitionDuration = null
+          $slot.style.opacity = null
+        })
       })
     }
   },
